@@ -89,6 +89,14 @@ public class StreamBuffer implements IInputBuffer,IOutPutBuffer {
         }
     }
 
+    public int getLength(){
+        return count ;
+    }
+
+    public void reset(){
+        pos = count = 0 ;
+    }
+
     public void close(){
         mPool.cacheBuffer(buf);
         buf = null ;

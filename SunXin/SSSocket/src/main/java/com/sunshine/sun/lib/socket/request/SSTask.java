@@ -30,7 +30,7 @@ public abstract class SSTask implements SSITranslation{
     private SSClient mClient ;
     private short mMethod ;
     private ExecuteType mExecuteType ;
-    private byte[] mLock = new byte[0] ;
+    private byte[] mSyncLock = new byte[0] ;
     private SSResponse mResponse ;
 
     public SSTask(short mMethod) {
@@ -62,7 +62,9 @@ public abstract class SSTask implements SSITranslation{
     }
 
     public SSTask setTaskListener(SSITaskListener listener){
-        mTaskListener = listener ;
+        if (mExecuteType == ExecuteType.async){
+            mTaskListener = listener ;
+        }
         return this ;
     }
 
@@ -142,7 +144,7 @@ public abstract class SSTask implements SSITranslation{
     public void lockWait(){
         if (mExecuteType == ExecuteType.sync){
             try {
-                mLock.wait();
+                mSyncLock.wait();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -171,13 +173,12 @@ public abstract class SSTask implements SSITranslation{
 
     @Override
     public void onCompleteReceive() {
-        if (mExecuteType == ExecuteType.async){
-            if (mTaskListener != null){
-                mTaskListener.onComplete(this,null);
-            }
-        }else {
-            mLock.notify();
+        if (mExecuteType == ExecuteType.sync){
+            mSyncLock.notify();
             mResponse = null ;
+        }
+        if (mTaskListener != null){
+            mTaskListener.onComplete(this,null);
         }
     }
 }

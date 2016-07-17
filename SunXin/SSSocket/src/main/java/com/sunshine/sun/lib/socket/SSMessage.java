@@ -30,7 +30,7 @@ public class SSMessage {
     }
 
     public StreamBuffer toStreamBuffer(BytePool pool){
-        int size = 3 ;
+        int size = 5 ;
         for (SSHeader header : mHeaders){
             size += header.valueLength() + 2 ;
         }
@@ -41,7 +41,7 @@ public class SSMessage {
         streamBuffer.write(SSMessageCode.START_CODE_1);
         streamBuffer.write(SSMessageCode.START_CODE_2);
         streamBuffer.write(SSMessageCode.START_CODE_3);
-
+        streamBuffer.write(mMessageCode);
         //write header and body
 
         streamBuffer.write(SSMessageCode.END_CODE);
