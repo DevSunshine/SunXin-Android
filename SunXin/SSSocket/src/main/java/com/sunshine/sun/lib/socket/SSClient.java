@@ -84,6 +84,7 @@ public class SSClient {
         final OutputStream outputStream = mSocketOutputStream;
         StreamBuffer streamBuffer = message.toStreamBuffer(mBytePool);
         final byte[] buf = streamBuffer.readToByte();
+        streamBuffer.close();
         mSendHandler.post(new Runnable() {
             @Override
             public void run() {

@@ -92,7 +92,7 @@ public abstract class SSTask implements SSITranslation{
         }
         return null ;
     }
-    
+
     public SSHeader getHeader(String value){
         for (int i = 0 ; i < mHeaders.size() ; i ++){
             if (TextUtils.equals(value,mHeaders.get(i).getStringValue())){
