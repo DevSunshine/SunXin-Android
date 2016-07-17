@@ -40,6 +40,9 @@ public class SSClientQueue {
         if (mSecondlyClientThread != null) {
             mSecondlyClientThread.quite();
         }
+        if (mCurrentTask != null){
+            mCurrentTask.clear();
+        }
     }
 
     public void start() {

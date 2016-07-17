@@ -14,6 +14,7 @@ public class SSReceiveWork implements SSIReceiveWork {
         //回应服务器
         SSTask task = SSTaskManager.instance().createResponseTask() ;
         SSTaskManager.instance().commitTask(task);
+        task.execute();
         SSClient client = task.getClient() ;
         SSPipeLine pipeLine = new SSPipeLine() ;
         SSResponse response = new SSResponse(SSResponseCode.OK) ;
