@@ -7,9 +7,11 @@ package com.sunshine.sun.lib.socket;
  */
 public class SSPipeLine {
 
-    private SSRequest mRequest ;
+    private SSRequest mRequest;
 
-    private SSResponse mResponse ;
+    private SSResponse mResponse;
+
+    private SSITranslation mTranslation;
 
     public SSRequest getRequest() {
         return mRequest;
@@ -25,6 +27,25 @@ public class SSPipeLine {
 
     public void setResponse(SSResponse mResponse) {
         this.mResponse = mResponse;
+    }
+
+    /**
+     * 发送请求结束
+     */
+    public void requestEnd() {
+        if (mTranslation != null) {
+            mTranslation.onRequestEnd();
+        }
+    }
+
+    public void complete(){
+        if (mTranslation!= null){
+            mTranslation.onCompleteReceive();
+        }
+    }
+
+    public void setOnTranslation(SSITranslation translation){
+        this.mTranslation = translation ;
     }
 
 }

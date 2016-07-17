@@ -5,5 +5,7 @@ package com.sunshine.sun.lib.socket;
  * Created by 钟光燕 on 2016/7/15.
  * e-mail guangyanzhong@163.com
  */
-public interface SSIReciveWork {
+public interface SSIReceiveWork {
+
+    void doReceiveSocket(SSRequest request) ;
 }

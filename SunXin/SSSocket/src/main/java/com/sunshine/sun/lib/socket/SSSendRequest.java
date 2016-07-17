@@ -11,6 +11,7 @@ import com.sunshine.sun.lib.socket.request.SSTask;
 public class SSSendRequest implements SSISendWork {
     @Override
     public void doSendSocket(SSTask task) {
+        task.execute();
         SSClient client = task.getClient() ;
         SSRequest request = new SSRequest(task.getMethod()) ;
         for (int i = 0 ; i < task.getHeaderList().size(); i ++){
@@ -18,6 +19,8 @@ public class SSSendRequest implements SSISendWork {
         }
         SSPipeLine pipeLine = new SSPipeLine() ;
         pipeLine.setRequest(request);
+        pipeLine.setOnTranslation(task);
+
         client.sendRequest(pipeLine);
     }
 }

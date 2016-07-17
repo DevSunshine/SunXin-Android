@@ -17,5 +17,5 @@ public interface SSITaskListener {
 
     void onError(SSTask task, int errorCode) ;
 
-    void onNotify(SSRequest request) ;
+
 }

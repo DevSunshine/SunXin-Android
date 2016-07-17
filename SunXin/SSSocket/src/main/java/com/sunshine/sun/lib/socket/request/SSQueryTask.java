@@ -1,7 +1,7 @@
 package com.sunshine.sun.lib.socket.request;
 // Copyright (c) 2016 ${ORGANIZATION_NAME}. All rights reserved.
 
-import com.sunshine.sun.lib.socket.SSResquestCode;
+import com.sunshine.sun.lib.socket.SSRequestCode;
 
 /**
  * Created by 钟光燕 on 2016/7/15.
@@ -13,6 +13,6 @@ public class SSQueryTask extends SSTask {
     }
 
     public SSQueryTask() {
-        super(SSResquestCode.QUERY);
+        super(SSRequestCode.QUERY);
     }
 }

@@ -4,7 +4,10 @@ package com.sunshine.sun.lib.socket.toolbox;
 
 import com.sunshine.sun.lib.socket.SSBody;
 import com.sunshine.sun.lib.socket.SSHeader;
+import com.sunshine.sun.lib.socket.SSMessage;
 import com.sunshine.sun.lib.socket.SSMessageCode;
+
+import java.util.List;
 
 /**
  * Created by 钟光燕 on 2016/7/14.
@@ -20,7 +23,7 @@ public class BinaryParser {
         mStreamBuffer = new StreamBuffer(pool) ;
     }
 
-    public boolean parser(byte[] buffer,int offset, int count){
+    public boolean parser(byte[] buffer,int offset, int count,List<SSMessage> messages){
         mStreamBuffer.write(buffer,offset,count);
         while (mStreamBuffer.available() > 0){
             int startCode1 = mStreamBuffer.read() ;

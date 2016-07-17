@@ -15,7 +15,7 @@ import java.util.Set;
 public class SSClientManager {
 
     private SSClientQueue mClientQueue ;
-    private SSISendWork mSsiSendWork ;
+    private SSISendWork mSendWork;
     private BytePool mBytePool ;
     private final Set<SSClient> mClients = new HashSet<>() ;
     public static SSClientManager instance() {
@@ -28,8 +28,8 @@ public class SSClientManager {
 
     private SSClientManager() {
         mBytePool = new BytePool() ;
-        mSsiSendWork = new SSSendRequest() ;
-        mClientQueue = new SSClientQueue(mSsiSendWork) ;
+        mSendWork = new SSSendRequest() ;
+        mClientQueue = new SSClientQueue(mSendWork) ;
         mClientQueue.start();
     }
 
@@ -75,5 +75,11 @@ public class SSClientManager {
             }
         }
         return null ;
+    }
+
+    public void closeClient(){
+        synchronized (mClients){
+            mClients.clear();
+        }
     }
 }

@@ -6,8 +6,11 @@ import com.sunshine.sun.lib.socket.SSClient;
 import com.sunshine.sun.lib.socket.SSClientManager;
 import com.sunshine.sun.lib.socket.SSClientMode;
 import com.sunshine.sun.lib.socket.SSClientQueue;
-import com.sunshine.sun.lib.socket.SSResquestCode;
+import com.sunshine.sun.lib.socket.SSRequest;
+import com.sunshine.sun.lib.socket.SSRequestCode;
 import com.sunshine.sun.lib.socket.SSSendRequest;
+import com.sunshine.sun.lib.socket.toolbox.ExecuteType;
+import com.sunshine.sun.lib.socket.toolbox.Priority;
 
 /**
  * Created by 钟光燕 on 2016/7/15.
@@ -15,6 +18,7 @@ import com.sunshine.sun.lib.socket.SSSendRequest;
  */
 public class SSTaskManager {
     private SSClientQueue mClientQueue;
+    private SSINotifyListener mNotifyListener ;
 
     public static SSTaskManager instance() {
         return InnerInstance.instance;
@@ -27,6 +31,16 @@ public class SSTaskManager {
 
     public static class InnerInstance {
         private static SSTaskManager instance = new SSTaskManager();
+    }
+
+    public void setNotifyListener(SSINotifyListener listener){
+        mNotifyListener = listener ;
+    }
+
+    public void notifyData(SSRequest request){
+        if (mNotifyListener!= null){
+            mNotifyListener.onNotify(request);
+        }
     }
 
     public SSClient getSecondlyClient() {
@@ -44,7 +58,12 @@ public class SSTaskManager {
         }
         return client;
     }
-
+    public SSTask createResponseTask() {
+        SSTask task = new SSResponseTask(SSRequestCode.DOWNLOAD);
+        task.setClient(getPrimaryClient());
+        task.setPriority(Priority.HIGH) ;
+        return task;
+    }
     public SSTask createQueryTask() {
         SSTask task = new SSQueryTask();
         task.setClient(getPrimaryClient());
@@ -69,5 +88,6 @@ public class SSTaskManager {
     public void commitTask(SSTask task) {
         mClientQueue.cancel(task);
         mClientQueue.add(task);
+        task.lockWait();
     }
 }

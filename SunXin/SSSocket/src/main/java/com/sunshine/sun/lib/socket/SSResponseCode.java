@@ -6,4 +6,6 @@ package com.sunshine.sun.lib.socket;
  * e-mail guangyanzhong@163.com
  */
 public interface SSResponseCode {
+
+    short OK = 0xff ;
 }

@@ -15,7 +15,9 @@ import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketAddress;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -36,12 +38,14 @@ public class SSClient {
     private ReceiverThread mReceiverThread;
     private HandlerThread mSendThread ;
     private BinaryParser mParser ;
+    private SSIReceiveWork mReceiveWork ;
 
     public SSClient(BytePool mBytePool) {
         this.mBytePool = mBytePool;
         mPipeLines = new HashMap<>();
         mStatue = SSSocketStatue.disconnect ;
         mParser = new BinaryParser(mBytePool) ;
+        mReceiveWork = new SSReceiveWork() ;
     }
 
     public void connect(String host, int port) {
@@ -61,17 +65,22 @@ public class SSClient {
     }
 
     public void sendRequest(SSPipeLine pipeLine) {
-        sendMessage(pipeLine.getRequest());
-    }
-
-    public void sendReponse(SSPipeLine pipeLine) {
-        sendMessage(pipeLine.getResponse());
-    }
-
-    private void sendMessage(SSMessage message) {
         if (mStatue != SSSocketStatue.connected){
             return;
         }
+        mPipeLines.put(pipeLine.getRequest().getUniqueKey(),pipeLine) ;
+        sendMessage(pipeLine.getRequest());
+    }
+
+    public void sendResponse(SSPipeLine pipeLine) {
+        if (mStatue != SSSocketStatue.connected){
+            return;
+        }
+        sendMessage(pipeLine.getResponse());
+    }
+
+    private void sendMessage(final SSMessage message) {
+
         final OutputStream outputStream = mSocketOutputStream;
         StreamBuffer streamBuffer = message.toStreamBuffer(mBytePool);
         final byte[] buf = streamBuffer.readToByte();
@@ -80,6 +89,10 @@ public class SSClient {
             public void run() {
                 try {
                     outputStream.write(buf);
+                    SSPipeLine pipeLine = mPipeLines.get(message.getUniqueKey()) ;
+                    if (pipeLine != null){
+                        pipeLine.requestEnd();
+                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -98,7 +111,22 @@ public class SSClient {
     }
 
     private void onDataReceived(byte[] buf, int offset, int count){
-        mParser.parser(buf,offset,count) ;
+        List<SSMessage> messages = new ArrayList<>() ;
+        boolean ret = mParser.parser(buf,offset,count,messages) ;
+        if (ret){
+            for (SSMessage message : messages){
+                if (message instanceof SSRequest){//通知类消息,服务器发送的请求；
+                    if (mReceiveWork != null){
+                        mReceiveWork.doReceiveSocket((SSRequest) message);
+                    }
+                }else { //客服端发送的请求，
+                    SSPipeLine pipeLine = mPipeLines.remove(message.getUniqueKey());
+                    pipeLine.complete();
+                }
+            }
+
+        }
+
     }
 
     public void close(){

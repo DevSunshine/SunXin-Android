@@ -14,9 +14,10 @@ import java.util.List;
  */
 public class SSMessage {
 
-    private List<SSBody> mBodys = new ArrayList<>() ;
+    private List<SSBody> mBodies = new ArrayList<>() ;
     private List<SSHeader> mHeaders = new ArrayList<>() ;
     private short mMessageCode ;
+    private String mUniqueKey ;
 
     public SSMessage(short mMessageCode) {
         this.mMessageCode = mMessageCode;
@@ -33,7 +34,7 @@ public class SSMessage {
         for (SSHeader header : mHeaders){
             size += header.valueLength() + 2 ;
         }
-        for (SSBody body : mBodys){
+        for (SSBody body : mBodies){
             size += body.valueLength() + 3 ;
         }
         StreamBuffer streamBuffer = new StreamBuffer(pool,size) ;
@@ -45,5 +46,13 @@ public class SSMessage {
 
         streamBuffer.write(SSMessageCode.END_CODE);
         return streamBuffer ;
+    }
+
+    public String getUniqueKey() {
+        return mUniqueKey;
+    }
+
+    public void setUniqueKey(String uniqueKey){
+        mUniqueKey = uniqueKey ;
     }
 }

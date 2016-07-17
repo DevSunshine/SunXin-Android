@@ -7,6 +7,9 @@ import android.text.TextUtils;
 import com.sunshine.sun.lib.socket.SSClient;
 import com.sunshine.sun.lib.socket.SSClientQueue;
 import com.sunshine.sun.lib.socket.SSHeader;
+import com.sunshine.sun.lib.socket.SSITranslation;
+import com.sunshine.sun.lib.socket.SSResponse;
+import com.sunshine.sun.lib.socket.toolbox.ExecuteType;
 import com.sunshine.sun.lib.socket.toolbox.Priority;
 
 import java.util.ArrayList;
@@ -16,19 +19,23 @@ import java.util.List;
  * Created by 钟光燕 on 2016/7/14.
  * e-mail guangyanzhong@163.com
  */
-public abstract class SSTask{
+public abstract class SSTask implements SSITranslation{
 
     private Priority mPriority ;
-    private Integer mSequence;
+    private String mSequence;
     private SSClientQueue mClientQueue ;
     private SSITaskListener mTaskListener ;
     private boolean mCanceled ;
     private List<SSHeader> mHeaders = new ArrayList<>();
     private SSClient mClient ;
     private short mMethod ;
+    private ExecuteType mExecuteType ;
+    private byte[] mLock = new byte[0] ;
+    private SSResponse mResponse ;
 
     public SSTask(short mMethod) {
         this.mMethod = mMethod;
+        mExecuteType = ExecuteType.async ;
     }
 
     public SSTask setPriority(Priority priority){
@@ -41,11 +48,11 @@ public abstract class SSTask{
     }
 
     public final SSTask setSequence(int sequence){
-        mSequence = Integer.valueOf(sequence);
+        mSequence = String.valueOf(sequence);
         return this ;
     }
 
-    public Integer getSequence(){
+    public String getSequence(){
         return mSequence ;
     }
 
@@ -85,7 +92,7 @@ public abstract class SSTask{
         }
         return null ;
     }
-
+    
     public SSHeader getHeader(String value){
         for (int i = 0 ; i < mHeaders.size() ; i ++){
             if (TextUtils.equals(value,mHeaders.get(i).getStringValue())){
@@ -116,13 +123,61 @@ public abstract class SSTask{
         return this ;
     }
 
+    public SSTask setExecuteType(ExecuteType type){
+        this.mExecuteType = type ;
+        return this ;
+    }
+
+    public ExecuteType getExecuteType(){
+        return mExecuteType ;
+    }
+
     public void execute(){
 
+    }
+
+    /**
+     * 同步线程锁
+     */
+    public void lockWait(){
+        if (mExecuteType == ExecuteType.sync){
+            try {
+                mLock.wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public void finish(){
         if (mClientQueue != null){
             mClientQueue.finish(this);
+        }
+    }
+
+    public SSResponse getResponse(){
+        return mResponse ;
+    }
+
+    @Override
+    public void onRequestEnd() {
+
+    }
+
+    @Override
+    public void onProgressReceive() {
+
+    }
+
+    @Override
+    public void onCompleteReceive() {
+        if (mExecuteType == ExecuteType.async){
+            if (mTaskListener != null){
+                mTaskListener.onComplete(this,null);
+            }
+        }else {
+            mLock.notify();
+            mResponse = null ;
         }
     }
 }

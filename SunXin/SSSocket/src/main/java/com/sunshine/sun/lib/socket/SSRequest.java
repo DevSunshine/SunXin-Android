@@ -9,4 +9,5 @@ public class SSRequest extends SSMessage {
     public SSRequest(short mMessageCode) {
         super(mMessageCode);
     }
+
 }
