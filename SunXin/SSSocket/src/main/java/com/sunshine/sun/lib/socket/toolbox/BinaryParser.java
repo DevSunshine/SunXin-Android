@@ -51,7 +51,6 @@ public class BinaryParser {
                 if (type == SSMessageCode.END_CODE){
                     messages.add(mMessage);
                     mMessage = null ;
-                    mStreamBuffer.reset();
                 }
                 mHeader = new SSHeader();
                 continue;

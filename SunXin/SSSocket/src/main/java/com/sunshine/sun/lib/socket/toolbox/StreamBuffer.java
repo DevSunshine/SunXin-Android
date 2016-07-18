@@ -68,7 +68,7 @@ public class StreamBuffer implements IInputBuffer,IOutPutBuffer {
 
     @Override
     public synchronized void write(byte[] buffer) {
-        write(buffer,0,buffer.length);
+        write(buffer, 0, buffer.length);
     }
 
     @Override
@@ -82,8 +82,16 @@ public class StreamBuffer implements IInputBuffer,IOutPutBuffer {
     private void expand(int i){
 
         if (count + i > buf.length){
-            byte[] newBuf = mPool.getBuffer(count + i);
-            System.arraycopy(this.buf , 0, newBuf, 0, count);
+            byte[] newBuf ;
+            if (pos > 0){
+                int newCount = count - pos ;
+                newBuf = mPool.getBuffer(newCount + i);
+                System.arraycopy(this.buf, pos, newBuf, 0, newCount);
+            }else {
+                newBuf = mPool.getBuffer(count + i);
+                System.arraycopy(this.buf , 0, newBuf, 0, count);
+            }
+            pos = 0 ;
             mPool.cacheBuffer(newBuf);
             this.buf = newBuf ;
         }

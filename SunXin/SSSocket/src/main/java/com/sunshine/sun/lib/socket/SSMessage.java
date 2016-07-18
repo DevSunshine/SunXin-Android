@@ -29,6 +29,12 @@ public class SSMessage {
         }
     }
 
+    public void addBody(SSBody body){
+        if (body != null){
+            mBodies.add(body);
+        }
+    }
+
     public StreamBuffer toStreamBuffer(BytePool pool){
         int size = 5 ;
         for (SSHeader header : mHeaders){

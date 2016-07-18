@@ -6,4 +6,18 @@ package com.sunshine.sun.lib.socket;
  * e-mail guangyanzhong@163.com
  */
 public class SSHeader extends SSKeyValve {
+    public SSHeader() {
+    }
+
+    public SSHeader(short type) {
+        super(type);
+    }
+
+    public SSHeader(short type, long value) {
+        super(type, value);
+    }
+
+    public SSHeader(short type, String value) {
+        super(type, value);
+    }
 }

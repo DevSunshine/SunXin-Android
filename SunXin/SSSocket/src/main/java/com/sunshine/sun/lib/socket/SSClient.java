@@ -6,6 +6,7 @@ import android.os.HandlerThread;
 
 
 import com.sunshine.sun.lib.socket.toolbox.BinaryParser;
+import com.sunshine.sun.lib.socket.toolbox.BufferQueue;
 import com.sunshine.sun.lib.socket.toolbox.BytePool;
 import com.sunshine.sun.lib.socket.toolbox.StreamBuffer;
 
@@ -39,6 +40,7 @@ public class SSClient {
     private HandlerThread mSendThread ;
     private BinaryParser mParser ;
     private SSIReceiveWork mReceiveWork ;
+    private BufferQueue mBufferQueue ;
 
     public SSClient(BytePool mBytePool) {
         this.mBytePool = mBytePool;
@@ -46,6 +48,8 @@ public class SSClient {
         mStatue = SSSocketStatue.disconnect ;
         mParser = new BinaryParser(mBytePool) ;
         mReceiveWork = new SSReceiveWork() ;
+
+
     }
 
     public void connect(String host, int port) {
@@ -179,11 +183,18 @@ public class SSClient {
                     close();
                 }
                 connectClient() ;
+                mBufferQueue = new BufferQueue() ;
                 while (true){
                     try {
-                        byte buf[] = new byte[4096];
-                        int position = mSocketInputStream.read(buf) ;
-                        onDataReceived(buf,0,position);
+                        try {
+                            byte buf[] = mBufferQueue.getBuf();
+                            int position = mSocketInputStream.read(buf) ;
+                            onDataReceived(buf,0,position);
+                            mBufferQueue.releaseBuf(buf);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                            close();
+                        }
                     } catch (IOException e) {
                         e.printStackTrace();
                         close();

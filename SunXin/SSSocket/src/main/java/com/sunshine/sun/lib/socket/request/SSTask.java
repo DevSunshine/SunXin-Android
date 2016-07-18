@@ -4,6 +4,7 @@ package com.sunshine.sun.lib.socket.request;
 import android.text.TextUtils;
 
 
+import com.sunshine.sun.lib.socket.SSBody;
 import com.sunshine.sun.lib.socket.SSClient;
 import com.sunshine.sun.lib.socket.SSClientQueue;
 import com.sunshine.sun.lib.socket.SSHeader;
@@ -21,6 +22,7 @@ import java.util.List;
  */
 public abstract class SSTask implements SSITranslation{
 
+    private static int MAX_LENGTH_BODY = 65535 ;
     private Priority mPriority ;
     private String mSequence;
     private SSClientQueue mClientQueue ;
@@ -32,6 +34,7 @@ public abstract class SSTask implements SSITranslation{
     private ExecuteType mExecuteType ;
     private byte[] mSyncLock = new byte[0] ;
     private SSResponse mResponse ;
+    private byte[] mBody ;
 
     public SSTask(short mMethod) {
         this.mMethod = mMethod;
@@ -77,13 +80,53 @@ public abstract class SSTask implements SSITranslation{
     }
 
     public SSTask addHeader(short key, String value){
-
+        SSHeader header = new SSHeader() ;
+        header.setTypeValue(key,value);
+        mHeaders.add(header);
         return this ;
     }
 
     public SSTask addHeader(short key, long value){
-
+        SSHeader header = new SSHeader(key) ;
+        header.setValue(value);
+        mHeaders.add(header);
         return this ;
+    }
+
+    public SSTask addBody(byte[] body){
+        mBody = body ;
+        return this ;
+    }
+
+    public List<SSBody> getBodies(){
+        List<SSBody> bodies = new ArrayList<>() ;
+        if (mBody == null){
+            return bodies ;
+        }
+        if (mBody.length <= MAX_LENGTH_BODY){
+            SSBody body = new SSBody() ;
+            body.setValue(mBody);
+            bodies.add(body);
+        }else {
+            int count = mBody.length/MAX_LENGTH_BODY ;
+            for (int i = 0 ; i < count ; i ++){
+                byte temp[] = new byte[MAX_LENGTH_BODY];
+                System.arraycopy(mBody,i*MAX_LENGTH_BODY,temp,0,MAX_LENGTH_BODY);
+                SSBody body = new SSBody() ;
+                body.setValue(temp);
+                bodies.add(body);
+            }
+            if (count*MAX_LENGTH_BODY < mBody.length){
+                int end = mBody.length - count*MAX_LENGTH_BODY ;
+                byte temp[] = new byte[end];
+                System.arraycopy(mBody,count*MAX_LENGTH_BODY,temp,0,end);
+                SSBody body = new SSBody() ;
+                body.setValue(temp);
+                bodies.add(body);
+            }
+
+        }
+        return bodies ;
     }
 
     public SSHeader getHeader(short type){
@@ -135,7 +178,7 @@ public abstract class SSTask implements SSITranslation{
     }
 
     public void execute(){
-
+        //doSomething different
     }
 
     /**

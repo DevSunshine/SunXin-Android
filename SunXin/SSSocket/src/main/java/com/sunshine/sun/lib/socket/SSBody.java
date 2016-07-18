@@ -6,4 +6,24 @@ package com.sunshine.sun.lib.socket;
  * e-mail guangyanzhong@163.com
  */
 public class SSBody extends SSKeyValve{
+    public SSBody() {
+    }
+
+    public SSBody(short type) {
+        super(type);
+    }
+
+    public SSBody(short type, long value) {
+        super(type, value);
+    }
+
+    public SSBody(short type, String value) {
+        super(type, value);
+    }
+
+    @Override
+    public void setValue(byte[] value) {
+        super.setValue(value);
+        type = SSKeyType.BINARY_KEY ;
+    }
 }

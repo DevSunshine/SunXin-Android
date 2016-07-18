@@ -17,6 +17,9 @@ public class SSSendRequest implements SSISendWork {
         for (int i = 0 ; i < task.getHeaderList().size(); i ++){
             request.addHeader(task.getHeaderList().get(i));
         }
+        for (int i = 0 ; i < task.getBodies().size(); i ++){
+            request.addBody(task.getBodies().get(i));
+        }
         SSPipeLine pipeLine = new SSPipeLine() ;
         pipeLine.setRequest(request);
         pipeLine.setOnTranslation(task);
