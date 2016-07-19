@@ -25,7 +25,6 @@ public class SSSocket {
 
     public synchronized void initSocket(UserAccount account) {
         mUserAccount = account ;
-        SSClientManager.instance().setUserAccount(account);
         requestClient(SSClientMode.primary) ;
     }
     public synchronized void logoutSocket(){
@@ -38,6 +37,7 @@ public class SSSocket {
 
         }else {
             SSClientManager.instance().closeClient();
+            SSClientManager.instance().setUserAccount(mUserAccount);
             String address = mUserAccount.getAddress() ;
             int port = mUserAccount.getPort() ;
             SSClientManager.instance().connect(address,port,mode) ;

@@ -50,9 +50,6 @@ public class SSClient {
     }
 
     public void connect(String host, int port) {
-        if (mStatue == SSSocketStatue.connecting){
-            return;
-        }
         ReceiverThread mReceiverThread = new ReceiverThread();
         mReceiverThread.host = host;
         mReceiverThread.port = port;
