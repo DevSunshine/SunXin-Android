@@ -6,4 +6,23 @@ package com.sunshine.sun.lib.socket.toolbox;
  * e-mail guangyanzhong@163.com
  */
 public class SSSocket {
+    public static SSSocket instance() {
+        return InnerInstance.instance;
+    }
+
+    public static class InnerInstance {
+        private static SSSocket instance = new SSSocket();
+    }
+
+    private SSSocket(){
+        init();
+    }
+
+    private void init() {
+        requestPrimaryClient();
+    }
+
+    public void requestPrimaryClient(){
+
+    }
 }
