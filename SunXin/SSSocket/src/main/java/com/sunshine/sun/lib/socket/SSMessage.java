@@ -35,6 +35,15 @@ public class SSMessage {
         }
     }
 
+    public SSHeader getHeader(short type){
+        for (SSHeader header : mHeaders){
+            if (header.getType() == type){
+                return header ;
+            }
+        }
+        return null ;
+    }
+
     public StreamBuffer toStreamBuffer(BytePool pool){
         int size = 5 ;
         for (SSHeader header : mHeaders){

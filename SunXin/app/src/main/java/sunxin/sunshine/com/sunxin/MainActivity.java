@@ -1,9 +1,13 @@
 package sunxin.sunshine.com.sunxin;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+
+import com.sunshine.sun.lib.socket.bean.UserAccount;
+import com.sunshine.sun.lib.socket.toolbox.SSSocket;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -11,6 +15,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+    }
+
+    public void connectSocket(View view){
+        UserAccount account = new UserAccount() ;
+        account.setAddress("10.25.0.149");
+        account.setPort(5013);
+        SSSocket.instance().initSocket(account);
     }
 
     @Override

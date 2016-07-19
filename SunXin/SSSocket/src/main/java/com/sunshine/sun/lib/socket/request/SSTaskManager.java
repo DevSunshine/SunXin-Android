@@ -3,14 +3,13 @@ package com.sunshine.sun.lib.socket.request;
 
 
 import com.sunshine.sun.lib.socket.SSClient;
-import com.sunshine.sun.lib.socket.SSClientManager;
 import com.sunshine.sun.lib.socket.SSClientMode;
 import com.sunshine.sun.lib.socket.SSClientQueue;
 import com.sunshine.sun.lib.socket.SSRequest;
 import com.sunshine.sun.lib.socket.SSRequestCode;
 import com.sunshine.sun.lib.socket.SSSendRequest;
-import com.sunshine.sun.lib.socket.toolbox.ExecuteType;
 import com.sunshine.sun.lib.socket.toolbox.Priority;
+import com.sunshine.sun.lib.socket.toolbox.SSSocket;
 
 /**
  * Created by 钟光燕 on 2016/7/15.
@@ -44,17 +43,17 @@ public class SSTaskManager {
     }
 
     public SSClient getSecondlyClient() {
-        SSClient client = SSClientManager.instance().getSecondlyClient();
+        SSClient client = SSSocket.instance().getSecondlyClient();
         if (client == null) {
-            SSClientManager.instance().connect("", 99, SSClientMode.secondly);
+            SSSocket.instance().requestClient(SSClientMode.secondly);
         }
         return client;
     }
 
     public SSClient getPrimaryClient() {
-        SSClient client = SSClientManager.instance().getPrimaryClient();
+        SSClient client = SSSocket.instance().getPrimaryClient();
         if (client == null) {
-            SSClientManager.instance().connect("", 99, SSClientMode.primary);
+            SSSocket.instance().requestClient(SSClientMode.primary);
         }
         return client;
     }
