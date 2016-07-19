@@ -7,7 +7,6 @@ import android.text.TextUtils;
 import com.sunshine.sun.lib.socket.request.SSTask;
 
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.PriorityBlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -40,15 +39,13 @@ public class SSClientQueue {
         if (mSecondlyClientThread != null) {
             mSecondlyClientThread.quite();
         }
-        if (mCurrentTask != null){
-            mCurrentTask.clear();
-        }
+        mCurrentTask.clear();
     }
 
     public void start() {
         stop();
         mPrimaryClientThread = new SSClientThread(mPrimaryQueue, mSendWork);
-        mSecondlyClientThread = new SSClientThread(mPrimaryQueue, mSendWork);
+        mSecondlyClientThread = new SSClientThread(mSecondlyQueue, mSendWork);
         mPrimaryClientThread.start();
         mSecondlyClientThread.start();
     }
@@ -58,20 +55,18 @@ public class SSClientQueue {
             mCurrentTask.add(task);
         }
         task.setSequence(mSequenceGenerator.decrementAndGet());
-        SSClient client = task.getClient() ;
-        if (client.getClientMode() == SSClientMode.primary){
+        SSClient client = task.getClient();
+        if (client.getClientMode() == SSClientMode.primary) {
             mPrimaryQueue.add(task);
-        }else {
-            mSecondlyQueue.add(task) ;
+        } else {
+            mSecondlyQueue.add(task);
         }
         return task;
     }
 
     public void cancelAll(SSITaskFilter filter) {
         synchronized (mCurrentTask) {
-            Iterator<SSTask> iterator = mCurrentTask.iterator();
-            while (iterator.hasNext()) {
-                SSTask task = iterator.next();
+            for (SSTask task : mCurrentTask){
                 if (filter.apply(task)) {
                     task.cancel();
                 }
@@ -85,10 +80,7 @@ public class SSClientQueue {
             cancelAll(new SSITaskFilter() {
                 @Override
                 public boolean apply(SSTask task) {
-                    if (task.getHeader(name) != null) {
-                        return true;
-                    }
-                    return false;
+                    return task.getHeader(name) != null ;
                 }
             });
         }
@@ -99,10 +91,7 @@ public class SSClientQueue {
             cancelAll(new SSITaskFilter() {
                 @Override
                 public boolean apply(SSTask task) {
-                    if (task.getHeader(queryName) != null) {
-                        return true;
-                    }
-                    return false;
+                   return task.getHeader(queryName) != null ;
                 }
             });
         }

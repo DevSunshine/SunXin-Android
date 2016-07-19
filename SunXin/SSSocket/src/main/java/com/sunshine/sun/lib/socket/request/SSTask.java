@@ -210,15 +210,15 @@ public abstract class SSTask implements SSITranslation{
     }
 
     @Override
-    public void onProgressReceive() {
+    public void onProgressReceive(int progress,int total) {
 
     }
 
     @Override
-    public void onCompleteReceive() {
+    public void onCompleteReceive(SSResponse response) {
         if (mExecuteType == ExecuteType.sync){
             mSyncLock.notify();
-            mResponse = null ;
+            mResponse = response ;
         }
         if (mTaskListener != null){
             mTaskListener.onComplete(this,null);

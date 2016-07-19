@@ -2,25 +2,27 @@ package com.sunshine.sun.lib.socket;
 // Copyright (c) 2016 ${ORGANIZATION_NAME}. All rights reserved.
 
 
+import com.sunshine.sun.lib.socket.bean.UserAccount;
 import com.sunshine.sun.lib.socket.toolbox.BytePool;
 
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 /**
  * Created by 钟光燕 on 2016/7/14.
  * e-mail guangyanzhong@163.com
  */
-public class SSClientManager {
+public class SSClientManager implements SSIClientConnectListener{
 
-    private SSClientQueue mClientQueue ;
-    private SSISendWork mSendWork;
     private BytePool mBytePool ;
     private final Set<SSClient> mClients = new HashSet<>() ;
+    private int mPrimaryTryCount ;
+    private int mSecondlyTryCount ;
+    private UserAccount mUserAccount ;
     public static SSClientManager instance() {
         return InnerInstance.instance;
     }
+
 
     public static class InnerInstance {
         private static SSClientManager instance = new SSClientManager();
@@ -28,17 +30,19 @@ public class SSClientManager {
 
     private SSClientManager() {
         mBytePool = new BytePool() ;
-        mSendWork = new SSSendRequest() ;
-        mClientQueue = new SSClientQueue(mSendWork) ;
-        mClientQueue.start();
+        new SSClientQueue(new SSSendRequest()).start();
+    }
+
+    public void setUserAccount(UserAccount account){
+        mUserAccount = account ;
     }
 
     public SSClient connect(String host,int port,SSClientMode priority){
-        SSClient client = new SSClient(mBytePool) ;
+        SSClient client = new SSClient(mBytePool,this) ;
         synchronized (mClients){
+            mClients.add(client) ;
             client.connect(host,port);
             client.setClientMode(priority);
-            mClients.add(client) ;
         }
         return client ;
     }
@@ -49,11 +53,9 @@ public class SSClientManager {
      */
     public SSClient getPrimaryClient(){
         synchronized (mClients){
-            Iterator<SSClient> iterator = mClients.iterator() ;
-            while (iterator.hasNext()){
-                SSClient client = iterator.next() ;
+            for (SSClient client : mClients){
                 if (client.getClientMode() == SSClientMode.primary){
-                   return client ;
+                    return client ;
                 }
             }
         }
@@ -66,9 +68,7 @@ public class SSClientManager {
      */
     public SSClient getSecondlyClient(){
         synchronized (mClients){
-            Iterator<SSClient> iterator = mClients.iterator() ;
-            while (iterator.hasNext()){
-                SSClient client = iterator.next() ;
+            for (SSClient client : mClients){
                 if (client.getClientMode() == SSClientMode.secondly){
                     return client ;
                 }
@@ -79,7 +79,37 @@ public class SSClientManager {
 
     public void closeClient(){
         synchronized (mClients){
+            for (SSClient client : mClients){
+                client.close();
+            }
             mClients.clear();
         }
+        mUserAccount = null ;
     }
+
+    public void close(SSClient client){
+        synchronized (mClients){
+            mClients.remove(client) ;
+        }
+        client.close();
+        int RETRY_COUNT = 3;
+        if (mPrimaryTryCount < RETRY_COUNT && client.getClientMode() == SSClientMode.primary){
+            mPrimaryTryCount ++ ;
+            connect(mUserAccount.getAddress(),mUserAccount.getPort(),SSClientMode.primary) ;
+        }
+        if (mSecondlyTryCount < RETRY_COUNT && client.getClientMode() == SSClientMode.primary){
+            mSecondlyTryCount ++ ;
+            connect(mUserAccount.getAddress(),mUserAccount.getPort(),SSClientMode.secondly) ;
+        }
+    }
+
+    @Override
+    public void connected(SSClient client) {
+        if (client.getClientMode() == SSClientMode.primary){
+            mPrimaryTryCount = 0 ;
+        }else if (client.getClientMode() == SSClientMode.secondly){
+            mSecondlyTryCount = 0 ;
+        }
+    }
+
 }

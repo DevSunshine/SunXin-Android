@@ -4,7 +4,6 @@ package com.sunshine.sun.lib.socket;
 import android.os.Handler;
 import android.os.HandlerThread;
 
-
 import com.sunshine.sun.lib.socket.toolbox.BinaryParser;
 import com.sunshine.sun.lib.socket.toolbox.BufferQueue;
 import com.sunshine.sun.lib.socket.toolbox.BytePool;
@@ -36,24 +35,25 @@ public class SSClient {
     private Map<String, SSPipeLine> mPipeLines;
     private SSSocketStatue mStatue ;
 
-    private ReceiverThread mReceiverThread;
-    private HandlerThread mSendThread ;
     private BinaryParser mParser ;
     private SSIReceiveWork mReceiveWork ;
-    private BufferQueue mBufferQueue ;
+    private SSIClientConnectListener mConnectListener ;
 
-    public SSClient(BytePool mBytePool) {
+    public SSClient(BytePool mBytePool,SSIClientConnectListener mConnectListener) {
         this.mBytePool = mBytePool;
         mPipeLines = new HashMap<>();
         mStatue = SSSocketStatue.disconnect ;
         mParser = new BinaryParser(mBytePool) ;
         mReceiveWork = new SSReceiveWork() ;
 
-
+        this.mConnectListener = mConnectListener ;
     }
 
     public void connect(String host, int port) {
-        mReceiverThread = new ReceiverThread();
+        if (mStatue == SSSocketStatue.connecting){
+            return;
+        }
+        ReceiverThread mReceiverThread = new ReceiverThread();
         mReceiverThread.host = host;
         mReceiverThread.port = port;
         Thread thread = new Thread(mReceiverThread, "receive thread");
@@ -108,10 +108,13 @@ public class SSClient {
     private void connectClient(){
 
         if (mStatue == SSSocketStatue.connecting){
-            mSendThread = new HandlerThread("send thread") ;
-            mSendThread.start();
-            mSendHandler = new Handler(mSendThread.getLooper()) ;
+            HandlerThread handlerThread = new HandlerThread("send thread");
+            handlerThread.start() ;
+            mSendHandler = new Handler(handlerThread.getLooper()) ;
             mStatue = SSSocketStatue.connected ;
+            if (mConnectListener != null){
+                mConnectListener.connected(this);
+            }
         }
     }
 
@@ -135,22 +138,24 @@ public class SSClient {
     }
 
     public void close(){
-        mStatue = SSSocketStatue.disconnecting ;
-        if (mSocket != null){
-            try {
-                mSocket.close();
-                mSocket = null ;
-                if (mSocketOutputStream != null){
-                    mSocketOutputStream.close();
+        if (mStatue != SSSocketStatue.disconnect){
+            SSClientManager.instance().close(this);
+            if (mSocket != null){
+                try {
+                    mSocket.close();
+                    mSocket = null ;
+                    if (mSocketOutputStream != null){
+                        mSocketOutputStream.close();
+                    }
+                    if (mSocketInputStream != null){
+                        mSocketInputStream.close();
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-                if (mSocketInputStream != null){
-                    mSocketInputStream.close();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
             }
+            mStatue = SSSocketStatue.disconnect ;
         }
-        mStatue = SSSocketStatue.disconnect ;
     }
     private class ReceiverThread implements Runnable {
         String host;
@@ -183,17 +188,22 @@ public class SSClient {
                     close();
                 }
                 connectClient() ;
-                mBufferQueue = new BufferQueue() ;
+                BufferQueue mBufferQueue = new BufferQueue() ;
                 while (true){
                     try {
                         try {
                             byte buf[] = mBufferQueue.getBuf();
                             int position = mSocketInputStream.read(buf) ;
+                            if (position == -1){
+                                close();
+                                break;
+                            }
                             onDataReceived(buf,0,position);
                             mBufferQueue.releaseBuf(buf);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                             close();
+                            break;
                         }
                     } catch (IOException e) {
                         e.printStackTrace();

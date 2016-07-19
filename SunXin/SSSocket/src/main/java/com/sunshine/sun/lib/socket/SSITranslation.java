@@ -5,6 +5,6 @@ package com.sunshine.sun.lib.socket;
  */
 public interface SSITranslation {
     void onRequestEnd() ;
-    void onProgressReceive() ;
-    void onCompleteReceive() ;
+    void onProgressReceive(int progress,int total) ;
+    void onCompleteReceive(SSResponse response) ;
 }

@@ -40,7 +40,7 @@ public class SSPipeLine {
 
     public void complete(){
         if (mTranslation!= null){
-            mTranslation.onCompleteReceive();
+            mTranslation.onCompleteReceive(null);
         }
     }
 
