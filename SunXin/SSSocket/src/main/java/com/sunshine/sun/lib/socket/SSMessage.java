@@ -45,9 +45,9 @@ public class SSMessage {
     }
 
     public StreamBuffer toStreamBuffer(BytePool pool){
-        int size = 5 ;
+        int size = 5 ; //起始码（3） + 状态码（1） + 类型码作为结束码（1）
         for (SSHeader header : mHeaders){
-            size += header.valueLength() + 2 ;
+            size += header.valueLength() + 2 ;//类型码 + 长度
         }
         for (SSBody body : mBodies){
             size += body.valueLength() + 3 ;
