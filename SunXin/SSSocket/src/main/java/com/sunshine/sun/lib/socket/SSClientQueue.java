@@ -75,7 +75,7 @@ public class SSClientQueue {
     }
 
     public void cancel(SSTask newTask) {
-        final String name = newTask.getHeader(SSRequestCode.QUERY).getStringValue();
+        final String name = newTask.getHeader(SSTypeCode.QUERY_NAME).getStringValue();
         if (!TextUtils.isEmpty(name)) {
             cancelAll(new SSITaskFilter() {
                 @Override

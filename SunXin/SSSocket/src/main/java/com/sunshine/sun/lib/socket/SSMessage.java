@@ -26,6 +26,9 @@ public class SSMessage {
     public void addHeader(SSHeader header){
         if (header != null){
             mHeaders.add(header);
+            if (header.getType() == SSTypeCode.UNIQUE_KEY){
+                mUniqueKey = header.getStringValue() ;
+            }
         }
     }
 
@@ -53,13 +56,29 @@ public class SSMessage {
             size += body.valueLength() + 3 ;
         }
         StreamBuffer streamBuffer = new StreamBuffer(pool,size) ;
-        streamBuffer.write(SSMessageCode.START_CODE_1);
-        streamBuffer.write(SSMessageCode.START_CODE_2);
-        streamBuffer.write(SSMessageCode.START_CODE_3);
+        streamBuffer.write(SSStartCode.START_CODE_1);
+        streamBuffer.write(SSStartCode.START_CODE_2);
+        streamBuffer.write(SSStartCode.START_CODE_3);
         streamBuffer.write(mMessageCode);
         //write header and body
 
-        streamBuffer.write(SSMessageCode.END_CODE);
+        for (SSHeader header : mHeaders){
+            streamBuffer.write(header.getType());
+            streamBuffer.write(header.getValue().length);
+            streamBuffer.write(header.getValue());
+        }
+
+        for (SSBody body : mBodies){
+            streamBuffer.write(body.getType());
+            int length = body.getValue().length ;
+            int temp1 = length&0xFF ;
+            int temp2 = (length >> 8) & 0xFF ;
+            streamBuffer.write(temp1);
+            streamBuffer.write(temp2);
+            streamBuffer.write(body.getValue());
+        }
+
+        streamBuffer.write(SSTypeCode.END_CODE);
         return streamBuffer ;
     }
 
@@ -68,6 +87,10 @@ public class SSMessage {
     }
 
     public void setUniqueKey(String uniqueKey){
-        mUniqueKey = uniqueKey ;
+        addHeader(new SSHeader(SSTypeCode.UNIQUE_KEY,uniqueKey));
+    }
+
+    public short getMessageCode() {
+        return mMessageCode;
     }
 }

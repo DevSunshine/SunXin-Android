@@ -17,7 +17,8 @@ public class SSReceiveWork implements SSIReceiveWork {
         task.execute();
         SSClient client = task.getClient() ;
         SSPipeLine pipeLine = new SSPipeLine() ;
-        SSResponse response = new SSResponse(SSResponseCode.OK) ;
+        SSResponse response = new SSResponse(SSMessageCode.OK) ;
+        response.setUniqueKey(request.getUniqueKey());
         pipeLine.setResponse(response);
         client.sendResponse(pipeLine);
     }

@@ -41,6 +41,10 @@ public abstract class SSTask implements SSITranslation{
         mExecuteType = ExecuteType.async ;
     }
 
+    public SSTask(){
+
+    }
+
     public SSTask setPriority(Priority priority){
         mPriority = priority ;
         return this ;
@@ -211,7 +215,9 @@ public abstract class SSTask implements SSITranslation{
 
     @Override
     public void onProgressReceive(int progress,int total) {
-
+        if (mTaskListener != null){
+            mTaskListener.onProgress(this,progress,total);
+        }
     }
 
     @Override
@@ -222,6 +228,13 @@ public abstract class SSTask implements SSITranslation{
         }
         if (mTaskListener != null){
             mTaskListener.onComplete(this,null);
+        }
+    }
+
+    @Override
+    public void onError(int errorCode) {
+        if (mTaskListener != null){
+            mTaskListener.onError(this,errorCode);
         }
     }
 }

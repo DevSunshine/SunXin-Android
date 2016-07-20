@@ -31,22 +31,23 @@ public class SSClient {
     private InputStream mSocketInputStream;
     private SSClientMode mClientMode;
     private Handler mSendHandler;
+    private HandlerThread mHandlerThread;
     private BytePool mBytePool;
     private Map<String, SSPipeLine> mPipeLines;
-    private SSSocketStatue mStatue ;
+    private SSSocketStatue mStatue;
 
-    private BinaryParser mParser ;
-    private SSIReceiveWork mReceiveWork ;
-    private SSIClientConnectListener mConnectListener ;
+    private BinaryParser mParser;
+    private SSIReceiveWork mReceiveWork;
+    private SSIClientConnectListener mConnectListener;
 
-    public SSClient(BytePool mBytePool,SSIClientConnectListener mConnectListener) {
+    public SSClient(BytePool mBytePool, SSIClientConnectListener mConnectListener) {
         this.mBytePool = mBytePool;
         mPipeLines = new HashMap<>();
-        mStatue = SSSocketStatue.disconnect ;
-        mParser = new BinaryParser(mBytePool) ;
-        mReceiveWork = new SSReceiveWork() ;
+        mStatue = SSSocketStatue.disconnect;
+        mParser = new BinaryParser(mBytePool);
+        mReceiveWork = new SSReceiveWork();
 
-        this.mConnectListener = mConnectListener ;
+        this.mConnectListener = mConnectListener;
     }
 
     public void connect(String host, int port) {
@@ -66,15 +67,15 @@ public class SSClient {
     }
 
     public void sendRequest(SSPipeLine pipeLine) {
-        if (mStatue != SSSocketStatue.connected){
+        if (mStatue != SSSocketStatue.connected) {
             return;
         }
-        mPipeLines.put(pipeLine.getRequest().getUniqueKey(),pipeLine) ;
+        mPipeLines.put(pipeLine.getRequest().getUniqueKey(), pipeLine);
         sendMessage(pipeLine.getRequest());
     }
 
     public void sendResponse(SSPipeLine pipeLine) {
-        if (mStatue != SSSocketStatue.connected){
+        if (mStatue != SSSocketStatue.connected) {
             return;
         }
         sendMessage(pipeLine.getResponse());
@@ -91,8 +92,8 @@ public class SSClient {
             public void run() {
                 try {
                     outputStream.write(buf);
-                    SSPipeLine pipeLine = mPipeLines.get(message.getUniqueKey()) ;
-                    if (pipeLine != null){
+                    SSPipeLine pipeLine = mPipeLines.get(message.getUniqueKey());
+                    if (pipeLine != null) {
                         pipeLine.requestEnd();
                     }
                 } catch (IOException e) {
@@ -102,65 +103,81 @@ public class SSClient {
         });
     }
 
-    private void connectClient(){
+    private void connectClient() {
 
-        if (mStatue == SSSocketStatue.connecting){
-            HandlerThread handlerThread = new HandlerThread("send thread");
-            handlerThread.start() ;
-            mSendHandler = new Handler(handlerThread.getLooper()) ;
-            mStatue = SSSocketStatue.connected ;
-            if (mConnectListener != null){
+        if (mStatue == SSSocketStatue.connecting) {
+            mHandlerThread = new HandlerThread("send thread");
+            mHandlerThread.start();
+            mSendHandler = new Handler(mHandlerThread.getLooper());
+            mStatue = SSSocketStatue.connected;
+            if (mConnectListener != null) {
                 mConnectListener.connected(this);
             }
         }
     }
 
-    private void onDataReceived(byte[] buf, int offset, int count){
-        List<SSMessage> messages = new ArrayList<>() ;
-        boolean ret = mParser.parser(buf,offset,count,messages) ;
-        if (ret){
-            for (SSMessage message : messages){
-                if (message instanceof SSRequest){//通知类消息,服务器发送的请求；
-                    if (mReceiveWork != null){
-                        mReceiveWork.doReceiveSocket((SSRequest) message);
-                    }
-                }else { //客服端发送的请求，
-                    SSPipeLine pipeLine = mPipeLines.remove(message.getUniqueKey());
-                    pipeLine.complete();
+    private void onDataReceived(byte[] buf, int offset, int count) {
+        List<SSMessage> messages = new ArrayList<>();
+        boolean ret = mParser.parser(buf, offset, count, messages);
+        if (!ret) {
+            close();
+            return;
+        }
+        for (SSMessage message : messages) {
+            if (message instanceof SSRequest) {//通知类消息,服务器发送的请求；
+                if (mReceiveWork != null) {
+                    mReceiveWork.doReceiveSocket((SSRequest) message);
+                }
+            } else { //客服端发送的请求，
+                SSPipeLine pipeLine = mPipeLines.get(message.getUniqueKey());
+                if (pipeLine == null) {
+                    return;
+                }
+                if (((int) message.getMessageCode()) < 0xB0) {
+                    pipeLine.onResponseMiddle((SSResponse) message);
+                } else {
+                    mPipeLines.remove(message.getUniqueKey());
+                    pipeLine.onResponseComplete((SSResponse) message);
                 }
             }
-
         }
+
 
     }
 
-    public void close(){
-        if (mStatue != SSSocketStatue.disconnect){
+    public void close() {
+        if (mStatue != SSSocketStatue.disconnect) {
             SSClientManager.instance().close(this);
-            if (mSocket != null){
+            if (mSocket != null) {
                 try {
                     mSocket.close();
-                    mSocket = null ;
-                    if (mSocketOutputStream != null){
+                    mSocket = null;
+                    if (mSocketOutputStream != null) {
                         mSocketOutputStream.close();
                     }
-                    if (mSocketInputStream != null){
+                    if (mSocketInputStream != null) {
                         mSocketInputStream.close();
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
-            mStatue = SSSocketStatue.disconnect ;
+            if (mHandlerThread != null) {
+                mHandlerThread.quit();
+                mSendHandler = null;
+                mHandlerThread = null;
+            }
+            mStatue = SSSocketStatue.disconnect;
         }
     }
+
     private class ReceiverThread implements Runnable {
         String host;
         int port;
 
         @Override
         public void run() {
-            mStatue = SSSocketStatue.connecting ;
+            mStatue = SSSocketStatue.connecting;
             mSocket = new Socket();
             try {
                 mSocket.setKeepAlive(false);
@@ -174,28 +191,28 @@ public class SSClient {
                 e.printStackTrace();
                 close();
             }
-            if (mSocket !=null && mSocket.isConnected()){
+            if (mSocket != null && mSocket.isConnected()) {
 
                 try {
-                    mSocketOutputStream = mSocket.getOutputStream() ;
-                    mSocketInputStream = mSocket.getInputStream() ;
+                    mSocketOutputStream = mSocket.getOutputStream();
+                    mSocketInputStream = mSocket.getInputStream();
 
                 } catch (IOException e) {
                     e.printStackTrace();
                     close();
                 }
-                connectClient() ;
-                BufferQueue mBufferQueue = new BufferQueue() ;
-                while (true){
+                connectClient();
+                BufferQueue mBufferQueue = new BufferQueue();
+                while (true) {
                     try {
                         try {
                             byte buf[] = mBufferQueue.getBuf();
-                            int position = mSocketInputStream.read(buf) ;
-                            if (position == -1){
+                            int position = mSocketInputStream.read(buf);
+                            if (position == -1) {
                                 close();
                                 break;
                             }
-                            onDataReceived(buf,0,position);
+                            onDataReceived(buf, 0, position);
                             mBufferQueue.releaseBuf(buf);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
@@ -208,7 +225,7 @@ public class SSClient {
                         break;
                     }
                 }
-            }else {
+            } else {
                 close();
             }
 

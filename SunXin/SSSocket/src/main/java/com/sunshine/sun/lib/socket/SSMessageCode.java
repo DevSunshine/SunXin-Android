@@ -7,15 +7,19 @@ package com.sunshine.sun.lib.socket;
  */
 public interface SSMessageCode {
 
-    /**
-     * 起始码
-     */
-    short START_CODE_1 = 0X05;
-    short START_CODE_2 = 0X25;
-    short START_CODE_3 = 0X55;
 
-    /**
-     * 结束码
-     */
-    short END_CODE = 0X00 ;
+
+
+    short CONNECT = 0x01 ;
+    short AUTHENTICATE = 0x02 ;
+    short DISCONNECT = 0x03 ;
+    short HEATBEAT = 0x04 ;
+    short QUERY = 0x05 ;
+    short NOTIFY = 0x06 ;
+
+    short OK = 0x80 ;
+    short WRONG = 0x81 ;
+    short TRY = 0xB0 ;
+    short SERIES = 0xB1 ;
+    short CONTINUOUS = 0xB2 ;
 }

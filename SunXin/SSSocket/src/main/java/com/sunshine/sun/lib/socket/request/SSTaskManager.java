@@ -6,7 +6,6 @@ import com.sunshine.sun.lib.socket.SSClient;
 import com.sunshine.sun.lib.socket.SSClientMode;
 import com.sunshine.sun.lib.socket.SSClientQueue;
 import com.sunshine.sun.lib.socket.SSRequest;
-import com.sunshine.sun.lib.socket.SSRequestCode;
 import com.sunshine.sun.lib.socket.SSSendRequest;
 import com.sunshine.sun.lib.socket.toolbox.Priority;
 import com.sunshine.sun.lib.socket.toolbox.SSSocket;
@@ -58,7 +57,7 @@ public class SSTaskManager {
         return client;
     }
     public SSTask createResponseTask() {
-        SSTask task = new SSResponseTask(SSRequestCode.DOWNLOAD);
+        SSTask task = new SSResponseTask();
         task.setClient(getPrimaryClient());
         task.setPriority(Priority.HIGH) ;
         return task;

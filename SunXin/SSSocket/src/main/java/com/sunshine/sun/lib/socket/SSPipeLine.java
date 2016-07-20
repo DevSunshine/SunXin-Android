@@ -7,6 +7,8 @@ package com.sunshine.sun.lib.socket;
  */
 public class SSPipeLine {
 
+    private long mCount ;
+    private long mCurrentCount ;
     private SSRequest mRequest;
 
     private SSResponse mResponse;
@@ -38,10 +40,34 @@ public class SSPipeLine {
         }
     }
 
-    public void complete(){
-        if (mTranslation!= null){
-            mTranslation.onCompleteReceive(null);
+    public void onResponseMiddle(SSResponse response){
+
+        if (response.getMessageCode() == SSMessageCode.SERIES){
+            mCount = response.getHeader(SSTypeCode.MESSAGE_COUNT).getLongValue() ;
+            if (mTranslation != null){
+                mTranslation.onProgressReceive(0, (int) mCount);
+            }
+        }else if (response.getMessageCode() == SSMessageCode.CONTINUOUS){
+            mCurrentCount ++ ;
+            if (mTranslation != null){
+                mTranslation.onProgressReceive((int) mCurrentCount, (int) mCount);
+            }
         }
+
+
+    }
+
+    public void onResponseComplete(SSResponse response){
+        if (response.getMessageCode() == SSMessageCode.OK){
+            if (mTranslation!= null){
+                mTranslation.onCompleteReceive(response);
+            }
+        }else {
+            if (mTranslation!= null){
+                mTranslation.onError(response.getMessageCode());
+            }
+        }
+
     }
 
     public void setOnTranslation(SSITranslation translation){
