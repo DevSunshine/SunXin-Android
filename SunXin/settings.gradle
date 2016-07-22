@@ -1,2 +1,3 @@
-include ':app', ':SSSocket'
+include ':Host', ':SSSocket'
 
+project(':SSSocket').projectDir = new File("libs/SSSocket")
