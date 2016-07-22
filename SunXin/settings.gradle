@@ -1,4 +1,5 @@
-include ':Host', ':SSSocket'
+include ':Host', ':SSSocket', ':TestPlugin'
 
 
 project(':SSSocket').projectDir = new File("libs/SSSocket")
+project(':TestPlugin').projectDir = new File("plugin/TestPlugin")
