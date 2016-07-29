@@ -9,7 +9,6 @@ import android.view.View;
 import com.sunshine.sun.lib.socket.bean.UserAccount;
 import com.sunshine.sun.lib.socket.toolbox.SSSocket;
 
-import sunxin.sunshine.com.sunxin.R;
 
 public class MainActivity extends AppCompatActivity {
 

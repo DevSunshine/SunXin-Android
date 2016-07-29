@@ -13,14 +13,63 @@ android {
     }
     buildTypes {
         release {
+            buildConfigField "boolean", "API_ENV", "false"
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            buildConfigField "boolean", "API_ENV", "true"
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 }
-
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile project(':SSSocket')
+}
+
+doSomthing()
+def doSomthing(){
+    android.applicationVariants.all{
+
+        variant->
+
+            variant.outputs.each{
+                output ->
+                    output.processResources.doLast{
+                        def utis = new FileUtil() ;
+                        utis.createDir(rootDir.absolutePath+"/last")
+                    }
+            }
+        variant.dex.doFirst{
+            def utis = new FileUtil() ;
+            utis.createDir(rootDir.absolutePath+"/variant")
+        }
+    }
+
+}
+
+addTask()
+
+def addTask(){
+    tasks.whenTaskAdded{
+        task ->
+            if(task.name.equals('zipalignDebug')){
+
+                task<<{
+                    def tasks = project.getTasksByName('doTask',false)
+                    if (tasks.size() > 0){
+                        for (int i = 0 ; i < tasks.size() ; i ++){
+                            tasks[i].execute()
+                        }
+                    }
+                }
+            }
+    }
+}
+
+task doTask <<{
+    println('==========================testDOtASK=============')
 }

@@ -1,0 +1,7 @@
+def testHHHH(){
+    println('==================testHHHH================')
+}
+
+ext{
+    testHHHH = this.&testHHHH
+}

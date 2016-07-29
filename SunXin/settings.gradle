@@ -1,5 +1,19 @@
 include ':Host', ':SSSocket', ':TestPlugin'
-
-
+apply from: "util.gradle"
 project(':SSSocket').projectDir = new File("libs/SSSocket")
 project(':TestPlugin').projectDir = new File("plugin/TestPlugin")
+
+
+initEnv()
+
+
+
+def util = new FileUtil() ;
+util.createDir(gradle.rootDirss+'/hhh')
+testHHHH()
+
+def initEnv(){
+    gradle.ext.rootDirss = rootProject.projectDir.absolutePath
+    gradle.ext.versionName = '1.0'
+}
+
