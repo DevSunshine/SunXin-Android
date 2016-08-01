@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
@@ -67,9 +66,55 @@ def addTask(){
                     }
                 }
             }
+            if(task.name.equals('dexDebug')){
+
+                task.doFirst{
+                    def tasks = project.getTasksByName('jarHost',false)
+                    if (tasks.size() > 0){
+                        for (int i = 0 ; i < tasks.size() ; i ++){
+                            tasks[i].execute()
+                        }
+                    }
+                }
+            }
     }
 }
 
 task doTask <<{
     println('==========================testDOtASK=============')
+}
+
+task jarHost(type : Exec){
+    def path = "$System.env.JAVA_HOME/bin/jar"
+    println('==========================path============='+project.projectDir.absolutePath)
+    workingDir project.projectDir.absolutePath
+    def classdir = 'build/intermediates/classes/debug/'
+    println('==========================classdir============='+classdir)
+    commandLine "$path", "cf", "../libsjar/host.jar","-C", "$classdir", "."
+}
+
+task makeJar(type:org.gradle.api.tasks.bundling.Jar) {
+    //指定生成的jar名
+    baseName 'sdk'
+    //从哪里打包class文件
+    from('build/intermediates/classes/debug/org/cmdmac/cloud/pluginsdk/')
+    //打包到jar后的目录结构
+    into('org/cmdmac/cloud/pluginsdk/')
+    //去掉不需要打包的目录和文件
+    exclude('test/', 'BuildConfig.class', 'R.class')
+    //去掉R$开头的文件
+    exclude{ it.name.startsWith('R$');}
+}
+
+
+task makeSdkJar(type:org.gradle.api.tasks.bundling.Jar) {
+    baseName 'pluginsdk'
+    //只打包org.cmdmac下的org.cmdmac.pluginsdk.impl和org.cmdmac.gamecenter,其他子包不会被打包进去
+    from('build/intermediates/classes/debug/org/cmdmac/') {
+        include 'pluginsdk/impl'
+        include 'gamecenter'
+    }
+    into('org/cmdmac/')
+//    exclude('R.class')
+//    exclude{ it.name.startsWith('R$');}
 }
