@@ -113,6 +113,7 @@ public class SSClient {
             if (mConnectListener != null) {
                 mConnectListener.connected(this);
             }
+            // 认证，
         }
     }
 
