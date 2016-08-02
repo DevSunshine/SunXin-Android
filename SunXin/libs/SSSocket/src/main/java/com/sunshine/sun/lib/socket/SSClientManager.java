@@ -16,9 +16,6 @@ public class SSClientManager implements SSIClientConnectListener{
 
     private BytePool mBytePool ;
     private final Set<SSClient> mClients = new HashSet<>() ;
-    private int mPrimaryTryCount ;
-    private int mSecondlyTryCount ;
-    private int mLoginTryCount ;
 
     public static SSClientManager instance() {
         return InnerInstance.instance;
@@ -84,33 +81,32 @@ public class SSClientManager implements SSIClientConnectListener{
         }
     }
 
-    public void close(SSClient client){
+    public void closeClient(SSClientMode mode){
         synchronized (mClients){
-            mClients.remove(client) ;
-        }
-        int RETRY_COUNT = 3;
-        if (mPrimaryTryCount < RETRY_COUNT && client.getClientMode() == SSClientMode.primary){
-            mPrimaryTryCount ++ ;
-            connect(client.getHost(),client.getPort(),SSClientMode.primary) ;
-        }
-        if (mSecondlyTryCount < RETRY_COUNT && client.getClientMode() == SSClientMode.secondly){
-            mSecondlyTryCount ++ ;
-            connect(client.getHost(),client.getPort(),SSClientMode.secondly) ;
-        }
-        if (mLoginTryCount < RETRY_COUNT && client.getClientMode() == SSClientMode.loginMode){
-            mLoginTryCount ++ ;
-            connect(client.getHost(),client.getPort(),SSClientMode.loginMode) ;
+            for (SSClient client : mClients){
+                if (client.getClientMode() == mode){
+                    client.userClose();
+                    mClients.remove(client);
+                }
+            }
+
         }
     }
 
     @Override
     public void connected(SSClient client) {
-        if (client.getClientMode() == SSClientMode.primary){
-            mPrimaryTryCount = 0 ;
-        }else if (client.getClientMode() == SSClientMode.secondly){
-            mSecondlyTryCount = 0 ;
-        }else if (client.getClientMode() == SSClientMode.loginMode){
-            mLoginTryCount = 0 ;
+       
+    }
+
+    @Override
+    public void connectFailed(SSClient client) {
+        int RETRY_COUNT = 3;
+        if (client.getTryCount() <= RETRY_COUNT){
+            client.connect();
+        }else {
+            synchronized (mClients){
+                mClients.remove(client) ;
+            }
         }
     }
 

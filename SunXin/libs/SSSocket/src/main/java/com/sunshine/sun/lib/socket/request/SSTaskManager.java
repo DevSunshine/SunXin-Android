@@ -107,7 +107,7 @@ public class SSTaskManager {
 
     public SSTask createLoginTask() {
         SSTask task = new SSLoginTask();
-        task.setClient(getSecondlyClient());
+        task.setClient(getLoginClient());
         return task;
     }
 

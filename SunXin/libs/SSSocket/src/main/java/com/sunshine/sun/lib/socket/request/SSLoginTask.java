@@ -11,10 +11,10 @@ public class SSLoginTask extends SSTask {
 
     @Override
     public void onCompleteReceive(SSResponse response) {
-        super.onCompleteReceive(response);
         SSClientManager.instance().closeClient();
-        // TODO: 16/8/2 解析成功之后应该是UserAccount 
+        // TODO: 16/8/2 解析成功之后应该是UserAccount
         SSSocket.instance().initSocket(null);
+        super.onCompleteReceive(response);
     }
 
     @Override

@@ -43,6 +43,7 @@ public class SSClient {
     private String mHost;
     private int mPort;
     private byte[] mLock = new byte[0];
+    private int mConnectTryCount ;
 
     public SSClient(BytePool mBytePool, SSIClientConnectListener mConnectListener) {
         this.mBytePool = mBytePool;
@@ -54,7 +55,11 @@ public class SSClient {
         this.mConnectListener = mConnectListener;
     }
 
+    public void connect(){
+        connect(mHost,mPort);
+    }
     public void connect(String host, int port) {
+        mConnectTryCount ++ ;
         mStatue = SSSocketStatue.connecting;
         mHost = host;
         mPort = port;
@@ -65,12 +70,8 @@ public class SSClient {
         thread.start();
     }
 
-    public String getHost() {
-        return mHost;
-    }
-
-    public int getPort() {
-        return mPort;
+    public int getTryCount(){
+        return mConnectTryCount ;
     }
 
     public SSClientMode getClientMode() {
@@ -146,6 +147,7 @@ public class SSClient {
             if (mConnectListener != null) {
                 mConnectListener.connected(this);
             }
+            mConnectTryCount = 0 ;
             mLock.notify();
 
             // TODO: 16/8/2 如果已经登录了，请执行认证 
@@ -190,7 +192,9 @@ public class SSClient {
 
     public void errorClose() {
         if (mStatue != SSSocketStatue.disconnect) {
-            SSClientManager.instance().close(this);
+            if (mConnectListener != null) {
+                mConnectListener.connectFailed(this);
+            }
             close();
         }
     }
@@ -257,7 +261,7 @@ public class SSClient {
                             byte buf[] = mBufferQueue.getBuf();
                             int position = mSocketInputStream.read(buf);
                             if (position == -1) {
-                                close();
+                                errorClose();
                                 break;
                             }
                             onDataReceived(buf, 0, position);

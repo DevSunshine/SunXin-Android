@@ -14,7 +14,8 @@ import java.net.UnknownHostException;
  * e-mail guangyanzhong@163.com
  */
 public class SSSocket {
-    private UserAccount mUserAccount ;
+    private UserAccount mUserAccount;
+
     public static SSSocket instance() {
         return InnerInstance.instance;
     }
@@ -24,51 +25,45 @@ public class SSSocket {
     }
 
 
-
     public synchronized void initSocket(UserAccount account) {
-        mUserAccount = account ;
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                requestClient(SSClientMode.primary) ;
-            }
-        }).start();
+        mUserAccount = account;
+        requestClient(SSClientMode.primary);
 
     }
-    public synchronized void logoutSocket(){
-        mUserAccount = null ;
+
+    public synchronized void logoutSocket() {
+        mUserAccount = null;
         SSClientManager.instance().closeClient();
     }
 
-    //必须是异步线程调用
     public SSClient requestClient(SSClientMode mode) {
-        SSClient client = null ;
-        if (mUserAccount == null){
-            if (mode == SSClientMode.loginMode){
+        SSClient client = null;
+        if (mUserAccount == null) {
+            if (mode == SSClientMode.loginMode) {
                 // TODO: 16/8/2 登录的 ip 和端口需要确认
                 try {
-                    String host = InetAddress.getByName("").getHostAddress() ;
-                    client = SSClientManager.instance().connect(host,9527,mode) ;
+                    String host = InetAddress.getByName("www.baidu.com").getHostAddress();
+                    client = SSClientManager.instance().connect(host, 9527, mode);
                 } catch (UnknownHostException e) {
                     e.printStackTrace();
                 }
             }
-        }else {
+        } else {
             // TODO: 16/8/2 如果是二级链路，不能这样操作 
-            SSClientManager.instance().closeClient();
-            String address = mUserAccount.getAddress() ;
-            int port = mUserAccount.getPort() ;
-            client = SSClientManager.instance().connect(address,port,mode) ;
+            SSClientManager.instance().closeClient(mode);
+            String address = mUserAccount.getAddress();
+            int port = mUserAccount.getPort();
+            client = SSClientManager.instance().connect(address, port, mode);
         }
 
-        return client ;
+        return client;
     }
 
-    public SSClient getPrimaryClient(){
-        return SSClientManager.instance().getPrimaryClient() ;
+    public SSClient getPrimaryClient() {
+        return SSClientManager.instance().getPrimaryClient();
     }
 
-    public SSClient getSecondlyClient(){
-        return SSClientManager.instance().getSecondlyClient() ;
+    public SSClient getSecondlyClient() {
+        return SSClientManager.instance().getSecondlyClient();
     }
 }

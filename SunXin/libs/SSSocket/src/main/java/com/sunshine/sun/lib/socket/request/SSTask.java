@@ -236,5 +236,9 @@ public abstract class SSTask implements SSITranslation{
         if (mTaskListener != null){
             mTaskListener.onError(this,errorCode);
         }
+        if (mExecuteType == ExecuteType.sync){
+            mSyncLock.notify();
+            mResponse = null ;
+        }
     }
 }
