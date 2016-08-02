@@ -1,6 +1,7 @@
-include ':Host', ':SSSocket', ':TestPlugin'
+include ':Host', ':SSSocket', ':TestPlugin', ':DexInstall'
 apply from: "util.gradle"
 project(':SSSocket').projectDir = new File("libs/SSSocket")
+project(':DexInstall').projectDir = new File("libs/DexInstall")
 project(':TestPlugin').projectDir = new File("plugins/TestPlugin")
 
 
@@ -9,7 +10,7 @@ initEnv()
 
 
 def util = new FileUtil() ;
-util.createDir(gradle.rootDirss+'/hhh')
+util.createDir(gradle.rootDirss)
 testHHHH()
 
 def initEnv(){

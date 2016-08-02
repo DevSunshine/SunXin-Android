@@ -227,7 +227,7 @@ public abstract class SSTask implements SSITranslation{
             mResponse = response ;
         }
         if (mTaskListener != null){
-            mTaskListener.onComplete(this,null);
+            mTaskListener.onComplete(this,response);
         }
     }
 

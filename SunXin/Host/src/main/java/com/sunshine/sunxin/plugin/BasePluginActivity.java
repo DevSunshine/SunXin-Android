@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,6 +66,11 @@ public abstract class BasePluginActivity extends FragmentActivity {
         super.onNewIntent(intent);
     }
 
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+    }
+
     protected View getContentView() {
         this.rootView = new FrameLayout(this);
         if ((Build.VERSION.SDK_INT >= 14) && (needFitsSystemWindows()))
@@ -91,7 +97,7 @@ public abstract class BasePluginActivity extends FragmentActivity {
                 Resources resources = new Resources(assetManager, getResources().getDisplayMetrics(),
                         getResources().getConfiguration());
                 Resources.Theme theme = resources.newTheme();
-//                theme.applyStyle(R.style.ThemeLight, true);
+                theme.applyStyle(R.style.ThemeLight, true);
                 PluginRuntimeEnv pluginRuntimeEnv = new PluginRuntimeEnv(assetManager, dexClassLoader,
                         resources, theme, pluginInfo);
                 pluginCache.addPluginRuntimeEnv(pluginRuntimeEnv);

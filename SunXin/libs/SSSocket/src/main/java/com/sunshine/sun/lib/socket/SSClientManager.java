@@ -18,7 +18,8 @@ public class SSClientManager implements SSIClientConnectListener{
     private final Set<SSClient> mClients = new HashSet<>() ;
     private int mPrimaryTryCount ;
     private int mSecondlyTryCount ;
-    private UserAccount mUserAccount ;
+    private int mLoginTryCount ;
+
     public static SSClientManager instance() {
         return InnerInstance.instance;
     }
@@ -33,12 +34,9 @@ public class SSClientManager implements SSIClientConnectListener{
         new SSClientQueue(new SSSendRequest()).start();
     }
 
-    public void setUserAccount(UserAccount account){
-        mUserAccount = account ;
-    }
-
     public SSClient connect(String host,int port,SSClientMode priority){
         SSClient client = new SSClient(mBytePool,this) ;
+
         synchronized (mClients){
             mClients.add(client) ;
             client.connect(host,port);
@@ -80,11 +78,10 @@ public class SSClientManager implements SSIClientConnectListener{
     public void closeClient(){
         synchronized (mClients){
             for (SSClient client : mClients){
-                client.close();
+                client.userClose();
             }
             mClients.clear();
         }
-        mUserAccount = null ;
     }
 
     public void close(SSClient client){
@@ -94,11 +91,15 @@ public class SSClientManager implements SSIClientConnectListener{
         int RETRY_COUNT = 3;
         if (mPrimaryTryCount < RETRY_COUNT && client.getClientMode() == SSClientMode.primary){
             mPrimaryTryCount ++ ;
-            connect(mUserAccount.getAddress(),mUserAccount.getPort(),SSClientMode.primary) ;
+            connect(client.getHost(),client.getPort(),SSClientMode.primary) ;
         }
-        if (mSecondlyTryCount < RETRY_COUNT && client.getClientMode() == SSClientMode.primary){
+        if (mSecondlyTryCount < RETRY_COUNT && client.getClientMode() == SSClientMode.secondly){
             mSecondlyTryCount ++ ;
-            connect(mUserAccount.getAddress(),mUserAccount.getPort(),SSClientMode.secondly) ;
+            connect(client.getHost(),client.getPort(),SSClientMode.secondly) ;
+        }
+        if (mLoginTryCount < RETRY_COUNT && client.getClientMode() == SSClientMode.loginMode){
+            mLoginTryCount ++ ;
+            connect(client.getHost(),client.getPort(),SSClientMode.loginMode) ;
         }
     }
 
@@ -108,6 +109,8 @@ public class SSClientManager implements SSIClientConnectListener{
             mPrimaryTryCount = 0 ;
         }else if (client.getClientMode() == SSClientMode.secondly){
             mSecondlyTryCount = 0 ;
+        }else if (client.getClientMode() == SSClientMode.loginMode){
+            mLoginTryCount = 0 ;
         }
     }
 

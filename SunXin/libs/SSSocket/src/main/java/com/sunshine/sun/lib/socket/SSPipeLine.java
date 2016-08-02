@@ -70,6 +70,12 @@ public class SSPipeLine {
 
     }
 
+    public void onError(int code){
+        if (mTranslation != null){
+            mTranslation.onError(code);
+        }
+    }
+
     public void setOnTranslation(SSITranslation translation){
         this.mTranslation = translation ;
     }

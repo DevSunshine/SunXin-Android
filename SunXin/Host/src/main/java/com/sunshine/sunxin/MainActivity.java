@@ -1,6 +1,8 @@
 package com.sunshine.sunxin;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -8,9 +10,11 @@ import android.view.View;
 
 import com.sunshine.sun.lib.socket.bean.UserAccount;
 import com.sunshine.sun.lib.socket.toolbox.SSSocket;
+import com.sunshine.sunxin.plugin.PluginConstant;
+import com.sunshine.sunxin.plugin.RootPluginActivity;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +22,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
     }
-
+    public void startPlugin(View view){
+        Intent intent = new Intent(this,RootPluginActivity.class) ;
+        intent.putExtra(PluginConstant.INTENT_PLUGIN_ID_KEY, "101") ;
+        startActivity(intent);
+    }
     public void connectSocket(View view){
         UserAccount account = new UserAccount() ;
         account.setAddress("10.25.0.149");

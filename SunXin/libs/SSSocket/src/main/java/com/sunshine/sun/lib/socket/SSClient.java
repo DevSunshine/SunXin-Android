@@ -40,6 +40,10 @@ public class SSClient {
     private SSIReceiveWork mReceiveWork;
     private SSIClientConnectListener mConnectListener;
 
+    private String mHost;
+    private int mPort;
+    private byte[] mLock = new byte[0];
+
     public SSClient(BytePool mBytePool, SSIClientConnectListener mConnectListener) {
         this.mBytePool = mBytePool;
         mPipeLines = new HashMap<>();
@@ -51,11 +55,22 @@ public class SSClient {
     }
 
     public void connect(String host, int port) {
+        mStatue = SSSocketStatue.connecting;
+        mHost = host;
+        mPort = port;
         ReceiverThread mReceiverThread = new ReceiverThread();
         mReceiverThread.host = host;
         mReceiverThread.port = port;
         Thread thread = new Thread(mReceiverThread, "receive thread");
         thread.start();
+    }
+
+    public String getHost() {
+        return mHost;
+    }
+
+    public int getPort() {
+        return mPort;
     }
 
     public SSClientMode getClientMode() {
@@ -67,7 +82,16 @@ public class SSClient {
     }
 
     public void sendRequest(SSPipeLine pipeLine) {
+        if (mStatue == SSSocketStatue.connecting) {
+            try {
+                mLock.wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
         if (mStatue != SSSocketStatue.connected) {
+            // TODO: 16/8/2 errorCode 尚未定义 
+            pipeLine.onError(0);
             return;
         }
         mPipeLines.put(pipeLine.getRequest().getUniqueKey(), pipeLine);
@@ -75,7 +99,16 @@ public class SSClient {
     }
 
     public void sendResponse(SSPipeLine pipeLine) {
+        if (mStatue == SSSocketStatue.connecting) {
+            try {
+                mLock.wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
         if (mStatue != SSSocketStatue.connected) {
+            // TODO: 16/8/2 errorCode 尚未定义 
+            pipeLine.onError(0);
             return;
         }
         sendMessage(pipeLine.getResponse());
@@ -113,6 +146,9 @@ public class SSClient {
             if (mConnectListener != null) {
                 mConnectListener.connected(this);
             }
+            mLock.notify();
+
+            // TODO: 16/8/2 如果已经登录了，请执行认证 
             // 认证，
         }
     }
@@ -121,7 +157,7 @@ public class SSClient {
         List<SSMessage> messages = new ArrayList<>();
         boolean ret = mParser.parser(buf, offset, count, messages);
         if (!ret) {
-            close();
+            errorClose();
             return;
         }
         for (SSMessage message : messages) {
@@ -146,30 +182,41 @@ public class SSClient {
 
     }
 
-    public void close() {
+    public void userClose() {
+        if (mStatue != SSSocketStatue.disconnect) {
+            close();
+        }
+    }
+
+    public void errorClose() {
         if (mStatue != SSSocketStatue.disconnect) {
             SSClientManager.instance().close(this);
-            if (mSocket != null) {
-                try {
-                    mSocket.close();
-                    mSocket = null;
-                    if (mSocketOutputStream != null) {
-                        mSocketOutputStream.close();
-                    }
-                    if (mSocketInputStream != null) {
-                        mSocketInputStream.close();
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (mHandlerThread != null) {
-                mHandlerThread.quit();
-                mSendHandler = null;
-                mHandlerThread = null;
-            }
-            mStatue = SSSocketStatue.disconnect;
+            close();
         }
+    }
+
+    public void close() {
+
+        if (mSocket != null) {
+            try {
+                mSocket.close();
+                mSocket = null;
+                if (mSocketOutputStream != null) {
+                    mSocketOutputStream.close();
+                }
+                if (mSocketInputStream != null) {
+                    mSocketInputStream.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        if (mHandlerThread != null) {
+            mHandlerThread.quit();
+            mSendHandler = null;
+            mHandlerThread = null;
+        }
+        mStatue = SSSocketStatue.disconnect;
     }
 
     private class ReceiverThread implements Runnable {
@@ -178,7 +225,7 @@ public class SSClient {
 
         @Override
         public void run() {
-            mStatue = SSSocketStatue.connecting;
+
             mSocket = new Socket();
             try {
                 mSocket.setKeepAlive(false);
@@ -190,7 +237,7 @@ public class SSClient {
                 mSocket.connect(address, 10 * 10000);
             } catch (IOException e) {
                 e.printStackTrace();
-                close();
+                errorClose();
             }
             if (mSocket != null && mSocket.isConnected()) {
 
@@ -200,7 +247,7 @@ public class SSClient {
 
                 } catch (IOException e) {
                     e.printStackTrace();
-                    close();
+                    errorClose();
                 }
                 connectClient();
                 BufferQueue mBufferQueue = new BufferQueue();
@@ -217,17 +264,17 @@ public class SSClient {
                             mBufferQueue.releaseBuf(buf);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
-                            close();
+                            errorClose();
                             break;
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
-                        close();
+                        errorClose();
                         break;
                     }
                 }
             } else {
-                close();
+                errorClose();
             }
 
         }

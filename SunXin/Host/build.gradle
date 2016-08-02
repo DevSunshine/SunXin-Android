@@ -40,12 +40,10 @@ def doSomthing(){
                 output ->
                     output.processResources.doLast{
                         def utis = new FileUtil() ;
-                        utis.createDir(rootDir.absolutePath+"/last")
                     }
             }
         variant.dex.doFirst{
             def utis = new FileUtil() ;
-            utis.createDir(rootDir.absolutePath+"/variant")
         }
     }
 
@@ -70,7 +68,7 @@ def addTask(){
             if(task.name.equals('dexDebug')){
 
                 task.doFirst{
-                    def tasks = project.getTasksByName('jarHost',false)
+                    def tasks = project.getTasksByName('doTask',false)
                     if (tasks.size() > 0){
                         for (int i = 0 ; i < tasks.size() ; i ++){
                             tasks[i].execute()

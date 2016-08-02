@@ -9,7 +9,9 @@ public enum SSClientMode {
 
     primary(0),
 
-    secondly(1) ;
+    secondly(1) ,
+
+    loginMode(2) ;
 
     private SSClientMode(int position){
 

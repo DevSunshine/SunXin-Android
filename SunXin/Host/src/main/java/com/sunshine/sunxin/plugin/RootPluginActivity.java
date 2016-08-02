@@ -32,7 +32,7 @@ public class RootPluginActivity extends BasePluginActivity {
         }else {
             mPluginId = savedInstanceState.getString(PluginConstant.INTENT_PLUGIN_ID_KEY) ;
         }
-        Log.v("zgy","=======mPluginId=========="+mPluginId) ;
+
         syncPluginById(mPluginId);
     }
 
