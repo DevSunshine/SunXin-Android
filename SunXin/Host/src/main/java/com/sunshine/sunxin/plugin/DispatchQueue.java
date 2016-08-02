@@ -1,4 +1,4 @@
-package com.sunshine.plugin;
+package com.sunshine.sunxin.plugin;
 
 import android.os.Handler;
 import android.os.Looper;

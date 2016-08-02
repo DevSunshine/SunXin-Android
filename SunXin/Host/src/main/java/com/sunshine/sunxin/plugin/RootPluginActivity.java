@@ -1,15 +1,14 @@
-package com.sunshine.plugin;
+package com.sunshine.sunxin.plugin;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.sunshine.plugin.BasePluginActivity;
-import com.sunshine.plugin.PluginConstant;
-import com.sunshine.plugin.PluginSyncManager;
-
-import java.util.HashSet;
+import com.sunshine.sunxin.R;
+import com.sunshine.sunxin.plugin.model.PluginInfo;
+import com.sunshine.sunxin.plugin.model.PluginSyncInfo;
+import com.sunshine.sunxin.plugin.model.SyncStatue;
 
 /**
  * Created by gyzhong on 15/11/22.
@@ -75,7 +74,7 @@ public class RootPluginActivity extends BasePluginActivity {
 
     private void syncPluginById(String pluginId) {
         PluginSyncInfo pluginSyncInfo = mPluginSyncManager.getPluginSyncInfo(pluginId);
-        if (pluginSyncInfo != null && pluginSyncInfo.syncStatue == SyncStatue.WATTING) {
+        if (pluginSyncInfo != null && pluginSyncInfo.syncStatue == SyncStatue.WAITTING) {
 
         } else {
             syncPlugin(pluginSyncInfo);

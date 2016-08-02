@@ -1,4 +1,4 @@
-package com.sunshine.plugin;
+package com.sunshine.sunxin.plugin;
 
 /**
  * Created by gyzhong on 15/11/22.

@@ -1,4 +1,4 @@
-include ':Host', ':SSSocket', ':TestPlugin', ':Plugin'
+include ':Host', ':SSSocket', ':TestPlugin'
 apply from: "util.gradle"
 project(':SSSocket').projectDir = new File("libs/SSSocket")
 project(':TestPlugin').projectDir = new File("plugins/TestPlugin")

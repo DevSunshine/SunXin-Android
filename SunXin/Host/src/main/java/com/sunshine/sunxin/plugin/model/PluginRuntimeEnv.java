@@ -1,9 +1,7 @@
-package com.sunshine.plugin.model;
+package com.sunshine.sunxin.plugin.model;
 
 import android.content.res.AssetManager;
 import android.content.res.Resources;
-
-import com.sunshine.plugin.model.PluginInfo;
 
 /**
  * Created by gyzhong on 15/11/22.

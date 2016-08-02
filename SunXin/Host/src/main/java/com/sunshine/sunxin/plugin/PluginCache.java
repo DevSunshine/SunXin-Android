@@ -1,12 +1,11 @@
-package com.sunshine.plugin;
+package com.sunshine.sunxin.plugin;
 
 import android.content.Context;
 import android.text.TextUtils;
 
 
-import com.sunshine.plugin.PluginConstant;
-import com.sunshine.plugin.model.PluginInfo;
-import com.sunshine.plugin.model.PluginRuntimeEnv;
+import com.sunshine.sunxin.plugin.model.PluginInfo;
+import com.sunshine.sunxin.plugin.model.PluginRuntimeEnv;
 
 import java.io.File;
 import java.util.HashMap;

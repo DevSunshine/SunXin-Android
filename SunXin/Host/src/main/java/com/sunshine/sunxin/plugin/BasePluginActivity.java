@@ -1,4 +1,4 @@
-package com.sunshine.plugin;
+package com.sunshine.sunxin.plugin;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,15 +6,17 @@ import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.Toolbar;
 
 
-import com.sunshine.plugin.model.PluginInfo;
-import com.sunshine.plugin.model.PluginRuntimeEnv;
+import com.sunshine.sunxin.R;
+import com.sunshine.sunxin.plugin.model.PluginInfo;
+import com.sunshine.sunxin.plugin.model.PluginRuntimeEnv;
 
 import java.io.File;
 import java.lang.reflect.Method;
@@ -89,7 +91,7 @@ public abstract class BasePluginActivity extends FragmentActivity {
                 Resources resources = new Resources(assetManager, getResources().getDisplayMetrics(),
                         getResources().getConfiguration());
                 Resources.Theme theme = resources.newTheme();
-                theme.applyStyle(R.style.ThemeLight, true);
+//                theme.applyStyle(R.style.ThemeLight, true);
                 PluginRuntimeEnv pluginRuntimeEnv = new PluginRuntimeEnv(assetManager, dexClassLoader,
                         resources, theme, pluginInfo);
                 pluginCache.addPluginRuntimeEnv(pluginRuntimeEnv);

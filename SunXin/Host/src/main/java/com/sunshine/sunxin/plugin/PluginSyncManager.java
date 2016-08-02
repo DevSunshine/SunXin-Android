@@ -1,11 +1,11 @@
-package com.sunshine.plugin;
+package com.sunshine.sunxin.plugin;
 
 import android.content.Context;
 import android.text.TextUtils;
 
-import com.sunshine.plugin.model.PluginInfo;
-import com.sunshine.plugin.model.PluginSyncInfo;
-import com.sunshine.plugin.model.SyncStatue;
+import com.sunshine.sunxin.plugin.model.PluginInfo;
+import com.sunshine.sunxin.plugin.model.PluginSyncInfo;
+import com.sunshine.sunxin.plugin.model.SyncStatue;
 
 
 /**
@@ -41,7 +41,7 @@ public class PluginSyncManager {
         if (pluginInfo != null ){
             pluginSyncInfo = new PluginSyncInfo(pluginInfo,pluginId,SyncStatue.SYNCED) ;
         }else {
-            pluginSyncInfo = new PluginSyncInfo(null,pluginId,SyncStatue.WATTING) ;
+            pluginSyncInfo = new PluginSyncInfo(null,pluginId,SyncStatue.WAITTING) ;
         }
         return pluginSyncInfo ;
     }

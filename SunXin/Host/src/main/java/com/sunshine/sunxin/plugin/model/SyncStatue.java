@@ -1,4 +1,4 @@
-package com.sunshine.plugin.model;
+package com.sunshine.sunxin.plugin.model;
 
 import android.widget.ImageView;
 
@@ -12,17 +12,10 @@ public enum SyncStatue {
     DISCARD(1),
 
     ERROR(2),
+    WAITTING(3);
 
-    NETDISCONNECT(3),
-
-    NETERROR(4),
-
-    WAITTIMEOUT(5),
-
-    WATTING(6) ;
 
     SyncStatue(int in){
-
        nativeInt = in ;
 
     }

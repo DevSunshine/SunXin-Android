@@ -1,8 +1,6 @@
-package com.sunshine.plugin;
+package com.sunshine.sunxin.plugin;
 
 import android.app.Application;
-
-import com.sunshine.plugin.PluginSyncUtil;
 
 /**
  * Created by gyzhong on 15/11/22.

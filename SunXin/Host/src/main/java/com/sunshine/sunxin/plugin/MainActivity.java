@@ -1,4 +1,4 @@
-package com.test.gyzhong.plugin;
+package com.sunshine.sunxin.plugin;
 
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import com.sunshine.sunxin.R;
 
 public class MainActivity extends FragmentActivity {
 

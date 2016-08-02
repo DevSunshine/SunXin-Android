@@ -1,10 +1,10 @@
-package com.sunshine.plugin;
+package com.sunshine.sunxin.plugin;
 
 import android.content.Context;
 import android.text.TextUtils;
 
 
-import com.sunshine.plugin.model.PluginInfo;
+import com.sunshine.sunxin.plugin.model.PluginInfo;
 
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;

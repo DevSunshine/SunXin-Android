@@ -1,4 +1,4 @@
-package com.sunshine.plugin.model;
+package com.sunshine.sunxin.plugin.model;
 
 import java.io.Serializable;
 
