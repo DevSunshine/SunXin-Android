@@ -9,6 +9,7 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -18,7 +19,7 @@ android {
         }
         debug {
             buildConfigField "boolean", "API_ENV", "true"
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -26,7 +27,9 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.jakewharton:butterknife:8.2.1'
     compile project(':SSSocket')
+    compile "com.android.support:multidex:1.0.0"
 }
 
 doSomthing()
@@ -69,7 +72,7 @@ def addTask(){
             if(task.name.equals('dexDebug')){
 
                 task.doFirst{
-                    def tasks = project.getTasksByName('jarHost',false)
+                    def tasks = project.getTasksByName('hostCopy',false)
                     if (tasks.size() > 0){
                         for (int i = 0 ; i < tasks.size() ; i ++){
                             tasks[i].execute()
@@ -78,6 +81,23 @@ def addTask(){
                 }
             }
     }
+}
+
+task hostCopy(type: org.gradle.api.tasks.Copy){
+    def jarDebugPath = "${projectDir}${File.separator}" +
+            "build${File.separator}" +
+            "intermediates${File.separator}" +
+            "transforms${File.separator}" +
+            "jarMerging${File.separator}" +
+            "debug${File.separator}" +
+            "jars${File.separator}" +
+            "1${File.separator}" +
+            "1f${File.separator}" +
+            "combined.jar"
+
+    from "$jarDebugPath"
+
+    into project.projectDir.absolutePath + "/hostcopo.jar"
 }
 
 task doTask <<{
