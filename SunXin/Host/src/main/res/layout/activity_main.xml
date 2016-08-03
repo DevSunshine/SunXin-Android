@@ -5,9 +5,13 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context="com.sunshine.sunxin.MainActivity">
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <TextView android:text="connect socket" android:layout_width="wrap_content"
+        android:layout_height="40dp"
         android:onClick="connectSocket"
         android:clickable="true"/>
-
+    <TextView android:text="startPlugin" android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:onClick="startPlugin"
+        android:layout_centerInParent="true"
+        android:clickable="true"/>
 </RelativeLayout>

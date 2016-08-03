@@ -1,0 +1,8 @@
+option java_package = "com.sunxin.lib.protobuf" ;
+option java_outer_classname = "TestProto" ;
+
+//登录使用参数
+message UserLoginArg{
+    required string userName = 1 ;
+    required string password = 2 ;
+}

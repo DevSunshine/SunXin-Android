@@ -16,7 +16,7 @@ import com.sunshine.sun.lib.socket.toolbox.SSSocket;
  */
 public class SSTaskManager {
     private SSClientQueue mClientQueue;
-    private SSINotifyListener mNotifyListener ;
+    private SSINotifyListener mNotifyListener;
 
     public static SSTaskManager instance() {
         return InnerInstance.instance;
@@ -31,20 +31,25 @@ public class SSTaskManager {
         private static SSTaskManager instance = new SSTaskManager();
     }
 
-    public void setNotifyListener(SSINotifyListener listener){
-        mNotifyListener = listener ;
+    public void setNotifyListener(SSINotifyListener listener) {
+        mNotifyListener = listener;
     }
 
-    public void notifyData(SSRequest request){
-        if (mNotifyListener!= null){
+    public void notifyData(SSRequest request) {
+        if (mNotifyListener != null) {
             mNotifyListener.onNotify(request);
         }
+    }
+
+    public SSClient getLoginClient() {
+        SSClient client = SSSocket.instance().requestClient(SSClientMode.loginMode);
+        return client;
     }
 
     public SSClient getSecondlyClient() {
         SSClient client = SSSocket.instance().getSecondlyClient();
         if (client == null) {
-            SSSocket.instance().requestClient(SSClientMode.secondly);
+            client = SSSocket.instance().requestClient(SSClientMode.secondly);
         }
         return client;
     }
@@ -52,37 +57,64 @@ public class SSTaskManager {
     public SSClient getPrimaryClient() {
         SSClient client = SSSocket.instance().getPrimaryClient();
         if (client == null) {
-            SSSocket.instance().requestClient(SSClientMode.primary);
+            client = SSSocket.instance().requestClient(SSClientMode.primary);
         }
         return client;
     }
+
     public SSTask createResponseTask() {
+        SSClient client = getPrimaryClient() ;
+        if (client == null){
+            return null ;
+        }
         SSTask task = new SSResponseTask();
-        task.setClient(getPrimaryClient());
-        task.setPriority(Priority.HIGH) ;
+        task.setPriority(Priority.IMMEDIATE) ;
+        task.setClient(client);
         return task;
     }
+
     public SSTask createQueryTask() {
+        SSClient client = getPrimaryClient() ;
+        if (client == null){
+            return null ;
+        }
         SSTask task = new SSQueryTask();
-        task.setClient(getPrimaryClient());
+        task.setPriority(Priority.HIGH) ;
+        task.setClient(client);
         return task;
     }
 
     public SSTask createDownloadTask() {
+        SSClient client = getSecondlyClient() ;
+        if (client == null){
+            return null ;
+        }
         SSTask task = new SSDownloadTask();
-        task.setClient(getSecondlyClient());
+        task.setClient(client);
         return task;
     }
 
     public SSTask createUploadTask() {
+
+        SSClient client = getSecondlyClient() ;
+        if (client == null){
+            return null ;
+        }
         SSTask task = new SSUploadTask();
-        task.setClient(getSecondlyClient());
+        task.setClient(client);
         return task;
     }
 
-    public void cancelTask(String queryName){
+    public SSTask createLoginTask() {
+        SSTask task = new SSLoginTask();
+        task.setClient(getLoginClient());
+        return task;
+    }
+
+    public void cancelTask(String queryName) {
         mClientQueue.cancelAll(queryName);
     }
+
     public void commitTask(SSTask task) {
         mClientQueue.cancel(task);
         mClientQueue.add(task);

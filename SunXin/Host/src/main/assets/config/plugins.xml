@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+
+    <plugin
+        id="101"
+        desc="产品详情页"
+        path="plugins/PluginFragmentTest.apk"
+        rootFragment="com.test.gyzhong.plugin1.PluginFragmentTest"
+        version="21"
+        versionParent="20151122" >
+    </plugin>
+
+</plugin>

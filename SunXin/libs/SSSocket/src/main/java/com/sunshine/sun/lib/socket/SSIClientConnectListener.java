@@ -9,4 +9,6 @@ public interface SSIClientConnectListener {
 
     void connected(SSClient client) ;
 
+    void connectFailed(SSClient client) ;
+
 }

@@ -17,16 +17,16 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class SSClientQueue {
     private SSClientThread mPrimaryClientThread;
-    private SSClientThread mSecondlyClientThread;
+//    private SSClientThread mSecondlyClientThread;
     private AtomicInteger mSequenceGenerator;
     private PriorityBlockingQueue<SSTask> mPrimaryQueue;
-    private PriorityBlockingQueue<SSTask> mSecondlyQueue;
+//    private PriorityBlockingQueue<SSTask> mSecondlyQueue;
     private final Set<SSTask> mCurrentTask;
     private SSISendWork mSendWork;
 
     public SSClientQueue(SSISendWork sendWork) {
         mPrimaryQueue = new PriorityBlockingQueue<>();
-        mSecondlyQueue = new PriorityBlockingQueue<>();
+//        mSecondlyQueue = new PriorityBlockingQueue<>();
         mSequenceGenerator = new AtomicInteger();
         mCurrentTask = new HashSet<>();
         mSendWork = sendWork;
@@ -36,18 +36,18 @@ public class SSClientQueue {
         if (mPrimaryClientThread != null) {
             mPrimaryClientThread.quite();
         }
-        if (mSecondlyClientThread != null) {
-            mSecondlyClientThread.quite();
-        }
+//        if (mSecondlyClientThread != null) {
+//            mSecondlyClientThread.quite();
+//        }
         mCurrentTask.clear();
     }
 
     public void start() {
         stop();
         mPrimaryClientThread = new SSClientThread(mPrimaryQueue, mSendWork);
-        mSecondlyClientThread = new SSClientThread(mSecondlyQueue, mSendWork);
+//        mSecondlyClientThread = new SSClientThread(mSecondlyQueue, mSendWork);
         mPrimaryClientThread.start();
-        mSecondlyClientThread.start();
+//        mSecondlyClientThread.start();
     }
 
     public SSTask add(SSTask task) {
@@ -55,12 +55,12 @@ public class SSClientQueue {
             mCurrentTask.add(task);
         }
         task.setSequence(mSequenceGenerator.decrementAndGet());
-        SSClient client = task.getClient();
-        if (client.getClientMode() == SSClientMode.primary) {
-            mPrimaryQueue.add(task);
-        } else {
-            mSecondlyQueue.add(task);
-        }
+//        SSClient client = task.getClient();
+        mPrimaryQueue.add(task);
+//        if (client.getClientMode() == SSClientMode.primary) {
+//        } else {
+//            mSecondlyQueue.add(task);
+//        }
         return task;
     }
 

@@ -8,12 +8,14 @@ package com.sunshine.sun.lib.socket;
 public interface SSMessageCode {
 
 
-
-
+    /**
+     * 登录
+     */
+    short LOGIN = 0x00 ;
     short CONNECT = 0x01 ;
     short AUTHENTICATE = 0x02 ;
     short DISCONNECT = 0x03 ;
-    short HEATBEAT = 0x04 ;
+    short HEAT_BEAT = 0x04 ;
     short QUERY = 0x05 ;
     short NOTIFY = 0x06 ;
 
