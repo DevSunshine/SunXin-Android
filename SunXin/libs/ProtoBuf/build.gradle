@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 24
+        targetSdkVersion 23
         versionCode 1
         versionName "1.0"
     }
@@ -19,7 +19,7 @@ android {
 }
 
 dependencies {
-    provided fileTree(dir: rootProject.rootDir.absolutePath+File.separator+'jars'+File.separator+'compileJar',include: ['*.jar'])
+    compile fileTree(dir: rootDir.absolutePath+File.separator+'jars/compileJar', include: ['*.jar'])
 }
 
 def injectTask(){
