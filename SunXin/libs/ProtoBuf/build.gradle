@@ -45,7 +45,7 @@ def injectTask(){
 
 task copyToJarsLib(type: Copy){
     rename 'classes.jar',"${project.name}.jar"
-    from (project.projectDir.absolutePath+File.separator +'build'+File.separator +'intermediates'+File.separator +'bundles'+File.separator +'debug'+File.separator+'classes.jar')
-    into (rootDir.absolutePath+File.separator+"jars" +File.separator+'libsJar')
+    from (project.projectDir.absolutePath+'/build/intermediates/bundles/debug/classes.jar')
+    into (rootDir.absolutePath+'/jars/libsJar')
 
 }

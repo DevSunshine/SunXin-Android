@@ -1,7 +1,17 @@
-def testHHHH(){
-    println('==================testHHHH================')
-}
 
-ext{
-    testHHHH = this.&testHHHH
+
+def injectTask(){
+    tasks.whenTaskAdded{
+        task ->
+            if(task.name.equals("packageDebugJar")){
+                task << {
+                    def tasks = project.getTasksByName('copyToJarsLib',false)
+                    if (tasks.size() > 0){
+                        for (int i = 0 ; i < tasks.size() ; i ++){
+                            tasks[i].execute()
+                        }
+                    }
+                }
+            }
+    }
 }

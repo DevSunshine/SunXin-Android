@@ -1,9 +1,9 @@
-include ':Host', ':SSSocket', ':TestPlugin', ':DexInstall', ':ProtoBuf'
+include ':Host', ':SSSocket', ':DexInstall', ':ProtoBuf', ':TempPlugin'
 apply from: "util.gradle"
 project(':SSSocket').projectDir = new File("libs/SSSocket")
 project(':DexInstall').projectDir = new File("libs/DexInstall")
 project(':ProtoBuf').projectDir = new File("libs/ProtoBuf")
-project(':TestPlugin').projectDir = new File("plugins/TestPlugin")
+project(':TempPlugin').projectDir = new File("plugins/TempPlugin")
 
 
 initEnv()
@@ -15,13 +15,13 @@ def initEnv() {
     gradle.ext.versionName = '1.0'
 }
 
-def initFileDir(){
+def initFileDir() {
     def util = new FileUtil();
-    def jarDir = rootDir.absolutePath+File.separator+'jars'
+    def jarDir = rootDir.absolutePath + File.separator + 'jars'
     util.createDir(jarDir)
-    util.createDir("$jarDir"+File.separator+'compileJar')
-    util.createDir("$jarDir"+File.separator+'injectJar')
-    util.createDir("$jarDir"+File.separator+'providedJar')
-    util.createDir("$jarDir"+File.separator+'libsJar')
+    util.createDir("$jarDir" + File.separator + 'compileJar')
+    util.createDir("$jarDir" + File.separator + 'injectJar')
+    util.createDir("$jarDir" + File.separator + 'providedJar')
+    util.createDir("$jarDir" + File.separator + 'libsJar')
 }
 

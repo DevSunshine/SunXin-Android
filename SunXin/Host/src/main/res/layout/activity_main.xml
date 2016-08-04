@@ -5,7 +5,9 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context="com.sunshine.sunxin.MainActivity">
 
-    <TextView android:text="connect socket" android:layout_width="wrap_content"
+    <TextView
+        android:textColor="@android:color/holo_red_dark"
+        android:text="connect socket" android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:onClick="connectSocket"
         android:clickable="true"/>
@@ -13,5 +15,7 @@
         android:layout_height="40dp"
         android:onClick="startPlugin"
         android:layout_centerInParent="true"
+        android:textSize="16dp"
+        android:textColor="@android:color/holo_blue_bright"
         android:clickable="true"/>
 </RelativeLayout>
