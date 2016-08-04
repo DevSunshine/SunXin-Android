@@ -4,6 +4,7 @@ package com.sunshine.sunxin;
 import com.sunshine.sun.lib.socket.request.SSITaskListener;
 import com.sunshine.sun.lib.socket.request.SSTask;
 import com.sunshine.sun.lib.socket.request.SSTaskManager;
+import com.sunxin.lib.protobuf.TestProto;
 
 /**
  * Created by 钟光燕 on 2016/7/29.

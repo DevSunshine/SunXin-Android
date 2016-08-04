@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-
+injectTask()
 android {
     compileSdkVersion 24
     buildToolsVersion "23.0.3"
@@ -20,4 +20,32 @@ android {
 
 dependencies {
     provided fileTree(dir: rootProject.rootDir.absolutePath+File.separator+'jars'+File.separator+'compileJar',include: ['*.jar'])
+}
+
+def injectTask(){
+    tasks.whenTaskAdded{
+        task ->
+        if(task.name.equals("packageDebugJar")){
+            task << {
+                def tasks = project.getTasksByName('copyToJarsLib',false)
+                if (tasks.size() > 0){
+                    println('====================copyToJarsLib======')
+                    def path = project.projectDir.absolutePath+File.separator +'build'+File.separator +'intermediates'+File.separator +'bundles'+File.separator +'debug'+File.separator+'classes.jar'
+                    def path2 = rootDir.absolutePath+File.separator+"jars" +File.separator+'libsJar'+File.separator+"$project.name"+'.jar'
+                    println('====================copyToJarsLib======'+path)
+                    println('====================copyToJarsLib======'+path2)
+                    for (int i = 0 ; i < tasks.size() ; i ++){
+                        tasks[i].execute()
+                    }
+                }
+            }
+        }
+    }
+}
+
+task copyToJarsLib(type: Copy){
+    rename 'classes.jar',"${project.name}.jar"
+    from (project.projectDir.absolutePath+File.separator +'build'+File.separator +'intermediates'+File.separator +'bundles'+File.separator +'debug'+File.separator+'classes.jar')
+    into (rootDir.absolutePath+File.separator+"jars" +File.separator+'libsJar')
+
 }

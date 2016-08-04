@@ -31,6 +31,7 @@ dependencies {
     compile project(':SSSocket')
     compile "com.android.support:multidex:1.0.0"
     compile fileTree(dir: rootProject.rootDir.absolutePath+File.separator+'jars'+File.separator+'compileJar',include: ['*.jar'])
+    compile fileTree(dir: rootProject.rootDir.absolutePath+File.separator+'jars'+File.separator+'libsJar',include: ['*.jar'])
 }
 
 
@@ -61,9 +62,10 @@ def addTask(){
             if(task.name.equals('zipalignDebug')){
 
                 task<<{
-                    def tasks = project.getTasksByName('doTask',false)
+                    def tasks = project.getTasksByName('makeHostJar',false)
                     if (tasks.size() > 0){
                         for (int i = 0 ; i < tasks.size() ; i ++){
+                            println('==========================makeHostJar=============')
                             tasks[i].execute()
                         }
                     }
@@ -126,8 +128,14 @@ task makeJar(type:org.gradle.api.tasks.bundling.Jar) {
     exclude{ it.name.startsWith('R$');}
 }
 
+task makeHostJar(type: org.gradle.api.tasks.bundling.Jar){
+    baseName 'test'
+    from (project.projectDir.absolutePath+File.separator +'build/intermediates/exploded-aar/')
+}
+
 
 task makeSdkJar(type:org.gradle.api.tasks.bundling.Jar) {
+
     baseName 'pluginsdk'
     //只打包org.cmdmac下的org.cmdmac.pluginsdk.impl和org.cmdmac.gamecenter,其他子包不会被打包进去
     from('build/intermediates/classes/debug/org/cmdmac/') {
