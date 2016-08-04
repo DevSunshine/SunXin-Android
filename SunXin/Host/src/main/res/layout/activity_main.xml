@@ -11,10 +11,18 @@
         android:layout_height="40dp"
         android:onClick="connectSocket"
         android:clickable="true"/>
-    <TextView android:text="startPlugin" android:layout_width="wrap_content"
+    <TextView android:text="startPlugin1" android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:onClick="startPlugin"
+        android:onClick="startPlugin1"
         android:layout_centerInParent="true"
+        android:textSize="16dp"
+        android:textColor="@android:color/holo_blue_bright"
+        android:clickable="true"/>
+
+    <TextView android:text="startPlugin2" android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:onClick="startPlugin2"
+        android:layout_marginTop="60dp"
         android:textSize="16dp"
         android:textColor="@android:color/holo_blue_bright"
         android:clickable="true"/>

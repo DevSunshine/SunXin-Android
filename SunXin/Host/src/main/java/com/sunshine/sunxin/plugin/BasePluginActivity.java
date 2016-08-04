@@ -7,14 +7,12 @@ import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
-
+import com.sunshine.sunxin.BaseActivity;
 import com.sunshine.sunxin.R;
 import com.sunshine.sunxin.plugin.model.PluginInfo;
 import com.sunshine.sunxin.plugin.model.PluginRuntimeEnv;
@@ -27,7 +25,7 @@ import dalvik.system.DexClassLoader;
 /**
  * Created by gyzhong on 15/11/22.
  */
-public abstract class BasePluginActivity extends FragmentActivity {
+public abstract class BasePluginActivity extends BaseActivity {
 
     protected PluginInfo pluginInfo;
     protected FrameLayout rootView;

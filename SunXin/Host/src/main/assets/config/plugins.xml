@@ -10,4 +10,13 @@
         versionParent="20151122" >
     </plugin>
 
+    <plugin
+        id="102"
+        desc="产品详情页"
+        path="plugins/TempPlugin_debug.apk"
+        rootFragment="com.sunxin.plugin.temp.RootFragment"
+        version="21"
+        versionParent="20151122" >
+    </plugin>
+
 </plugin>
