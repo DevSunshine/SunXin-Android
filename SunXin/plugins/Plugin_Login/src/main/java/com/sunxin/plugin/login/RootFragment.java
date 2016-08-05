@@ -35,22 +35,28 @@ public class RootFragment extends BaseFragment {
         view.findViewById(R.id.id_login).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                TestJava.login("jxxfzgy", "jxxfzgy", new SSITaskListener() {
+                new Thread(new Runnable() {
                     @Override
-                    public void onProgress(SSTask ssTask, int i, int i1) {
+                    public void run() {
+                        TestJava.login("jxxfzgy", "jxxfzgy", new SSITaskListener() {
+                            @Override
+                            public void onProgress(SSTask ssTask, int i, int i1) {
 
+                            }
+
+                            @Override
+                            public void onComplete(SSTask ssTask, SSResponse ssResponse) {
+
+                            }
+
+                            @Override
+                            public void onError(SSTask ssTask, int i) {
+
+                            }
+                        });
                     }
+                }).start();
 
-                    @Override
-                    public void onComplete(SSTask ssTask, SSResponse ssResponse) {
-
-                    }
-
-                    @Override
-                    public void onError(SSTask ssTask, int i) {
-
-                    }
-                });
             }
         });
     }

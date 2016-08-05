@@ -75,15 +75,19 @@ public class SSClientQueue {
     }
 
     public void cancel(SSTask newTask) {
-        final String name = newTask.getHeader(SSTypeCode.QUERY_NAME).getStringValue();
-        if (!TextUtils.isEmpty(name)) {
-            cancelAll(new SSITaskFilter() {
-                @Override
-                public boolean apply(SSTask task) {
-                    return task.getHeader(name) != null ;
-                }
-            });
+        SSHeader header = newTask.getHeader(SSTypeCode.QUERY_NAME) ;
+        if (header != null){
+            final String name = header.getStringValue();
+            if (!TextUtils.isEmpty(name)) {
+                cancelAll(new SSITaskFilter() {
+                    @Override
+                    public boolean apply(SSTask task) {
+                        return task.getHeader(name) != null ;
+                    }
+                });
+            }
         }
+
     }
 
     public void cancelAll(final String queryName) {

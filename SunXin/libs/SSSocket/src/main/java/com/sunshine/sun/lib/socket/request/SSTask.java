@@ -14,13 +14,14 @@ import com.sunshine.sun.lib.socket.toolbox.ExecuteType;
 import com.sunshine.sun.lib.socket.toolbox.Priority;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 /**
  * Created by 钟光燕 on 2016/7/14.
  * e-mail guangyanzhong@163.com
  */
-public abstract class SSTask implements SSITranslation{
+public abstract class SSTask implements SSITranslation,Comparable<SSTask>{
 
     private static int MAX_LENGTH_BODY = 65535 ;
     private Priority mPriority ;
@@ -85,7 +86,7 @@ public abstract class SSTask implements SSITranslation{
 
     public SSTask addHeader(short key, String value){
         SSHeader header = new SSHeader() ;
-        header.setTypeValue(key,value);
+        header.setTypeValue(key, value);
         mHeaders.add(header);
         return this ;
     }
@@ -190,11 +191,14 @@ public abstract class SSTask implements SSITranslation{
      */
     public void lockWait(){
         if (mExecuteType == ExecuteType.sync){
-            try {
-                mSyncLock.wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            synchronized (mSyncLock){
+                try {
+                    mSyncLock.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
+
         }
     }
 
@@ -223,7 +227,10 @@ public abstract class SSTask implements SSITranslation{
     @Override
     public void onCompleteReceive(SSResponse response) {
         if (mExecuteType == ExecuteType.sync){
-            mSyncLock.notify();
+            synchronized (mSyncLock){
+                mSyncLock.notify();
+            }
+
             mResponse = response ;
         }
         if (mTaskListener != null){
@@ -237,8 +244,18 @@ public abstract class SSTask implements SSITranslation{
             mTaskListener.onError(this,errorCode);
         }
         if (mExecuteType == ExecuteType.sync){
-            mSyncLock.notify();
+            synchronized (mSyncLock){
+                mSyncLock.notify();
+            }
+
             mResponse = null ;
         }
+    }
+
+    @Override
+    public int compareTo(SSTask ssTask) {
+        Priority left = this.getPriority() ;
+        Priority right = ssTask.getPriority() ;
+        return right.ordinal() - left.ordinal();
     }
 }

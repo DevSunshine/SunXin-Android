@@ -2,6 +2,8 @@ package com.sunshine.sun.lib.socket;
 // Copyright (c) 2016 ${ORGANIZATION_NAME}. All rights reserved.
 
 
+import android.util.Log;
+
 import com.sunshine.sun.lib.socket.toolbox.BytePool;
 
 import java.util.HashSet;
@@ -99,6 +101,7 @@ public class SSClientManager implements SSIClientConnectListener{
 
     @Override
     public void connectFailed(SSClient client) {
+        Log.v("zgy","========client.getTryCount()========"+client.getTryCount()) ;
         int RETRY_COUNT = 3;
         if (client.getTryCount() <= RETRY_COUNT){
             client.connect();

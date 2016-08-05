@@ -3,6 +3,7 @@ package com.sunshine.sun.lib.socket;
 
 import android.os.Handler;
 import android.os.HandlerThread;
+import android.util.Log;
 
 import com.sunshine.sun.lib.socket.toolbox.BinaryParser;
 import com.sunshine.sun.lib.socket.toolbox.BufferQueue;
@@ -42,8 +43,8 @@ public class SSClient {
 
     private String mHost;
     private int mPort;
-    private byte[] mLock = new byte[0];
-    private int mConnectTryCount ;
+    private volatile byte[] mLock = new byte[0];
+    private int mConnectTryCount;
 
     public SSClient(BytePool mBytePool, SSIClientConnectListener mConnectListener) {
         this.mBytePool = mBytePool;
@@ -55,11 +56,12 @@ public class SSClient {
         this.mConnectListener = mConnectListener;
     }
 
-    public synchronized void connect(){
-        connect(mHost,mPort);
+    public synchronized void connect() {
+        connect(mHost, mPort);
     }
+
     public synchronized void connect(String host, int port) {
-        mConnectTryCount ++ ;
+        mConnectTryCount++;
         mStatue = SSSocketStatue.connecting;
         mHost = host;
         mPort = port;
@@ -70,8 +72,8 @@ public class SSClient {
         thread.start();
     }
 
-    public int getTryCount(){
-        return mConnectTryCount ;
+    public int getTryCount() {
+        return mConnectTryCount;
     }
 
     public SSClientMode getClientMode() {
@@ -84,28 +86,39 @@ public class SSClient {
 
     public void sendRequest(SSPipeLine pipeLine) {
         if (mStatue == SSSocketStatue.connecting) {
-            try {
-                mLock.wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            synchronized (mLock){
+                try {
+                    Log.v("zgy","========sendRequest======") ;
+                    mLock.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
+
+
         }
         if (mStatue != SSSocketStatue.connected) {
-            // TODO: 16/8/2 errorCode 尚未定义 
+            // TODO: 16/8/2 errorCode 尚未定义
+            Log.v("zgy","========onError======") ;
+
             pipeLine.onError(0);
             return;
         }
+        Log.v("zgy","========connect success======") ;
         mPipeLines.put(pipeLine.getRequest().getUniqueKey(), pipeLine);
         sendMessage(pipeLine.getRequest());
     }
 
     public void sendResponse(SSPipeLine pipeLine) {
         if (mStatue == SSSocketStatue.connecting) {
-            try {
-                mLock.wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            synchronized (mLock){
+                try {
+                    mLock.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
+
         }
         if (mStatue != SSSocketStatue.connected) {
             // TODO: 16/8/2 errorCode 尚未定义 
@@ -147,9 +160,10 @@ public class SSClient {
             if (mConnectListener != null) {
                 mConnectListener.connected(this);
             }
-            mConnectTryCount = 0 ;
-            mLock.notify();
-
+            mConnectTryCount = 0;
+            synchronized (mLock){
+                mLock.notify();
+            }
             // TODO: 16/8/2 如果已经登录了，请执行认证 
             // 认证，
         }
@@ -196,6 +210,11 @@ public class SSClient {
             if (mConnectListener != null) {
                 mConnectListener.connectFailed(this);
             }
+            if(mConnectTryCount > 3){
+                synchronized (mLock){
+                    mLock.notify();
+                }
+            }
         }
     }
 
@@ -238,10 +257,11 @@ public class SSClient {
                 mSocket.setTcpNoDelay(true);
                 mSocket.setSoTimeout(0);
                 SocketAddress address = new InetSocketAddress(host, port);
-                mSocket.connect(address, 10 * 10000);
+                mSocket.connect(address, 10 * 1000);
             } catch (IOException e) {
                 e.printStackTrace();
                 errorClose();
+                return;
             }
             if (mSocket != null && mSocket.isConnected()) {
 
@@ -252,6 +272,7 @@ public class SSClient {
                 } catch (IOException e) {
                     e.printStackTrace();
                     errorClose();
+                    return;
                 }
                 connectClient();
                 BufferQueue mBufferQueue = new BufferQueue();
