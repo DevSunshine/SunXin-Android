@@ -2,6 +2,7 @@ package com.sunshine.sunxin.plugin;
 
 import android.content.Context;
 import android.text.TextUtils;
+import android.util.Log;
 
 
 import com.sunshine.sunxin.plugin.model.PluginInfo;
@@ -53,7 +54,8 @@ public class PluginSyncUtil {
             InputStream inputStream = mContext.getAssets().open("config/plugins.xml");
             nodeList = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(inputStream).
                     getDocumentElement().getElementsByTagName("plugin");
-            if (i < nodeList.getLength()) {
+            Log.v("zgy","===========nodeList====="+nodeList.getLength()) ;
+            while (i < nodeList.getLength()) {
                 PluginInfo pluginInfo = new PluginInfo();
                 Element element = (Element) nodeList.item(i);
                 pluginInfo.id = element.getAttribute("id");
@@ -62,6 +64,7 @@ public class PluginSyncUtil {
                 pluginInfo.rootFragment = element.getAttribute("rootFragment");
                 syncPluginFirstTime(pluginInfo, true);
                 i++;
+                Log.v("zgy","===========nodeList====="+i) ;
             }
             update = true;
         } catch (Exception e) {
@@ -80,6 +83,7 @@ public class PluginSyncUtil {
         }
         createPluginLocalPath(pluginInfo);
         if (copyPluginFromAsset(pluginInfo)){
+            Log.v("zgy","===========copy=====") ;
             PluginCache.getInstance(mContext).updatePluginInfo(pluginInfo.id,pluginInfo);
         }
     }

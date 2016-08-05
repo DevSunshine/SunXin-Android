@@ -2,7 +2,6 @@ package com.sunshine.sun.lib.socket;
 // Copyright (c) 2016 ${ORGANIZATION_NAME}. All rights reserved.
 
 
-import com.sunshine.sun.lib.socket.bean.UserAccount;
 import com.sunshine.sun.lib.socket.toolbox.BytePool;
 
 import java.util.HashSet;
@@ -32,8 +31,8 @@ public class SSClientManager implements SSIClientConnectListener{
     }
 
     public SSClient connect(String host,int port,SSClientMode priority){
-        SSClient client = new SSClient(mBytePool,this) ;
 
+        SSClient client = new SSClient(mBytePool,this) ;
         synchronized (mClients){
             mClients.add(client) ;
             client.connect(host,port);

@@ -55,10 +55,10 @@ public class SSClient {
         this.mConnectListener = mConnectListener;
     }
 
-    public void connect(){
+    public synchronized void connect(){
         connect(mHost,mPort);
     }
-    public void connect(String host, int port) {
+    public synchronized void connect(String host, int port) {
         mConnectTryCount ++ ;
         mStatue = SSSocketStatue.connecting;
         mHost = host;
@@ -192,10 +192,10 @@ public class SSClient {
 
     public void errorClose() {
         if (mStatue != SSSocketStatue.disconnect) {
+            close();
             if (mConnectListener != null) {
                 mConnectListener.connectFailed(this);
             }
-            close();
         }
     }
 
