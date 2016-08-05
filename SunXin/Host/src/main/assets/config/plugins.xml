@@ -18,5 +18,13 @@
         version="21"
         versionParent="20151122" >
     </plugin>
+    <plugin
+        id="103"
+        desc="产品详情页"
+        path="plugins/Plugin_Login-debug.apk"
+        rootFragment="com.sunxin.plugin.login.RootFragment"
+        version="21"
+        versionParent="20151122" >
+    </plugin>
 
 </plugin>

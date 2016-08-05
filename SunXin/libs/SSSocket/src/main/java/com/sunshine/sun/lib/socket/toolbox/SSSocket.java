@@ -1,6 +1,8 @@
 package com.sunshine.sun.lib.socket.toolbox;
 // Copyright (c) 2016 ${ORGANIZATION_NAME}. All rights reserved.
 
+import android.util.Log;
+
 import com.sunshine.sun.lib.socket.SSClient;
 import com.sunshine.sun.lib.socket.SSClientManager;
 import com.sunshine.sun.lib.socket.SSClientMode;
@@ -43,6 +45,7 @@ public class SSSocket {
                 // TODO: 16/8/2 登录的 ip 和端口需要确认
                 try {
                     String host = InetAddress.getByName("www.baidu.com").getHostAddress();
+                    Log.v("zgy","====baidu==host========"+host) ;
                     client = SSClientManager.instance().connect(host, 9527, mode);
                 } catch (UnknownHostException e) {
                     e.printStackTrace();
