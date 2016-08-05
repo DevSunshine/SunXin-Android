@@ -10,5 +10,8 @@ public enum SSSocketStatue {
     disconnect,
     connecting,
     connected,
+    authenticating,
+    authenticated,
+    unauthenticated,
     disconnecting
 }

@@ -67,9 +67,6 @@ public class SSTaskManager {
 
     public SSTask createResponseTask() {
         SSClient client = getPrimaryClient() ;
-        if (client == null){
-            return null ;
-        }
         SSTask task = new SSResponseTask();
         task.setPriority(Priority.IMMEDIATE) ;
         task.setClient(client);
@@ -78,9 +75,6 @@ public class SSTaskManager {
 
     public SSTask createQueryTask() {
         SSClient client = getPrimaryClient() ;
-        if (client == null){
-            return null ;
-        }
         SSTask task = new SSQueryTask();
         task.setPriority(Priority.HIGH) ;
         task.setClient(client);
@@ -89,9 +83,6 @@ public class SSTaskManager {
 
     public SSTask createDownloadTask() {
         SSClient client = getSecondlyClient() ;
-        if (client == null){
-            return null ;
-        }
         SSTask task = new SSDownloadTask();
         task.setClient(client);
         return task;
@@ -100,9 +91,6 @@ public class SSTaskManager {
     public SSTask createUploadTask() {
 
         SSClient client = getSecondlyClient() ;
-        if (client == null){
-            return null ;
-        }
         SSTask task = new SSUploadTask();
         task.setClient(client);
         return task;
@@ -111,6 +99,10 @@ public class SSTaskManager {
     public SSTask createLoginTask() {
         SSTask task = new SSLoginTask();
         task.setClient(getLoginClient());
+        return task;
+    }
+    public SSTask createAuthenticateTask() {
+        SSTask task = new SSAuthenticateTask();
         return task;
     }
 

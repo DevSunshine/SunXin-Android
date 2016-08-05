@@ -5,6 +5,9 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.util.Log;
 
+import com.sunshine.sun.lib.socket.request.SSITaskListener;
+import com.sunshine.sun.lib.socket.request.SSTask;
+import com.sunshine.sun.lib.socket.request.SSTaskManager;
 import com.sunshine.sun.lib.socket.toolbox.BinaryParser;
 import com.sunshine.sun.lib.socket.toolbox.BufferQueue;
 import com.sunshine.sun.lib.socket.toolbox.BytePool;
@@ -25,7 +28,7 @@ import java.util.Map;
  * Created by 钟光燕 on 2016/7/14.
  * e-mail guangyanzhong@163.com
  */
-public class SSClient {
+public class SSClient implements SSITaskListener{
 
     private Socket mSocket;
     private OutputStream mSocketOutputStream;
@@ -85,7 +88,7 @@ public class SSClient {
     }
 
     public void sendRequest(SSPipeLine pipeLine) {
-        if (mStatue == SSSocketStatue.connecting) {
+        if (mStatue == SSSocketStatue.connecting||mStatue == SSSocketStatue.authenticating) {
             synchronized (mLock){
                 try {
                     Log.v("zgy","========sendRequest======") ;
@@ -97,7 +100,7 @@ public class SSClient {
 
 
         }
-        if (mStatue != SSSocketStatue.connected) {
+        if (mStatue != SSSocketStatue.authenticated) {
             // TODO: 16/8/2 errorCode 尚未定义
             Log.v("zgy","========onError======") ;
 
@@ -110,18 +113,22 @@ public class SSClient {
     }
 
     public void sendResponse(SSPipeLine pipeLine) {
-        if (mStatue == SSSocketStatue.connecting) {
+        if (mStatue == SSSocketStatue.connecting||mStatue == SSSocketStatue.authenticating) {
             synchronized (mLock){
                 try {
+                    Log.v("zgy","========sendRequest======") ;
                     mLock.wait();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
 
+
         }
-        if (mStatue != SSSocketStatue.connected) {
-            // TODO: 16/8/2 errorCode 尚未定义 
+        if (mStatue != SSSocketStatue.authenticated) {
+            // TODO: 16/8/2 errorCode 尚未定义
+            Log.v("zgy","========onError======") ;
+
             pipeLine.onError(0);
             return;
         }
@@ -156,16 +163,39 @@ public class SSClient {
             mHandlerThread = new HandlerThread("send thread");
             mHandlerThread.start();
             mSendHandler = new Handler(mHandlerThread.getLooper());
-            mStatue = SSSocketStatue.connected;
+//            mStatue = SSSocketStatue.connected;
             if (mConnectListener != null) {
                 mConnectListener.connected(this);
             }
             mConnectTryCount = 0;
-            synchronized (mLock){
-                mLock.notify();
+            if (mClientMode == SSClientMode.loginMode){
+                synchronized (mLock){
+                    mLock.notify();
+                }
+            }else {
+                // TODO: 16/8/2 如果已经登录了，请执行认证
+                // 认证，
+                mStatue = SSSocketStatue.authenticating ;
+                SSTask task = SSTaskManager.instance().createAuthenticateTask() ;
+                task.setTaskListener(this) ;
+                task.execute();
+                SSRequest request = new SSRequest(task.getMethod()) ;
+                for (int i = 0 ; i < task.getHeaderList().size(); i ++){
+                    request.addHeader(task.getHeaderList().get(i));
+                }
+                for (int i = 0 ; i < task.getBodies().size(); i ++){
+                    request.addBody(task.getBodies().get(i));
+                }
+                SSPipeLine pipeLine = new SSPipeLine() ;
+                pipeLine.setRequest(request);
+                pipeLine.setOnTranslation(task);
+                request.setUniqueKey(task.getSequence());
+                mPipeLines.put(task.getSequence(), pipeLine);
+                sendMessage(pipeLine.getRequest());
+
             }
-            // TODO: 16/8/2 如果已经登录了，请执行认证 
-            // 认证，
+
+
         }
     }
 
@@ -240,6 +270,29 @@ public class SSClient {
             mHandlerThread = null;
         }
         mStatue = SSSocketStatue.disconnect;
+    }
+
+    @Override
+    public void onProgress(SSTask task, int progress, int total) {
+
+    }
+
+    @Override
+    public void onComplete(SSTask task, SSResponse response) {
+        mStatue = SSSocketStatue.authenticated ;
+        // TODO: 16/8/5 认证成功
+        synchronized (mLock){
+            mLock.notify();
+        }
+    }
+
+    @Override
+    public void onError(SSTask task, int errorCode) {
+        mStatue = SSSocketStatue.unauthenticated ;
+        // TODO: 16/8/5 认证失败
+        synchronized (mLock){
+            mLock.notify();
+        }
     }
 
     private class ReceiverThread implements Runnable {

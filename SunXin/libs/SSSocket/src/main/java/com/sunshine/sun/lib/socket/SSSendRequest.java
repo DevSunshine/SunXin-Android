@@ -20,10 +20,10 @@ public class SSSendRequest implements SSISendWork {
         for (int i = 0 ; i < task.getBodies().size(); i ++){
             request.addBody(task.getBodies().get(i));
         }
+        request.setUniqueKey(task.getSequence());
         SSPipeLine pipeLine = new SSPipeLine() ;
         pipeLine.setRequest(request);
         pipeLine.setOnTranslation(task);
-
         client.sendRequest(pipeLine);
     }
 }

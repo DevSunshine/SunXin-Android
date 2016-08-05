@@ -26,3 +26,5 @@ dependencies {
     provided fileTree(dir: rootProject.rootDir.absolutePath+'/jars/libsJar', include: ['*.jar'])
     provided fileTree(dir: rootProject.rootDir.absolutePath+'/jars/compileJar', include: ['*.jar'])
 }
+
+
