@@ -3,7 +3,7 @@
 
     <plugin
         id="101"
-        desc="产品详情页"
+        desc="插件测试"
         path="plugins/PluginFragmentTest.apk"
         rootFragment="com.test.gyzhong.plugin1.PluginFragmentTest"
         version="21"
@@ -12,7 +12,7 @@
 
     <plugin
         id="102"
-        desc="产品详情页"
+        desc="插件模板"
         path="plugins/TempPlugin_debug.apk"
         rootFragment="com.sunxin.plugin.temp.RootFragment"
         version="21"
@@ -20,7 +20,7 @@
     </plugin>
     <plugin
         id="103"
-        desc="产品详情页"
+        desc="登录页面"
         path="plugins/Plugin_Login-debug.apk"
         rootFragment="com.sunxin.plugin.login.RootFragment"
         version="21"
