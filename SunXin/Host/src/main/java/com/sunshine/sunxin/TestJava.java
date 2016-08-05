@@ -4,6 +4,7 @@ package com.sunshine.sunxin;
 import com.sunshine.sun.lib.socket.request.SSITaskListener;
 import com.sunshine.sun.lib.socket.request.SSTask;
 import com.sunshine.sun.lib.socket.request.SSTaskManager;
+import com.sunxin.lib.protobuf.TestProto;
 
 /**
  * Created by 钟光燕 on 2016/7/29.
@@ -14,6 +15,11 @@ public class TestJava {
     public static void login(String userName,String password,SSITaskListener listener){
         SSTask task = SSTaskManager.instance().createLoginTask() ;
         task.setTaskListener(listener) ;
+        TestProto.UserLoginArg.Builder builder = TestProto.UserLoginArg.newBuilder() ;
+        builder.setUserName(userName) ;
+        builder.setPassword(password) ;
+        TestProto.UserLoginArg arg = builder.build() ;
+        task.addBody(arg.toByteArray()) ;
         SSTaskManager.instance().commitTask(task);
     }
 }
