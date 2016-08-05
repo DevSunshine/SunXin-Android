@@ -69,4 +69,7 @@ public class SSSocket {
     public SSClient getSecondlyClient() {
         return SSClientManager.instance().getSecondlyClient();
     }
+    public SSClient getLoginClient() {
+        return SSClientManager.instance().getLoginClient();
+    }
 }

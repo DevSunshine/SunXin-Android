@@ -73,6 +73,21 @@ public class SSClientManager implements SSIClientConnectListener{
         return null ;
     }
 
+    /**
+     * 获取主链路
+     * @return 主链路
+     */
+    public SSClient getLoginClient(){
+        synchronized (mClients){
+            for (SSClient client : mClients){
+                if (client.getClientMode() == SSClientMode.loginMode){
+                    return client ;
+                }
+            }
+        }
+        return null ;
+    }
+
     public void closeClient(){
         synchronized (mClients){
             for (SSClient client : mClients){

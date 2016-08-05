@@ -1,6 +1,7 @@
 package com.sunshine.sun.lib.socket.request;
 
 import com.sunshine.sun.lib.socket.SSClientManager;
+import com.sunshine.sun.lib.socket.SSMessageCode;
 import com.sunshine.sun.lib.socket.SSResponse;
 import com.sunshine.sun.lib.socket.toolbox.SSSocket;
 
@@ -9,6 +10,9 @@ import com.sunshine.sun.lib.socket.toolbox.SSSocket;
  */
 public class SSLoginTask extends SSTask {
 
+    public SSLoginTask(){
+        super(SSMessageCode.LOGIN);
+    }
     @Override
     public void onCompleteReceive(SSResponse response) {
         SSClientManager.instance().closeClient();

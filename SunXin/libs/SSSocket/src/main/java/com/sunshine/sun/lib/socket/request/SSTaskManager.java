@@ -42,7 +42,10 @@ public class SSTaskManager {
     }
 
     public SSClient getLoginClient() {
-        SSClient client = SSSocket.instance().requestClient(SSClientMode.loginMode);
+        SSClient client = SSSocket.instance().getLoginClient() ;
+        if (client == null){
+            client = SSSocket.instance().requestClient(SSClientMode.loginMode);
+        }
         return client;
     }
 

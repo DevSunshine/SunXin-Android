@@ -24,7 +24,7 @@ import java.util.List;
 public abstract class SSTask implements SSITranslation,Comparable<SSTask>{
 
     private static int MAX_LENGTH_BODY = 65535 ;
-    private Priority mPriority ;
+    private Priority  mPriority = Priority.NORMAL ;
     private String mSequence;
     private SSClientQueue mClientQueue ;
     private SSITaskListener mTaskListener ;
@@ -39,7 +39,8 @@ public abstract class SSTask implements SSITranslation,Comparable<SSTask>{
 
     public SSTask(short mMethod) {
         this.mMethod = mMethod;
-        mExecuteType = ExecuteType.async ;
+        mExecuteType = ExecuteType.async;
+
     }
 
     public SSTask(){
