@@ -1,12 +1,14 @@
 
-
 def injectTask(){
     tasks.whenTaskAdded{
         task ->
-            if(task.name.equals("packageDebugJar")){
+            if(task.name.equals("assembleDebug")&&isPluginApk()){
+                println('===========assembleDebug============')
                 task << {
-                    def tasks = project.getTasksByName('copyToJarsLib',false)
+                    def tasks = project.getTasksByName('copyAPKToSDCard',false)
+                    def name = project.name+".apk" ;
                     if (tasks.size() > 0){
+                        println("===========copy ${name} to SDCard============")
                         for (int i = 0 ; i < tasks.size() ; i ++){
                             tasks[i].execute()
                         }
@@ -14,4 +16,33 @@ def injectTask(){
                 }
             }
     }
+}
+
+def isPluginApk(){
+    return true ;
+}
+def getSDCardPluginPath(){
+    return '/sdcard/sunxin/'+project.name+'.apk'
+}
+def getPluginApkPath(buildType){
+    return project.projectDir.absolutePath+"/build/outputs/apk/"+project.name+"-${buildType}.apk"
+}
+
+def getENVPath(){
+    def env = System.env.ANDROID_HOME ;
+    //不知道为啥，在 mac 上面获取到的是 null，蛋疼
+    if (env == null){
+        println('=======getENVPath==========')
+        FileUtil util = new FileUtil() ;
+        return util.getPropertyEnv(rootDir.absolutePath+"/local.properties")
+    }else {
+        println('==========getENVPath========='+"$env")
+        return env
+    }
+}
+ext{
+    injectTask  = this.&injectTask ;
+    getSDCardPluginPath  = this.&getSDCardPluginPath ;
+    getPluginApkPath  = this.&getPluginApkPath ;
+    getENVPath  = this.&getENVPath ;
 }

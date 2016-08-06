@@ -1,3 +1,5 @@
+apply from: "../util.gradle"
+injectTask()
 apply plugin: 'com.android.application'
 
 android {
@@ -10,7 +12,7 @@ android {
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
-//        multiDexEnabled true
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -35,5 +37,11 @@ dependencies {
 
 }
 
-
+task copyAPKTarget(type: org.gradle.api.tasks.Copy){
+    rename 'combined.jar',project.name+'.jar'
+    def pro = project.projectDir.absolutePath ;
+    from ("$pro/build/intermediates/transforms/jarMerging/debug/jars/1/1f/combined.jar")
+    def root = rootProject.rootDir.absolutePath
+    into ("$root/jars/providedJar" )
+}
 

@@ -237,6 +237,7 @@ public abstract class SSTask implements SSITranslation,Comparable<SSTask>{
         if (mTaskListener != null){
             mTaskListener.onComplete(this,response);
         }
+        mClient = null ;
     }
 
     @Override
@@ -251,6 +252,7 @@ public abstract class SSTask implements SSITranslation,Comparable<SSTask>{
 
             mResponse = null ;
         }
+        mClient = null ;
     }
 
     @Override

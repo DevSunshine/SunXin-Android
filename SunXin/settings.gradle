@@ -1,8 +1,13 @@
-include ':Host', ':SSSocket', ':DexInstall', ':ProtoBuf',':Plugin_Login', ':TempPlugin'
+include ':Host', ':SSSocket', ':DexInstall', ':ProtoBuf',':Plugin_Login', ':TempPlugin', ':TaskInterface'
 apply from: "util.gradle"
+
+//libs
 project(':SSSocket').projectDir = new File("libs/SSSocket")
 project(':DexInstall').projectDir = new File("libs/DexInstall")
 project(':ProtoBuf').projectDir = new File("libs/ProtoBuf")
+project(':TaskInterface').projectDir = new File("libs/TaskInterface")
+
+//plugins
 project(':Plugin_Login').projectDir = new File("plugins/Plugin_Login")
 project(':TempPlugin').projectDir = new File("plugins/TempPlugin")
 

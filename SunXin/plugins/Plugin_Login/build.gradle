@@ -1,5 +1,6 @@
+apply from: "../../util.gradle"
+injectTask()
 apply plugin: 'com.android.application'
-
 android {
     compileSdkVersion 24
     buildToolsVersion "23.0.3"
@@ -16,6 +17,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
     }
 }
 
@@ -24,4 +29,23 @@ dependencies {
     provided fileTree(dir: rootProject.rootDir.absolutePath+'/jars/injectJar', include: ['*.jar'])
     provided fileTree(dir: rootProject.rootDir.absolutePath+'/jars/libsJar', include: ['*.jar'])
     provided fileTree(dir: rootProject.rootDir.absolutePath+'/jars/compileJar', include: ['*.jar'])
+}
+
+task copyAPKTarget(type: org.gradle.api.tasks.Copy){
+    rename 'Plugin_Login-debug.apk',project.name+'.apk'
+    def pro = project.projectDir.absolutePath ;
+    from ("$pro/build/outputs/apk/Plugin_Login-debug.apk")
+    def root = rootProject.rootDir.absolutePath
+    into ("$root/Host/src/main/assets/plugins" )
+}
+
+
+task makeSDCardPath(type:org.gradle.api.tasks.Exec){
+    def adb = "${getENVPath()}/platform-tools/adb"
+    commandLine "$adb",'shell','mkdir','/sdcard/sunxin/'
+}
+task copyAPKToSDCard(dependsOn:makeSDCardPath,type: org.gradle.api.tasks.Exec){
+    def adb = "${getENVPath()}/platform-tools/adb"
+    commandLine "$adb",'shell','mkdir','/sdcard/sunxin/'
+    commandLine "$adb",'push',getPluginApkPath('debug'),getSDCardPluginPath()
 }
