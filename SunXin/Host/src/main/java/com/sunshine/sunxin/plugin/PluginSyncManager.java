@@ -27,9 +27,6 @@ public class PluginSyncManager {
     private PluginSyncManager(Context context){
         this.mContext = context ;
     }
-    public void initSyncManager(){
-
-    }
 
     public PluginSyncInfo getPluginSyncInfo(String pluginId){
         PluginSyncInfo pluginSyncInfo = null;

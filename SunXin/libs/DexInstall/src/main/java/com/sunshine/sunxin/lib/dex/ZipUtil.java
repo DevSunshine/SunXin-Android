@@ -11,7 +11,7 @@ import java.io.RandomAccessFile;
 import java.util.zip.CRC32;
 import java.util.zip.ZipException;
 
-final class ZipUtil {
+public final class ZipUtil {
     private static final int ENDHDR = 22;
     private static final int ENDSIG = 101010256;
     private static final int BUFFER_SIZE = 16384;
@@ -19,7 +19,7 @@ final class ZipUtil {
     ZipUtil() {
     }
 
-    static long getZipCrc(File apk) throws IOException {
+    public static long getZipCrc(File apk) throws IOException {
         RandomAccessFile raf = new RandomAccessFile(apk, "r");
 
         long var3;
@@ -33,7 +33,7 @@ final class ZipUtil {
         return var3;
     }
 
-    static ZipUtil.CentralDirectory findCentralDirectory(RandomAccessFile raf) throws IOException, ZipException {
+    public static ZipUtil.CentralDirectory findCentralDirectory(RandomAccessFile raf) throws IOException, ZipException {
         long scanOffset = raf.length() - 22L;
         if(scanOffset < 0L) {
             throw new ZipException("File too short to be a zip file: " + raf.length());
@@ -65,7 +65,7 @@ final class ZipUtil {
         }
     }
 
-    static long computeCrcOfCentralDir(RandomAccessFile raf, ZipUtil.CentralDirectory dir) throws IOException {
+    public static long computeCrcOfCentralDir(RandomAccessFile raf, ZipUtil.CentralDirectory dir) throws IOException {
         CRC32 crc = new CRC32();
         long stillToRead = dir.size;
         raf.seek(dir.offset);
@@ -85,7 +85,7 @@ final class ZipUtil {
         return crc.getValue();
     }
 
-    static class CentralDirectory {
+    public static class CentralDirectory {
         long offset;
         long size;
 

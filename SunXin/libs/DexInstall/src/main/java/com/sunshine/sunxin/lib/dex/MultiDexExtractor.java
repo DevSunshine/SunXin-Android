@@ -281,7 +281,6 @@ final class MultiDexExtractor {
                 ;
             }
         }
-
         editor.commit();
     }
 

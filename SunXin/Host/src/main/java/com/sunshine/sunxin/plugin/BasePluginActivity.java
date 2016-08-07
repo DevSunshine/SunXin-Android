@@ -100,7 +100,7 @@ public abstract class BasePluginActivity extends BaseActivity {
                         resources, theme, pluginInfo);
                 pluginCache.addPluginRuntimeEnv(pluginRuntimeEnv);
                 installRuntimeEnv = true;
-                Log.v("zgy", "==========installRuntimeEnv======" + new File(pluginInfo.localPath).length());
+                Log.v("zgy", "==========installRuntimeEnv======" + pluginInfo.localPath);
             }
         } catch (Exception e) {
             installRuntimeEnv = false;

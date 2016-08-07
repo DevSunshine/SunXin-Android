@@ -32,7 +32,7 @@ public class RootPluginActivity extends BasePluginActivity {
         }else {
             mPluginId = savedInstanceState.getString(PluginConstant.INTENT_PLUGIN_ID_KEY) ;
         }
-
+        Log.v("zgy","=======mPluginId=========="+mPluginId) ;
         syncPluginById(mPluginId);
     }
 
@@ -43,13 +43,14 @@ public class RootPluginActivity extends BasePluginActivity {
     }
 
     private void installPlugin() {
-        Log.v("zgy","=======installPlugin=========="+mIsInstallPlug) ;
+        Log.v("zgy","=======installPlugin===start======="+mIsInstallPlug) ;
         try {
             if (!isFinishing() && !mIsInstallPlug) {
 
                 String host = getHostFragment();
                 if (TextUtils.isEmpty(host))
                     host = pluginInfo.rootFragment;
+                Log.v("zgy","=======host=========="+host) ;
                 Fragment fragment = (Fragment) getClassLoader().loadClass(host).newInstance();
                 Bundle bundle = getIntent().getExtras();
                 bundle.putSerializable(PluginConstant.INTENT_PLUGIN_INFO_KEY, pluginInfo);

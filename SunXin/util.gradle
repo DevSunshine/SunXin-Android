@@ -19,7 +19,12 @@ def injectTask(){
 }
 
 def isPluginApk(){
-    return true ;
+    for(name in gradle.pluginApk){
+       if (name.equals(project.name)){
+           return true ;
+       }
+    }
+    return false ;
 }
 def getSDCardPluginPath(){
     return '/sdcard/sunxin/'+project.name+'.apk'

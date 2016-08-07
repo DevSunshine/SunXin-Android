@@ -113,7 +113,7 @@ public class PluginSyncUtil {
     }
 
     public void createPluginLocalPath(PluginInfo pluginInfo) {
-        File plugDir = mContext.getDir("plugin", 0);
+        File plugDir = mContext.getDir("plugin", Context.MODE_PRIVATE);
         plugDir.mkdir();
         if (TextUtils.isEmpty(pluginInfo.id))
             return;

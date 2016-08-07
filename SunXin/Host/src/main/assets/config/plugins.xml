@@ -1,27 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin>
 
-    <plugin
-        id="101"
-        desc="插件测试"
-        path="plugins/PluginFragmentTest.apk"
-        rootFragment="com.test.gyzhong.plugin1.PluginFragmentTest"
-        version="21"
-        versionParent="20151122" >
-    </plugin>
+
 
     <plugin
         id="102"
         desc="插件模板"
-        path="plugins/TempPlugin_debug.apk"
-        rootFragment="com.sunxin.plugin.temp.RootFragment"
+        path="plugins/TempPlugin.apk"
+        rootFragment="com.sunxin.plugin.login.RootFragment"
         version="21"
         versionParent="20151122" >
     </plugin>
     <plugin
         id="103"
         desc="登录页面"
-        path="plugins/Plugin_Login-debug.apk"
+        path="plugins/Plugin_Login.apk"
         rootFragment="com.sunxin.plugin.login.RootFragment"
         version="21"
         versionParent="20151122" >

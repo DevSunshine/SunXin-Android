@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.sunshine.sun.lib.socket.SSResponse;
 import com.sunshine.sun.lib.socket.request.SSITaskListener;
@@ -22,6 +23,7 @@ import com.sunshine.sunxin.plugin.RootPluginActivity;
  */
 public class RootFragment extends BaseFragment {
 
+    private TextView mTextView ;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

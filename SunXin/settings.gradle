@@ -12,7 +12,7 @@ project(':Plugin_Login').projectDir = new File("plugins/Plugin_Login")
 project(':TempPlugin').projectDir = new File("plugins/TempPlugin")
 
 
-def plugin = ['Plugin_Login','TempPlugin']
+def plugin = ['Host','Plugin_Login','TempPlugin']
 
 gradle.ext.pluginApk = plugin ;
 

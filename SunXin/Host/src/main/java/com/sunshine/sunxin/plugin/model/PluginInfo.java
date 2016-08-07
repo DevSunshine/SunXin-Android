@@ -17,9 +17,13 @@ public class PluginInfo implements Serializable {
 
     public String version;
 
-    public String MD5;
+    public long MD5;
 
     public String title;
+
+    public long crc ;
+
+    public boolean sdcard ;
 
     public boolean checkEqual(PluginInfo pluginInfo) {
         if (pluginInfo == null)
