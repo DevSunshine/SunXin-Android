@@ -4,6 +4,7 @@ import android.content.Context;
 import android.text.TextUtils;
 
 
+import com.sunshine.sunxin.otto.BusProvider;
 import com.sunshine.sunxin.plugin.model.PluginInfo;
 import com.sunshine.sunxin.plugin.model.PluginRuntimeEnv;
 
@@ -52,13 +53,15 @@ public class PluginCache {
     }
 
     public void updatePluginInfo(String pluginId,PluginInfo pluginInfo){
+        if (sMemCache.containsKey(pluginId)){
+            sMemCache.remove(pluginId) ;
+        }
         sMemCache.put(pluginId,pluginInfo) ;
+        BusProvider.provide().post(new PluginInfoEvent(pluginInfo));
     }
 
     public PluginInfo getPluginInfo(String pluginId){
-        PluginInfo pluginInfo = null ;
-        pluginInfo = sMemCache.get(pluginId) ;
-        return pluginInfo ;
+        return sMemCache.get(pluginId) ;
     }
 
 }

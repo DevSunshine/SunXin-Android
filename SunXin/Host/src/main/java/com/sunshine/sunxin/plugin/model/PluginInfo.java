@@ -47,5 +47,7 @@ public class PluginInfo implements Serializable {
         version = pluginInfo.version ;
         MD5 = pluginInfo.MD5 ;
         title = pluginInfo.title ;
+        crc = pluginInfo.crc ;
+        sdcard = pluginInfo.sdcard ;
     }
 }

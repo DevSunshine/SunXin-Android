@@ -29,7 +29,7 @@ public class PluginSyncManager {
     }
 
     public PluginSyncInfo getPluginSyncInfo(String pluginId){
-        PluginSyncInfo pluginSyncInfo = null;
+        PluginSyncInfo pluginSyncInfo;
         if (TextUtils.isEmpty(pluginId)){
             pluginSyncInfo = new PluginSyncInfo(null,pluginId, SyncStatue.ERROR) ;
             return pluginSyncInfo ;
@@ -38,7 +38,7 @@ public class PluginSyncManager {
         if (pluginInfo != null ){
             pluginSyncInfo = new PluginSyncInfo(pluginInfo,pluginId,SyncStatue.SYNCED) ;
         }else {
-            pluginSyncInfo = new PluginSyncInfo(null,pluginId,SyncStatue.WAITTING) ;
+            pluginSyncInfo = new PluginSyncInfo(null,pluginId,SyncStatue.WAITING) ;
         }
         return pluginSyncInfo ;
     }

@@ -2,6 +2,6 @@
 
 
 <plugin crc="3217446289" desc="插件模板" id="102" path="plugins/TempPlugin.apk" project="TempPlugin" rootFragment="com.sunxin.plugin.login.RootFragment" version="21" versionParent="20151122"/>
-<plugin crc="726167655" desc="登录页面" id="103" path="plugins/Plugin_Login.apk" project="Plugin_Login" rootFragment="com.sunxin.plugin.login.RootFragment" version="21" versionParent="20151122"/>
+<plugin crc="3667257138" desc="登录页面" id="103" path="plugins/Plugin_Login.apk" project="Plugin_Login" rootFragment="com.sunxin.plugin.login.RootFragment" version="21" versionParent="20151122"/>
 
 </plugin>

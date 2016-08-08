@@ -5,7 +5,9 @@ import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.squareup.otto.Subscribe;
 import com.sunshine.sunxin.R;
+import com.sunshine.sunxin.otto.BusProvider;
 import com.sunshine.sunxin.plugin.model.PluginInfo;
 import com.sunshine.sunxin.plugin.model.PluginSyncInfo;
 import com.sunshine.sunxin.plugin.model.SyncStatue;
@@ -22,20 +24,27 @@ public class RootPluginActivity extends BasePluginActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        /**
+         * 注册监听
+         */
+        BusProvider.provide().register(this);
+
         mPluginSyncManager = PluginSyncManager.getInstance(getApplicationContext());
-
-        if (savedInstanceState == null){
-            mPluginId = getIntent().getStringExtra(PluginConstant.INTENT_PLUGIN_ID_KEY) ;
-            if(TextUtils.isEmpty(mPluginId)){
-                //error
-            }
-        }else {
-            mPluginId = savedInstanceState.getString(PluginConstant.INTENT_PLUGIN_ID_KEY) ;
+        if (savedInstanceState == null) {
+            mPluginId = getIntent().getStringExtra(PluginConstant.INTENT_PLUGIN_ID_KEY);
+        } else {
+            mPluginId = savedInstanceState.getString(PluginConstant.INTENT_PLUGIN_ID_KEY);
         }
-        Log.v("zgy","=======mPluginId=========="+mPluginId) ;
-
-
         syncPluginById(mPluginId);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        /**
+         * 注销监听
+         */
+        BusProvider.provide().unregister(this);
     }
 
     protected void onSaveInstanceState(Bundle paramBundle) {
@@ -45,14 +54,11 @@ public class RootPluginActivity extends BasePluginActivity {
     }
 
     private void installPlugin() {
-        Log.v("zgy","=======installPlugin===start======="+mIsInstallPlug) ;
         try {
             if (!isFinishing() && !mIsInstallPlug) {
-
                 String host = getHostFragment();
                 if (TextUtils.isEmpty(host))
                     host = pluginInfo.rootFragment;
-                Log.v("zgy","=======host=========="+host) ;
                 Fragment fragment = (Fragment) getClassLoader().loadClass(host).newInstance();
                 Bundle bundle = getIntent().getExtras();
                 bundle.putSerializable(PluginConstant.INTENT_PLUGIN_INFO_KEY, pluginInfo);
@@ -60,10 +66,10 @@ public class RootPluginActivity extends BasePluginActivity {
                 getSupportFragmentManager().beginTransaction().replace(R.id.id_plugin_root_view, fragment)
                         .commitAllowingStateLoss();
                 mIsInstallPlug = true;
-                Log.v("zgy","=======mIsInstallPlug=========="+mIsInstallPlug) ;
             }
         } catch (Exception e) {
             e.printStackTrace();
+            mIsInstallPlug = false ;
         }
     }
 
@@ -77,32 +83,51 @@ public class RootPluginActivity extends BasePluginActivity {
 
     private void syncPluginById(String pluginId) {
         PluginSyncInfo pluginSyncInfo = mPluginSyncManager.getPluginSyncInfo(pluginId);
-        if (pluginSyncInfo != null && pluginSyncInfo.syncStatue == SyncStatue.WAITTING) {
-
+        if (pluginSyncInfo.syncStatue == SyncStatue.WAITING) {
+            // TODO: 2016/8/8  等待进度条
+        } else if (pluginSyncInfo.syncStatue == SyncStatue.ERROR) {
+            Log.v("zgy", "=======mPluginId==========" + mPluginId);
+            finish();
         } else {
-            if (pluginSyncInfo.pluginInfo.sdcard){
-                PluginApk.checkChange(this,mPluginId);
-            }else {
-                syncPlugin(pluginSyncInfo);
+            if (mIsInstallPlug) {
+                return;
+            }
+            if (pluginInfo == null) {
+                pluginInfo = new PluginInfo();
+            }
+            if (pluginSyncInfo.pluginInfo.sdcard) {
+                // TODO: 2016/8/8  等待进度条
+                PluginApk.checkChange(this, mPluginId);
+            } else {
+                pluginInfo.deepCopy(pluginSyncInfo.pluginInfo);
+                install();
             }
         }
     }
 
-    private void syncPlugin(PluginSyncInfo syncInfo) {
-        if (mIsInstallPlug) {
-            return;
-        }
-        if (syncInfo == null) {
-            //
-        }
-        if (pluginInfo == null) {
-            pluginInfo = new PluginInfo();
-        }
-        if (syncInfo.syncStatue == SyncStatue.SYNCED) {
-            pluginInfo.deepCopy(syncInfo.pluginInfo);
-            if (installRuntimeEnv(pluginInfo)) {
-                installPlugin();
+    public void install() {
+//        BusProvider.provide().unregister(this);
+        if (installRuntimeEnv(pluginInfo)) {
+            installPlugin();
+            if (mIsInstallPlug){
+                // TODO: 2016/8/8 安装成功
+            }else {
+                // TODO: 2016/8/8 安装失败
             }
+        }else {
+            // TODO: 2016/8/8 安装失败
         }
+    }
+
+    @Subscribe
+    public void onPluginInfo(PluginInfoEvent event) {
+        pluginInfo.deepCopy(event.pluginInfo);
+        Log.v("zgy", "==========onPluginInfo======" + pluginInfo.crc);
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                install();
+            }
+        });
     }
 }

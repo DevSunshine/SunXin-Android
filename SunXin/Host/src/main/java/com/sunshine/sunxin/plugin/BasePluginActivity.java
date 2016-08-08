@@ -79,9 +79,9 @@ public abstract class BasePluginActivity extends BaseActivity {
     }
 
     protected boolean installRuntimeEnv(PluginInfo pluginInfo) {
-        boolean installRuntimeEnv = false;
+        boolean installRuntimeEnv;
         try {
-            if (pluginCache.getPluginRuntimeEnv(pluginInfo) != null) {
+            if (pluginCache.getPluginRuntimeEnv(pluginInfo) != null && !pluginInfo.sdcard) {
                 installRuntimeEnv = true;
             } else {
                 File localDex = getDir(PluginConstant.DIR_PLUGIN_OUT_DEX, Context.MODE_PRIVATE);
@@ -103,6 +103,7 @@ public abstract class BasePluginActivity extends BaseActivity {
                 Log.v("zgy", "==========installRuntimeEnv======" + pluginInfo.localPath);
             }
         } catch (Exception e) {
+            e.printStackTrace();
             installRuntimeEnv = false;
         }
         Log.v("zgy", "==========installRuntimeEnv==2====" + installRuntimeEnv);
