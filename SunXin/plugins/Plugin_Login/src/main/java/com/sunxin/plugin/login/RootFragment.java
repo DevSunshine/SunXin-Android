@@ -3,6 +3,7 @@ package com.sunxin.plugin.login;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,13 +26,15 @@ public class RootFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        Log.v("zgy","======onCreateView=========z钟光燕====") ;
         return inflater.inflate(R.layout.plugin_login_layout,container,false) ;
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        getTitleView().hide();
+//        getTitleView().hide();
+        Log.v("zgy","======onViewCreated=====中心宏观========") ;
         view.findViewById(R.id.id_login).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,7 +60,7 @@ public class RootFragment extends BaseFragment {
                     }
                 }).start();
 
-                Toast.makeText(getActivity().getApplicationContext(),"SB, 点我干嘛呢！",Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity().getApplicationContext(),"SB, 点我干嘛呢，哈哈！",Toast.LENGTH_LONG).show();
 
             }
         });

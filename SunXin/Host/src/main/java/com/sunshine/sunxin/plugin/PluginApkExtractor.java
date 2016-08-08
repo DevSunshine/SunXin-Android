@@ -28,11 +28,13 @@ import java.util.zip.ZipFile;
 public class PluginApkExtractor {
     private static Method sApplyMethod;
     private static final String PLUGIN_DIR = "plugin";
+    private static long add = 0 ;
 
     static void loadPlugin(Context context, PluginInfo pluginInfo, boolean forceReload) {
         File plugDir = context.getDir(PLUGIN_DIR, Context.MODE_PRIVATE);
         Log.v("plugin","=============plugDir======="+plugDir.getAbsolutePath()) ;
-        String localName = new StringBuilder(pluginInfo.id).append(pluginInfo.rootFragment).append(".zip").toString();
+        add++ ;
+        String localName = new StringBuilder(pluginInfo.id).append(pluginInfo.rootFragment).append(add).append(".zip").toString();
         pluginInfo.localPath = (plugDir.getAbsolutePath() + File.separator + localName);
         File plugin = new File(plugDir, localName);
         long crc = pluginInfo.crc;
