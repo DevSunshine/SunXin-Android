@@ -8,7 +8,7 @@ import java.io.InputStream;
 import java.util.Properties;
 
 /**
- * Created by 钟光燕 on 2016/7/28.
+ * Created by zhonggy on 2016/7/28.
  * e-mail guangyanzhong@163.com
  */
 public class FileUtil {

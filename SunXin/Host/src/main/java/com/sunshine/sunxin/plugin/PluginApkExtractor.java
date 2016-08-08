@@ -2,28 +2,25 @@ package com.sunshine.sunxin.plugin;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.pm.ApplicationInfo;
 import android.os.Build;
-import android.text.TextUtils;
+import android.os.Environment;
 import android.util.Log;
 
 import com.sunshine.sunxin.lib.dex.ZipUtil;
 import com.sunshine.sunxin.plugin.model.PluginInfo;
 
-import java.io.BufferedOutputStream;
 import java.io.Closeable;
 import java.io.File;
 import java.io.FileFilter;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.zip.ZipEntry;
 import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
-import java.util.zip.ZipOutputStream;
 
 /**
  * Created by gyzhong on 16/8/6.
@@ -41,11 +38,12 @@ public class PluginApkExtractor {
         long crc = pluginInfo.crc;
         Log.v("plugin","=============crc======="+crc) ;
         if (!forceReload && !isModified( plugin, crc)) {
-            Log.v("plugin","=============不需要在此拷贝=======") ;
+            Log.v("plugin","=============不需要再次拷贝=======") ;
             // TODO: 16/8/6  不需要拷贝操作
             if (!verifyZipFile(plugin)) {
                 loadPlugin(context, pluginInfo, true);
             }
+            PluginCache.getInstance(context).updatePluginInfo(pluginInfo.id, pluginInfo);
         } else {
             //do copy
             try {
@@ -83,14 +81,16 @@ public class PluginApkExtractor {
     }
 
     private static void extract(Context context, File extractTo, PluginInfo info) throws IOException {
-        InputStream inputStream = null;
+        InputStream inputStream ;
         OutputStream out ;
         File tmp = File.createTempFile(info.id + "temp", ".zip", extractTo.getParentFile());
+
         if (!info.sdcard) {
             inputStream = context.getAssets().open(info.path);
 
         } else {
-
+            String pluginPath = Environment.getExternalStorageDirectory().getPath() +File.separator+info.path;
+            inputStream = new FileInputStream(pluginPath) ;
         }
         try {
             out = new FileOutputStream(tmp);
@@ -176,8 +176,10 @@ public class PluginApkExtractor {
     private static boolean isModified(File archive, long currentCrc) {
         long fileCrc = -1l;
         try {
+            long startTime = System.currentTimeMillis() ;
             fileCrc = ZipUtil.getZipCrc(archive);
-            Log.v("Plugin","==========fileCrc========="+fileCrc) ;
+            long endTime = System.currentTimeMillis() ;
+            Log.v("Plugin","==========fileCrc========="+fileCrc+"=======time="+(endTime - startTime)+"===currentCrc=="+currentCrc) ;
 
             //4056390309
         } catch (IOException e) {

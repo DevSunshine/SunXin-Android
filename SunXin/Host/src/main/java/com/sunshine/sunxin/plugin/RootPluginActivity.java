@@ -33,6 +33,8 @@ public class RootPluginActivity extends BasePluginActivity {
             mPluginId = savedInstanceState.getString(PluginConstant.INTENT_PLUGIN_ID_KEY) ;
         }
         Log.v("zgy","=======mPluginId=========="+mPluginId) ;
+
+
         syncPluginById(mPluginId);
     }
 
@@ -78,7 +80,11 @@ public class RootPluginActivity extends BasePluginActivity {
         if (pluginSyncInfo != null && pluginSyncInfo.syncStatue == SyncStatue.WAITTING) {
 
         } else {
-            syncPlugin(pluginSyncInfo);
+            if (pluginSyncInfo.pluginInfo.sdcard){
+                PluginApk.checkChange(this,mPluginId);
+            }else {
+                syncPlugin(pluginSyncInfo);
+            }
         }
     }
 

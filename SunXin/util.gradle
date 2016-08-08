@@ -1,4 +1,3 @@
-
 def injectTask(){
     tasks.whenTaskAdded{
         task ->
@@ -9,6 +8,13 @@ def injectTask(){
                     def name = project.name+".apk" ;
                     if (tasks.size() > 0){
                         println("===========copy ${name} to SDCard============")
+                        getCrc('debug')
+                        for (int i = 0 ; i < tasks.size() ; i ++){
+                            tasks[i].execute()
+                        }
+                    }
+                    tasks = project.getTasksByName('copyPluginFileToSDCard',false)
+                    if (tasks.size() > 0){
                         for (int i = 0 ; i < tasks.size() ; i ++){
                             tasks[i].execute()
                         }
@@ -26,11 +32,26 @@ def isPluginApk(){
     }
     return false ;
 }
+def getSDCardPath(){
+    return '/sdcard/plugins/'
+}
 def getSDCardPluginPath(){
-    return '/sdcard/sunxin/'+project.name+'.apk'
+    return '/sdcard/plugins/'+project.name+'.apk'
 }
 def getPluginApkPath(buildType){
     return project.projectDir.absolutePath+"/build/outputs/apk/"+project.name+"-${buildType}.apk"
+}
+
+def getCrc(buildType){
+    def start = System.currentTimeMillis() ;
+    println("==============start==========="+"$start")
+    def crc = ZipUtil.getZipCrc(getPluginApkPath("$buildType"))
+    def end = System.currentTimeMillis() ;
+    def total = end - start ;
+
+    def pluginXml = rootDir.absolutePath+"/plugins.xml"
+    XMLOperate.updateCrcXml("$pluginXml",project.name,crc)
+    println('=======getCrc=========='+"$crc"+"============$total")
 }
 
 def getENVPath(){
@@ -46,6 +67,8 @@ def getENVPath(){
     }
 }
 ext{
+    getSDCardPath  = this.&getSDCardPath ;
+    getCrc  = this.&getCrc ;
     injectTask  = this.&injectTask ;
     getSDCardPluginPath  = this.&getSDCardPluginPath ;
     getPluginApkPath  = this.&getPluginApkPath ;

@@ -18,7 +18,7 @@
         android:id="@+id/id_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="点击跳转"
+        android:text="点击登录Tencent"
         android:textSize="18sp"
         android:textColor="@android:color/holo_red_dark"
         android:padding="8dp"/>

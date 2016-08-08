@@ -1,30 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<plugin>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><plugin>
 
-    <plugin
-        id="101"
-        desc="插件测试"
-        path="plugins/PluginFragmentTest.apk"
-        rootFragment="com.test.gyzhong.plugin1.PluginFragmentTest"
-        version="21"
-        versionParent="20151122" >
-    </plugin>
 
-    <plugin
-        id="102"
-        desc="插件模板"
-        path="plugins/TempPlugin_debug.apk"
-        rootFragment="com.sunxin.plugin.temp.RootFragment"
-        version="21"
-        versionParent="20151122" >
-    </plugin>
-    <plugin
-        id="103"
-        desc="登录页面"
-        path="plugins/Plugin_Login-debug.apk"
-        rootFragment="com.sunxin.plugin.login.RootFragment"
-        version="21"
-        versionParent="20151122" >
-    </plugin>
+<plugin crc="3217446289" desc="插件模板" id="102" path="plugins/TempPlugin.apk" project="TempPlugin" rootFragment="com.sunxin.plugin.login.RootFragment" version="21" versionParent="20151122"/>
+<plugin crc="726167655" desc="登录页面" id="103" path="plugins/Plugin_Login.apk" project="Plugin_Login" rootFragment="com.sunxin.plugin.login.RootFragment" version="21" versionParent="20151122"/>
 
 </plugin>

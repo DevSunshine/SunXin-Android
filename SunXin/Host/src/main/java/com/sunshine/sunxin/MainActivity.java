@@ -26,6 +26,12 @@ public class MainActivity extends BaseActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        System.exit(0);
+    }
+
     public void startPlugin1(View view){
         Intent intent = new Intent(this,RootPluginActivity.class) ;
         intent.putExtra(PluginConstant.INTENT_PLUGIN_ID_KEY, "101") ;

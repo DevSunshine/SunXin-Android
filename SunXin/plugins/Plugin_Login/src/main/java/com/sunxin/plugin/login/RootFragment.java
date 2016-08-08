@@ -1,21 +1,19 @@
 package com.sunxin.plugin.login;
 // Copyright (c) 2016 ${ORGANIZATION_NAME}. All rights reserved.
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.sunshine.sun.lib.socket.SSResponse;
 import com.sunshine.sun.lib.socket.request.SSITaskListener;
 import com.sunshine.sun.lib.socket.request.SSTask;
 import com.sunshine.sunxin.BaseFragment;
 import com.sunshine.sunxin.TestJava;
-import com.sunshine.sunxin.plugin.PluginConstant;
-import com.sunshine.sunxin.plugin.RootPluginActivity;
 
 /**
  * Created by 钟光燕 on 2016/8/4.
@@ -58,6 +56,8 @@ public class RootFragment extends BaseFragment {
                         });
                     }
                 }).start();
+
+                Toast.makeText(getActivity().getApplicationContext(),"SB,点我干嘛？",Toast.LENGTH_SHORT).show();
 
             }
         });

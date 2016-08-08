@@ -39,13 +39,18 @@ task copyAPKTarget(type: org.gradle.api.tasks.Copy){
     into ("$root/Host/src/main/assets/plugins" )
 }
 
-
 task makeSDCardPath(type:org.gradle.api.tasks.Exec){
     def adb = "${getENVPath()}/platform-tools/adb"
-    commandLine "$adb",'shell','mkdir','/sdcard/sunxin/'
+    commandLine "$adb",'shell','mkdir',getSDCardPath()
 }
-task copyAPKToSDCard(dependsOn:makeSDCardPath,type: org.gradle.api.tasks.Exec){
+
+task copyPluginFileToSDCard(type:org.gradle.api.tasks.Exec){
     def adb = "${getENVPath()}/platform-tools/adb"
-    commandLine "$adb",'shell','mkdir','/sdcard/sunxin/'
+    def pluginXml = rootProject.rootDir.absolutePath+'/plugins.xml'
+    commandLine "$adb",'push',"$pluginXml",getSDCardPath()
+}
+task copyAPKToSDCard(type: org.gradle.api.tasks.Exec){
+    def adb = "${getENVPath()}/platform-tools/adb"
+    commandLine "$adb",'shell','mkdir',getSDCardPath()
     commandLine "$adb",'push',getPluginApkPath('debug'),getSDCardPluginPath()
 }
