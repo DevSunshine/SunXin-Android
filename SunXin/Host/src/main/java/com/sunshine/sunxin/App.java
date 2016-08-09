@@ -2,6 +2,7 @@ package com.sunshine.sunxin;
 // Copyright (c) 2016 ${ORGANIZATION_NAME}. All rights reserved.
 
 import android.app.Application;
+import android.content.Context;
 
 import com.sunshine.sunxin.plugin.PluginApk;
 
@@ -12,8 +13,14 @@ import com.sunshine.sunxin.plugin.PluginApk;
 public class App extends Application {
 
     @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        PluginApk.install(this);
+    }
+
+    @Override
     public void onCreate() {
         super.onCreate();
-        PluginApk.install(this);
+
     }
 }

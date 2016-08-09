@@ -40,6 +40,7 @@ public class MainActivity extends BaseActivity {
     public void startPlugin2(View view){
         Intent intent = new Intent(this,RootPluginActivity.class) ;
         intent.putExtra(PluginConstant.INTENT_PLUGIN_ID_KEY, "102") ;
+        intent.putExtra(PluginConstant.INTENT_SHOW_TITLE_KEY, false) ;
         startActivity(intent);
     }
     public void startPlugin3(View view){

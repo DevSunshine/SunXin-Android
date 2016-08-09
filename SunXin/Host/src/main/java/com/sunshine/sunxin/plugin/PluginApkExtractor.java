@@ -33,7 +33,9 @@ public class PluginApkExtractor {
     static void loadPlugin(Context context, PluginInfo pluginInfo, boolean forceReload) {
         File plugDir = context.getDir(PLUGIN_DIR, Context.MODE_PRIVATE);
         Log.v("plugin","=============plugDir======="+plugDir.getAbsolutePath()) ;
-        add++ ;
+        if (pluginInfo.debug){
+            add++ ;
+        }
         String localName = new StringBuilder(pluginInfo.id).append(pluginInfo.rootFragment).append(add).append(".zip").toString();
         pluginInfo.localPath = (plugDir.getAbsolutePath() + File.separator + localName);
         File plugin = new File(plugDir, localName);
@@ -45,7 +47,7 @@ public class PluginApkExtractor {
             if (!verifyZipFile(plugin)) {
                 loadPlugin(context, pluginInfo, true);
             }
-            PluginCache.getInstance(context).updatePluginInfo(pluginInfo.id, pluginInfo);
+            PluginCache.getInstance().updatePluginInfo(pluginInfo.id, pluginInfo);
         } else {
             //do copy
             try {
@@ -53,7 +55,7 @@ public class PluginApkExtractor {
                 preformPlugin(context,plugin,pluginInfo);
                 //
                 Log.v("plugin","=============success=======") ;
-                PluginCache.getInstance(context).updatePluginInfo(pluginInfo.id, pluginInfo);
+                PluginCache.getInstance().updatePluginInfo(pluginInfo.id, pluginInfo);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -87,7 +89,7 @@ public class PluginApkExtractor {
         OutputStream out ;
         File tmp = File.createTempFile(info.id + "temp", ".zip", extractTo.getParentFile());
 
-        if (!info.sdcard) {
+        if (!info.debug) {
             inputStream = context.getAssets().open(info.path);
 
         } else {
@@ -129,7 +131,7 @@ public class PluginApkExtractor {
         boolean copy = false;
         try {
             InputStream inputStream = null;
-            if (pluginInfo.sdcard) {
+            if (pluginInfo.debug) {
                 inputStream = context.getAssets().open(pluginInfo.path);
             }
             FileOutputStream outputStream = new FileOutputStream(new File(pluginInfo.localPath));

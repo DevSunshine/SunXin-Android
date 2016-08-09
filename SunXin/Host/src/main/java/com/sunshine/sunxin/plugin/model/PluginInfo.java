@@ -17,13 +17,12 @@ public class PluginInfo implements Serializable {
 
     public String version;
 
-    public long MD5;
 
     public String title;
 
     public long crc ;
 
-    public boolean sdcard ;
+    public boolean debug;
 
     public boolean checkEqual(PluginInfo pluginInfo) {
         if (pluginInfo == null)
@@ -45,9 +44,8 @@ public class PluginInfo implements Serializable {
         localPath = pluginInfo.localPath ;
         rootFragment = pluginInfo.rootFragment ;
         version = pluginInfo.version ;
-        MD5 = pluginInfo.MD5 ;
         title = pluginInfo.title ;
         crc = pluginInfo.crc ;
-        sdcard = pluginInfo.sdcard ;
+        debug = pluginInfo.debug;
     }
 }

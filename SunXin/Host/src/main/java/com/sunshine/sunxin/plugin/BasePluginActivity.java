@@ -33,7 +33,7 @@ public abstract class BasePluginActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        pluginCache = PluginCache.getInstance(getApplicationContext());
+        pluginCache = PluginCache.getInstance();
         super.onCreate(savedInstanceState);
         setContentView(getContentView());
         if (getIntent().getExtras().containsKey(PluginConstant.INTENT_PLUGIN_INFO_KEY)) {
@@ -81,7 +81,7 @@ public abstract class BasePluginActivity extends BaseActivity {
     protected boolean installRuntimeEnv(PluginInfo pluginInfo) {
         boolean installRuntimeEnv;
         try {
-            if (pluginCache.getPluginRuntimeEnv(pluginInfo) != null && !pluginInfo.sdcard) {
+            if (pluginCache.getPluginRuntimeEnv(pluginInfo) != null && !pluginInfo.debug) {
                 installRuntimeEnv = true;
             } else {
                 File localDex = getDir(PluginConstant.DIR_PLUGIN_OUT_DEX, Context.MODE_PRIVATE);

@@ -5,7 +5,16 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 24
     buildToolsVersion "23.0.3"
-
+    signingConfigs {
+        releaseConfig {
+            if(gradle.keyAlias != "") {
+                keyAlias gradle.keyAlias
+                keyPassword gradle.keyPassword
+                storeFile file(gradle.storeFile)
+                storePassword gradle.storePassword
+            }
+        }
+    }
     defaultConfig {
         applicationId "com.sunxin.app"
         minSdkVersion 14
@@ -17,7 +26,7 @@ android {
     buildTypes {
         release {
             buildConfigField "boolean", "API_ENV", "false"
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {

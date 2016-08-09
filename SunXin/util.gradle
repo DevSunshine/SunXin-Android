@@ -19,6 +19,12 @@ def injectTask(){
                             tasks[i].execute()
                         }
                     }
+                    tasks = project.getTasksByName('copyAPKTarget',false)
+                    if (tasks.size() > 0){
+                        for (int i = 0 ; i < tasks.size() ; i ++){
+                            tasks[i].execute()
+                        }
+                    }
                 }
             }
     }

@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.Environment;
 import android.util.Log;
 
+import com.sunshine.sunxin.BuildConfig;
+import com.sunshine.sunxin.otto.BusProvider;
 import com.sunshine.sunxin.plugin.model.PluginInfo;
 
 import org.w3c.dom.Element;
@@ -24,30 +26,35 @@ import javax.xml.parsers.ParserConfigurationException;
  */
 public class PluginApk {
 
+    public static boolean installed ;
     public static void install(final Context context){
 
         //异步加载
         new Thread(new Runnable() {
             @Override
             public void run() {
+                installed = false ;
                 InputStream inputStream = null;
                 NodeList nodeList;
-                boolean isSDCard = false ;
+                boolean isDebug = false ;
                 int position = 0;
-                try {
-                    inputStream = context.getAssets().open("config/plugins.xml");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    //加载 sdcard 中的插件
+                if (BuildConfig.DEBUG){
                     String pluginSrcDir = Environment.getExternalStorageDirectory().getPath() + "/plugins";
                     File file = new File(pluginSrcDir+File.separator+"plugins.xml") ;
                     try {
                         inputStream = new FileInputStream(file) ;
-                        isSDCard = true ;
+                        isDebug = true ;
                     } catch (FileNotFoundException e1) {
                         e1.printStackTrace();
                     }
+                }else {
+                    try {
+                        inputStream = context.getAssets().open("config/plugins.xml");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
+
                 if (inputStream == null){
                     return;
                 }
@@ -63,7 +70,7 @@ public class PluginApk {
                         pluginInfo.rootFragment = element.getAttribute("rootFragment");
                         pluginInfo.crc = Long.parseLong(element.getAttribute("crc"));
                         Log.v("plugin","=============pluginInfo.crc======="+pluginInfo.crc) ;
-                        pluginInfo.sdcard = isSDCard ;
+                        pluginInfo.debug = isDebug ;
                         PluginApkExtractor.loadPlugin(context,pluginInfo,false);
                         position ++;
                     }
@@ -74,11 +81,13 @@ public class PluginApk {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+                installed = true ;
+                BusProvider.provide().post(new PluginInstalledEvent());
             }
         }).start();
     }
 
-    public static void checkChange(final Context context, final String pluginId){
+    public static void checkInstall(final Context context, final String pluginId){
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -106,7 +115,7 @@ public class PluginApk {
                         pluginInfo.rootFragment = element.getAttribute("rootFragment");
                         pluginInfo.crc = Long.parseLong(element.getAttribute("crc"));
                         Log.v("plugin","=============pluginInfo.crc======="+pluginInfo.crc) ;
-                        pluginInfo.sdcard = isSDCard ;
+                        pluginInfo.debug = isSDCard ;
                         if ( pluginInfo.id.equals(pluginId)){
                             PluginApkExtractor.loadPlugin(context.getApplicationContext(),pluginInfo,false);
                             break;

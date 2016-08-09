@@ -60,7 +60,7 @@ public class RootFragment extends BaseFragment {
                     }
                 }).start();
 
-                Toast.makeText(getActivity().getApplicationContext(),"SB, 点我干嘛呢，哈哈！",Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity().getApplicationContext(),"SB,= 点我干嘛呢，哈哈！",Toast.LENGTH_LONG).show();
 
             }
         });

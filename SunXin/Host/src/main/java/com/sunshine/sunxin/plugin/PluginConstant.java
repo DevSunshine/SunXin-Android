@@ -5,13 +5,15 @@ package com.sunshine.sunxin.plugin;
  */
 public interface PluginConstant {
 
-    public String DIR_PLUGIN = "plugin" ;
+    String DIR_PLUGIN = "plugin" ;
 
-    public String DIR_PLUGIN_OUT_DEX = "pluginOutDex" ;
+    String DIR_PLUGIN_OUT_DEX = "pluginOutDex" ;
 
-    public String DIR_CACHE_INFO = "plugin_sync_info" ;
+    String DIR_CACHE_INFO = "plugin_sync_info" ;
 
-    public String INTENT_PLUGIN_INFO_KEY = "key_pluginInfo" ;
+    String INTENT_PLUGIN_INFO_KEY = "key_pluginInfo" ;
 
-    public String INTENT_PLUGIN_ID_KEY = "key_pluginId" ;
+    String INTENT_PLUGIN_ID_KEY = "key_pluginId" ;
+
+    String INTENT_SHOW_TITLE_KEY = "key_showTitle" ;
 }

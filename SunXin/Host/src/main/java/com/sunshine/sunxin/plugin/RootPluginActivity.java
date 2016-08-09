@@ -20,6 +20,7 @@ public class RootPluginActivity extends BasePluginActivity {
     private boolean mIsInstallPlug = false;
     private PluginSyncManager mPluginSyncManager;
     private String mPluginId;
+    private boolean mShowTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +33,16 @@ public class RootPluginActivity extends BasePluginActivity {
         mPluginSyncManager = PluginSyncManager.getInstance(getApplicationContext());
         if (savedInstanceState == null) {
             mPluginId = getIntent().getStringExtra(PluginConstant.INTENT_PLUGIN_ID_KEY);
+            mShowTitle = getIntent().getBooleanExtra(PluginConstant.INTENT_SHOW_TITLE_KEY, true);
         } else {
             mPluginId = savedInstanceState.getString(PluginConstant.INTENT_PLUGIN_ID_KEY);
+            mShowTitle = savedInstanceState.getBoolean(PluginConstant.INTENT_SHOW_TITLE_KEY, true);
+        }
+        if (!mShowTitle){
+            getTitleView().hide();
         }
         syncPluginById(mPluginId);
+
     }
 
     @Override
@@ -51,6 +58,7 @@ public class RootPluginActivity extends BasePluginActivity {
         super.onSaveInstanceState(paramBundle);
         if (this.pluginInfo != null)
             paramBundle.putString(PluginConstant.INTENT_PLUGIN_ID_KEY, this.mPluginId);
+        paramBundle.putBoolean(PluginConstant.INTENT_SHOW_TITLE_KEY,mShowTitle);
     }
 
     private void installPlugin() {
@@ -69,7 +77,7 @@ public class RootPluginActivity extends BasePluginActivity {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            mIsInstallPlug = false ;
+            mIsInstallPlug = false;
         }
     }
 
@@ -85,6 +93,7 @@ public class RootPluginActivity extends BasePluginActivity {
         PluginSyncInfo pluginSyncInfo = mPluginSyncManager.getPluginSyncInfo(pluginId);
         if (pluginSyncInfo.syncStatue == SyncStatue.WAITING) {
             // TODO: 2016/8/8  等待进度条
+            showLoadingView();
         } else if (pluginSyncInfo.syncStatue == SyncStatue.ERROR) {
             Log.v("zgy", "=======mPluginId==========" + mPluginId);
             finish();
@@ -95,9 +104,10 @@ public class RootPluginActivity extends BasePluginActivity {
             if (pluginInfo == null) {
                 pluginInfo = new PluginInfo();
             }
-            if (pluginSyncInfo.pluginInfo.sdcard) {
+            if (pluginSyncInfo.pluginInfo.debug) {
                 // TODO: 2016/8/8  等待进度条
-                PluginApk.checkChange(this, mPluginId);
+                showLoadingView();
+                PluginApk.checkInstall(this, mPluginId);
             } else {
                 pluginInfo.deepCopy(pluginSyncInfo.pluginInfo);
                 install();
@@ -109,18 +119,22 @@ public class RootPluginActivity extends BasePluginActivity {
 //        BusProvider.provide().unregister(this);
         if (installRuntimeEnv(pluginInfo)) {
             installPlugin();
-            if (mIsInstallPlug){
+            if (mIsInstallPlug) {
                 // TODO: 2016/8/8 安装成功
-            }else {
+                hideLoadingView();
+            } else {
                 // TODO: 2016/8/8 安装失败
             }
-        }else {
+        } else {
             // TODO: 2016/8/8 安装失败
         }
     }
 
     @Subscribe
     public void onPluginInfo(PluginInfoEvent event) {
+        if (!mPluginId.equals(event.pluginInfo.id)){
+            return;
+        }
         pluginInfo.deepCopy(event.pluginInfo);
         Log.v("zgy", "==========onPluginInfo======" + pluginInfo.crc);
         runOnUiThread(new Runnable() {
@@ -129,5 +143,17 @@ public class RootPluginActivity extends BasePluginActivity {
                 install();
             }
         });
+    }
+
+    @Subscribe
+    public void onPluginInstalled(PluginInstalledEvent event) {
+        if (pluginInfo == null){
+            PluginInfo info = PluginCache.getInstance().getPluginInfo(mPluginId) ;
+            if (info != null){
+                BusProvider.provide().post(new PluginInfoEvent(info));
+            }
+        }
+
+
     }
 }

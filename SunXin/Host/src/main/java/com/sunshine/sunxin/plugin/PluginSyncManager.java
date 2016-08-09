@@ -19,7 +19,7 @@ public class PluginSyncManager {
 
     public static PluginSyncManager getInstance(Context context) {
         if (instance == null){
-            instance = new PluginSyncManager(context);
+            instance = new PluginSyncManager(context.getApplicationContext());
         }
         return instance;
     }
@@ -29,17 +29,21 @@ public class PluginSyncManager {
     }
 
     public PluginSyncInfo getPluginSyncInfo(String pluginId){
-        PluginSyncInfo pluginSyncInfo;
+        PluginSyncInfo pluginSyncInfo ;
         if (TextUtils.isEmpty(pluginId)){
             pluginSyncInfo = new PluginSyncInfo(null,pluginId, SyncStatue.ERROR) ;
             return pluginSyncInfo ;
         }
-        PluginInfo pluginInfo = PluginCache.getInstance(mContext).getPluginInfo(pluginId) ;
+        PluginInfo pluginInfo = PluginCache.getInstance().getPluginInfo(pluginId) ;
         if (pluginInfo != null ){
             pluginSyncInfo = new PluginSyncInfo(pluginInfo,pluginId,SyncStatue.SYNCED) ;
         }else {
+            if (PluginApk.installed){
+                PluginApk.install(mContext);
+            }
             pluginSyncInfo = new PluginSyncInfo(null,pluginId,SyncStatue.WAITING) ;
         }
         return pluginSyncInfo ;
     }
+
 }

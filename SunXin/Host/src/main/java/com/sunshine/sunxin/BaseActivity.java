@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import com.sunshine.sunxin.view.TitleView;
+import com.sunshine.sunxin.view.loadingview.LoadingIndicatorView;
 
 /**
  * Created by 钟光燕 on 2016/8/4.
@@ -15,6 +16,7 @@ import com.sunshine.sunxin.view.TitleView;
  */
 public class BaseActivity extends FragmentActivity {
     private TitleView mTitleView ;
+    private LoadingIndicatorView mLoadingView ;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,11 +32,18 @@ public class BaseActivity extends FragmentActivity {
         View parent = getLayoutInflater().inflate(R.layout.base_view,null) ;
         FrameLayout contentView = (FrameLayout) parent.findViewById(R.id.id_contentView);
         mTitleView = (TitleView) parent.findViewById(R.id.id_titleBar);
+        mLoadingView = (LoadingIndicatorView) parent.findViewById(R.id.id_loadingView);
         contentView.addView(view);
         super.setContentView(parent);
 
     }
 
+    public void showLoadingView(){
+        mLoadingView.setVisibility(View.VISIBLE);
+    }
+    public void hideLoadingView(){
+        mLoadingView.smoothToHide();
+    }
     public TitleView getTitleView(){
         return mTitleView ;
     }

@@ -1,15 +1,12 @@
 package com.sunshine.sunxin.plugin;
 
-import android.content.Context;
+import android.support.v4.util.LruCache;
 import android.text.TextUtils;
-
 
 import com.sunshine.sunxin.otto.BusProvider;
 import com.sunshine.sunxin.plugin.model.PluginInfo;
 import com.sunshine.sunxin.plugin.model.PluginRuntimeEnv;
 
-import java.io.File;
-import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -18,38 +15,32 @@ import java.util.concurrent.ConcurrentHashMap;
 public class PluginCache {
 
 
-    private HashMap<String, PluginRuntimeEnv> mPluginRuntimeEnvs = new HashMap();
     private ConcurrentHashMap<String, PluginInfo> sMemCache = new ConcurrentHashMap();
     private static PluginCache sInstance = null;
-    private File mCachePath;
+    private static final RunTimeEnvLruCache RUN_TIME_CACHE = new RunTimeEnvLruCache(12);
 
-    private PluginCache(Context context) {
-        this.mCachePath = context.getDir(PluginConstant.DIR_CACHE_INFO, 0);
-        this.mCachePath.mkdirs();
+    private PluginCache() {
+
     }
 
-    public static PluginCache getInstance(Context context){
+    public static PluginCache getInstance(){
         if (sInstance == null){
-            sInstance = new PluginCache(context);
+            sInstance = new PluginCache();
         }
         return sInstance ;
     }
 
     public void addPluginRuntimeEnv(PluginRuntimeEnv pluginRuntimeEnv) {
         if (pluginRuntimeEnv != null && pluginRuntimeEnv.pluginInfo != null) {
-            String key = pluginRuntimeEnv.pluginInfo.localPath;
-            if (mPluginRuntimeEnvs.containsKey(key))
-                mPluginRuntimeEnvs.remove(key);
-            mPluginRuntimeEnvs.put(key, pluginRuntimeEnv);
-
+            RUN_TIME_CACHE.put(pluginRuntimeEnv.pluginInfo,pluginRuntimeEnv) ;
         }
     }
 
     public PluginRuntimeEnv getPluginRuntimeEnv(PluginInfo pluginInfo) {
-        if (pluginInfo == null || TextUtils.isEmpty(pluginInfo.localPath)) {
+        if (pluginInfo == null || TextUtils.isEmpty(pluginInfo.id)) {
             return null;
         }
-        return mPluginRuntimeEnvs.get(pluginInfo.localPath);
+        return RUN_TIME_CACHE.get(pluginInfo);
     }
 
     public void updatePluginInfo(String pluginId,PluginInfo pluginInfo){
@@ -62,6 +53,26 @@ public class PluginCache {
 
     public PluginInfo getPluginInfo(String pluginId){
         return sMemCache.get(pluginId) ;
+    }
+
+    private static class RunTimeEnvLruCache extends LruCache<String,PluginRuntimeEnv>{
+        /**
+         * @param maxSize for caches that do not override {@link #sizeOf}, this is
+         *                the maximum number of entries in the cache. For all other caches,
+         *                this is the maximum sum of the sizes of the entries in this cache.
+         */
+        public RunTimeEnvLruCache(int maxSize) {
+            super(maxSize);
+        }
+
+        public PluginRuntimeEnv get(PluginInfo info){
+            return get(info.id) ;
+        }
+
+        public PluginRuntimeEnv put(PluginInfo info,PluginRuntimeEnv env){
+            return put(info.id,env) ;
+        }
+
     }
 
 }

@@ -18,6 +18,7 @@ gradle.ext.pluginApk = plugin ;
 
 initEnv()
 initFileDir()
+initSignatureInfo()
 
 
 def initEnv() {
@@ -33,5 +34,12 @@ def initFileDir() {
     util.createDir("$jarDir" + File.separator + 'injectJar')
     util.createDir("$jarDir" + File.separator + 'providedJar')
     util.createDir("$jarDir" + File.separator + 'libsJar')
+}
+
+def initSignatureInfo() {
+    gradle.ext.keyAlias = "sunshine"
+    gradle.ext.keyPassword = "sunshinesunxin"
+    gradle.ext.storeFile = rootDir.absolutePath + File.separator + 'sunshine_sunxin.jks'
+    gradle.ext.storePassword = "sunshinesunxin"
 }
 
