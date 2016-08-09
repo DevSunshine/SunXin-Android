@@ -1,4 +1,4 @@
-include ':Host', ':SSSocket', ':DexInstall', ':ProtoBuf',':Plugin_Login', ':TempPlugin', ':TaskInterface'
+include ':Plugin_Login', ':TempPlugin', ':Host', ':SSSocket', ':DexInstall', ':ProtoBuf', ':TaskInterface'
 apply from: "util.gradle"
 
 //libs
@@ -12,7 +12,7 @@ project(':Plugin_Login').projectDir = new File("plugins/Plugin_Login")
 project(':TempPlugin').projectDir = new File("plugins/TempPlugin")
 
 
-def plugin = ['Host','Plugin_Login','TempPlugin']
+def plugin = ['Plugin_Login','TempPlugin']
 
 gradle.ext.pluginApk = plugin ;
 
@@ -39,7 +39,7 @@ def initFileDir() {
 def initSignatureInfo() {
     gradle.ext.keyAlias = "sunshine"
     gradle.ext.keyPassword = "sunshinesunxin"
-    gradle.ext.storeFile = rootDir.absolutePath + File.separator + 'sunshine_sunxin.jks'
+    gradle.ext.storeFile = '../sunshine_sunxin.jks'
     gradle.ext.storePassword = "sunshinesunxin"
 }
 

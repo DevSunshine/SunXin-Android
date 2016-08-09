@@ -7,12 +7,10 @@ android {
     buildToolsVersion "23.0.3"
     signingConfigs {
         releaseConfig {
-            if(gradle.keyAlias != "") {
-                keyAlias gradle.keyAlias
-                keyPassword gradle.keyPassword
-                storeFile file(gradle.storeFile)
-                storePassword gradle.storePassword
-            }
+            keyAlias 'sunshine'
+            keyPassword 'sunshinesunxin'
+            storeFile file("../sunshine_sunxin.jks")
+            storePassword 'sunshinesunxin'
         }
     }
     defaultConfig {
@@ -26,8 +24,9 @@ android {
     buildTypes {
         release {
             buildConfigField "boolean", "API_ENV", "false"
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.releaseConfig
         }
         debug {
             buildConfigField "boolean", "API_ENV", "true"
@@ -42,16 +41,20 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.1.1'
     compile project(':SSSocket')
     compile project(':DexInstall')
-    compile fileTree(dir: rootProject.rootDir.absolutePath+File.separator+'jars'+File.separator+'compileJar',include: ['*.jar'])
-    compile fileTree(dir: rootProject.rootDir.absolutePath+File.separator+'jars'+File.separator+'libsJar',include: ['*.jar'])
+    compile fileTree(dir: rootProject.rootDir.absolutePath + File.separator + 'jars' + File.separator + 'compileJar', include: ['*.jar'])
+    compile fileTree(dir: rootProject.rootDir.absolutePath + File.separator + 'jars' + File.separator + 'libsJar', include: ['*.jar'])
 
 }
 
-task copyAPKTarget(type: org.gradle.api.tasks.Copy){
-    rename 'combined.jar',project.name+'.jar'
-    def pro = project.projectDir.absolutePath ;
-    from ("$pro/build/intermediates/transforms/jarMerging/debug/jars/1/1f/combined.jar")
+task copyHostJarTarget(type: org.gradle.api.tasks.Copy) {
+    rename 'combined.jar', project.name + '.jar'
+    def pro = project.projectDir.absolutePath;
+    from("$pro/build/intermediates/transforms/jarMerging/debug/jars/1/1f/combined.jar")
     def root = rootProject.rootDir.absolutePath
-    into ("$root/jars/providedJar" )
+    into("$root/jars/providedJar")
 }
 
+task deleteAssets(type:org.gradle.api.tasks.Delete){
+    def root = project.projectDir ;
+    delete "$root"+'/src/main/assets/config/',"$root"+'/src/main/assets/plugins/'
+}

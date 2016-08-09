@@ -13,9 +13,18 @@ android {
         versionCode 1
         versionName "1.0"
     }
+    signingConfigs {
+        releaseConfig {
+            keyAlias 'sunshine'
+            keyPassword 'sunshinesunxin'
+            storeFile file("../../sunshine_sunxin.jks")
+            storePassword 'sunshinesunxin'
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
+            signingConfig signingConfigs.releaseConfig
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -30,11 +39,17 @@ dependencies {
 }
 
 task copyAPKTarget(type: org.gradle.api.tasks.Copy){
-    rename 'TempPlugin-debug.apk',project.name+'.apk'
+    def fileName = project.name+"-release.apk"
+    rename "$fileName",project.name+'.apk'
     def pro = project.projectDir.absolutePath ;
-    from ("$pro/build/outputs/apk/TempPlugin-debug.apk")
+    from ("$pro/build/outputs/apk/$fileName")
     def root = rootProject.rootDir.absolutePath
     into ("$root/Host/src/main/assets/plugins" )
+}
+task copyConfigTarget(type: org.gradle.api.tasks.Copy){
+    from (rootProject.rootDir.absolutePath+'/plugins.xml')
+    def root = rootProject.rootDir.absolutePath
+    into ("$root/Host/src/main/assets/config" )
 }
 
 task makeSDCardPath(type:org.gradle.api.tasks.Exec){

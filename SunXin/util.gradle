@@ -1,28 +1,67 @@
 def injectTask(){
     tasks.whenTaskAdded{
         task ->
-            if(task.name.equals("assembleDebug")&&isPluginApk()){
-                println('===========assembleDebug============')
-                task << {
-                    def tasks = project.getTasksByName('copyAPKToSDCard',false)
-                    def name = project.name+".apk" ;
-                    if (tasks.size() > 0){
-                        println("===========copy ${name} to SDCard============")
-                        getCrc('debug')
-                        for (int i = 0 ; i < tasks.size() ; i ++){
-                            tasks[i].execute()
+            if (isPluginApk()){
+                if(task.name.equals("assembleDebug")){
+                    println('===========assembleDebug============')
+                    task << {
+                        def tasks = project.getTasksByName('copyAPKToSDCard',false)
+                        def name = project.name+".apk" ;
+                        if (tasks.size() > 0){
+                            println("===========copy ${name} to SDCard============")
+                            getCrc('debug')
+                            for (int i = 0 ; i < tasks.size() ; i ++){
+                                tasks[i].execute()
+                            }
+                        }
+                        tasks = project.getTasksByName('copyPluginFileToSDCard',false)
+                        if (tasks.size() > 0){
+                            for (int i = 0 ; i < tasks.size() ; i ++){
+                                tasks[i].execute()
+                            }
+                        }
+
+                    }
+                }
+                if (task.name.equals("assembleRelease")){
+                    task << {
+                        def tasks = project.getTasksByName('copyAPKTarget',false)
+                        def name = project.name+".apk" ;
+                        if (tasks.size() > 0){
+                            println("===========copy ${name} to SDCard============")
+                            getCrc('release')
+                            for (int i = 0 ; i < tasks.size() ; i ++){
+                                tasks[i].execute()
+                            }
+                        }
+                        tasks = project.getTasksByName('copyConfigTarget',false)
+                        if (tasks.size() > 0){
+                            for (int i = 0 ; i < tasks.size() ; i ++){
+                                tasks[i].execute()
+                            }
+                        }
+
+                    }
+                }
+            }else if (project.name.equals("Host")){
+                if(task.name.equals("assembleDebug")){
+                    task <<{
+                        def tasks = project.getTasksByName('copyHostJarTarget',false)
+                        if (tasks.size() > 0){
+                            for (int i = 0 ; i < tasks.size() ; i ++){
+                                tasks[i].execute()
+                            }
                         }
                     }
-                    tasks = project.getTasksByName('copyPluginFileToSDCard',false)
-                    if (tasks.size() > 0){
-                        for (int i = 0 ; i < tasks.size() ; i ++){
-                            tasks[i].execute()
-                        }
-                    }
-                    tasks = project.getTasksByName('copyAPKTarget',false)
-                    if (tasks.size() > 0){
-                        for (int i = 0 ; i < tasks.size() ; i ++){
-                            tasks[i].execute()
+                }
+                if(task.name.equals("assembleRelease")){
+                    task <<{
+                        def tasks = project.getTasksByName('deleteAssets',false)
+                        if (tasks.size() > 0){
+                            for (int i = 0 ; i < tasks.size() ; i ++){
+                                println('==========deleteAssets=========')
+                                tasks[i].execute()
+                            }
                         }
                     }
                 }
@@ -68,7 +107,7 @@ def getENVPath(){
         FileUtil util = new FileUtil() ;
         return util.getPropertyEnv(rootDir.absolutePath+"/local.properties")
     }else {
-        println('==========getENVPath========='+"$env")
+
         return env
     }
 }
