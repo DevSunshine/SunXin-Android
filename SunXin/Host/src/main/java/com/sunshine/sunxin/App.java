@@ -4,6 +4,8 @@ package com.sunshine.sunxin;
 import android.app.Application;
 import android.content.Context;
 
+import com.squareup.leakcanary.LeakCanary;
+import com.squareup.leakcanary.RefWatcher;
 import com.sunshine.sunxin.plugin.PluginApk;
 
 /**
@@ -12,15 +14,22 @@ import com.sunshine.sunxin.plugin.PluginApk;
  */
 public class App extends Application {
 
+    RefWatcher watcher ;
+    public static App instance ;
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
         PluginApk.install(this);
+        instance = this ;
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
+        watcher = LeakCanary.install(this) ;
+    }
 
+    public RefWatcher getRefWatcher(){
+        return watcher ;
     }
 }

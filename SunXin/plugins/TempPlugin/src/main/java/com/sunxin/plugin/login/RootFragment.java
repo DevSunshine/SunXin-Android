@@ -1,7 +1,6 @@
 package com.sunxin.plugin.login;
 // Copyright (c) 2016 ${ORGANIZATION_NAME}. All rights reserved.
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -9,8 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.sunshine.sunxin.BaseFragment;
-import com.sunshine.sunxin.plugin.PluginConstant;
-import com.sunshine.sunxin.plugin.RootPluginActivity;
 
 /**
  * Created by 钟光燕 on 2016/8/4.
@@ -31,10 +28,31 @@ public class RootFragment extends BaseFragment {
         view.findViewById(R.id.id_jump).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),RootPluginActivity.class) ;
-                intent.putExtra(PluginConstant.INTENT_PLUGIN_ID_KEY, "101") ;
-                startActivity(intent);
+                test(new Runnable() {
+                    @Override
+                    public void run() {
+                        getActivity().finish();
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                try {
+                                    Thread.sleep(10000);
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }).start();
+
+                    }
+                });
+//                Intent intent = new Intent(getActivity(),RootPluginActivity.class) ;
+//                intent.putExtra(PluginConstant.INTENT_PLUGIN_ID_KEY, "101") ;
+//                startActivity(intent);
             }
         });
+    }
+
+    private void test(Runnable runnable){
+        runnable.run();
     }
 }

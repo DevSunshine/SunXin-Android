@@ -69,7 +69,6 @@ public class PluginApk {
                         pluginInfo.version = element.getAttribute("version");
                         pluginInfo.rootFragment = element.getAttribute("rootFragment");
                         pluginInfo.crc = Long.parseLong(element.getAttribute("crc"));
-                        Log.v("plugin","=============pluginInfo.crc======="+pluginInfo.crc) ;
                         pluginInfo.debug = isDebug ;
                         PluginApkExtractor.loadPlugin(context,pluginInfo,false);
                         position ++;
@@ -113,8 +112,8 @@ public class PluginApk {
                         pluginInfo.path = element.getAttribute("path");
                         pluginInfo.version = element.getAttribute("version");
                         pluginInfo.rootFragment = element.getAttribute("rootFragment");
+                        Log.v("plugin","=============pluginInfo.crc======="+pluginId) ;
                         pluginInfo.crc = Long.parseLong(element.getAttribute("crc"));
-                        Log.v("plugin","=============pluginInfo.crc======="+pluginInfo.crc) ;
                         pluginInfo.debug = isSDCard ;
                         if ( pluginInfo.id.equals(pluginId)){
                             PluginApkExtractor.loadPlugin(context.getApplicationContext(),pluginInfo,false);

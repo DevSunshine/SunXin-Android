@@ -47,4 +47,10 @@ public class BaseActivity extends FragmentActivity {
     public TitleView getTitleView(){
         return mTitleView ;
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        App.instance.getRefWatcher() ;
+    }
 }

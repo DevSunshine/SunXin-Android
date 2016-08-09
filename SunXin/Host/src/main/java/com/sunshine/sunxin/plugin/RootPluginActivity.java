@@ -107,6 +107,7 @@ public class RootPluginActivity extends BasePluginActivity {
             if (pluginSyncInfo.pluginInfo.debug) {
                 // TODO: 2016/8/8  等待进度条
                 showLoadingView();
+                Log.v("zgy", "=======checkInstall==========");
                 PluginApk.checkInstall(this, mPluginId);
             } else {
                 pluginInfo.deepCopy(pluginSyncInfo.pluginInfo);
@@ -151,6 +152,8 @@ public class RootPluginActivity extends BasePluginActivity {
             PluginInfo info = PluginCache.getInstance().getPluginInfo(mPluginId) ;
             if (info != null){
                 BusProvider.provide().post(new PluginInfoEvent(info));
+            }else {
+                Log.v("zgy", "==========没有找到插件======" );
             }
         }
 

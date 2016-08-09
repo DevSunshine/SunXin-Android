@@ -19,6 +19,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
 
@@ -28,15 +30,21 @@ import java.util.zip.ZipFile;
 public class PluginApkExtractor {
     private static Method sApplyMethod;
     private static final String PLUGIN_DIR = "plugin";
-    private static long add = 0 ;
+    private static Map<String,Integer> map = new HashMap<>() ;
 
     static void loadPlugin(Context context, PluginInfo pluginInfo, boolean forceReload) {
         File plugDir = context.getDir(PLUGIN_DIR, Context.MODE_PRIVATE);
-        Log.v("plugin","=============plugDir======="+plugDir.getAbsolutePath()) ;
+        Log.v("plugin","=============id======="+pluginInfo.id) ;
+        String localName ;
         if (pluginInfo.debug){
-            add++ ;
+            if (!map.containsKey(pluginInfo.id)){
+                map.put(pluginInfo.id,0) ;
+            }
+            int temp = map.get(pluginInfo.id) ;
+            localName = new StringBuilder(pluginInfo.id).append(pluginInfo.rootFragment).append(temp).append(".zip").toString();
+        }else {
+            localName = new StringBuilder(pluginInfo.id).append(pluginInfo.rootFragment).append(".zip").toString();
         }
-        String localName = new StringBuilder(pluginInfo.id).append(pluginInfo.rootFragment).append(add).append(".zip").toString();
         pluginInfo.localPath = (plugDir.getAbsolutePath() + File.separator + localName);
         File plugin = new File(plugDir, localName);
         long crc = pluginInfo.crc;
@@ -51,8 +59,18 @@ public class PluginApkExtractor {
         } else {
             //do copy
             try {
+
+                if (pluginInfo.debug){
+                    plugin.delete() ;
+                    int temp = map.remove(pluginInfo.id) ;
+                    temp ++ ;
+                    map.put(pluginInfo.id,temp) ;
+                    localName = new StringBuilder(pluginInfo.id).append(pluginInfo.rootFragment).append(temp).append(".zip").toString();
+                }
+                File pluginNew = new File(plugDir, localName);
+
                 prepareDexDir(plugDir, localName);
-                preformPlugin(context,plugin,pluginInfo);
+                preformPlugin(context,pluginNew,pluginInfo);
                 //
                 Log.v("plugin","=============success=======") ;
                 PluginCache.getInstance().updatePluginInfo(pluginInfo.id, pluginInfo);
