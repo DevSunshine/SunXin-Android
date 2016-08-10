@@ -1,4 +1,4 @@
-include ':Plugin_Login', ':TempPlugin', ':Host', ':SSSocket', ':DexInstall', ':ProtoBuf', ':TaskInterface'
+include ':Plugin_Login', ':Plugin_Temp', ':Host', ':SSSocket', ':DexInstall', ':ProtoBuf', ':TaskInterface'
 apply from: "util.gradle"
 
 //libs
@@ -9,10 +9,10 @@ project(':TaskInterface').projectDir = new File("libs/TaskInterface")
 
 //plugins
 project(':Plugin_Login').projectDir = new File("plugins/Plugin_Login")
-project(':TempPlugin').projectDir = new File("plugins/TempPlugin")
+project(':Plugin_Temp').projectDir = new File("plugins/Plugin_Temp")
 
 
-def plugin = ['Plugin_Login','TempPlugin']
+def plugin = ['Plugin_Login','Plugin_Temp']
 
 gradle.ext.pluginApk = plugin ;
 

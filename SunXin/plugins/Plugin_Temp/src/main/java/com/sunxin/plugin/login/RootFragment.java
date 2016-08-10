@@ -1,8 +1,10 @@
 package com.sunxin.plugin.login;
 // Copyright (c) 2016 ${ORGANIZATION_NAME}. All rights reserved.
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,7 @@ import com.sunshine.sunxin.BaseFragment;
  */
 public class RootFragment extends BaseFragment {
 
+    static Activity activity;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -28,20 +31,23 @@ public class RootFragment extends BaseFragment {
         view.findViewById(R.id.id_jump).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                activity = getActivity() ;
                 test(new Runnable() {
                     @Override
                     public void run() {
-                        getActivity().finish();
                         new Thread(new Runnable() {
+
                             @Override
                             public void run() {
                                 try {
+                                    Log.v("zgy","=====getActivity========="+getActivity()) ;
                                     Thread.sleep(10000);
                                 } catch (InterruptedException e) {
                                     e.printStackTrace();
                                 }
                             }
                         }).start();
+                        getActivity().finish();
 
                     }
                 });
