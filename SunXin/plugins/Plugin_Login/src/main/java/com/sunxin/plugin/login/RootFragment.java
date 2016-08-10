@@ -34,7 +34,7 @@ public class RootFragment extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 //        getTitleView().hide();
-        Log.v("zgy","======onViewCreated=====中心宏观========") ;
+        Log.v("zgy","======onViewCreated=====中心宏观==123=123=====") ;
         view.findViewById(R.id.id_login).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,7 +60,7 @@ public class RootFragment extends BaseFragment {
                     }
                 }).start();
 
-                Toast.makeText(getActivity().getApplicationContext(),"SB,= 点我干嘛呢，哈哈！",Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity().getApplicationContext(),"SB,= .点我干嘛呢4，！",Toast.LENGTH_LONG).show();
 
             }
         });

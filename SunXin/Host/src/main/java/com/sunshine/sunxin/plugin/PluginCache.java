@@ -7,6 +7,7 @@ import com.sunshine.sunxin.otto.BusProvider;
 import com.sunshine.sunxin.plugin.model.PluginInfo;
 import com.sunshine.sunxin.plugin.model.PluginRuntimeEnv;
 
+import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -37,7 +38,7 @@ public class PluginCache {
     }
 
     public PluginRuntimeEnv getPluginRuntimeEnv(PluginInfo pluginInfo) {
-        if (pluginInfo == null || TextUtils.isEmpty(pluginInfo.id)) {
+        if (pluginInfo == null || TextUtils.isEmpty(pluginInfo.localPath)) {
             return null;
         }
         return RUN_TIME_CACHE.get(pluginInfo);
@@ -66,11 +67,17 @@ public class PluginCache {
         }
 
         public PluginRuntimeEnv get(PluginInfo info){
-            return get(info.id) ;
+            if (info.debug){
+                return get(info.debugKey) ;
+            }
+            return get(info.localPath) ;
         }
 
         public PluginRuntimeEnv put(PluginInfo info,PluginRuntimeEnv env){
-            return put(info.id,env) ;
+            if (info.debug){
+                return put(info.debugKey,env) ;
+            }
+            return put(info.localPath,env) ;
         }
 
     }

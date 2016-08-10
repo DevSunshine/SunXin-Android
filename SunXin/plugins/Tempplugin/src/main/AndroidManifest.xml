@@ -1,3 +1,4 @@
-<manifest
-    package="com.sunxin.plugin.login">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sunxin.plugin.login"
+    android:versionCode="1">
 </manifest>

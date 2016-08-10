@@ -24,6 +24,8 @@ public class PluginInfo implements Serializable {
 
     public boolean debug;
 
+    public String debugKey ;
+
     public boolean checkEqual(PluginInfo pluginInfo) {
         if (pluginInfo == null)
             return false ;
@@ -47,5 +49,11 @@ public class PluginInfo implements Serializable {
         title = pluginInfo.title ;
         crc = pluginInfo.crc ;
         debug = pluginInfo.debug;
+        debugKey = pluginInfo.debugKey;
+    }
+
+    @Override
+    public String toString() {
+        return "PluginInfo :{\n id:"+id+"\n path:"+path+"\n localPath:"+localPath+"\n}";
     }
 }
