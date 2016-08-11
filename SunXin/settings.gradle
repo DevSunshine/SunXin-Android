@@ -1,4 +1,4 @@
-include ':Plugin_Login', ':Plugin_Temp', ':Host', ':SSSocket', ':DexInstall', ':ProtoBuf', ':TaskInterface'
+include ':Plugin_Login', ':Plugin_Temp', ':Host', ':SSSocket', ':DexInstall', ':ProtoBuf', ':TaskInterface', ':OKHttp3', ':Picasso'
 apply from: "util.gradle"
 
 //libs
@@ -6,6 +6,9 @@ project(':SSSocket').projectDir = new File("libs/SSSocket")
 project(':DexInstall').projectDir = new File("libs/DexInstall")
 project(':ProtoBuf').projectDir = new File("libs/ProtoBuf")
 project(':TaskInterface').projectDir = new File("libs/TaskInterface")
+project(':TaskInterface').projectDir = new File("libs/TaskInterface")
+project(':OKHttp3').projectDir = new File("libs/OKHttp3")
+project(':Picasso').projectDir = new File("libs/Picasso")
 
 //plugins
 project(':Plugin_Login').projectDir = new File("plugins/Plugin_Login")

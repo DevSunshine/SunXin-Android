@@ -1,5 +1,5 @@
-apply plugin: 'com.android.library'
 injectTask()
+apply plugin: 'com.android.library'
 android {
     compileSdkVersion 24
     buildToolsVersion "23.0.3"
@@ -25,7 +25,7 @@ dependencies {
 def injectTask(){
     tasks.whenTaskAdded{
         task ->
-        if(task.name.equals("packageDebugJar")){
+        if(task.name.equals("assembleDebug")){
             task << {
                 def tasks = project.getTasksByName('copyToJarsLib',false)
                 if (tasks.size() > 0){

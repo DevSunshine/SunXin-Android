@@ -45,7 +45,6 @@ dependencies {
     compile project(':DexInstall')
     compile fileTree(dir: rootProject.rootDir.absolutePath + File.separator + 'jars' + File.separator + 'compileJar', include: ['*.jar'])
     compile fileTree(dir: rootProject.rootDir.absolutePath + File.separator + 'jars' + File.separator + 'libsJar', include: ['*.jar'])
-
 }
 
 task copyHostJarTarget(type: org.gradle.api.tasks.Copy) {
