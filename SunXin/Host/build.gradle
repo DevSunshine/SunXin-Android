@@ -3,8 +3,8 @@ injectTask()
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion "23.0.3"
+    compileSdkVersion "${gradle.ext.compileSdkVersion}" as int
+    buildToolsVersion "${gradle.ext.buildToolsVersion}"
     signingConfigs {
         releaseConfig {
             keyAlias 'sunshine'
@@ -15,8 +15,8 @@ android {
     }
     defaultConfig {
         applicationId "com.sunxin.app"
-        minSdkVersion 14
-        targetSdkVersion 24
+        minSdkVersion "${gradle.ext.minSdkVersion}" as int
+        targetSdkVersion "${gradle.ext.targetSdkVersion}" as int
         versionCode 1
         versionName "1.0"
         multiDexEnabled true

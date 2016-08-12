@@ -72,11 +72,12 @@ public class StreamBuffer implements IInputBuffer,IOutPutBuffer {
     }
 
     @Override
-    public synchronized void write(byte[] buffer, int offset, int count) {
-        expand(count);
-        for (int i = offset; i < offset + count; i++) {
-            write(buffer[i]);
-        }
+    public synchronized void write(byte[] buffer, int offset, int len) {
+        expand(len);
+        System.arraycopy(buffer,offset,buf,pos,len);
+//        for (int i = offset; i < offset + len; i++) {
+//            write(buffer[i]);
+//        }
     }
 
     private void expand(int i){
@@ -87,6 +88,7 @@ public class StreamBuffer implements IInputBuffer,IOutPutBuffer {
                 int newCount = count - pos ;
                 newBuf = mPool.getBuffer(newCount + i);
                 System.arraycopy(this.buf, pos, newBuf, 0, newCount);
+                count = newCount ;
             }else {
                 newBuf = mPool.getBuffer(count + i);
                 System.arraycopy(this.buf , 0, newBuf, 0, count);

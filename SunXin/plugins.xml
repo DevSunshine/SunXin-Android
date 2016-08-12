@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><plugin>
 
     <!--<plugin desc="插件模板" id="102"  project="TempPlugin" rootFragment="com.sunxin.plugin.login.RootFragment" />-->
-<plugin crc="919436625" id="102" path="plugins/Plugin_Temp.apk" project="Plugin_Temp" rootFragment="com.sunxin.plugin.login.RootFragment" version="1"/>
-    <plugin crc="2831468976" id="101" path="plugins/Plugin_Login.apk" project="Plugin_Login" rootFragment="com.sunxin.plugin.login.RootFragment" version="1"/></plugin>
+<plugin crc="3449256354" id="102" path="plugins/Plugin_Temp.apk" project="Plugin_Temp" rootFragment="com.sunxin.plugin.login.RootFragment" version="1"/>
+    <plugin crc="999199489" id="101" path="plugins/Plugin_Login.apk" project="Plugin_Login" rootFragment="com.sunxin.plugin.login.RootFragment" version="3"/></plugin>

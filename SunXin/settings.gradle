@@ -21,7 +21,6 @@ gradle.ext.pluginApk = plugin ;
 
 initEnv()
 initFileDir()
-initSignatureInfo()
 
 
 def initEnv() {
@@ -39,10 +38,17 @@ def initFileDir() {
     util.createDir("$jarDir" + File.separator + 'libsJar')
 }
 
-def initSignatureInfo() {
+ext{
     gradle.ext.keyAlias = "sunshine"
     gradle.ext.keyPassword = "sunshinesunxin"
     gradle.ext.storeFile = '../sunshine_sunxin.jks'
     gradle.ext.storePassword = "sunshinesunxin"
+}
+
+ext{
+    gradle.ext.compileSdkVersion=24
+    gradle.ext.buildToolsVersion="23.0.3"
+    gradle.ext.minSdkVersion = 14
+    gradle.ext.targetSdkVersion = 24
 }
 
