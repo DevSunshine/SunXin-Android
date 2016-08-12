@@ -1,6 +1,7 @@
 package com.sunxin.plugin.login;
 // Copyright (c) 2016 ${ORGANIZATION_NAME}. All rights reserved.
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -15,6 +16,8 @@ import com.sunshine.sun.lib.socket.request.SSITaskListener;
 import com.sunshine.sun.lib.socket.request.SSTask;
 import com.sunshine.sunxin.BaseFragment;
 import com.sunshine.sunxin.TestJava;
+import com.sunshine.sunxin.plugin.PluginConstant;
+import com.sunshine.sunxin.plugin.RootPluginActivity;
 
 /**
  * Created by 钟光燕 on 2016/8/4.
@@ -34,35 +37,44 @@ public class RootFragment extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 //        getTitleView().hide();
-        Log.v("zgy","======onViewCreated=====中心宏观========") ;
+        Log.v("zgy","======onViewCreated=====中心宏观==123=123=====") ;
+
         view.findViewById(R.id.id_login).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                new Thread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        TestJava.login("jxxfzgy", "jxxfzgy", new SSITaskListener() {
-//                            @Override
-//                            public void onProgress(SSTask ssTask, int i, int i1) {
-//
-//                            }
-//
-//                            @Override
-//                            public void onComplete(SSTask ssTask, SSResponse ssResponse) {
-//
-//                            }
-//
-//                            @Override
-//                            public void onError(SSTask ssTask, int i) {
-//
-//                            }
-//                        });
-//                    }
-//                }).start();
 
-                Toast.makeText(getActivity().getApplicationContext(),"SB点我干嘛呢9，哈哈！",Toast.LENGTH_LONG).show();
+                startPlugin1() ;
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        TestJava.login("jxxfzgy", "jxxfzgy", new SSITaskListener() {
+                            @Override
+                            public void onProgress(SSTask ssTask, int i, int i1) {
+
+                            }
+
+                            @Override
+                            public void onComplete(SSTask ssTask, SSResponse ssResponse) {
+
+                            }
+
+                            @Override
+                            public void onError(SSTask ssTask, int i) {
+
+                            }
+                        });
+                    }
+                }).start();
+
+                Toast.makeText(getActivity().getApplicationContext(),"SB,= .点我干嘛呢5，！",Toast.LENGTH_LONG).show();
 
             }
         });
+    }
+
+    public void startPlugin1(){
+        Intent intent = new Intent(getActivity(),RootPluginActivity.class) ;
+        intent.putExtra(PluginConstant.INTENT_PLUGIN_ID_KEY, "102") ;
+        startActivity(intent);
     }
 }

@@ -8,7 +8,6 @@ import com.sunshine.sunxin.plugin.model.PluginInfo;
 import com.sunshine.sunxin.plugin.model.PluginRuntimeEnv;
 
 import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -18,7 +17,6 @@ public class PluginCache {
 
 
     private ConcurrentHashMap<String, PluginInfo> sMemCache = new ConcurrentHashMap();
-    private Map<String,PluginRuntimeEnv> sPluginRuntimeEnvMap = new HashMap<>() ;
     private static PluginCache sInstance = null;
     private static final RunTimeEnvLruCache RUN_TIME_CACHE = new RunTimeEnvLruCache(12);
 
@@ -35,23 +33,18 @@ public class PluginCache {
 
     public void addPluginRuntimeEnv(PluginRuntimeEnv pluginRuntimeEnv) {
         if (pluginRuntimeEnv != null && pluginRuntimeEnv.pluginInfo != null) {
-            if (RUN_TIME_CACHE.get(pluginRuntimeEnv.pluginInfo) != null){
-                RUN_TIME_CACHE.remove(pluginRuntimeEnv.pluginInfo.id) ;
+            if (RUN_TIME_CACHE.get(pluginRuntimeEnv.pluginInfo.localPath) != null){
+                RUN_TIME_CACHE.remove(pluginRuntimeEnv.pluginInfo.localPath) ;
             }
             RUN_TIME_CACHE.put(pluginRuntimeEnv.pluginInfo,pluginRuntimeEnv) ;
-            if (sPluginRuntimeEnvMap.containsKey(pluginRuntimeEnv.pluginInfo.id)){
-                sPluginRuntimeEnvMap.remove(pluginRuntimeEnv.pluginInfo.id) ;
-            }
-            sPluginRuntimeEnvMap.put(pluginRuntimeEnv.pluginInfo.id,pluginRuntimeEnv) ;
         }
     }
 
     public PluginRuntimeEnv getPluginRuntimeEnv(PluginInfo pluginInfo) {
-        if (pluginInfo == null || TextUtils.isEmpty(pluginInfo.id)) {
+        if (pluginInfo == null || TextUtils.isEmpty(pluginInfo.localPath)) {
             return null;
         }
-        return sPluginRuntimeEnvMap.get(pluginInfo.id) ;
-//        return RUN_TIME_CACHE.get(pluginInfo);
+        return RUN_TIME_CACHE.get(pluginInfo);
     }
 
     public void updatePluginInfo(String pluginId,PluginInfo pluginInfo){
@@ -77,11 +70,17 @@ public class PluginCache {
         }
 
         public PluginRuntimeEnv get(PluginInfo info){
-            return get(info.id) ;
+            if (info.debug){
+                return get(info.debugKey) ;
+            }
+            return get(info.localPath) ;
         }
 
         public PluginRuntimeEnv put(PluginInfo info,PluginRuntimeEnv env){
-            return put(info.id,env) ;
+            if (info.debug){
+                return put(info.debugKey,env) ;
+            }
+            return put(info.localPath,env) ;
         }
 
     }

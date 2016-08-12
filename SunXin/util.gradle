@@ -89,14 +89,21 @@ def getPluginApkPath(buildType){
 
 def getCrc(buildType){
     def start = System.currentTimeMillis() ;
-    println("==============start==========="+"$start")
     def crc = ZipUtil.getZipCrc(getPluginApkPath("$buildType"))
     def end = System.currentTimeMillis() ;
     def total = end - start ;
 
+
     def pluginXml = rootDir.absolutePath+"/plugins.xml"
-    XMLOperate.updateCrcXml("$pluginXml",project.name,crc)
-    println('=======getCrc=========='+"$crc"+"============$total")
+    Properties properties = new Properties() ;
+//    File pro = new File(rootDir.absolutePath+"/plugin.properties")
+    def xmlFile = project.file("plugin.properties")
+    properties.load(xmlFile.newInputStream())
+    def pluginId = properties.getProperty("id")
+    def version = "${android.defaultConfig.versionCode}"
+    def rootFragment = properties.getProperty("rootFrament")
+    println("=========applicationId=============$android.defaultConfig.versionCode")
+    XMLOperate.updateCrcXml("$pluginXml",pluginId,version,rootFragment,project.name,crc)
 }
 
 def getENVPath(){

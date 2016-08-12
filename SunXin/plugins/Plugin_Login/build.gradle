@@ -2,14 +2,14 @@ apply from: "../../util.gradle"
 injectTask()
 apply plugin: 'com.android.application'
 android {
-    compileSdkVersion 24
-    buildToolsVersion "23.0.3"
+    compileSdkVersion "${gradle.ext.compileSdkVersion}" as int
+    buildToolsVersion "${gradle.ext.buildToolsVersion}"
 
     defaultConfig {
         applicationId "com.sunxin.plugin.login"
-        minSdkVersion 14
-        targetSdkVersion 24
-        versionCode 1
+        minSdkVersion "${gradle.ext.minSdkVersion}" as int
+        targetSdkVersion "${gradle.ext.targetSdkVersion}" as int
+        versionCode 3
         versionName "1.0"
     }
     signingConfigs {

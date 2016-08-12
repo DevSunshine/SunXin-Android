@@ -19,20 +19,36 @@ import javax.xml.transform.stream.StreamResult;
  */
 public class XMLOperate {
 
-    public static void updateCrcXml(String xmlPath, String projectName, long crc) {
+    public static void updateCrcXml(String xmlPath, String pluginId, String version,String fragment,String projectName, long crc) {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         DocumentBuilder db;
         try {
             db = dbf.newDocumentBuilder();
             Document document = db.parse(xmlPath);
             NodeList nodeList = document.getElementsByTagName("plugin");
+            boolean hasInner = false;
             for (int i = 0 ; i < nodeList.getLength(); i ++){
                 Element element = (Element) nodeList.item(i);
                 if (projectName.equals(element.getAttribute("project"))){
                     element.setAttribute("crc",crc+"");
                     element.setAttribute("path","plugins/"+projectName+".apk");
+                    element.setAttribute("id",pluginId);
+                    element.setAttribute("version",version);
+                    element.setAttribute("rootFragment",fragment);
+                    hasInner = true ;
                     break;
                 }
+            }
+            if (!hasInner){
+                Element root = document.getDocumentElement() ;
+                Element plugin = document.createElement("plugin") ;
+                plugin.setAttribute("crc",crc+"");
+                plugin.setAttribute("path","plugins/"+projectName+".apk");
+                plugin.setAttribute("id",pluginId);
+                plugin.setAttribute("project",projectName);
+                plugin.setAttribute("version",version);
+                plugin.setAttribute("rootFragment",fragment);
+                root.appendChild(plugin) ;
             }
 
             TransformerFactory tFactory = TransformerFactory.newInstance();

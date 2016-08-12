@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><plugin>
 
+<<<<<<< HEAD
 
 <plugin crc="552389260" desc="插件模板" id="102" path="plugins/TempPlugin.apk" project="TempPlugin" rootFragment="com.sunxin.plugin.login.RootFragment" version="21" versionParent="20151122"/>
 <plugin crc="31441827" desc="登录页面" id="103" path="plugins/Plugin_Login.apk" project="Plugin_Login" rootFragment="com.sunxin.plugin.login.RootFragment" version="21" versionParent="20151122"/>
 
 </plugin>
+=======
+    <!--<plugin desc="插件模板" id="102"  project="TempPlugin" rootFragment="com.sunxin.plugin.login.RootFragment" />-->
+<plugin crc="236842899" id="102" path="plugins/Plugin_Temp.apk" project="Plugin_Temp" rootFragment="com.sunxin.plugin.login.RootFragment" version="1"/>
+    <plugin crc="3744419831" id="101" path="plugins/Plugin_Login.apk" project="Plugin_Login" rootFragment="com.sunxin.plugin.login.RootFragment" version="3"/></plugin>
+>>>>>>> 75f8683dc710c1823f3e5fadc2e2ab8e062a10b7

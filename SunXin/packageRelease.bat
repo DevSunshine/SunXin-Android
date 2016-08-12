@@ -1,2 +1,3 @@
 @echo off
-call gradle Plugin_Login:assembleRelease TempPlugin:assembleRelease Host:assembleRelease
+call
+gradle OKHttp3:assembleRelease Picasso:assembleRelease ProtoBuf:assembleRelease Plugin_Login:assembleRelease Plugin_Temp:assembleRelease Host:assembleRelease
