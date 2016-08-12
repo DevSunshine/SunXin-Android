@@ -95,7 +95,7 @@ public abstract class BasePluginActivity extends BaseActivity {
                 Resources resources = new Resources(assetManager, getResources().getDisplayMetrics(),
                         getResources().getConfiguration());
                 Resources.Theme theme = resources.newTheme();
-                theme.applyStyle(R.style.ThemeLight, true);
+                theme.applyStyle(android.R.style.Theme, true);
                 PluginRuntimeEnv pluginRuntimeEnv = new PluginRuntimeEnv(assetManager, dexClassLoader,
                         resources, theme, pluginInfo);
                 pluginCache.addPluginRuntimeEnv(pluginRuntimeEnv);

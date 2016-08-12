@@ -1,6 +1,7 @@
 package com.sunxin.plugin.login;
 // Copyright (c) 2016 ${ORGANIZATION_NAME}. All rights reserved.
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -15,6 +16,8 @@ import com.sunshine.sun.lib.socket.request.SSITaskListener;
 import com.sunshine.sun.lib.socket.request.SSTask;
 import com.sunshine.sunxin.BaseFragment;
 import com.sunshine.sunxin.TestJava;
+import com.sunshine.sunxin.plugin.PluginConstant;
+import com.sunshine.sunxin.plugin.RootPluginActivity;
 
 /**
  * Created by 钟光燕 on 2016/8/4.
@@ -35,9 +38,11 @@ public class RootFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
 //        getTitleView().hide();
         Log.v("zgy","======onViewCreated=====中心宏观==123=123=====") ;
+
         view.findViewById(R.id.id_login).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                startPlugin1() ;
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -60,9 +65,15 @@ public class RootFragment extends BaseFragment {
                     }
                 }).start();
 
-                Toast.makeText(getActivity().getApplicationContext(),"SB,= .点我干嘛呢4，！",Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity().getApplicationContext(),"SB,= .点我干嘛呢5，！",Toast.LENGTH_LONG).show();
 
             }
         });
+    }
+
+    public void startPlugin1(){
+        Intent intent = new Intent(getActivity(),RootPluginActivity.class) ;
+        intent.putExtra(PluginConstant.INTENT_PLUGIN_ID_KEY, "102") ;
+        startActivity(intent);
     }
 }
