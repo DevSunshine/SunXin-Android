@@ -66,6 +66,8 @@ public class PluginApkExtractor {
                     temp ++ ;
                     map.put(pluginInfo.id,temp) ;
                     localName = new StringBuilder(pluginInfo.id).append(pluginInfo.rootFragment).append(temp).append(".zip").toString();
+                    pluginInfo.localPath = (plugDir.getAbsolutePath() + File.separator + localName);
+
                 }
                 File pluginNew = new File(plugDir, localName);
 

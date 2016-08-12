@@ -26,7 +26,7 @@ public class RootFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        Log.v("zgy","======onCreateView=========z钟光燕====") ;
+        Log.v("zgy","======onCreateView=========光燕====") ;
         return inflater.inflate(R.layout.plugin_login_layout,container,false) ;
     }
 
@@ -38,29 +38,29 @@ public class RootFragment extends BaseFragment {
         view.findViewById(R.id.id_login).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        TestJava.login("jxxfzgy", "jxxfzgy", new SSITaskListener() {
-                            @Override
-                            public void onProgress(SSTask ssTask, int i, int i1) {
+//                new Thread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        TestJava.login("jxxfzgy", "jxxfzgy", new SSITaskListener() {
+//                            @Override
+//                            public void onProgress(SSTask ssTask, int i, int i1) {
+//
+//                            }
+//
+//                            @Override
+//                            public void onComplete(SSTask ssTask, SSResponse ssResponse) {
+//
+//                            }
+//
+//                            @Override
+//                            public void onError(SSTask ssTask, int i) {
+//
+//                            }
+//                        });
+//                    }
+//                }).start();
 
-                            }
-
-                            @Override
-                            public void onComplete(SSTask ssTask, SSResponse ssResponse) {
-
-                            }
-
-                            @Override
-                            public void onError(SSTask ssTask, int i) {
-
-                            }
-                        });
-                    }
-                }).start();
-
-                Toast.makeText(getActivity().getApplicationContext(),"SB,= 点我干嘛呢，哈哈！",Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity().getApplicationContext(),"SB点我干嘛呢9，哈哈！",Toast.LENGTH_LONG).show();
 
             }
         });

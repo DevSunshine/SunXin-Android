@@ -151,4 +151,19 @@ public abstract class BasePluginActivity extends BaseActivity {
         if (localFragment != null)
             localFragment.onActivityResult(paramInt1, paramInt2, paramIntent);
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+//        if (pluginInfo.debug){
+//            File dir = getDir(PluginConstant.DIR_PLUGIN_OUT_DEX, Context.MODE_PRIVATE);
+//            String name = pluginInfo.localPath.substring(pluginInfo.localPath.lastIndexOf("/"),
+//                    pluginInfo.localPath.length()) ;
+//            name = name.replace(".zip",".dex") ;
+//            File dex = new File(dir,name) ;
+//            Log.v("plugin", "======dex=====" + dex.getAbsolutePath());
+//            boolean delete = dex.delete() ;
+//            Log.v("plugin","======delete====="+delete);
+//        }
+    }
 }
