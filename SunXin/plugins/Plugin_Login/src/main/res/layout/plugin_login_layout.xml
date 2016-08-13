@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBg"
     android:orientation="vertical">
 
     <ImageView
+        android:id="@+id/id_header_icon"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="60dp"
+        android:layout_centerHorizontal="true"
         android:src="@drawable/header_icon" />
 
     <LinearLayout
+        android:layout_below="@id/id_header_icon"
         android:id="@+id/id_login_buttons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,6 +34,7 @@
                 android:background="@null"
                 android:hint="账号"
                 android:textColor="@color/colorBlack"
+                android:textColorHint="@color/colorHint"
                 android:textSize="16sp"
                 />
 
@@ -48,6 +51,7 @@
                 android:hint="密码"
                 android:inputType="textPassword"
                 android:textColor="@color/colorBlack"
+                android:textColorHint="@color/colorHint"
                 android:textSize="16sp" />
         </LinearLayout>
 
@@ -58,40 +62,40 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginTop="16dp"
-            android:background="@color/colorMain"
+            android:background="@drawable/btn_login"
             android:gravity="center"
             android:text="登 录"
             android:textColor="@color/colorWhite"
             android:textSize="16sp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:orientation="horizontal">
 
-            <TextView
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:layout_height="42dp"
-                android:gravity="center"
-                android:text="无法登录 ？ "
-                android:textColor="@color/colorMain"
-                android:textSize="14sp" />
-
-            <TextView
-                android:layout_weight="1"
-                android:layout_gravity="right"
-                android:layout_width="wrap_content"
-                android:layout_height="42dp"
-                android:gravity="center"
-                android:text="新用户注册"
-                android:textColor="@color/colorMain"
-                android:textSize="14sp" />
-        </LinearLayout>
     </LinearLayout>
-    <ListView
+    <FrameLayout
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        />
-</LinearLayout>
+        android:layout_gravity="bottom"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_marginLeft="16dp"
+            android:clickable="true"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:gravity="center"
+            android:text="无法登录?"
+            android:textColor="@color/main_color_selector"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_marginRight="16dp"
+            android:clickable="true"
+            android:layout_gravity="right"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:gravity="center"
+            android:text="新用户注册"
+            android:textColor="@color/main_color_selector"
+            android:textSize="14sp" />
+    </FrameLayout>
+</RelativeLayout>

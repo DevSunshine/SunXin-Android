@@ -1,31 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="48dp"
-    android:background="@color/title_view_color"
-    android:orientation="vertical">
+    android:background="@color/colorMain"
+    android:orientation="horizontal">
 
     <LinearLayout
+        android:layout_alignParentLeft="true"
         android:id="@+id/id_title_left_layout"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:orientation="horizontal">
-
     </LinearLayout>
 
+    <!--<LinearLayout-->
+    <!--android:id="@+id/id_middle_parent"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:gravity="center"-->
+    <!-->-->
+
     <LinearLayout
+        android:layout_centerInParent="true"
         android:id="@+id/id_title_middle_layout"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
-
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="center"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/id_title"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            android:text=""
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:gravity="center"/>
     </LinearLayout>
+    <!--</LinearLayout>-->
 
     <LinearLayout
+        android:layout_alignParentRight="true"
         android:id="@+id/id_title_right_layout"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:orientation="horizontal">
 
     </LinearLayout>
-</LinearLayout>
+</RelativeLayout>

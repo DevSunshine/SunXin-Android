@@ -1,4 +1,4 @@
-include ':Plugin_Login', ':Plugin_Temp', ':Host', ':SSSocket', ':DexInstall', ':ProtoBuf', ':TaskInterface', ':OKHttp3', ':Picasso'
+include ':Plugin_Login', ':Plugin_Temp', ':Host', ':SSSocket', ':DexInstall', ':ProtoBuf', ':TaskInterface', ':OKHttp3', ':Picasso', ':CommonRes'
 apply from: "util.gradle"
 
 //libs

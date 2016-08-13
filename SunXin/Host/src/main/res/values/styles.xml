@@ -4,7 +4,10 @@
     <style name="AppTheme" parent="android:Theme.NoTitleBar">
         <!-- Customize your theme here. -->
     </style>
-    <style name="ThemeLight" parent="android:Theme.NoTitleBar">
+    <style name="ThemeLight" parent="Base.Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:windowBackground">@android:color/white</item>
+    </style>
+    <style name="TestTheme" parent="Platform.AppCompat">
         <item name="android:windowBackground">@android:color/white</item>
     </style>
 

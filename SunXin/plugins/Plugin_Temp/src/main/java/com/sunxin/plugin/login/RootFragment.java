@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.sunshine.sunxin.BaseFragment;
 import com.sunshine.sunxin.plugin.PluginConstant;
@@ -30,11 +31,10 @@ public class RootFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        getTitleView().setVisibility(View.VISIBLE);
         view.findViewById(R.id.id_jump).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                activity = getActivity() ;
+                activity = getActivity();
                 test(new Runnable() {
                     @Override
                     public void run() {
@@ -43,7 +43,7 @@ public class RootFragment extends BaseFragment {
                             @Override
                             public void run() {
                                 try {
-                                    Log.v("zgy","=====getActivity========="+getActivity()) ;
+                                    Log.v("zgy", "=====getActivity=========" + getActivity());
                                     Thread.sleep(10000);
                                 } catch (InterruptedException e) {
                                     e.printStackTrace();
@@ -54,11 +54,33 @@ public class RootFragment extends BaseFragment {
 
                     }
                 });
-                Intent intent = new Intent(getActivity(),RootPluginActivity.class) ;
-                intent.putExtra(PluginConstant.INTENT_PLUGIN_ID_KEY, "101") ;
+                Intent intent = new Intent(getActivity(), RootPluginActivity.class);
+                intent.putExtra(PluginConstant.INTENT_PLUGIN_ID_KEY, "101");
                 startActivity(intent);
             }
         });
+
+        getTitleView().setTitle("内存泄漏");
+        getTitleView().addRightBtn(R.drawable.ic_cut_white, new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        }) ;
+        getTitleView().addRightBtn(R.drawable.ic_copy_white, new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        }) ;
+
+        getTitleView().addBackBtn(R.drawable.ic_back_white, new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().finish();
+            }
+        }) ;
+
     }
 
     private void test(Runnable runnable){
