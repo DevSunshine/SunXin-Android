@@ -45,6 +45,7 @@ public class TitleView extends LinearLayout {
     private LinearLayout mRightLayout;
     private LinearLayout mMiddleLayout;
     private TextView mTitle ;
+    private TextView mSubTitle ;
     private int mLeftWidth;
     private int mRightWidth;
     private int mMiddleWidth ;
@@ -81,6 +82,7 @@ public class TitleView extends LinearLayout {
         mRightLayout = (LinearLayout) findViewById(R.id.id_title_right_layout);
         mMiddleLayout = (LinearLayout) findViewById(R.id.id_title_middle_layout);
         mTitle = (TextView) findViewById(R.id.id_title);
+        mSubTitle = (TextView) findViewById(R.id.id_sub_title);
         mDensity = getResources().getDisplayMetrics().density;
         mBtnHeight = (int) (getResources().getDisplayMetrics().density * 48 + 0.5);
         mPaint.setTextSize(BTN_TEXT_SIZE * mDensity);
@@ -103,7 +105,7 @@ public class TitleView extends LinearLayout {
     }
 
     public TextView addBackBtn(String backText, OnClickListener listener) {
-        return innerAddLeftBtn(0,backText, listener);
+        return innerAddLeftBtn(0, backText, listener);
     }
     public TextView addRightBtn(String backText, OnClickListener listener) {
         return innerAddRightBtn(0, backText, listener);
@@ -112,7 +114,7 @@ public class TitleView extends LinearLayout {
         return innerAddRightBtn(iconId,backText, listener);
     }
     public TextView addRightBtn(int iconId, OnClickListener listener) {
-        return innerAddRightBtn(iconId,"", listener);
+        return innerAddRightBtn(iconId, "", listener);
     }
     public TextView addBackBtn(int iconId,String backText,OnClickListener listener){
         return innerAddLeftBtn(iconId, backText, listener);
@@ -150,16 +152,37 @@ public class TitleView extends LinearLayout {
         mRightLayout.removeAllViews();
     }
 
-    public void setTitle(String title){
+    public TextView setTitle(String title){
         mTitle.setText(title);
+        return mTitle ;
+    }
+    public TextView setSubTitle(String title){
+        if (mSubTitle.getVisibility() !=View.VISIBLE){
+            mSubTitle.setVisibility(VISIBLE);
+        }
+        mSubTitle.setText(title);
+        return mSubTitle ;
     }
 
-    public void setTitle(int resId){
+    public TextView setTitle(int resId){
         mTitle.setText(resId);
+        return mTitle ;
+    }
+    public TextView setSubTitle(int resId){
+        if (mSubTitle.getVisibility() !=View.VISIBLE){
+            mSubTitle.setVisibility(VISIBLE);
+        }
+        mSubTitle.setText(resId);
+        return mSubTitle ;
     }
 
     public void addCustomerView(View view){
-        mTitle.setVisibility(GONE);
+        if (mTitle.getVisibility() == VISIBLE){
+            mTitle.setVisibility(GONE);
+        }
+        if (mSubTitle.getVisibility() ==View.VISIBLE){
+            mSubTitle.setVisibility(GONE);
+        }
         mMiddleLayout.addView(view);
     }
 
