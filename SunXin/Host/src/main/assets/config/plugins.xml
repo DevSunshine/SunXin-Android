@@ -4,4 +4,4 @@
 
     <!--<plugin desc="插件模板" id="102"  project="TempPlugin" rootFragment="com.sunxin.plugin.login.RootFragment" />-->
 <plugin crc="628487458" id="102" path="plugins/Plugin_Temp.apk" project="Plugin_Temp" rootFragment="com.sunxin.plugin.login.RootFragment" version="1"/>
-    <plugin crc="3260151886" id="101" path="plugins/Plugin_Login.apk" project="Plugin_Login" rootFragment="com.sunxin.plugin.login.RootFragment" version="3"/></plugin>
+    <plugin crc="1369377355" id="101" path="plugins/Plugin_Login.apk" project="Plugin_Login" rootFragment="com.sunxin.plugin.login.RootFragment" version="3"/></plugin>
