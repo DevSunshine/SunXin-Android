@@ -27,6 +27,7 @@ public class App extends Application {
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
+        instance = this ;
         PluginApk.install(this);
     }
 
@@ -34,8 +35,8 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         watcher = LeakCanary.install(this) ;
+
         Thread.setDefaultUncaughtExceptionHandler(new SunXinCrashHandler());
-        instance = this ;
     }
 
     @Override

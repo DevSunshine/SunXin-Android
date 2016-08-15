@@ -21,7 +21,7 @@ project(':Plugin_Shake').projectDir = new File("plugins/Plugin_Shake")
 project(':Plugin_FileTransfer').projectDir = new File("plugins/Plugin_FileTransfer")
 
 
-def plugin = ['Plugin_Login','Plugin_Temp']
+def plugin = ['Plugin_Login','Plugin_Temp','Plugin_FileSelecter','Plugin_Shake','Plugin_FileTransfer']
 
 gradle.ext.pluginApk = plugin ;
 
