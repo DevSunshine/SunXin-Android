@@ -17,7 +17,13 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 //        getTitleView().hide();
+        getTitleView().setTitle("深信");
+        getTitleView().addRightBtn(R.drawable.ic_copy_white, new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+            }
+        }) ;
     }
 
     @Override
@@ -35,12 +41,13 @@ public class MainActivity extends BaseActivity {
     public void startPlugin1(View view){
         Intent intent = new Intent(this,RootPluginActivity.class) ;
         intent.putExtra(PluginConstant.INTENT_PLUGIN_ID_KEY, "101") ;
+        intent.putExtra(PluginConstant.INTENT_SHOW_TITLE_KEY, false) ;
         startActivity(intent);
     }
     public void startPlugin2(View view){
         Intent intent = new Intent(this,RootPluginActivity.class) ;
         intent.putExtra(PluginConstant.INTENT_PLUGIN_ID_KEY, "102") ;
-        intent.putExtra(PluginConstant.INTENT_SHOW_TITLE_KEY, false) ;
+//        intent.putExtra(PluginConstant.INTENT_SHOW_TITLE_KEY, false) ;
         startActivity(intent);
     }
     public void startPlugin3(View view){

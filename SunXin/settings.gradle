@@ -1,4 +1,7 @@
-include ':Plugin_Login', ':Plugin_Temp', ':Host', ':SSSocket', ':DexInstall', ':ProtoBuf', ':TaskInterface', ':OKHttp3', ':Picasso'
+include ':Plugin_Login', ':Plugin_Temp','Plugin_FileSelecter','Plugin_Shake','Plugin_FileTransfer',
+        ':Host',
+        ':SSSocket', ':DexInstall', ':ProtoBuf', ':TaskInterface', ':OKHttp3', ':Picasso',
+        ':CommonRes'
 apply from: "util.gradle"
 
 //libs
@@ -13,6 +16,9 @@ project(':Picasso').projectDir = new File("libs/Picasso")
 //plugins
 project(':Plugin_Login').projectDir = new File("plugins/Plugin_Login")
 project(':Plugin_Temp').projectDir = new File("plugins/Plugin_Temp")
+project(':Plugin_FileSelecter').projectDir = new File("plugins/Plugin_FileSelecter")
+project(':Plugin_Shake').projectDir = new File("plugins/Plugin_Shake")
+project(':Plugin_FileTransfer').projectDir = new File("plugins/Plugin_FileTransfer")
 
 
 def plugin = ['Plugin_Login','Plugin_Temp']
@@ -46,7 +52,7 @@ ext{
 }
 
 ext{
-    gradle.ext.compileSdkVersion=23
+    gradle.ext.compileSdkVersion=24
     gradle.ext.buildToolsVersion="23.0.3"
     gradle.ext.minSdkVersion = 14
     gradle.ext.targetSdkVersion = 23

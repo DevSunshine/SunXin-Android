@@ -29,7 +29,7 @@ public class RootFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        Log.v("zgy","======onCreateView=========z钟光燕====") ;
+        Log.v("zgy","======onCreateView=========光燕====") ;
         return inflater.inflate(R.layout.plugin_login_layout,container,false) ;
     }
 
@@ -42,6 +42,7 @@ public class RootFragment extends BaseFragment {
         view.findViewById(R.id.id_login).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 startPlugin1() ;
                 new Thread(new Runnable() {
                     @Override
@@ -65,7 +66,7 @@ public class RootFragment extends BaseFragment {
                     }
                 }).start();
 
-                Toast.makeText(getActivity().getApplicationContext(),"SB,= .点我干嘛呢5，！",Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity().getApplicationContext(),"123322323,= .点我干嘛呢5，！",Toast.LENGTH_LONG).show();
 
             }
         });

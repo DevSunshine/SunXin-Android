@@ -54,6 +54,7 @@ public class PluginApkExtractor {
             try {
 
                 if (pluginInfo.debug){
+
                     temp++ ;
                     pluginInfo.debugKey = pluginInfo.localPath+temp ;
                 }

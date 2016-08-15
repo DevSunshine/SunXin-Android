@@ -33,6 +33,9 @@ public class PluginCache {
 
     public void addPluginRuntimeEnv(PluginRuntimeEnv pluginRuntimeEnv) {
         if (pluginRuntimeEnv != null && pluginRuntimeEnv.pluginInfo != null) {
+            if (RUN_TIME_CACHE.get(pluginRuntimeEnv.pluginInfo.localPath) != null){
+                RUN_TIME_CACHE.remove(pluginRuntimeEnv.pluginInfo.localPath) ;
+            }
             RUN_TIME_CACHE.put(pluginRuntimeEnv.pluginInfo,pluginRuntimeEnv) ;
         }
     }

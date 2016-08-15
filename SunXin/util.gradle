@@ -101,7 +101,7 @@ def getCrc(buildType){
     properties.load(xmlFile.newInputStream())
     def pluginId = properties.getProperty("id")
     def version = "${android.defaultConfig.versionCode}"
-    def rootFragment = properties.getProperty("rootFrament")
+    def rootFragment = properties.getProperty("rootFragment")
     println("=========applicationId=============$android.defaultConfig.versionCode")
     XMLOperate.updateCrcXml("$pluginXml",pluginId,version,rootFragment,project.name,crc)
 }
