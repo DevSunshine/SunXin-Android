@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Environment;
 import android.util.Log;
 
+import com.sunshine.sunxin.App;
 import com.sunshine.sunxin.BuildConfig;
 import com.sunshine.sunxin.otto.BusProvider;
 import com.sunshine.sunxin.plugin.model.PluginInfo;
@@ -28,9 +29,7 @@ public class PluginApk {
 
     public static boolean installed ;
     public static void install(final Context context){
-
-        //异步加载
-        new Thread(new Runnable() {
+        App.runBackground(new Runnable() {
             @Override
             public void run() {
                 installed = false ;
@@ -83,11 +82,11 @@ public class PluginApk {
                 installed = true ;
                 BusProvider.provide().post(new PluginInstalledEvent());
             }
-        }).start();
+        });
     }
 
     public static void checkInstall(final Context context, final String pluginId){
-        new Thread(new Runnable() {
+        App.runBackground(new Runnable() {
             @Override
             public void run() {
                 try {
@@ -130,6 +129,6 @@ public class PluginApk {
                     e.printStackTrace();
                 }
             }
-        }).start();
+        });
     }
 }
