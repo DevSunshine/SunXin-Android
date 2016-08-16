@@ -28,6 +28,7 @@ import com.sunshine.sunxin.util.AndroidDevices;
 import com.sunshine.sunxin.util.Util;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -69,8 +70,11 @@ public class SunXinCrashHandler implements UncaughtExceptionHandler {
 
         // Save the log on SD card if available
         if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-            writeLog(stacktrace, AndroidDevices.EXTERNAL_PUBLIC_DIRECTORY + "/sunxin_crash");
-            writeLogcat(AndroidDevices.EXTERNAL_PUBLIC_DIRECTORY + "/sunxin_logcat");
+            if (!new File(AndroidDevices.EXTERNAL_PUBLIC_DIRECTORY+"/sunxinLog/").exists()){
+                new File(AndroidDevices.EXTERNAL_PUBLIC_DIRECTORY+"/sunxinLog/").mkdirs() ;
+            }
+            writeLog(stacktrace, AndroidDevices.EXTERNAL_PUBLIC_DIRECTORY + "/sunxinLog/sunxin_crash");
+            writeLogcat(AndroidDevices.EXTERNAL_PUBLIC_DIRECTORY + "/sunxinLog/sunxin_logcat");
         }
 
         defaultUEH.uncaughtException(thread, ex);

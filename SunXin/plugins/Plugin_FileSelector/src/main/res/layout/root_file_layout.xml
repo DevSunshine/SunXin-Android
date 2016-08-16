@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    >
+
+    <android.support.v7.widget.RecyclerView
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/id_root_file_list"
+        android:layout_weight="1"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorLine"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:text="已选3个"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="8dp"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+        <TextView
+            android:layout_width="68dp"
+            android:layout_height="32dp"
+            android:textColor="@color/colorWhite"
+            android:text="发送"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/btn_login"
+            android:layout_gravity="center_vertical|end"/>
+    </LinearLayout>
+</LinearLayout>
