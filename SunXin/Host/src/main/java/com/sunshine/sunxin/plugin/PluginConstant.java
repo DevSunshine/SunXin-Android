@@ -16,4 +16,7 @@ public interface PluginConstant {
     String INTENT_PLUGIN_ID_KEY = "key_pluginId" ;
 
     String INTENT_SHOW_TITLE_KEY = "key_showTitle" ;
+
+    String INTENT_TITLE_KEY = "key_title" ;
+    String INTENT_BACK_TITLE_KEY = "key_back_title" ;
 }

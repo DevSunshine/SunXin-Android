@@ -1,0 +1,75 @@
+apply from: "../../util.gradle"
+injectTask()
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion "${gradle.ext.compileSdkVersion}" as int
+    buildToolsVersion "${gradle.ext.buildToolsVersion}"
+
+    defaultConfig {
+        applicationId "com.sunxin.plugin.fileselecter"
+        minSdkVersion "${gradle.ext.minSdkVersion}" as int
+        targetSdkVersion "${gradle.ext.targetSdkVersion}" as int
+        versionCode 1
+        versionName "1.0"
+    }
+    signingConfigs {
+        releaseConfig {
+            keyAlias 'sunshine'
+            keyPassword 'sunshinesunxin'
+            storeFile file("../../sunshine_sunxin.jks")
+            storePassword 'sunshinesunxin'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.releaseConfig
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+def test(){
+    //变种
+    android.defaultConfig.all{
+
+    }
+}
+
+dependencies {
+    provided fileTree(dir: rootProject.rootDir.absolutePath+'/jars/providedJar', include: ['*.jar'])
+    provided fileTree(dir: rootProject.rootDir.absolutePath+'/jars/injectJar', include: ['*.jar'])
+    provided fileTree(dir: rootProject.rootDir.absolutePath+'/jars/libsJar', include: ['*.jar'])
+    provided fileTree(dir: rootProject.rootDir.absolutePath+'/jars/compileJar', include: ['*.jar'])
+}
+
+task copyAPKTarget(type: org.gradle.api.tasks.Copy){
+    def fileName = project.name+"-release.apk"
+    rename "$fileName",project.name+'.apk'
+    def pro = project.projectDir.absolutePath ;
+    from ("$pro/build/outputs/apk/$fileName")
+    def root = rootProject.rootDir.absolutePath
+    into ("$root/Host/src/main/assets/plugins" )
+}
+task copyConfigTarget(type: org.gradle.api.tasks.Copy){
+    from (rootProject.rootDir.absolutePath+'/plugins.xml')
+    def root = rootProject.rootDir.absolutePath
+    into ("$root/Host/src/main/assets/config" )
+}
+
+task makeSDCardPath(type:org.gradle.api.tasks.Exec){
+    def adb = "${getENVPath()}/platform-tools/adb"
+    commandLine "$adb",'shell','mkdir',getSDCardPath()
+}
+
+task copyPluginFileToSDCard(type:org.gradle.api.tasks.Exec){
+    def adb = "${getENVPath()}/platform-tools/adb"
+    def pluginXml = rootProject.rootDir.absolutePath+'/plugins.xml'
+    commandLine "$adb",'push',"$pluginXml",getSDCardPath()
+}
+task copyAPKToSDCard(type: org.gradle.api.tasks.Exec){
+    def adb = "${getENVPath()}/platform-tools/adb"
+
+    commandLine "$adb",'shell','mkdir',getSDCardPath()
+    commandLine "$adb",'push',getPluginApkPath('debug'),getSDCardPluginPath()
+}

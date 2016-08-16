@@ -1,3 +1,3 @@
 @echo off
 call
-gradle OKHttp3:assembleRelease Picasso:assembleRelease ProtoBuf:assembleRelease Plugin_Login:assembleRelease Plugin_Temp:assembleRelease Host:assembleRelease
+gradle OKHttp3:assembleRelease Picasso:assembleRelease ProtoBuf:assembleRelease Plugin_Login:assembleRelease Plugin_Temp:assembleRelease Plugin_FileSelector:assembleRelease Host:assembleRelease

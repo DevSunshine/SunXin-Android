@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
 
 import com.squareup.otto.Subscribe;
 import com.sunshine.sunxin.R;
@@ -21,6 +22,8 @@ public class RootPluginActivity extends BasePluginActivity {
     private PluginSyncManager mPluginSyncManager;
     private String mPluginId;
     private boolean mShowTitle;
+    private String mTitle ;
+    private String mBackTitle ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,12 +37,28 @@ public class RootPluginActivity extends BasePluginActivity {
         if (savedInstanceState == null) {
             mPluginId = getIntent().getStringExtra(PluginConstant.INTENT_PLUGIN_ID_KEY);
             mShowTitle = getIntent().getBooleanExtra(PluginConstant.INTENT_SHOW_TITLE_KEY, true);
+            mTitle = getIntent().getStringExtra(PluginConstant.INTENT_TITLE_KEY);
+            mBackTitle = getIntent().getStringExtra(PluginConstant.INTENT_BACK_TITLE_KEY);
         } else {
             mPluginId = savedInstanceState.getString(PluginConstant.INTENT_PLUGIN_ID_KEY);
             mShowTitle = savedInstanceState.getBoolean(PluginConstant.INTENT_SHOW_TITLE_KEY, true);
+            mTitle = savedInstanceState.getString(PluginConstant.INTENT_TITLE_KEY);
+            mBackTitle = savedInstanceState.getString(PluginConstant.INTENT_BACK_TITLE_KEY);
         }
         if (!mShowTitle){
             getTitleView().hide();
+        }
+        if (!TextUtils.isEmpty(mTitle)){
+            getTitleView().setTitle(mTitle) ;
+        }
+
+        if (!TextUtils.isEmpty(mBackTitle)){
+            getTitleView().addBackBtn(mBackTitle, new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    finish();
+                }
+            }) ;
         }
         syncPluginById(mPluginId);
 

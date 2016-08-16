@@ -124,6 +124,13 @@ public class TitleView extends LinearLayout {
         return innerAddLeftBtn(iconId,"", listener);
     }
 
+    public TextView getBackBtn(){
+        if (mLeftLayout.getChildCount() == 0){
+            throw new RuntimeException("please add back btn first!") ;
+        }
+        return (TextView) mLeftLayout.getChildAt(0);
+    }
+
     public boolean removeBtn(TextView btn){
         for (int i = 0 ; i < mLeftLayout.getChildCount(); i++){
             TextView item = (TextView) mLeftLayout.getChildAt(i);
