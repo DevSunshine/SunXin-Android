@@ -112,26 +112,32 @@ public class FileUtil {
         return parentPath;
     }
 
-    public static void getFiles(List<FileInfo> fileList,String path) {
+    public static void getFiles(List<FileInfo> fileList, String path) {
         File f = new File(path);
         File[] files = f.listFiles();
-        for (int i = 0; i < files.length; i++) {
-            File file = files[i];
-            FileInfo fileInfo = new FileInfo();
-            String localName = file.getName();
-            fileInfo.name = localName;
-            fileInfo.isDir = file.isDirectory();
-            fileInfo.path = file.getAbsolutePath();
-            fileInfo.fileSize = file.length();
-            fileInfo.lastModified = file.lastModified();
-            fileInfo.isHide = file.isHidden();
-//            if (fileInfo.isDir){
-//                File[] subFiles = file.listFiles() ;
-//                file.get
-//            }
-            fileList.add(fileInfo);
+        if (files != null) {
+            for (int i = 0; i < files.length; i++) {
+                File file = files[i];
+                FileInfo fileInfo = new FileInfo();
+                String localName = file.getName();
+                fileInfo.name = localName;
+                fileInfo.isDir = file.isDirectory();
+                fileInfo.path = file.getAbsolutePath();
+                fileInfo.fileSize = file.length();
+                fileInfo.lastModified = file.lastModified();
+                fileInfo.isHide = file.isHidden();
+                fileInfo.mParentPath = path;
+                if (fileInfo.isDir) {
+                    File[] subFiles = file.listFiles();
+                    if (subFiles != null){
+                        fileInfo.fileCount = subFiles.length ;
+                    }
+                }
+                fileList.add(fileInfo);
 
+            }
         }
+
 
         Collections.sort(fileList, new FileComparator());
     }

@@ -13,7 +13,9 @@ public class FileInfo implements Serializable {
 
     public String path ;
 
-    public int count ;
+    public String mParentPath ;
+
+    public int fileCount ;
 
     public boolean selected ;
 

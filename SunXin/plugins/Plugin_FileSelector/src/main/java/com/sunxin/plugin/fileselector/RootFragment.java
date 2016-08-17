@@ -22,7 +22,7 @@ public class RootFragment extends BasePluginFragment {
 //            startAndFinishSel
             startAndFinishSelf(FileBrowserFragment.class,bundle);
         }else {
-            startAndFinishSelf(RootFileFragment.class,bundle);
+            startAndFinishSelf(FileBrowserFragment.class,bundle);
         }
     }
 }
