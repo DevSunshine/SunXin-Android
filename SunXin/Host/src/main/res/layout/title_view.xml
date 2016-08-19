@@ -36,6 +36,7 @@
             android:id="@+id/id_title"
             android:textColor="@color/colorWhite"
             android:textSize="18sp"
+            android:textStyle="bold"
             android:text=""
             android:maxLines="1"
             android:ellipsize="end"

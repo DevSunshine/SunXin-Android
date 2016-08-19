@@ -1,5 +1,6 @@
 apply from: "../util.gradle"
 injectTask()
+test()
 apply plugin: 'com.android.application'
 
 android {
@@ -55,6 +56,10 @@ task copyHostJarTarget(type: org.gradle.api.tasks.Copy) {
     from("$pro/build/intermediates/transforms/jarMerging/debug/jars/1/1f/combined.jar")
     def root = rootProject.rootDir.absolutePath
     into("$root/jars/providedJar")
+}
+
+def test(){
+    println('================='+TestHHHH) ;
 }
 
 task deleteAssets(type:org.gradle.api.tasks.Delete){
