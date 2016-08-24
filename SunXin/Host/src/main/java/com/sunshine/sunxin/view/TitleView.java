@@ -104,7 +104,7 @@ public class TitleView extends LinearLayout {
         setVisibility(GONE);
     }
 
-    public TextView addBackBtn(String backText, OnClickListener listener) {
+    public TextView addLeftBtn(String backText, OnClickListener listener) {
         return innerAddLeftBtn(0, backText, listener);
     }
     public TextView addRightBtn(String backText, OnClickListener listener) {
@@ -116,11 +116,11 @@ public class TitleView extends LinearLayout {
     public TextView addRightBtn(int iconId, OnClickListener listener) {
         return innerAddRightBtn(iconId, "", listener);
     }
-    public TextView addBackBtn(int iconId,String backText,OnClickListener listener){
+    public TextView addLeftBtn(int iconId,String backText,OnClickListener listener){
         return innerAddLeftBtn(iconId, backText, listener);
     }
 
-    public TextView addBackBtn(int iconId,OnClickListener listener){
+    public TextView addLeftBtn(int iconId,OnClickListener listener){
         return innerAddLeftBtn(iconId,"", listener);
     }
 
@@ -230,7 +230,7 @@ public class TitleView extends LinearLayout {
         }
         if (iconId != 0){
             int padding = (int) (2 * mDensity + 0.5f);
-            leftBtn.setCompoundDrawablePadding(padding);
+//            leftBtn.setCompoundDrawablePadding(padding);
             leftBtn.setCompoundDrawablesWithIntrinsicBounds(iconId, 0, 0, 0);
         }
         leftBtn.setText(backText);

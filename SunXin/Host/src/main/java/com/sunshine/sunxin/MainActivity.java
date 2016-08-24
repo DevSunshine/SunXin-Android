@@ -2,16 +2,19 @@ package com.sunshine.sunxin;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 
 import com.sunshine.sun.lib.socket.bean.UserAccount;
 import com.sunshine.sun.lib.socket.toolbox.SSSocket;
 import com.sunshine.sunxin.plugin.PluginConstant;
 import com.sunshine.sunxin.plugin.RootPluginActivity;
+import com.sunshine.sunxin.widget.checkbox.CheckBox;
 
 
 public class MainActivity extends BaseActivity {
 
+    private CheckBox checkBox ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +27,9 @@ public class MainActivity extends BaseActivity {
 
             }
         }) ;
+        checkBox = (CheckBox) findViewById(R.id.id_checkBox);
+        checkBox.setMarkColor(ContextCompat.getColorStateList(this,R.color.check_color_selector));
+        checkBox.setChecked(false);
     }
 
     @Override

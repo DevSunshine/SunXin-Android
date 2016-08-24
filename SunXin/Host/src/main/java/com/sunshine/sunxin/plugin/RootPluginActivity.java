@@ -53,7 +53,7 @@ public class RootPluginActivity extends BasePluginActivity {
         }
 
         if (!TextUtils.isEmpty(mBackTitle)){
-            getTitleView().addBackBtn(mBackTitle, new View.OnClickListener() {
+            getTitleView().addLeftBtn(mBackTitle, new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     finish();

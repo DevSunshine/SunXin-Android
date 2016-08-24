@@ -1,5 +1,4 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
-apply from: rootProject.getRootDir().getAbsolutePath() + "/util.gradle"
+
 buildscript {
     repositories {
         jcenter()
@@ -10,7 +9,6 @@ buildscript {
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
-    apply from: "util.gradle"
 }
 
 
@@ -18,5 +16,26 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+    }
+}
+
+task packageReleaseAPK<<{
+
+    Map<String,Project> projectMap = getChildProjects()
+    for ( Map.Entry<String, Project> set : projectMap.entrySet()) {
+        def key = set.getKey() ;
+        println("==========getKey==============$key")
+        def projectInner = set.getValue() ;
+        projectInner.afterEvaluate {
+            def tasks = projectInner.getTasksByName("assembleDebug",false) ;
+            println("==========task.size()============"+tasks.size())
+            if (tasks.size() > 0){
+                println("==========assembleRelease============")
+                for (int i = 0 ; i < tasks.size() ; i ++){
+                    tasks[i].execute()
+                }
+            }
+        }
+
     }
 }

@@ -8,13 +8,11 @@
     android:paddingBottom="8dp">
 
 
-    <ImageView
+    <com.sunshine.sunxin.widget.checkbox.CheckBox
         android:id="@+id/id_file_selector"
-        android:visibility="gone"
         android:layout_marginLeft="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/video_size"
         />
     <ImageView
         android:id="@+id/id_file_icon"
@@ -34,7 +32,7 @@
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:ellipsize="middle"
-            android:textColor="@color/colorText1"
+            android:textColor="@color/color333"
             android:textSize="16sp"
             android:text="ddd"/>
         <TextView
@@ -44,17 +42,34 @@
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:ellipsize="middle"
-            android:textColor="@color/colorText3"
+            android:textColor="@color/color999"
             android:textSize="12sp"
             android:text="2016-12-2 18:58"/>
     </LinearLayout>
-    <TextView
-        android:id="@+id/id_file_count"
-        android:layout_marginLeft="18dp"
+    <LinearLayout
+        android:id="@+id/id_folder_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="5项"
-        android:textColor="@color/colorText2"
-        android:textSize="14sp"
-        android:layout_marginRight="16dp"/>
+        android:orientation="horizontal"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="4dp"
+        android:gravity="center"
+        >
+
+        <TextView
+            android:id="@+id/id_file_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5项"
+            android:textColor="@color/color666"
+            android:textSize="14sp"
+            />
+        <ImageView
+            android:layout_marginLeft="4dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_next"
+            android:layout_marginRight="8dp"/>
+    </LinearLayout>
+
 </LinearLayout>

@@ -21,10 +21,12 @@
         android:layout_height="48dp"
         android:orientation="horizontal">
         <TextView
+            android:id="@+id/id_file_select_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
-            android:text="已选3个"
+            android:text=""
+            android:textColor="@color/color999"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="8dp"/>
         <View
@@ -32,6 +34,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
         <TextView
+            android:id="@+id/id_file_send_btn"
+            android:clickable="true"
             android:layout_width="68dp"
             android:layout_height="32dp"
             android:textColor="@color/colorWhite"
@@ -39,7 +43,7 @@
             android:gravity="center"
             android:textSize="16sp"
             android:layout_marginRight="8dp"
-            android:background="@drawable/btn_login"
+            android:background="@drawable/btn_common"
             android:layout_gravity="center_vertical|end"/>
     </LinearLayout>
 </LinearLayout>

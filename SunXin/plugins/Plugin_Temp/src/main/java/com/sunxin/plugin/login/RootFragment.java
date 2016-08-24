@@ -1,15 +1,14 @@
 package com.sunxin.plugin.login;
 // Copyright (c) 2016 ${ORGANIZATION_NAME}. All rights reserved.
 
-import android.content.Intent;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.sunshine.sunxin.BaseFragment;
 import com.sunshine.sunxin.plugin.PluginConstant;
@@ -74,7 +73,7 @@ public class RootFragment extends BaseFragment {
             }
         }) ;
 
-        getTitleView().addBackBtn(R.drawable.ic_back_white, new View.OnClickListener() {
+        getTitleView().addLeftBtn(R.drawable.ic_back_white, new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getActivity().finish();

@@ -29,14 +29,10 @@ android {
         }
     }
 }
-def test(){
-    //变种
-    android.defaultConfig.all{
 
-    }
-}
 
 dependencies {
+    compile project(':CommonRes')
     provided fileTree(dir: rootProject.rootDir.absolutePath+'/jars/providedJar', include: ['*.jar'])
     provided fileTree(dir: rootProject.rootDir.absolutePath+'/jars/injectJar', include: ['*.jar'])
     provided fileTree(dir: rootProject.rootDir.absolutePath+'/jars/libsJar', include: ['*.jar'])

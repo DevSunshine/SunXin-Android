@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,7 +35,10 @@ public class FileBrowserFragment extends BaseFragment {
 
     private TextView mTitle;
     private TextView mBackTitle;
-    private TextView mRightBtn;
+    private TextView mFileNum;
+    private TextView mFileSend;
+    private List<FileInfo> mFileInfos = new ArrayList<>();
+    private LinearLayoutManager mManager;
 
     @Nullable
     @Override
@@ -46,49 +50,71 @@ public class FileBrowserFragment extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mTitle = getTitleView().setTitle("文件浏览");
+        mFileNum = (TextView) view.findViewById(R.id.id_file_select_num);
+        mFileSend = (TextView) view.findViewById(R.id.id_file_send_btn);
         mFileListView = (RecyclerView) view.findViewById(R.id.id_root_file_list);
-        RecyclerView.LayoutManager manager = new LinearLayoutManager(getContext());
-        mFileListView.setLayoutManager(manager);
+        mManager = new LinearLayoutManager(getContext());
+        mFileListView.setLayoutManager(mManager);
         mAdapter = new FileBrowserAdapter(this);
         mFileListView.setAdapter(mAdapter);
-        mBackTitle = getTitleView().addBackBtn("返回", new View.OnClickListener() {
+        mBackTitle = getTitleView().addLeftBtn(R.drawable.btn_back, "返回", new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 back();
             }
         });
-
-        mRootPath = "/" ;
+        resetBottomView();
+        mRootPath = "/";
         openRootDir();
     }
 
-    public void openDir(FileInfo fileInfo){
-        openDir(fileInfo.path);
+
+    public void openDir(FileInfo fileInfo) {
+        saveStatue();
+        openDir(fileInfo.path, false);
     }
-    private void openDir(final String path) {
+
+    private void openDir(final String path, final boolean back) {
         //show loading
 
         /**
          * 异步操作
          */
         final List<FileInfo> fileInfos = new ArrayList<>();
-        mCurrentPath = path ;
+        mCurrentPath = path;
         if (mCurrentPath == null || TextUtils.equals(mCurrentPath, mRootPath)) {
             mBackTitle.setText("返回");
             mTitle.setText("手机内存");
         } else {
             mBackTitle.setText("上一级");
-            String name = new File(path).getName() ;
+            String name = new File(path).getName();
             mTitle.setText(name);
         }
         App.runBackground(new Runnable() {
             @Override
             public void run() {
                 FileUtil.getFiles(fileInfos, path);
+                for (FileInfo fileInfo : mFileInfos) {
+                    for (FileInfo file : fileInfos) {
+                        if (file.isDir) {
+                            continue;
+                        }
+                        if (fileInfo.path.equals(file.path)) {
+                            file.selected = fileInfo.selected;
+                            break;
+                        }
+                    }
+                }
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         mAdapter.setFile(fileInfos);
+                        if (statueStack.size() > 0 && back) {
+                            ViewStatue viewStatue = statueStack.pop();
+                            Log.v("zgy", "==============viewStatue====" + viewStatue.position);
+                            mManager.scrollToPositionWithOffset(viewStatue.position, viewStatue.top);
+                        }
+
                     }
                 });
             }
@@ -100,10 +126,22 @@ public class FileBrowserFragment extends BaseFragment {
 
     public void handleFile(FileInfo fileInfo) {
 
+        if (fileInfo.selected) {
+            mFileInfos.add(fileInfo);
+        } else {
+            for (FileInfo file : mFileInfos) {
+                if (file.path.equals(fileInfo.path)) {
+                    mFileInfos.remove(file);
+                    break;
+                }
+            }
+        }
+
+        resetBottomView();
     }
 
     private void openRootDir() {
-        openDir(mRootPath);
+        openDir(mRootPath, false);
     }
 
 
@@ -111,9 +149,28 @@ public class FileBrowserFragment extends BaseFragment {
         if (mCurrentPath == null || TextUtils.equals(mCurrentPath, mRootPath)) {
             getActivity().finish();
         } else {
-            String parentPath = new File(mCurrentPath).getParent() ;
-            openDir(parentPath);
+            String parentPath = new File(mCurrentPath).getParent();
+            openDir(parentPath, true);
+
         }
+    }
+
+    private void resetBottomView() {
+        mFileNum.setText(String.format("已选%d个", mFileInfos.size()));
+        mFileNum.setEnabled(mFileInfos.size() != 0);
+        mFileSend.setEnabled(mFileInfos.size() != 0);
+    }
+
+
+    private void saveStatue() {
+        int position = mManager.findFirstVisibleItemPosition();
+        int top = 0;
+        View item = mManager.findViewByPosition(position);
+        if (item != null) {
+            top = item.getTop();
+        }
+        ViewStatue viewStatue = new ViewStatue(position, top);
+        statueStack.push(viewStatue);
     }
 
 }
