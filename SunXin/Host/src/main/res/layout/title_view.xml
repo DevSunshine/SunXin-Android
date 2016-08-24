@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="48dp"
     android:background="@color/colorMain"
-    android:orientation="horizontal">
+    >
 
     <LinearLayout
         android:layout_alignParentLeft="true"
@@ -63,4 +63,10 @@
         android:orientation="horizontal">
 
     </LinearLayout>
+    <View
+        android:id="@+id/id_title_line"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="0.7dp"
+        android:background="@color/colorMain_p"/>
 </RelativeLayout>

@@ -61,6 +61,11 @@ public class MainActivity extends BaseActivity {
         intent.putExtra(PluginConstant.INTENT_PLUGIN_ID_KEY, "103") ;
         startActivity(intent);
     }
+    public void startPlugin4(View view){
+        Intent intent = new Intent(this,RootPluginActivity.class) ;
+        intent.putExtra(PluginConstant.INTENT_PLUGIN_ID_KEY, "106") ;
+        startActivity(intent);
+    }
     public void connectSocket(View view){
         UserAccount account = new UserAccount() ;
         account.setAddress("10.25.0.149");

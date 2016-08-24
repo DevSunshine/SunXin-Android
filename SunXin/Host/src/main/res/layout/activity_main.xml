@@ -46,7 +46,15 @@
         android:text="startPlugin3"
         android:textColor="@android:color/holo_blue_bright"
         android:textSize="16dp" />
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="160dp"
+        android:clickable="true"
+        android:onClick="startPlugin4"
+        android:text="startPlugin4"
+        android:textColor="@android:color/holo_blue_bright"
+        android:textSize="16dp" />
     <com.sunshine.sunxin.widget.checkbox.CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
