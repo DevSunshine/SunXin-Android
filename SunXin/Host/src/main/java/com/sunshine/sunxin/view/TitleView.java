@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Paint;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewCompat;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -49,6 +50,7 @@ public class TitleView extends LinearLayout {
     private int mLeftWidth;
     private int mRightWidth;
     private int mMiddleWidth ;
+    private View mTitleLine ;
 
     private int mBtnHeight;
     private float mDensity;
@@ -83,6 +85,7 @@ public class TitleView extends LinearLayout {
         mMiddleLayout = (LinearLayout) findViewById(R.id.id_title_middle_layout);
         mTitle = (TextView) findViewById(R.id.id_title);
         mSubTitle = (TextView) findViewById(R.id.id_sub_title);
+        mTitleLine =  findViewById(R.id.id_title_line);
         mDensity = getResources().getDisplayMetrics().density;
         mBtnHeight = (int) (getResources().getDisplayMetrics().density * 48 + 0.5);
         mPaint.setTextSize(BTN_TEXT_SIZE * mDensity);
@@ -111,7 +114,7 @@ public class TitleView extends LinearLayout {
         return innerAddRightBtn(0, backText, listener);
     }
     public TextView addRightBtn(int iconId,String backText, OnClickListener listener) {
-        return innerAddRightBtn(iconId,backText, listener);
+        return innerAddRightBtn(iconId, backText, listener);
     }
     public TextView addRightBtn(int iconId, OnClickListener listener) {
         return innerAddRightBtn(iconId, "", listener);
@@ -121,7 +124,7 @@ public class TitleView extends LinearLayout {
     }
 
     public TextView addLeftBtn(int iconId,OnClickListener listener){
-        return innerAddLeftBtn(iconId,"", listener);
+        return innerAddLeftBtn(iconId, "", listener);
     }
 
     public TextView getBackBtn(){
@@ -129,6 +132,14 @@ public class TitleView extends LinearLayout {
             throw new RuntimeException("please add back btn first!") ;
         }
         return (TextView) mLeftLayout.getChildAt(0);
+    }
+
+    public void hideTitleLine(){
+        mTitleLine.setVisibility(GONE);
+    }
+
+    public void showTitleLine(){
+        mTitleLine.setVisibility(VISIBLE);
     }
 
     public boolean removeBtn(TextView btn){
@@ -170,7 +181,20 @@ public class TitleView extends LinearLayout {
         mSubTitle.setText(title);
         return mSubTitle ;
     }
+    public void setTitlePosition(float dy){
+        float current = ViewCompat.getTranslationY(mTitle) ;
+        if (current == 0 && dy<0){
+            return;
+        }
+        float trans = (current + dy < 0) ? 0 : current + dy ;
+        ViewCompat.setTranslationY(mTitle, trans);
+    }
 
+    public void setTitleBottomHide(){
+        float textHeight = mTitle.getMeasuredHeight() ;
+        float trans = (getHeight()+textHeight)/2.0f ;
+        ViewCompat.setTranslationY(mTitle,trans);
+    }
     public TextView setTitle(int resId){
         mTitle.setText(resId);
         return mTitle ;
@@ -318,4 +342,7 @@ public class TitleView extends LinearLayout {
 //            mTitle.setVisibility(VISIBLE);
 //        }
     }
+
+
+
 }

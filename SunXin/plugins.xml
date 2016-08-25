@@ -4,8 +4,9 @@
 
     <!--<plugin desc="插件模板" id="102"  project="TempPlugin" rootFragment="com.sunxin.plugin.login.RootFragment" />-->
 
-<plugin crc="1866196227" id="102" path="plugins/Plugin_Temp.apk" project="Plugin_Temp" rootFragment="com.sunxin.plugin.login.RootFragment" version="1"/>
-    <plugin crc="3698479493" id="101" path="plugins/Plugin_Login.apk" project="Plugin_Login" rootFragment="com.sunxin.plugin.login.RootFragment" version="3"/>
-    <plugin crc="689003522" id="105" path="plugins/Plugin_FileTransfer.apk" project="Plugin_FileTransfer" rootFragment="com.sunxin.plugin.filetransfer.RootFragment" version="1"/>
-    <plugin crc="1484984820" id="104" path="plugins/Plugin_Shake.apk" project="Plugin_Shake" rootFragment="com.sunxin.plugin.shake.RootFragment" version="1"/>
-<plugin crc="402513940" id="103" path="plugins/Plugin_FileSelector.apk" project="Plugin_FileSelector" rootFragment="com.sunxin.plugin.fileselector.RootFragment" version="1"/></plugin>
+<plugin crc="2045508775" id="102" path="plugins/Plugin_Temp.apk" project="Plugin_Temp" rootFragment="com.sunxin.plugin.login.RootFragment" version="1"/>
+    <plugin crc="4112302706" id="101" path="plugins/Plugin_Login.apk" project="Plugin_Login" rootFragment="com.sunxin.plugin.login.RootFragment" version="3"/>
+    <plugin crc="4011399038" id="105" path="plugins/Plugin_FileTransfer.apk" project="Plugin_FileTransfer" rootFragment="com.sunxin.plugin.filetransfer.RootFragment" version="1"/>
+    <plugin crc="1847276926" id="104" path="plugins/Plugin_Shake.apk" project="Plugin_Shake" rootFragment="com.sunxin.plugin.shake.RootFragment" version="1"/>
+<plugin crc="3587515786" id="103" path="plugins/Plugin_FileSelector.apk" project="Plugin_FileSelector" rootFragment="com.sunxin.plugin.fileselector.RootFragment" version="1"/>
+    <plugin crc="634427849" id="106" path="plugins/Plugin_Personal.apk" project="Plugin_Personal" rootFragment="com.sunxin.plugin.personal.PersonalFragment" version="3"/></plugin>

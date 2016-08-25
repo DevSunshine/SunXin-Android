@@ -1,4 +1,4 @@
-include ':Plugin_Login', ':Plugin_Temp','Plugin_FileSelector','Plugin_Shake','Plugin_FileTransfer',
+include ':Plugin_Login', ':Plugin_Temp','Plugin_FileSelector','Plugin_Shake','Plugin_FileTransfer','Plugin_Personal',
         ':Host',
         ':SSSocket', ':DexInstall', ':ProtoBuf', ':TaskInterface', ':OKHttp3', ':Picasso',
         ':CommonRes'
@@ -19,9 +19,11 @@ project(':Plugin_Temp').projectDir = new File("plugins/Plugin_Temp")
 project(':Plugin_FileSelector').projectDir = new File("plugins/Plugin_FileSelector")
 project(':Plugin_Shake').projectDir = new File("plugins/Plugin_Shake")
 project(':Plugin_FileTransfer').projectDir = new File("plugins/Plugin_FileTransfer")
+project(':Plugin_Personal').projectDir = new File("plugins/Plugin_Personal")
 
 
-def plugin = ['Plugin_Login','Plugin_Temp','Plugin_FileSelector','Plugin_Shake','Plugin_FileTransfer']
+def plugin = ['Plugin_Login','Plugin_Temp','Plugin_FileSelector',
+              'Plugin_Personal','Plugin_Shake','Plugin_FileTransfer']
 
 gradle.ext.pluginApk = plugin ;
 
