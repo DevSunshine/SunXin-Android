@@ -125,4 +125,33 @@ ext{
     getSDCardPluginPath  = this.&getSDCardPluginPath ;
     getPluginApkPath  = this.&getPluginApkPath ;
     getENVPath  = this.&getENVPath ;
+    isPluginApk  = this.&isPluginApk ;
+    packageReleaseApkhh  = this.&packageReleaseApkhh ;
+}
+
+def packageReleaseApkhh(){
+//    tasks.whenTaskAdded {
+//        task ->
+//            if (task.name.equals("packageReleaseAPK")) {
+//                println('=======packageReleaseApk==哈哈========')
+//                Map<String,Project> projectMap = getChildProjects()
+//                for ( Map.Entry<String, Project> set : projectMap.entrySet()) {
+//                    def key = set.getKey() ;
+//                    println("==========getKey==============$key")
+//                    def projectInner = set.getValue() ;
+//                    projectInner.afterEvaluate {
+//                        def tasks = projectInner.getTasksByName("assembleDebug",false) ;
+//                        projectInner.tasks.findByPath('assembleDebug').execute()
+////                        println("==========task.size()============"+tasks.size())
+////                        if (tasks.size() > 0){
+////                            println("==========assembleRelease============")
+////                            for (int i = 0 ; i < tasks.size() ; i ++){
+////                                tasks[i].execute()
+////                            }
+////                        }
+//                    }
+//
+//                }
+//            }
+//    }
 }

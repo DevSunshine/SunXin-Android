@@ -1,0 +1,2 @@
+@echo off
+gradle OKHttp3:assembleRelease Picasso:assembleRelease ProtoBuf:assembleRelease Plugin_Login:assembleRelease Plugin_Temp:assembleRelease Plugin_FileSelector:assembleRelease Plugin_Personal:assembleRelease Host:assembleRelease
