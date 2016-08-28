@@ -15,7 +15,7 @@ public class PersonalFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.plugin_personal_layout,container,false);
+        return inflater.inflate(R.layout.test_layouut,container,false);
     }
 
     @Override
