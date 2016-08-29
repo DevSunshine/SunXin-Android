@@ -11,11 +11,12 @@ import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.ViewDragHelper;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
+import android.widget.ScrollView;
 
 /**
  * Created by gyzhong on 16/8/27.
@@ -25,6 +26,12 @@ import android.view.ViewGroup;
  * 没什么实质性用处，纯属闲的蛋疼！
  */
 public class FlaxLayout extends ViewGroup {
+
+    public static int UP = 1;
+
+    public static int DOWN = 2;
+
+    private int mOrientation;
 
     private static final String TAG = "FlaxLayout";
     /**
@@ -48,6 +55,8 @@ public class FlaxLayout extends ViewGroup {
     private float mInitialMotionY;
 
     private boolean mFirstLayout = true;
+
+    private SmoothListener mSmoothListener;
 
     public FlaxLayout(Context context) {
         this(context, null);
@@ -128,14 +137,16 @@ public class FlaxLayout extends ViewGroup {
             }
             final LayoutParams lp = (LayoutParams) child.getLayoutParams();
             if (isContentView(child)) {
+                mContentView = child;
                 // Content views get measured at exactly the layout's size.
                 final int contentWidthSpec = MeasureSpec.makeMeasureSpec(
                         widthSize - lp.leftMargin - lp.rightMargin, MeasureSpec.EXACTLY);
                 final int contentHeightSpec = MeasureSpec.makeMeasureSpec(
                         heightSize - lp.topMargin - lp.bottomMargin, MeasureSpec.EXACTLY);
-                int test = MeasureSpec.makeMeasureSpec(300,MeasureSpec.EXACTLY) ;
+                int test = MeasureSpec.makeMeasureSpec(300, MeasureSpec.EXACTLY);
                 child.measure(contentWidthSpec, contentHeightSpec);
             } else if (isBackgroundView(child)) {
+                mBackgroundView = child;
                 final int drawerWidthSpec = getChildMeasureSpec(widthMeasureSpec,
                         lp.leftMargin + lp.rightMargin,
                         lp.width);
@@ -147,6 +158,7 @@ public class FlaxLayout extends ViewGroup {
         }
 
     }
+
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
@@ -155,6 +167,7 @@ public class FlaxLayout extends ViewGroup {
             mFirstLayout = true;
         }
     }
+
     boolean isContentView(View child) {
 
         return getChildAt(1) == child;
@@ -207,10 +220,12 @@ public class FlaxLayout extends ViewGroup {
             }
         }
     }
+
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-        final int action = MotionEventCompat.getActionMasked(ev);
 
+
+        final int action = MotionEventCompat.getActionMasked(ev);
 
         if ((mIsUnableToDrag && action != MotionEvent.ACTION_DOWN)) {
             mDragHelper.cancel();
@@ -256,9 +271,13 @@ public class FlaxLayout extends ViewGroup {
 
         return interceptForDrag || interceptTap;
     }
+
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
 
+//        if (canChildScrollDown()||canChildScrollUp()) {
+//            return super.onTouchEvent(ev);
+//        }
         mDragHelper.processTouchEvent(ev);
 
         final int action = ev.getAction();
@@ -281,7 +300,7 @@ public class FlaxLayout extends ViewGroup {
                 final int slop = mDragHelper.getTouchSlop();
                 final View touchedView = mDragHelper.findTopChildUnder((int) x, (int) y);
                 if (dx * dx + dy * dy < slop * slop && touchedView != null) {
-                    restoreView() ;
+                    restoreView();
                     break;
                 }
                 break;
@@ -294,29 +313,27 @@ public class FlaxLayout extends ViewGroup {
     /**
      * View  恢复原位
      */
-    private void restoreView(){
-
+    private void restoreView() {
+        mDragHelper.smoothSlideViewTo(mContentView, mContentView.getLeft(), 0);
     }
 
-    private void setContentViewOffset(View contentView ,int offset){
+    private void setContentViewOffset(View contentView, int offset) {
 
+        if (mSmoothListener != null) {
+            mSmoothListener.onSmoothSlide(contentView, offset);
+        }
     }
 
-    //    @Override
-//    public void computeScroll() {
-//        final int childCount = getChildCount();
-//        float scrimOpacity = 0;
-//        for (int i = 0; i < childCount; i++) {
-//            final float onscreen = ((LayoutParams) getChildAt(i).getLayoutParams()).onScreen;
-//            scrimOpacity = Math.max(scrimOpacity, onscreen);
-//        }
-//        mScrimOpacity = scrimOpacity;
-//
-//        // "|" used on purpose; both need to run.
-//        if (mLeftDragger.continueSettling(true) | mRightDragger.continueSettling(true)) {
-//            ViewCompat.postInvalidateOnAnimation(this);
-//        }
-//    }
+    @Override
+    public void computeScroll() {
+
+        if (mDragHelper.continueSettling(true)) {
+            ViewCompat.postInvalidateOnAnimation(this);
+        } else {
+
+        }
+    }
+
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
@@ -327,13 +344,8 @@ public class FlaxLayout extends ViewGroup {
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
         mFirstLayout = true;
-//
-//        for (int i = 0, count = mPostedRunnables.size(); i < count; i++) {
-//            final DisableLayerRunnable dlr = mPostedRunnables.get(i);
-//            dlr.run();
-//        }
-//        mPostedRunnables.clear();
     }
+
     @Override
     protected ViewGroup.LayoutParams generateDefaultLayoutParams() {
         return new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT);
@@ -357,6 +369,7 @@ public class FlaxLayout extends ViewGroup {
     public ViewGroup.LayoutParams generateLayoutParams(AttributeSet attrs) {
         return new LayoutParams(getContext(), attrs);
     }
+
     public static class LayoutParams extends ViewGroup.MarginLayoutParams {
         private static final int[] ATTRS = new int[]{
                 android.R.attr.layout_weight
@@ -412,6 +425,37 @@ public class FlaxLayout extends ViewGroup {
 
     }
 
+    private boolean canChildScrollUp() {
+        if (android.os.Build.VERSION.SDK_INT < 14) {
+            if (mContentView instanceof AbsListView) {
+                final AbsListView absListView = (AbsListView) mContentView;
+                return absListView.getChildCount() > 0
+                        && (absListView.getFirstVisiblePosition() > 0 || absListView.getChildAt(0)
+                        .getTop() < absListView.getPaddingTop());
+            } else {
+                return ViewCompat.canScrollVertically(mContentView, -1) || mContentView.getScrollY() > 0;
+            }
+        } else {
+            return ViewCompat.canScrollVertically(mContentView, -1);
+        }
+    }
+    public boolean canChildScrollDown() { //изменено
+        if (android.os.Build.VERSION.SDK_INT < 14) {
+            if (mContentView instanceof AbsListView) {
+                final AbsListView absListView = (AbsListView) mContentView;
+                return absListView.getCount() > 0
+                        && (absListView.getLastVisiblePosition() < absListView.getCount() - 1 || absListView
+                        .getChildAt(absListView.getLastVisiblePosition() - absListView.getFirstVisiblePosition())
+                        .getBottom() > absListView.getPaddingBottom() + getMeasuredHeight());
+            } else if (mContentView instanceof ScrollView) { //если ScrollView
+                return mContentView.getScrollY() + mContentView.getMeasuredHeight() < ((ScrollView)mContentView).getChildAt(0).getMeasuredHeight();
+            } else {
+                return true; //остальные случаи не обрабатываются
+            }
+        } else {
+            return ViewCompat.canScrollVertically(mContentView, 1);
+        }
+    }
     /**
      * draghelper 回调接口处理
      */
@@ -419,14 +463,14 @@ public class FlaxLayout extends ViewGroup {
 
         @Override
         public boolean tryCaptureView(View view, int i) {
-            Log.v("zgy","=========tryCaptureView========"+view) ;
-            if (isBackgroundView(view)){
-                return false ;
+            Log.v("zgy", "=========tryCaptureView========" + view);
+            if (isBackgroundView(view)) {
+                return false;
             }
             if (mIsUnableToDrag) {
                 return true;
             }
-            return true ;
+            return true;
         }
 
         @Override
@@ -436,10 +480,21 @@ public class FlaxLayout extends ViewGroup {
 
         @Override
         public void onViewPositionChanged(View changedView, int left, int top, int dx, int dy) {
-            int offset = top ;
-            Log.v("zgy","=========onViewPositionChanged========"+top) ;
-            setContentViewOffset(mContentView, offset);
-            invalidate();
+            if (top == 0) {
+                mOrientation = 0;
+            } else if (top > 0) {
+
+                if (mSmoothListener != null && mOrientation != UP) {
+                    mOrientation = UP;
+                    mSmoothListener.onSmoothShow(mBackgroundView, mOrientation);
+                }
+            } else {
+                if (mSmoothListener != null && mOrientation != DOWN) {
+                    mOrientation = DOWN;
+                    mSmoothListener.onSmoothShow(mBackgroundView, mOrientation);
+                }
+            }
+            setContentViewOffset(changedView, dy);
         }
 
         @Override
@@ -449,7 +504,8 @@ public class FlaxLayout extends ViewGroup {
 
         @Override
         public void onViewReleased(View releasedChild, float xvel, float yvel) {
-            super.onViewReleased(releasedChild, xvel, yvel);
+            mDragHelper.smoothSlideViewTo(mContentView, mContentView.getLeft(), 0);
+            invalidate();
         }
 
         @Override
@@ -484,20 +540,32 @@ public class FlaxLayout extends ViewGroup {
 
         @Override
         public int clampViewPositionHorizontal(View child, int left, int dx) {
-            Log.v("zgy","=========clampViewPositionHorizontal========"+dx) ;
             return child.getLeft();
         }
 
         @Override
         public int clampViewPositionVertical(View child, int top, int dy) {
-            Log.v("zgy","=========clampViewPositionHorizontal========"+dy) ;
-            int offset = 0 ;
-            if (top < 0){
-                
-            }
-            final int width = getHeight();
-            return Math.max(-child.getHeight(), Math.min(top, width));
-//            return 2;
+            int offset;
+            float percent;
+            percent = (child.getHeight() - Math.abs(top)) * 1.0f * 0.6f / child.getHeight();
+            offset = (int) (child.getTop() + dy * percent);
+            return offset;
         }
+    }
+
+    public void setSmoothListener(SmoothListener listener) {
+        mSmoothListener = listener;
+    }
+
+    public interface SmoothListener {
+
+        void onSmoothSlide(View changeView, float dy);
+
+        /**
+         * 显示的部分
+         *
+         * @param orientation up 上部分显示
+         */
+        void onSmoothShow(View backgroundView, int orientation);
     }
 }

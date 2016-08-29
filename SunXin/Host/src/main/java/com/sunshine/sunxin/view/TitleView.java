@@ -181,19 +181,21 @@ public class TitleView extends LinearLayout {
         mSubTitle.setText(title);
         return mSubTitle ;
     }
-    public void setTitlePosition(float dy){
-        float current = ViewCompat.getTranslationY(mTitle) ;
-        if (current == 0 && dy<0){
+    public void setTitlePosition(float transY){
+        float textHeight = mTitle.getMeasuredHeight() ;
+        float max = (getHeight()+textHeight)/2.0f ;
+        float trans = Math.max(0,Math.min(max,transY)) ;
+        if (ViewCompat.getTranslationY(mTitle) == trans){
             return;
         }
-        float trans = (current + dy < 0) ? 0 : current + dy ;
         ViewCompat.setTranslationY(mTitle, trans);
     }
 
-    public void setTitleBottomHide(){
+    public float setTitleBottomHide(){
         float textHeight = mTitle.getMeasuredHeight() ;
         float trans = (getHeight()+textHeight)/2.0f ;
         ViewCompat.setTranslationY(mTitle,trans);
+        return trans ;
     }
     public TextView setTitle(int resId){
         mTitle.setText(resId);
