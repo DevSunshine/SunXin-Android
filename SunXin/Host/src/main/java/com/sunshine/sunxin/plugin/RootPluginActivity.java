@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.squareup.otto.Subscribe;
 import com.sunshine.sunxin.R;
@@ -173,6 +174,7 @@ public class RootPluginActivity extends BasePluginActivity {
                 BusProvider.provide().post(new PluginInfoEvent(info));
             }else {
                 Log.v("zgy", "==========没有找到插件======" );
+                Toast.makeText(getApplicationContext(),"请确保你已经安装了插件!!!",Toast.LENGTH_LONG).show();
             }
         }
 
