@@ -1,8 +1,6 @@
 package com.sunxin.plugin.login;
 // Copyright (c) 2016 ${ORGANIZATION_NAME}. All rights reserved.
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -11,55 +9,27 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.sunshine.sunxin.BaseFragment;
-import com.sunshine.sunxin.plugin.PluginConstant;
-import com.sunshine.sunxin.plugin.RootPluginActivity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by 钟光燕 on 2016/8/4.
  * e-mail guangyanzhong@163.com
  */
 public class RootFragment extends BaseFragment {
-
-    static Activity activity;
+    private SwapListView mListView ;
+    private DragMutilLayout mDragMutilLayout ;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.plugin_temp_layout,container,false) ;
+        return inflater.inflate(R.layout.drag_layout,container,false) ;
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        view.findViewById(R.id.id_jump).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                activity = getActivity();
-                test(new Runnable() {
-                    @Override
-                    public void run() {
-                        new Thread(new Runnable() {
-
-                            @Override
-                            public void run() {
-                                try {
-                                    Log.v("zgy", "=====getActivity=========" + getActivity());
-                                    Thread.sleep(10000);
-                                } catch (InterruptedException e) {
-                                    e.printStackTrace();
-                                }
-                            }
-                        }).start();
-                        getActivity().finish();
-
-                    }
-                });
-                Intent intent = new Intent(getActivity(), RootPluginActivity.class);
-                intent.putExtra(PluginConstant.INTENT_PLUGIN_ID_KEY, "101");
-                startActivity(intent);
-            }
-        });
-
-        getTitleView().setTitle("内存泄漏");
+        getTitleView().setTitle("调试啥拓展");
         getTitleView().addRightBtn(R.drawable.ic_cut_white, new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,16 +43,29 @@ public class RootFragment extends BaseFragment {
             }
         }) ;
 
-        getTitleView().addLeftBtn(R.drawable.ic_back_white, new View.OnClickListener() {
+        getTitleView().addLeftBtn(R.drawable.btn_back, "返回", new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getActivity().finish();
             }
         }) ;
 
+        mDragMutilLayout = (DragMutilLayout) view.findViewById(R.id.id_drag);
+        mDragMutilLayout.setData(initList());
+//        mListView = (SwapListView) view.findViewById(R.id.id_swap_list_view) ;
+//        mListView.setAdapter(new StringAdapter(initList()));
+
+    }
+    private List<String> initList() {
+        List<String> list = new ArrayList<String>();
+        for (char i = 'a'; i < 's'; i++) {
+            list.add(String.valueOf(i) + "--->>");
+        }
+        for (char i = 'A'; i < 'Z'; i++) {
+            list.add(String.valueOf(i)+ "--->>");
+        }
+        Log.v("zgy", "===========list=======" + list);
+        return list;
     }
 
-    private void test(Runnable runnable){
-        runnable.run();
-    }
 }

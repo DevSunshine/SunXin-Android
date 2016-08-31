@@ -1,0 +1,12 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".MainActivity">
+
+    <com.sunxin.plugin.login.SwapListView
+        android:background="#ffff73fc"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/id_swap_list_view"/>
+</RelativeLayout>
