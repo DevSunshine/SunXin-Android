@@ -54,9 +54,9 @@ ext{
 }
 
 ext{
-    gradle.ext.compileSdkVersion=23
+    gradle.ext.compileSdkVersion=24
     gradle.ext.buildToolsVersion="23.0.3"
     gradle.ext.minSdkVersion = 14
-    gradle.ext.targetSdkVersion = 23
+    gradle.ext.targetSdkVersion = 24
 }
 

@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.sunshine.sunxin.BaseFragment;
@@ -18,6 +19,7 @@ public class PersonalFragment extends BaseFragment {
     private View mFlaxBg ;
     private TextView mName ;
     private float mHideHeight ;
+    private ScrollView mScrollView ;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -71,5 +73,8 @@ public class PersonalFragment extends BaseFragment {
                 Log.v("zgy","===============orientation============"+orientation);
             }
         });
+
+
+
     }
 }

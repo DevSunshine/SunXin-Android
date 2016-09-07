@@ -48,14 +48,20 @@ public class FlaxLayout extends ViewGroup {
      * 拖动和手势帮助类，主要是用于简化代码用的
      */
     private ViewDragHelper mDragHelper;
-
+    /*已经开始拖拽*/
+    private boolean mIsBeingDragged;
     private boolean mIsUnableToDrag;
-
+    private static final int INVALID_POINTER = -1;
+    private int mActivePointerId = INVALID_POINTER;
     private float mInitialMotionX;
     private float mInitialMotionY;
+    private float mCurrentMotionY;
+    private float mInitialDownY;
+    private float mInitialDownX;
+    private boolean mIsInControl ;
 
     private boolean mFirstLayout = true;
-
+    private int mTouchSlop;
     private SmoothListener mSmoothListener;
 
     public FlaxLayout(Context context) {
@@ -80,7 +86,7 @@ public class FlaxLayout extends ViewGroup {
         setWillNotDraw(false);
 
         ViewCompat.setImportantForAccessibility(this, ViewCompat.IMPORTANT_FOR_ACCESSIBILITY_YES);
-
+        mTouchSlop = ViewConfiguration.get(getContext()).getScaledTouchSlop();
         mDragHelper = ViewDragHelper.create(this, 0.5f, new DragHelperCallback());
     }
 
@@ -220,10 +226,57 @@ public class FlaxLayout extends ViewGroup {
             }
         }
     }
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        final int action = MotionEventCompat.getActionMasked(ev);
+        if (action == MotionEvent.ACTION_UP||action == MotionEvent.ACTION_CANCEL){
+            mDragHelper.processTouchEvent(ev);
+        }
+        if (!isEnabled() || canChildScrollUp()||mIsBeingDragged) {
+            return super.dispatchTouchEvent(ev);
+        }
+        switch (action){
+            case MotionEvent.ACTION_DOWN:
+                mActivePointerId = MotionEventCompat.getPointerId(ev, 0);
+                final float initialDownY = getMotionEventY(ev, mActivePointerId);
+                final float initialDownX = getMotionEventX(ev, mActivePointerId);
+                if (initialDownY == -1) {
+                    return super.dispatchTouchEvent(ev);
+                }
+                mInitialDownY = initialDownY;
+                mInitialDownX = initialDownX;
+                break;
+            case MotionEvent.ACTION_MOVE:
+                if (mActivePointerId == INVALID_POINTER) {
+                    return super.dispatchTouchEvent(ev);
+                }
 
+                final float y = getMotionEventY(ev, mActivePointerId);
+                final float x = getMotionEventX(ev, mActivePointerId);
+                if (y == -1) {
+                    return super.dispatchTouchEvent(ev);
+                }
+                final float yDiff = y - mInitialDownY;
+                final float xDiff = x - mInitialDownX;
+                if (yDiff > 0 && !mIsBeingDragged && !canChildScrollUp()) {
+                    if (!mIsInControl) {
+                        ev.setAction(MotionEvent.ACTION_CANCEL);
+                        MotionEvent ev2 = MotionEvent.obtain(ev);
+                        dispatchTouchEvent(ev);
+                        ev2.setAction(MotionEvent.ACTION_DOWN);
+                        mIsInControl = true ;
+                        return dispatchTouchEvent(ev2);
+                    }
+                }
+                break;
+            case MotionEvent.ACTION_UP:{
+                mDragHelper.processTouchEvent(ev);
+            }
+        }
+        return super.dispatchTouchEvent(ev);
+    }
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-
 
         final int action = MotionEventCompat.getActionMasked(ev);
 
@@ -236,8 +289,9 @@ public class FlaxLayout extends ViewGroup {
             mDragHelper.cancel();
             return false;
         }
-
-        boolean interceptTap = false;
+        if (!isEnabled() || canChildScrollUp()) {
+            return false;
+        }
 
         switch (action) {
             case MotionEvent.ACTION_DOWN: {
@@ -245,39 +299,122 @@ public class FlaxLayout extends ViewGroup {
                 final float x = ev.getX();
                 final float y = ev.getY();
                 mInitialMotionX = x;
-                mInitialMotionY = y;
+                mCurrentMotionY = mInitialMotionY = y;
 
-                if (mDragHelper.isViewUnder(mContentView, (int) x, (int) y)) {
-                    interceptTap = true;
+//                if (mDragHelper.isViewUnder(mContentView, (int) x, (int) y)
+//                        &&!canChildScrollUp()&&!canChildScrollDown()) {
+//                    interceptTap = true;
+//                }
+                mActivePointerId = MotionEventCompat.getPointerId(ev, 0);
+                mIsBeingDragged = false;
+                final float initialDownY = getMotionEventY(ev, mActivePointerId);
+                final float initialDownX = getMotionEventX(ev, mActivePointerId);
+                if (initialDownY == -1) {
+                    return false;
                 }
+                mInitialDownY = initialDownY;
+                mInitialDownX = initialDownX;
                 break;
             }
 
             case MotionEvent.ACTION_MOVE: {
-                final float x = ev.getX();
-                final float y = ev.getY();
-                final float adx = Math.abs(x - mInitialMotionX);
-                final float ady = Math.abs(y - mInitialMotionY);
-                final int slop = mDragHelper.getTouchSlop();
-                if (adx > slop && ady > adx) {
-                    mDragHelper.cancel();
-                    mIsUnableToDrag = true;
+//                final float x = ev.getX();
+//                final float y = ev.getY();
+//                final float adx = Math.abs(x - mInitialMotionX);
+//                final float ady = Math.abs(y - mInitialMotionY);
+//                final int slop = mDragHelper.getTouchSlop();
+//
+//                final float dy = y - mCurrentMotionY ;
+//                mCurrentMotionY = y ;
+//                if (canChildScrollUp()&&dy > 0){
+//                    mDragHelper.cancel();
+//                    mIsUnableToDrag = true;
+//                    return false;
+//                }
+//                if (canChildScrollDown()&&dy < 0){
+//                    mDragHelper.cancel();
+//                    mIsUnableToDrag = true;
+//                    return false;
+//                }
+//                if (adx > slop && ady > adx) {
+//                    mDragHelper.cancel();
+//                    mIsUnableToDrag = true;
+//                    return false;
+//                }
+
+                if (mActivePointerId == INVALID_POINTER) {
                     return false;
                 }
+
+                final float y = getMotionEventY(ev, mActivePointerId);
+                final float x = getMotionEventX(ev, mActivePointerId);
+                if (y == -1) {
+                    return false;
+                }
+                final float yDiff = y - mInitialDownY;
+                final float xDiff = x - mInitialDownX;
+                if (yDiff > mTouchSlop && !mIsBeingDragged) {
+                    mInitialMotionY = mInitialDownY + mTouchSlop;
+                    if (Math.abs(xDiff) > Math.abs(yDiff)) {
+                        mIsBeingDragged = false;
+                    } else
+                        mIsBeingDragged = true;
+                }
+                break;
+
             }
+
+            case MotionEvent.ACTION_UP:
+            case MotionEvent.ACTION_CANCEL:
+                mIsBeingDragged = false;
+                mActivePointerId = INVALID_POINTER;
+                break;
         }
 
-        final boolean interceptForDrag = mDragHelper.shouldInterceptTouchEvent(ev);
 
-        return interceptForDrag || interceptTap;
+        Log.v("zgy","=======mIsBeingDragged======="+MotionEventCompat.getActionMasked(ev)) ;
+        mDragHelper.shouldInterceptTouchEvent(ev);
+        return mIsBeingDragged;
+    }
+    private float getMotionEventY(MotionEvent ev, int activePointerId) {
+        final int index = MotionEventCompat.findPointerIndex(ev, activePointerId);
+        if (index < 0) {
+            return -1;
+        }
+        return MotionEventCompat.getY(ev, index);
     }
 
+    private float getMotionEventX(MotionEvent ev, int activePointerId) {
+        final int index = MotionEventCompat.findPointerIndex(ev, activePointerId);
+        if (index < 0) {
+            return -1;
+        }
+        return MotionEventCompat.getX(ev, index);
+    }
+
+    private void onSecondaryPointerUp(MotionEvent ev) {
+        final int pointerIndex = MotionEventCompat.getActionIndex(ev);
+        final int pointerId = MotionEventCompat.getPointerId(ev, pointerIndex);
+        if (pointerId == mActivePointerId) {
+            /*多点触控问题*/
+            final int newPointerIndex = pointerIndex == 0 ? 1 : 0;
+            mActivePointerId = MotionEventCompat.getPointerId(ev, newPointerIndex);
+        }
+    }
+
+    private int getPointerIndex(MotionEvent ev, int id) {
+        int activePointerIndex = MotionEventCompat.findPointerIndex(ev, id);
+        if (activePointerIndex == -1)
+            mActivePointerId = INVALID_POINTER;
+        return activePointerIndex;
+    }
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
 
-//        if (canChildScrollDown()||canChildScrollUp()) {
-//            return super.onTouchEvent(ev);
-//        }
+        if (mIsUnableToDrag) {
+            return super.onTouchEvent(ev);
+        }
+        Log.v("zgy","=======processTouchEvent======="+MotionEventCompat.getActionMasked(ev)) ;
         mDragHelper.processTouchEvent(ev);
 
         final int action = ev.getAction();
@@ -547,12 +684,38 @@ public class FlaxLayout extends ViewGroup {
         public int clampViewPositionVertical(View child, int top, int dy) {
             int offset;
             float percent;
-            percent = (child.getHeight() - Math.abs(top)) * 1.0f * 0.6f / child.getHeight();
+            percent = (child.getHeight() - Math.abs(top)) * 1.0f * 0.5f / child.getHeight();
             offset = (int) (child.getTop() + dy * percent);
             return offset;
         }
     }
 
+    public void setBackgroundViewColor(int color){
+        mBackgroundView.setBackgroundColor(color);
+    }
+
+    public void hideBackgroundViewChild(){
+        if (mBackgroundView instanceof ViewGroup){
+            ViewGroup group = (ViewGroup) mBackgroundView;
+            for (int i = 0, childCount = group.getChildCount(); i < childCount; i++) {
+                final View child = group.getChildAt(i);
+                if (child.getVisibility() == VISIBLE) {
+                    child.setVisibility(INVISIBLE);
+                }
+            }
+        }
+    }
+    public void showBackgroundViewChild(){
+        if (mBackgroundView instanceof ViewGroup){
+            ViewGroup group = (ViewGroup) mBackgroundView;
+            for (int i = 0, childCount = group.getChildCount(); i < childCount; i++) {
+                final View child = group.getChildAt(i);
+                if (child.getVisibility() == INVISIBLE) {
+                    child.setVisibility(VISIBLE);
+                }
+            }
+        }
+    }
     public void setSmoothListener(SmoothListener listener) {
         mSmoothListener = listener;
     }
