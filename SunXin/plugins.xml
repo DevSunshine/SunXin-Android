@@ -10,3 +10,4 @@
     <plugin crc="1776158823" id="104" path="plugins/Plugin_Shake.apk" project="Plugin_Shake" rootFragment="com.sunxin.plugin.shake.RootFragment" version="1"/>
 <plugin crc="148112289" id="103" path="plugins/Plugin_FileSelector.apk" project="Plugin_FileSelector" rootFragment="com.sunxin.plugin.fileselector.RootFragment" version="1"/>
     <plugin crc="433269098" id="106" path="plugins/Plugin_Personal.apk" project="Plugin_Personal" rootFragment="com.sunxin.plugin.personal.PersonalFragment" version="3"/></plugin>
+

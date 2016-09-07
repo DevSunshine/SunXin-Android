@@ -36,9 +36,5 @@
             android:numColumns="4"
             android:overScrollMode="never"
             android:scrollbars="none"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
     </com.sunxin.plugin.login.DragMutilLayout>
 </com.sunxin.plugin.login.DragScrollerView>

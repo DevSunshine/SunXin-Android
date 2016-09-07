@@ -51,7 +51,29 @@ public class RootFragment extends BaseFragment {
         }) ;
 
         mDragMutilLayout = (DragMutilLayout) view.findViewById(R.id.id_drag);
-        mDragMutilLayout.setData(initList());
+//        mDragMutilLayout.setData(initList());
+        MaxGridView[] gridViews = mDragMutilLayout.getGridViews() ;
+        GridAdapter[] gridAdapters = mDragMutilLayout.getGridAdapters() ;
+        for (int j = 0; j < gridViews.length; j++) {
+            List<String> data = new ArrayList<>();
+            gridAdapters[j] = new GridAdapter(data);
+            gridViews[j].setAdapter(gridAdapters[j]);
+        }
+        List<String> data = initList() ;
+        if (data != null) {
+            if (data.size() > 3) {
+                gridAdapters[0].getDataList().clear();
+                gridAdapters[0].getDataList().addAll(data.subList(0, 3));
+                gridAdapters[0].notifyDataSetChanged();
+                gridAdapters[1].getDataList().clear();
+                gridAdapters[1].getDataList().addAll(data.subList(3, data.size()));
+                gridAdapters[1].notifyDataSetChanged();
+            } else {
+                gridAdapters[0].getDataList().clear();
+                gridAdapters[0].getDataList().addAll(data.subList(0, data.size()));
+                gridAdapters[0].notifyDataSetChanged();
+            }
+        }
 //        mListView = (SwapListView) view.findViewById(R.id.id_swap_list_view) ;
 //        mListView.setAdapter(new StringAdapter(initList()));
 
