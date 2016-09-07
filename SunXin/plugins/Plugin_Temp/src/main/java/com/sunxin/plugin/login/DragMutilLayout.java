@@ -28,7 +28,6 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -42,6 +41,9 @@ public class DragMutilLayout extends RelativeLayout implements AdapterView.OnIte
     private final static TypeEvaluator<Rect> sBoundEvaluator = new TypeEvaluator<Rect>() {
         @Override
         public Rect evaluate(float fraction, Rect startValue, Rect endValue) {
+            if (startValue == null || endValue == null){
+                return new Rect() ;
+            }
             return new Rect(interpolate(startValue.left, endValue.left, fraction),
                     interpolate(startValue.top, endValue.top, fraction),
                     interpolate(startValue.right, endValue.right, fraction),
@@ -127,11 +129,11 @@ public class DragMutilLayout extends RelativeLayout implements AdapterView.OnIte
             mGridAdapters = new GridAdapter[maxGridViews.length];
         }
 
-        for (int j = 0; j < maxGridViews.length; j++) {
-            List<String> data = new ArrayList<>();
-            mGridAdapters[j] = new GridAdapter(data);
-            maxGridViews[j].setAdapter(mGridAdapters[j]);
-        }
+//        for (int j = 0; j < maxGridViews.length; j++) {
+//            List<String> data = new ArrayList<>();
+//            mGridAdapters[j] = new GridAdapter(data);
+//            maxGridViews[j].setAdapter(mGridAdapters[j]);
+//        }
 
 
         getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
@@ -206,8 +208,10 @@ public class DragMutilLayout extends RelativeLayout implements AdapterView.OnIte
 
                 break;
             case MotionEvent.ACTION_UP:
+                touchEventCancel();
                 break;
             case MotionEvent.ACTION_CANCEL:
+                touchEventCancel();
                 break;
         }
         if (isMove) {
@@ -243,10 +247,8 @@ public class DragMutilLayout extends RelativeLayout implements AdapterView.OnIte
                     int delayX = mCurrentMotionX - mDownInitX;
                     mCellCurrentBounds.offsetTo(mCellOriginBounds.left + delayX, mCellOriginBounds.top + delayY);
 
-                    mMobileView.setBounds(mCellCurrentBounds);
-                    checkExchangeItem();
                     isScroll = checkScroll() ;
-                    invalidate();
+
                     return false;
                 } else {
                     int pointIndexs = MotionEventCompat.getActionIndex(event);
@@ -299,7 +301,10 @@ public class DragMutilLayout extends RelativeLayout implements AdapterView.OnIte
     }
 
     private void checkExchangeItem() {
-
+        if (mCellCurrentBounds == null){
+            return;
+        }
+        Log.v("zgy", "================mCellCurrentBounds====" + mCellCurrentBounds);
         mNextPosition = pointToPosition(mCellCurrentBounds.centerX(), mCellCurrentBounds.centerY());
 
         if (mNextPosition != AbsListView.INVALID_POSITION && (mCurrentGridView != mNextGridView || mNextPosition != mCurrentPosition) && !mIsAnimater) {
@@ -370,11 +375,61 @@ public class DragMutilLayout extends RelativeLayout implements AdapterView.OnIte
                 maxGridViews[mCurrentGridView].animateReorder(mCurrentPosition, mNextPosition);
             }
             mCurrentPosition = mNextPosition;
+            checkBound() ;
 
 
         }
     }
 
+    private void checkBound(){
+        View view = getViewForPosition(maxGridViews[mCurrentGridView], mCurrentPosition);
+        if (view != null) {
+            if (view.getHeight() != mCellCurrentBounds.height()){
+                final Rect temp = new Rect(view.getLeft(),view.getTop(),view.getLeft()+ view.getWidth(),view.getTop()+ view.getHeight()) ;
+                final int left, top ;
+                left = (int) ((temp.left - mCellCurrentBounds.left)/2.0f) ;
+                top = (int) ((temp.top - mCellCurrentBounds.top)/2.0f) ;
+                ValueAnimator valueAnimator = ValueAnimator.ofFloat(0,1.0f) ;
+                valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                    @Override
+                    public void onAnimationUpdate(ValueAnimator animation) {
+                        float value = (float) animation.getAnimatedValue();
+                        int width = (int) (mCellCurrentBounds.width() - (mCellCurrentBounds.width()-temp.width())*value);
+                        int height = (int) (mCellCurrentBounds.height() - (mCellCurrentBounds.height()-temp.height())*value);
+                        int innerTop = (int) (top * value);
+                        int innerLeft = (int) (left * value);
+                        mCellCurrentBounds.set(mCellCurrentBounds.left ,
+                                mCellCurrentBounds.top ,
+                                mCellCurrentBounds.left +width,
+                                mCellCurrentBounds.top +height);
+                        invalidate();
+                    }
+                });
+                valueAnimator.addListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationStart(Animator animation) {
+                        setEnabled(false);
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        invalidate();
+                    }
+                });
+                valueAnimator.setDuration(200);
+                valueAnimator.start();
+            }
+        }
+
+    }
+
+
+    public MaxGridView[] getGridViews(){
+        return maxGridViews ;
+    }
+    public GridAdapter[] getGridAdapters(){
+        return mGridAdapters ;
+    }
     public void swapItem(GridAdapter adapter, int oldPosition, int newPosition) {
         String temp = adapter.getDataList().get(oldPosition);
         if (oldPosition < newPosition) {
@@ -538,14 +593,20 @@ public class DragMutilLayout extends RelativeLayout implements AdapterView.OnIte
     private void createUnTouchAnimation() {
         Log.v("zgy", "===================mCurrentGridView====" + mCurrentGridView + "===mCurrentPosition=" + mCurrentPosition);
         View view = getViewForPosition(maxGridViews[mCurrentGridView], mCurrentPosition);
-        if (view == null) {
+        if (view == null||mCellCurrentBounds == null) {
             mMobileView = null;
             invalidate();
             mGridAdapters[mCurrentGridView].hidePosition(-1);
             return;
         }
-        mCellCurrentBounds.offsetTo(view.getLeft() + maxGridViews[mCurrentGridView].getLeft(),
-                view.getTop() + maxGridViews[mCurrentGridView].getTop());
+        Log.v("zgy", "===================mCurrentGridView====" + mCellCurrentBounds.width() );
+//        mCellCurrentBounds.offsetTo(view.getLeft() + maxGridViews[mCurrentGridView].getLeft(),
+//                view.getTop() + maxGridViews[mCurrentGridView].getTop());
+        mCellCurrentBounds.set(view.getLeft() + maxGridViews[mCurrentGridView].getLeft(),
+                view.getTop() + maxGridViews[mCurrentGridView].getTop(),
+                view.getLeft() + maxGridViews[mCurrentGridView].getLeft() + view.getWidth(),
+                view.getTop() + maxGridViews[mCurrentGridView].getTop() + view.getHeight());
+        Log.v("zgy", "===================mCurrentGridView====" + mCellCurrentBounds.width() );
         ObjectAnimator hoverViewAnimator = ObjectAnimator.ofObject(mMobileView, "bounds",
                 sBoundEvaluator, mCellCurrentBounds);
         hoverViewAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -593,6 +654,13 @@ public class DragMutilLayout extends RelativeLayout implements AdapterView.OnIte
         Log.v("ZGY","==============mParentView======"+mParentView.getScollerHeight()) ;
     }
 
+    @Override
+    public void onScrollFinish() {
+        if (isMove && isScroll) {
+            isScroll = checkScroll();
+        }
+    }
+
     private static class WrapperView {
         private View mTarget;
 
@@ -621,20 +689,37 @@ public class DragMutilLayout extends RelativeLayout implements AdapterView.OnIte
 
     private boolean checkScroll() {
 
+        boolean scoller = false ;
+        int dy = 0 ;
         if (mParentView != null){
 
             int height = mParentView.getHeight()+mParentView.getScrollY();
-            Log.v("zgy","==========height==========="+height+"============mCellCurrentBounds="+(mCellCurrentBounds.top + mCellCurrentBounds.height())) ;
-            if (mCellCurrentBounds.top < mParentView.getScrollY() && mParentView != null)  {
-                mParentView.smoothScrollBy(0, -4);
-                return true;
+
+
+            if (mCellCurrentBounds.top < (mParentView.getScrollY() + 20))  {
+                int speed = (int) ((20 + mParentView.getScrollY() - mCellCurrentBounds.top)*0.05f)+4;
+                mParentView.smoothScrollBy(0, -speed);
+//                mCellCurrentBounds.offsetTo(mCellOriginBounds.left, mCellOriginBounds.top -4);
+                scoller = true;
+                dy = -speed ;
             }
-            if (mCellCurrentBounds.top + mCellCurrentBounds.height() > height ) {
-                mParentView.smoothScrollBy(0, 4);
-                return true;
+            if (mCellCurrentBounds.top + mCellCurrentBounds.height() > (height-20) ) {
+                int speed = (int) ((mCellCurrentBounds.top + mCellCurrentBounds.height() - height + 20)*0.05f)+4;
+                mParentView.smoothScrollBy(0, speed);
+//                mCellCurrentBounds.offsetTo(mCellOriginBounds.left, mCellOriginBounds.top +4);
+                scoller = true;
+                dy = speed ;
+            }
+            if ((mParentView.getHeight()+mParentView.getScrollY() < mParentView.getScollerHeight())&&
+                    mParentView.getScrollY() > 0){
+                Log.v("zgy","==========offsetTo===========") ;
+                mCellCurrentBounds.offsetTo(mCellCurrentBounds.left, mCellCurrentBounds.top + dy);
             }
         }
 
-        return false;
+        checkExchangeItem();
+        mMobileView.setBounds(mCellCurrentBounds);
+        invalidate();
+        return scoller;
     }
 }

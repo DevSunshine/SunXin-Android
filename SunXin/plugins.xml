@@ -4,7 +4,7 @@
 
     <!--<plugin desc="插件模板" id="102"  project="TempPlugin" rootFragment="com.sunxin.plugin.login.RootFragment" />-->
 
-<plugin crc="2278369164" id="102" path="plugins/Plugin_Temp.apk" project="Plugin_Temp" rootFragment="com.sunxin.plugin.login.RootFragment" version="1"/>
+<plugin crc="262237671" id="102" path="plugins/Plugin_Temp.apk" project="Plugin_Temp" rootFragment="com.sunxin.plugin.login.RootFragment" version="1"/>
     <plugin crc="987278761" id="101" path="plugins/Plugin_Login.apk" project="Plugin_Login" rootFragment="com.sunxin.plugin.login.RootFragment" version="3"/>
     <plugin crc="2211629712" id="105" path="plugins/Plugin_FileTransfer.apk" project="Plugin_FileTransfer" rootFragment="com.sunxin.plugin.filetransfer.RootFragment" version="1"/>
     <plugin crc="2969849535" id="104" path="plugins/Plugin_Shake.apk" project="Plugin_Shake" rootFragment="com.sunxin.plugin.shake.RootFragment" version="1"/>
