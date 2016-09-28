@@ -6,13 +6,11 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.sunshine.sunxin.App;
 import com.sunshine.sunxin.BaseFragment;
 import com.sunxin.plugin.fileselecter.R;
 import com.sunxin.plugin.fileselector.adapter.FileBrowserAdapter;
@@ -21,6 +19,12 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
+
+import rx.Observable;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
+import rx.functions.Func1;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by 钟光燕 on 2016/8/16.
@@ -90,38 +94,39 @@ public class FileBrowserFragment extends BaseFragment {
             String name = new File(path).getName();
             mTitle.setText(name);
         }
-        App.runBackground(new Runnable() {
-            @Override
-            public void run() {
-                FileUtil.getFiles(fileInfos, path);
-                for (FileInfo fileInfo : mFileInfos) {
-                    for (FileInfo file : fileInfos) {
-                        if (file.isDir) {
-                            continue;
-                        }
-                        if (fileInfo.path.equals(file.path)) {
-                            file.selected = fileInfo.selected;
-                            break;
-                        }
-                    }
-                }
-                getActivity().runOnUiThread(new Runnable() {
+
+        subscription = Observable.just(path)
+                .map(new Func1<String, List<FileInfo>>() {
                     @Override
-                    public void run() {
+                    public List<FileInfo> call(String s) {
+                        FileUtil.getFiles(fileInfos, s);
+                        for (FileInfo fileInfo : mFileInfos) {
+                            for (FileInfo file : fileInfos) {
+                                if (file.isDir) {
+                                    continue;
+                                }
+                                if (fileInfo.path.equals(file.path)) {
+                                    file.selected = fileInfo.selected;
+                                    break;
+                                }
+                            }
+                        }
+                        return fileInfos;
+                    }
+                })
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<List<FileInfo>>() {
+                    @Override
+                    public void call(List<FileInfo> fileInfos) {
                         mAdapter.setFile(fileInfos);
                         if (statueStack.size() > 0 && back) {
                             ViewStatue viewStatue = statueStack.pop();
-                            Log.v("zgy", "==============viewStatue====" + viewStatue.position);
                             mManager.scrollToPositionWithOffset(viewStatue.position, viewStatue.top);
                         }
-
                     }
                 });
-            }
-        });
 
-
-        //end loading
     }
 
     public void handleFile(FileInfo fileInfo) {

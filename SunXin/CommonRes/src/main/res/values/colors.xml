@@ -5,7 +5,9 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="colorMain">#FF4081</color>
+    <color name="colorMainAlpha">#ec3b77</color>
     <color name="colorBg">#ecedf1</color>
+    <color name="colorBgTint">#e2e3e7</color>
     <color name="colorBlack">#000000</color>
     <color name="color999">#999999</color>
     <color name="color666">#666666</color>

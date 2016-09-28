@@ -289,7 +289,7 @@ public class FlaxLayout extends ViewGroup {
             mDragHelper.cancel();
             return false;
         }
-        if (!isEnabled() || canChildScrollUp()) {
+        if (!isEnabled()||(canChildScrollUp())) {
             return false;
         }
 
@@ -353,22 +353,24 @@ public class FlaxLayout extends ViewGroup {
                 }
                 final float yDiff = y - mInitialDownY;
                 final float xDiff = x - mInitialDownX;
-                if (yDiff > mTouchSlop && !mIsBeingDragged) {
+                if (((yDiff > mTouchSlop)) && !mIsBeingDragged) {
                     mInitialMotionY = mInitialDownY + mTouchSlop;
                     if (Math.abs(xDiff) > Math.abs(yDiff)) {
                         mIsBeingDragged = false;
-                    } else
+                    } else{
                         mIsBeingDragged = true;
+                    }
+                }
+                /**
+                 * 通过这个值来判断当前状态是否已经拖动了
+                 */
+                if (mContentView != null&&mContentView.getTop() != 0){
+                    mIsBeingDragged = true ;
                 }
                 break;
 
             }
 
-            case MotionEvent.ACTION_UP:
-            case MotionEvent.ACTION_CANCEL:
-                mIsBeingDragged = false;
-                mActivePointerId = INVALID_POINTER;
-                break;
         }
 
 
@@ -415,7 +417,9 @@ public class FlaxLayout extends ViewGroup {
             return super.onTouchEvent(ev);
         }
         Log.v("zgy","=======processTouchEvent======="+MotionEventCompat.getActionMasked(ev)) ;
-        mDragHelper.processTouchEvent(ev);
+        if (mIsBeingDragged){
+            mDragHelper.processTouchEvent(ev);
+        }
 
         final int action = ev.getAction();
         boolean wantTouchEvents = true;
@@ -485,7 +489,7 @@ public class FlaxLayout extends ViewGroup {
 
     @Override
     protected ViewGroup.LayoutParams generateDefaultLayoutParams() {
-        return new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT);
+        return new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
     }
 
     @Override
@@ -532,7 +536,7 @@ public class FlaxLayout extends ViewGroup {
         Paint dimPaint;
 
         public LayoutParams() {
-            super(FILL_PARENT, FILL_PARENT);
+            super(MATCH_PARENT, MATCH_PARENT);
         }
 
         public LayoutParams(int width, int height) {

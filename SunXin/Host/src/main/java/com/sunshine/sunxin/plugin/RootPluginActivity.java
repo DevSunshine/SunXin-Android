@@ -23,8 +23,9 @@ public class RootPluginActivity extends BasePluginActivity {
     private PluginSyncManager mPluginSyncManager;
     private String mPluginId;
     private boolean mShowTitle;
-    private String mTitle ;
-    private String mBackTitle ;
+    private String mTitle;
+    private String mBackTitle;
+    private int mTintColor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,26 +41,32 @@ public class RootPluginActivity extends BasePluginActivity {
             mShowTitle = getIntent().getBooleanExtra(PluginConstant.INTENT_SHOW_TITLE_KEY, true);
             mTitle = getIntent().getStringExtra(PluginConstant.INTENT_TITLE_KEY);
             mBackTitle = getIntent().getStringExtra(PluginConstant.INTENT_BACK_TITLE_KEY);
+            mTintColor = getIntent().getIntExtra(PluginConstant.INTENT_TINT_COLOR_KEY, -1);
         } else {
             mPluginId = savedInstanceState.getString(PluginConstant.INTENT_PLUGIN_ID_KEY);
             mShowTitle = savedInstanceState.getBoolean(PluginConstant.INTENT_SHOW_TITLE_KEY, true);
             mTitle = savedInstanceState.getString(PluginConstant.INTENT_TITLE_KEY);
             mBackTitle = savedInstanceState.getString(PluginConstant.INTENT_BACK_TITLE_KEY);
+            mTintColor = savedInstanceState.getInt(PluginConstant.INTENT_TINT_COLOR_KEY, -1);
         }
-        if (!mShowTitle){
+        if (!mShowTitle) {
             getTitleView().hide();
         }
-        if (!TextUtils.isEmpty(mTitle)){
-            getTitleView().setTitle(mTitle) ;
+        if (!TextUtils.isEmpty(mTitle)) {
+            getTitleView().setTitle(mTitle);
         }
 
-        if (!TextUtils.isEmpty(mBackTitle)){
+        if (!TextUtils.isEmpty(mBackTitle)) {
             getTitleView().addLeftBtn(mBackTitle, new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     finish();
                 }
-            }) ;
+            });
+        }
+
+        if (mTintColor != -1 && systemBarTintManager.isStatusBarTintEnabled()) {
+            systemBarTintManager.setStatusBarTintColor(mTintColor);
         }
         syncPluginById(mPluginId);
 
@@ -78,7 +85,7 @@ public class RootPluginActivity extends BasePluginActivity {
         super.onSaveInstanceState(paramBundle);
         if (this.pluginInfo != null)
             paramBundle.putString(PluginConstant.INTENT_PLUGIN_ID_KEY, this.mPluginId);
-        paramBundle.putBoolean(PluginConstant.INTENT_SHOW_TITLE_KEY,mShowTitle);
+        paramBundle.putBoolean(PluginConstant.INTENT_SHOW_TITLE_KEY, mShowTitle);
     }
 
     private void installPlugin() {
@@ -153,7 +160,7 @@ public class RootPluginActivity extends BasePluginActivity {
 
     @Subscribe
     public void onPluginInfo(PluginInfoEvent event) {
-        if (!mPluginId.equals(event.pluginInfo.id)){
+        if (!mPluginId.equals(event.pluginInfo.id)) {
             return;
         }
         pluginInfo.deepCopy(event.pluginInfo);
@@ -168,13 +175,13 @@ public class RootPluginActivity extends BasePluginActivity {
 
     @Subscribe
     public void onPluginInstalled(PluginInstalledEvent event) {
-        if (pluginInfo == null){
-            PluginInfo info = PluginCache.getInstance().getPluginInfo(mPluginId) ;
-            if (info != null){
+        if (pluginInfo == null) {
+            PluginInfo info = PluginCache.getInstance().getPluginInfo(mPluginId);
+            if (info != null) {
                 BusProvider.provide().post(new PluginInfoEvent(info));
-            }else {
-                Log.v("zgy", "==========没有找到插件======" );
-                Toast.makeText(getApplicationContext(),"请确保你已经安装了插件!!!",Toast.LENGTH_LONG).show();
+            } else {
+                Log.v("zgy", "==========没有找到插件======");
+                Toast.makeText(getApplicationContext(), "请确保你已经安装了插件!!!", Toast.LENGTH_LONG).show();
             }
         }
 

@@ -27,7 +27,7 @@ public class BasePluginFragment extends BaseFragment {
 
     protected void startAndFinishSelf(Class<?> paramClass, Bundle paramBundle) {
         startFragment(paramClass, paramBundle);
-        getActivity().overridePendingTransition(0, 0);
+//        getActivity().overridePendingTransition(0, 0);
         getActivity().finish();
     }
 

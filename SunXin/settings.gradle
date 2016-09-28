@@ -1,4 +1,4 @@
-include ':Plugin_Login', ':Plugin_Temp','Plugin_FileSelector','Plugin_Shake','Plugin_FileTransfer','Plugin_Personal',
+include ':Plugin_Login', ':Plugin_Temp', ':SSNet', 'Plugin_FileSelector', 'Plugin_Shake', 'Plugin_FileTransfer', 'Plugin_Personal',
         ':Host',
         ':SSSocket', ':DexInstall', ':ProtoBuf', ':TaskInterface', ':OKHttp3', ':Picasso',
         ':CommonRes'
@@ -12,6 +12,7 @@ project(':TaskInterface').projectDir = new File("libs/TaskInterface")
 project(':TaskInterface').projectDir = new File("libs/TaskInterface")
 project(':OKHttp3').projectDir = new File("libs/OKHttp3")
 project(':Picasso').projectDir = new File("libs/Picasso")
+project(':SSNet').projectDir = new File("libs/SSNet")
 
 //plugins
 project(':Plugin_Login').projectDir = new File("plugins/Plugin_Login")
@@ -22,10 +23,10 @@ project(':Plugin_FileTransfer').projectDir = new File("plugins/Plugin_FileTransf
 project(':Plugin_Personal').projectDir = new File("plugins/Plugin_Personal")
 
 
-def plugin = ['Plugin_Login','Plugin_Temp','Plugin_FileSelector',
-              'Plugin_Personal','Plugin_Shake','Plugin_FileTransfer']
+def plugin = ['Plugin_Login', 'Plugin_Temp', 'Plugin_FileSelector',
+              'Plugin_Personal', 'Plugin_Shake', 'Plugin_FileTransfer']
 
-gradle.ext.pluginApk = plugin ;
+gradle.ext.pluginApk = plugin;
 
 initEnv()
 initFileDir()
@@ -46,17 +47,17 @@ def initFileDir() {
     util.createDir("$jarDir" + File.separator + 'libsJar')
 }
 
-ext{
+ext {
     gradle.ext.keyAlias = "sunshine"
     gradle.ext.keyPassword = "sunshinesunxin"
     gradle.ext.storeFile = '../sunshine_sunxin.jks'
     gradle.ext.storePassword = "sunshinesunxin"
 }
 
-ext{
-    gradle.ext.compileSdkVersion=24
-    gradle.ext.buildToolsVersion="23.0.3"
+ext {
+    gradle.ext.compileSdkVersion = 23
+    gradle.ext.buildToolsVersion = "23.0.3"
     gradle.ext.minSdkVersion = 14
-    gradle.ext.targetSdkVersion = 24
+    gradle.ext.targetSdkVersion = 23
 }
 

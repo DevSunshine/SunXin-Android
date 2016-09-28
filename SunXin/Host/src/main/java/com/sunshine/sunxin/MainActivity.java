@@ -19,6 +19,7 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 //        getTitleView().hide();
         getTitleView().setTitle("深信");
         getTitleView().addRightBtn(R.drawable.ic_copy_white, new View.OnClickListener() {
@@ -48,6 +49,7 @@ public class MainActivity extends BaseActivity {
         Intent intent = new Intent(this,RootPluginActivity.class) ;
         intent.putExtra(PluginConstant.INTENT_PLUGIN_ID_KEY, "101") ;
         intent.putExtra(PluginConstant.INTENT_SHOW_TITLE_KEY, false) ;
+        intent.putExtra(PluginConstant.INTENT_TINT_COLOR_KEY, 0xffe2e3e7) ;
         startActivity(intent);
     }
     public void startPlugin2(View view){

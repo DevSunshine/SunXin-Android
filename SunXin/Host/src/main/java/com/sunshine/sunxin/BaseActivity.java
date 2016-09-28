@@ -4,10 +4,10 @@ package com.sunshine.sunxin;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import com.sunshine.sunxin.util.SystemBarTintManager;
 import com.sunshine.sunxin.view.TitleView;
 import com.sunshine.sunxin.view.loadingview.LoadingIndicatorView;
 
@@ -18,6 +18,7 @@ import com.sunshine.sunxin.view.loadingview.LoadingIndicatorView;
 public class BaseActivity extends FragmentActivity {
     private TitleView mTitleView ;
     private LoadingIndicatorView mLoadingView ;
+    public SystemBarTintManager systemBarTintManager ;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +37,9 @@ public class BaseActivity extends FragmentActivity {
         mLoadingView = (LoadingIndicatorView) parent.findViewById(R.id.id_loadingView);
         contentView.addView(view);
         super.setContentView(parent);
-
+        systemBarTintManager = new SystemBarTintManager(this);
+        systemBarTintManager.setStatusBarTintEnabled(true);
+//        systemBarTintManager.setNavigationBarTintEnabled(false);
     }
 
     public void showLoadingView(){
