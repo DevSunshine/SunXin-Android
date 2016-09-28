@@ -56,6 +56,8 @@ public class MainActivity extends BaseActivity {
         Intent intent = new Intent(this,RootPluginActivity.class) ;
         intent.putExtra(PluginConstant.INTENT_PLUGIN_ID_KEY, "102") ;
 //        intent.putExtra(PluginConstant.INTENT_SHOW_TITLE_KEY, false) ;
+        intent.putExtra(PluginConstant.INTENT_TINT_FULL_KEY, true) ;
+        intent.putExtra(PluginConstant.INTENT_TINT_COLOR_KEY, 0x44000000) ;
         startActivity(intent);
     }
     public void startPlugin3(View view){

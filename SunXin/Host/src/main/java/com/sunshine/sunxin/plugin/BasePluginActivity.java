@@ -72,7 +72,7 @@ public abstract class BasePluginActivity extends BaseActivity {
     protected View getContentView() {
         this.rootView = new FrameLayout(this);
         if ((Build.VERSION.SDK_INT >= 14) && (needFitsSystemWindows()))
-            this.rootView.setFitsSystemWindows(true);
+            this.rootView.setFitsSystemWindows(false);
         this.rootView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
         this.rootView.setId(R.id.id_plugin_root_view);
         return this.rootView;

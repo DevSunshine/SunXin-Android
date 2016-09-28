@@ -20,4 +20,5 @@ public interface PluginConstant {
     String INTENT_TITLE_KEY = "key_title" ;
     String INTENT_BACK_TITLE_KEY = "key_back_title" ;
     String INTENT_TINT_COLOR_KEY = "intent_tint_color_key" ;
+    String INTENT_TINT_FULL_KEY = "intent_tint_full_key" ;
 }

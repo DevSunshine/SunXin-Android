@@ -26,6 +26,7 @@ public class RootPluginActivity extends BasePluginActivity {
     private String mTitle;
     private String mBackTitle;
     private int mTintColor;
+    private boolean mTintFull;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,12 +43,14 @@ public class RootPluginActivity extends BasePluginActivity {
             mTitle = getIntent().getStringExtra(PluginConstant.INTENT_TITLE_KEY);
             mBackTitle = getIntent().getStringExtra(PluginConstant.INTENT_BACK_TITLE_KEY);
             mTintColor = getIntent().getIntExtra(PluginConstant.INTENT_TINT_COLOR_KEY, -1);
+            mTintFull = getIntent().getBooleanExtra(PluginConstant.INTENT_TINT_FULL_KEY, false);
         } else {
             mPluginId = savedInstanceState.getString(PluginConstant.INTENT_PLUGIN_ID_KEY);
             mShowTitle = savedInstanceState.getBoolean(PluginConstant.INTENT_SHOW_TITLE_KEY, true);
             mTitle = savedInstanceState.getString(PluginConstant.INTENT_TITLE_KEY);
             mBackTitle = savedInstanceState.getString(PluginConstant.INTENT_BACK_TITLE_KEY);
             mTintColor = savedInstanceState.getInt(PluginConstant.INTENT_TINT_COLOR_KEY, -1);
+            mTintFull = savedInstanceState.getBoolean(PluginConstant.INTENT_TINT_FULL_KEY, false);
         }
         if (!mShowTitle) {
             getTitleView().hide();
@@ -67,6 +70,9 @@ public class RootPluginActivity extends BasePluginActivity {
 
         if (mTintColor != -1 && systemBarTintManager.isStatusBarTintEnabled()) {
             systemBarTintManager.setStatusBarTintColor(mTintColor);
+        }
+        if (mTintFull && systemBarTintManager.isStatusBarTintEnabled()) {
+//            setFullTintContext();
         }
         syncPluginById(mPluginId);
 

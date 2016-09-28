@@ -30,6 +30,10 @@ public class BaseFragment extends Fragment {
         return getHostActivity().systemBarTintManager ;
     }
 
+    public void fullTintContext(){
+        getHostActivity().setFullTintContext();
+    }
+
     @Override
     public void onDestroy() {
         super.onDestroy();

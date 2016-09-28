@@ -1,40 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.sunxin.plugin.login.DragScrollerView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    >
+    android:fitsSystemWindows="true">
 
-    <com.sunxin.plugin.login.DragMutilLayout
-        android:background="@color/color666"
-        android:id="@+id/id_drag"
+    <com.sunxin.plugin.login.DragScrollerView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
         android:orientation="vertical">
-        <com.sunxin.plugin.login.MaxGridView
-            android:layout_marginTop="10dp"
-            android:id="@+id/id_app_center_recycler_view"
+
+        <com.sunxin.plugin.login.DragMutilLayout
+            android:id="@+id/id_drag"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#ffffff"
-            android:cacheColorHint="@android:color/transparent"
-            android:gravity="center"
-            android:listSelector="@android:color/transparent"
-            android:numColumns="3"
-            android:overScrollMode="never"
-            android:scrollbars="none"/>
-        <com.sunxin.plugin.login.MaxGridView
-            android:layout_below="@id/id_app_center_recycler_view"
-            android:layout_marginTop="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#ffffff"
-            android:cacheColorHint="@android:color/transparent"
-            android:gravity="center"
-            android:listSelector="@android:color/transparent"
-            android:numColumns="4"
-            android:overScrollMode="never"
-            android:scrollbars="none"/>
-    </com.sunxin.plugin.login.DragMutilLayout>
-</com.sunxin.plugin.login.DragScrollerView>
+            android:background="@color/color666"
+            android:orientation="vertical">
+
+            <com.sunxin.plugin.login.MaxGridView
+                android:id="@+id/id_app_center_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="#ffffff"
+                android:cacheColorHint="@android:color/transparent"
+                android:gravity="center"
+                android:listSelector="@android:color/transparent"
+                android:numColumns="3"
+                android:overScrollMode="never"
+                android:scrollbars="none" />
+
+            <com.sunxin.plugin.login.MaxGridView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/id_app_center_recycler_view"
+                android:layout_marginTop="20dp"
+                android:background="#ffffff"
+                android:cacheColorHint="@android:color/transparent"
+                android:gravity="center"
+                android:listSelector="@android:color/transparent"
+                android:numColumns="4"
+                android:overScrollMode="never"
+                android:scrollbars="none" />
+        </com.sunxin.plugin.login.DragMutilLayout>
+    </com.sunxin.plugin.login.DragScrollerView>
+
+</FrameLayout>
