@@ -3,4 +3,11 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+    <array name="main_tab_title">
+        <item>消息</item>
+        <item>联系人</item>
+        <item>探索</item>
+        <item>我的</item>
+    </array>
 </resources>

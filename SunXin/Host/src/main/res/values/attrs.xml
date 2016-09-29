@@ -8,4 +8,13 @@
         <attr name="indicatorName" format="string"/>
         <attr name="indicatorColor" format="color"/>
     </declare-styleable>
+
+    <attr name="tab_top_line_color" format="color" />
+    <attr name="tab_padding" format="dimension" />
+    <attr name="tab_drawable_padding" format="dimension" />
+    <declare-styleable name="MainTab">
+        <attr name="tab_top_line_color" />
+        <attr name="tab_padding" />
+        <attr name="tab_drawable_padding" />
+    </declare-styleable>
 </resources>
