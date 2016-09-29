@@ -20,14 +20,14 @@ public abstract class BaseFragmentHelper {
     }
 
     private void hideFragment() {
-        Fragment fragment = getFragment(mCurrentItem);
+        BaseFragment fragment = getFragment(mCurrentItem);
         if (fragment.isAdded() && !fragment.isHidden()) {
             this.mFragmentManager.beginTransaction().hide(fragment).commit();
         }
     }
 
     private void fetchFragment() {
-        Fragment fragment = getFragment(mCurrentItem);
+        BaseFragment fragment = getFragment(mCurrentItem);
         if (!fragment.isAdded()) {
             this.mFragmentManager.beginTransaction().add(mContainerId, fragment).commit();
             if (mOnFragmentInitListener != null) {
@@ -39,6 +39,7 @@ public abstract class BaseFragmentHelper {
         if (mFragmentFetchListener != null) {
             mFragmentFetchListener.onFragmentSelected(mCurrentItem);
         }
+        fragment.fragmentSelect();
     }
 
     abstract <T extends Fragment> T getFragment(int position);

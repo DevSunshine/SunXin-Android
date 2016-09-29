@@ -45,4 +45,8 @@ public class BaseFragment extends Fragment {
             subscription.unsubscribe();
         }
     }
+
+    public void fragmentSelect(){
+
+    }
 }

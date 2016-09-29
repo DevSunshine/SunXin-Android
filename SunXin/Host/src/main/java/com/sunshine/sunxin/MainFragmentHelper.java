@@ -7,6 +7,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.util.ArrayMap;
 
+import com.sunshine.sunxin.ui.TabContactsFragment;
+import com.sunshine.sunxin.ui.TabDiscoverFragment;
+import com.sunshine.sunxin.ui.TabMineFragment;
 import com.sunshine.sunxin.ui.TabMsgFragment;
 import com.sunshine.sunxin.view.MainTab;
 
@@ -39,13 +42,13 @@ public class MainFragmentHelper extends BaseFragmentHelper implements MainTab.On
                     fragment = TabMsgFragment.newInstance() ;
                     break;
                 case TAB_CONTACTS_FRAGMENT:
-                    fragment = TabMsgFragment.newInstance() ;
+                    fragment = TabContactsFragment.newInstance() ;
                     break;
                 case TAB_DISCOVER_FRAGMENT:
-                    fragment = TabMsgFragment.newInstance() ;
+                    fragment = TabDiscoverFragment.newInstance() ;
                     break;
                 case TAB_MINE_FRAGMENT:
-                    fragment = TabMsgFragment.newInstance() ;
+                    fragment = TabMineFragment.newInstance() ;
                     break;
             }
             mFragments.put(position,fragment) ;
