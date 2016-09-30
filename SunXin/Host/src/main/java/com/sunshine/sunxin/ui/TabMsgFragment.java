@@ -2,13 +2,19 @@ package com.sunshine.sunxin.ui;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.sunshine.sunxin.BaseFragment;
 import com.sunshine.sunxin.R;
+import com.sunshine.sunxin.beans.msg.MsgMenuItem;
+import com.sunshine.sunxin.view.TabMsgPopView;
 import com.sunshine.sunxin.view.TitleView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 // Copyright (c) 2016 ${ORGANIZATION_NAME}. All rights reserved.
@@ -19,9 +25,10 @@ import com.sunshine.sunxin.view.TitleView;
  * 首页中，消息页面
  */
 
-public class TabMsgFragment extends BaseFragment {
+public class TabMsgFragment extends BaseFragment implements TabMsgPopView.onItemClickListener {
 
     private TitleView mTitle ;
+    private TabMsgPopView mMsgPopView ;
     public static TabMsgFragment newInstance(){
         TabMsgFragment fragment = new TabMsgFragment() ;
         return fragment ;
@@ -42,7 +49,21 @@ public class TabMsgFragment extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mTitle = (TitleView) view.findViewById(R.id.id_tab_msg_title);
+        initPopView() ;
         initTitle() ;
+
+    }
+
+    private void initPopView() {
+        List<MsgMenuItem> menuItems = new ArrayList<>() ;
+        menuItems.add(new MsgMenuItem(R.drawable.menu_call_chat,"发起聊天")) ;
+        menuItems.add(new MsgMenuItem(R.drawable.menu_add_friends,"添加好友")) ;
+        menuItems.add(new MsgMenuItem(R.drawable.menu_scan,"扫一扫")) ;
+        menuItems.add(new MsgMenuItem(R.drawable.menu_file_trans,"文件直传")) ;
+        mMsgPopView = new TabMsgPopView(getContext()) ;
+        mMsgPopView.setConfiguration(new TabMsgPopView.Configuration(0,4))
+                   .setMenuItems(menuItems);
+
     }
 
     private void initTitle() {
@@ -50,7 +71,7 @@ public class TabMsgFragment extends BaseFragment {
         mTitle.addRightBtn(R.drawable.btn_more, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                mMsgPopView.show(mTitle,TabMsgFragment.this);
             }
         }) ;
     }
@@ -58,5 +79,11 @@ public class TabMsgFragment extends BaseFragment {
     @Override
     public void fragmentSelect() {
 
+    }
+
+    @Override
+    public void clickItem(int position) {
+        Log.v("position","=================position=========="+position) ;
+        mMsgPopView.dismiss();
     }
 }

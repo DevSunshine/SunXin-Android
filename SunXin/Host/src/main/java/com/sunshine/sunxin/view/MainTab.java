@@ -105,7 +105,7 @@ public class MainTab extends LinearLayout {
 
     private void initView() {
         mTabLinePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        mTabLinePaint.setColor(mTopLineColor);
+        mTabLinePaint.setColor(0x44000000);
         mTabLinePaint.setStrokeWidth(0.5f * getResources().getDisplayMetrics().density);
         setGravity(Gravity.CENTER);
     }

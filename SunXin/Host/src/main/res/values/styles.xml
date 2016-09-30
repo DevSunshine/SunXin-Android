@@ -37,4 +37,9 @@
         <item name="maxHeight">24dip</item>
         <item name="indicatorName">LineScaleIndicator</item>
     </style>
+
+    <style name="MenuAnimation">
+        <item name="android:windowEnterAnimation">@anim/menu_enter</item>
+        <item name="android:windowExitAnimation">@anim/menu_exit</item>
+    </style>
 </resources>
