@@ -61,10 +61,10 @@ public class FileBrowserFragment extends BaseFragment {
         mFileListView.setLayoutManager(mManager);
         mAdapter = new FileBrowserAdapter(this);
         mFileListView.setAdapter(mAdapter);
-        mBackTitle = getTitleView().addLeftBtn(R.drawable.btn_back, "返回", new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                back();
+                mBackTitle = getTitleView().addLeftBtn(R.drawable.btn_back, "返回", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        back();
             }
         });
         resetBottomView();

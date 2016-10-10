@@ -3,4 +3,6 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="main_tab_height">54dp</dimen>
+    <dimen name="textSize_quicksidebartips">20sp</dimen>
+    <dimen name="height_quicksidebartips">45dp</dimen>
 </resources>

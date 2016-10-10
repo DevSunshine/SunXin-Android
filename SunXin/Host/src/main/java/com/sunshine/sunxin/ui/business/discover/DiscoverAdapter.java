@@ -1,4 +1,4 @@
-package com.sunshine.sunxin.ui.business.contacs;
+package com.sunshine.sunxin.ui.business.discover;
 
 // Copyright (c) 2016 ${ORGANIZATION_NAME}. All rights reserved.
 
@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.sunshine.sunxin.R;
-import com.sunshine.sunxin.beans.contacts.Contacts;
+import com.sunshine.sunxin.beans.discover.Function;
 import com.sunshine.sunxin.plugin.PluginConstant;
 import com.sunshine.sunxin.plugin.RootPluginActivity;
 
@@ -26,13 +26,13 @@ import java.util.List;
 /**
  * 通讯录
  */
-public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ContactsViewHolder> {
+public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.ContactsViewHolder> {
     /**
      * 联系人数据集
      */
-    private List<Contacts> mContactses;
+    private List<Function> mFunctions;
 
-    public ContactsAdapter() {
+    public DiscoverAdapter() {
     }
 
     @Override
@@ -43,32 +43,27 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.Contac
 
     @Override
     public void onBindViewHolder(ContactsViewHolder holder, int position) {
-        holder.mName.setText(mContactses.get(position).name);
-        updateContactsIndex(holder.mIndexText, position);
-        updateContactsLine(holder.mContactsLine, position);
-        enterClickListener(holder.itemView, mContactses.get(position));
-    }
-
-    public void setContactsList(List<Contacts> contactses) {
-        mContactses = contactses;
-        notifyDataSetChanged();
-    }
-
-    public int getPositionForIndex(String nameOrder){
-        for (int i = 0 ; i < mContactses.size(); i ++){
-            if (nameOrder.equalsIgnoreCase(mContactses.get(i).nameOrder)){
-                return i ;
-            }
+        holder.mName.setText(mFunctions.get(position).name);
+        holder.mIcon.setImageResource(R.drawable.icon_function_read);
+        if (position == getItemCount() - 1){
+            holder.mIcon.setImageResource(R.drawable.icon_function_game);
         }
-        return -1 ;
+        updateFunctionsIndex(holder.mIndexText, position);
+        updateFunctionsLine(holder.mContactsLine, position);
+        enterClickListener(holder.itemView, mFunctions.get(position));
+    }
+
+    public void setFunctionsList(List<Function> functionses) {
+        mFunctions = functionses;
+        notifyDataSetChanged();
     }
 
     @Override
     public int getItemCount() {
-        return mContactses == null ? 0 : mContactses.size();
+        return mFunctions == null ? 0 : mFunctions.size();
     }
 
-    private void updateContactsLine(View line, int position) {
+    private void updateFunctionsLine(View line, int position) {
         if (compareNext(position)) {
             line.setVisibility(View.VISIBLE);
         } else {
@@ -76,17 +71,17 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.Contac
         }
     }
 
-    private void updateContactsIndex(TextView index, int position) {
+    private void updateFunctionsIndex(TextView index, int position) {
         if (comparePre(position)) {
             index.setVisibility(View.GONE);
         } else {
-            index.setText(mContactses.get(position).nameOrder);
+//            index.setText(mFunctions.get(position).orderIndex);
             index.setVisibility(View.VISIBLE);
 
         }
     }
 
-    private void enterClickListener(View view, final Contacts contacts) {
+    private void enterClickListener(View view, final Function function) {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,9 +99,9 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.Contac
      */
     private boolean comparePre(int currentPosition) {
         int prePosition = currentPosition - 1;
-        if (prePosition > 0) {
-            if (TextUtils.equals(mContactses.get(currentPosition).nameOrder.toUpperCase()
-                    , mContactses.get(prePosition).nameOrder.toUpperCase())) {
+        if (prePosition >= 0) {
+            if (TextUtils.equals(mFunctions.get(currentPosition).orderIndex.toUpperCase()
+                    , mFunctions.get(prePosition).orderIndex.toUpperCase())) {
                 return true;
             }
         }
@@ -120,9 +115,9 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.Contac
      */
     private boolean compareNext(int currentPosition) {
         int nextPosition = currentPosition + 1;
-        if (mContactses.size() - 1 >= nextPosition) {
-            if (TextUtils.equals(mContactses.get(currentPosition).nameOrder.toUpperCase()
-                    , mContactses.get(nextPosition).nameOrder.toUpperCase())) {
+        if (mFunctions.size() - 1 >= nextPosition) {
+            if (TextUtils.equals(mFunctions.get(currentPosition).orderIndex.toUpperCase()
+                    , mFunctions.get(nextPosition).orderIndex.toUpperCase())) {
                 return true;
             }
         }

@@ -13,6 +13,9 @@ import com.sunshine.sunxin.R;
 import com.sunshine.sunxin.beans.contacts.Contacts;
 import com.sunshine.sunxin.ui.business.contacs.ContactsAdapter;
 import com.sunshine.sunxin.view.TitleView;
+import com.sunshine.sunxin.widget.quicksidebar.QuickSideBarTipsView;
+import com.sunshine.sunxin.widget.quicksidebar.QuickSideBarView;
+import com.sunshine.sunxin.widget.quicksidebar.listener.OnQuickSideBarTouchListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +29,7 @@ import java.util.List;
  * 首页中，联系人页面
  */
 
-public class TabContactsFragment extends BaseFragment {
+public class TabContactsFragment extends BaseFragment implements OnQuickSideBarTouchListener{
     public static TabContactsFragment newInstance(){
         TabContactsFragment fragment = new TabContactsFragment() ;
         return fragment ;
@@ -39,6 +42,9 @@ public class TabContactsFragment extends BaseFragment {
      * 通讯录adapter
      */
     private ContactsAdapter mContactsAdapter ;
+    private QuickSideBarTipsView mTipsView ;
+    private QuickSideBarView mSideBarView ;
+
 
     @Nullable
     @Override
@@ -67,7 +73,9 @@ public class TabContactsFragment extends BaseFragment {
         mContactsList.setLayoutManager(new LinearLayoutManager(getContext()));
         mContactsAdapter = new ContactsAdapter() ;
         mContactsList.setAdapter(mContactsAdapter);
-
+        mTipsView = (QuickSideBarTipsView) getView().findViewById(R.id.id_quickSideBarTipsView);
+        mSideBarView = (QuickSideBarView) getView().findViewById(R.id.id_quickSideBarView);
+        mSideBarView.setOnQuickSideBarTouchListener(this);
         /**
          * tests
          */
@@ -111,5 +119,18 @@ public class TabContactsFragment extends BaseFragment {
     @Override
     public void fragmentSelect() {
 
+    }
+
+    @Override
+    public void onLetterChanged(String letter, int position, float y) {
+        mTipsView.setText(letter,position,y);
+        if (mContactsAdapter.getPositionForIndex(letter) != -1){
+            mContactsList.smoothScrollToPosition(mContactsAdapter.getPositionForIndex(letter));
+        }
+    }
+
+    @Override
+    public void onLetterTouching(boolean touching) {
+        mTipsView.setVisibility(touching ? View.VISIBLE :View.GONE);
     }
 }

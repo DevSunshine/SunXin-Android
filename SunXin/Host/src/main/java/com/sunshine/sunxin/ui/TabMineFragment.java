@@ -40,6 +40,12 @@ public class TabMineFragment extends BaseFragment {
 
     private void initTitle() {
         mTitle.setTitle("我的") ;
+        mTitle.addRightBtn(R.drawable.btn_setup, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        }) ;
     }
 
     @Override

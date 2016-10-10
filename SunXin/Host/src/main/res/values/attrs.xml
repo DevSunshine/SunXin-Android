@@ -17,4 +17,13 @@
         <attr name="tab_padding" />
         <attr name="tab_drawable_padding" />
     </declare-styleable>
+
+    <declare-styleable name="QuickSideBarView">
+        <attr name="sidebarTextColor" format="color|reference"/>
+        <attr name="sidebarBackgroundColor" format="color|reference"/>
+        <attr name="sidebarTextColorChoose" format="color|reference"/>
+        <attr name="sidebarTextSize" format="dimension"/>
+        <attr name="sidebarTextSizeChoose" format="dimension"/>
+        <attr name="sidebarItemHeight" format="dimension"/>
+    </declare-styleable>
 </resources>

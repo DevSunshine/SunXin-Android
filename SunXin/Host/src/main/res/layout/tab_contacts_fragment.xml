@@ -1,18 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
     <com.sunshine.sunxin.view.TitleView
         android:fitsSystemWindows="true"
         android:id="@+id/id_tab_contacts_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    <android.support.v7.widget.RecyclerView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:overScrollMode="never"
-        android:id="@+id/id_contacts_list"/>
+        android:layout_height="match_parent">
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            android:id="@+id/id_contacts_list"/>
+        <com.sunshine.sunxin.widget.quicksidebar.QuickSideBarTipsView
+            android:id="@+id/id_quickSideBarTipsView"
+            android:layout_width="46dp"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@+id/id_quickSideBarView"
+            app:sidebarBackgroundColor="@color/colorMain"
+            app:sidebarTextColor="@android:color/white"
+            app:sidebarTextSize="20sp" />
+        <com.sunshine.sunxin.widget.quicksidebar.QuickSideBarView
+            android:id="@id/id_quickSideBarView"
+            android:padding="46dp"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            app:sidebarTextColor="@color/color333"
+            app:sidebarTextColorChoose="@color/colorMain"
+            app:sidebarTextSize="12sp"
+            app:sidebarTextSizeChoose="16sp" />
+    </RelativeLayout>
+
 </LinearLayout>
