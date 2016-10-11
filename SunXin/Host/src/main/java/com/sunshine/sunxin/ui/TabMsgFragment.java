@@ -3,6 +3,8 @@ package com.sunshine.sunxin.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,10 +13,16 @@ import android.view.ViewGroup;
 import com.sunshine.sunxin.BaseFragment;
 import com.sunshine.sunxin.R;
 import com.sunshine.sunxin.beans.msg.MsgMenuItem;
+import com.sunshine.sunxin.beans.msg.SunXinSession;
 import com.sunshine.sunxin.plugin.PluginConstant;
 import com.sunshine.sunxin.plugin.RootPluginActivity;
+import com.sunshine.sunxin.ui.business.msg.MsgMVP;
+import com.sunshine.sunxin.ui.business.msg.MsgPresenter;
+import com.sunshine.sunxin.ui.business.msg.SessionAdapter;
 import com.sunshine.sunxin.view.TabMsgPopView;
 import com.sunshine.sunxin.view.TitleView;
+import com.sunshine.sunxin.widget.recyclerview.adapter.RecyclerArrayAdapter;
+import com.sunshine.sunxin.widget.recyclerview.decoration.DividerDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,10 +36,13 @@ import java.util.List;
  * 首页中，消息页面
  */
 
-public class TabMsgFragment extends BaseFragment implements TabMsgPopView.onItemClickListener {
+public class TabMsgFragment extends BaseFragment implements TabMsgPopView.onItemClickListener,MsgMVP.View {
 
     private TitleView mTitle;
     private TabMsgPopView mMsgPopView;
+    private SessionAdapter mSessionAdapter ;
+    private RecyclerView mSessionList ;
+    private MsgPresenter mPresenter ;
 
     public static TabMsgFragment newInstance() {
         TabMsgFragment fragment = new TabMsgFragment();
@@ -56,6 +67,26 @@ public class TabMsgFragment extends BaseFragment implements TabMsgPopView.onItem
         initPopView();
         initTitle();
 
+        mSessionList = (RecyclerView) getView().findViewById(R.id.id_msg_list);
+        mSessionList.setLayoutManager(new LinearLayoutManager(getContext()));
+        mSessionList.addItemDecoration(new DividerDecoration(getResources().getColor(R.color.colorLine),1));
+        mSessionAdapter = new SessionAdapter(getContext()) ;
+        mSessionList.setAdapter(mSessionAdapter);
+        mSessionAdapter.addHeader(new RecyclerArrayAdapter.ItemView() {
+            @Override
+            public View onCreateView(ViewGroup parent) {
+                View headerView = LayoutInflater.from(getContext()).inflate(R.layout.head_search_view, parent, false);
+                return headerView;
+            }
+
+            @Override
+            public void onBindView(View headerView) {
+
+            }
+        });
+        mPresenter = new MsgPresenter() ;
+        mPresenter.attachView(this);
+        mPresenter.getSessions();
     }
 
     private void initPopView() {
@@ -78,11 +109,6 @@ public class TabMsgFragment extends BaseFragment implements TabMsgPopView.onItem
                 mMsgPopView.show(mTitle, TabMsgFragment.this);
             }
         });
-    }
-
-    @Override
-    public void fragmentSelect() {
-
     }
 
     @Override
@@ -119,5 +145,20 @@ public class TabMsgFragment extends BaseFragment implements TabMsgPopView.onItem
                 startActivity(intent);
                 break;
         }
+    }
+
+    @Override
+    public void showSession(List<SunXinSession> sessions) {
+        mSessionAdapter.addAll(sessions);
+    }
+
+    @Override
+    public void showError() {
+
+    }
+
+    @Override
+    public void complete() {
+
     }
 }

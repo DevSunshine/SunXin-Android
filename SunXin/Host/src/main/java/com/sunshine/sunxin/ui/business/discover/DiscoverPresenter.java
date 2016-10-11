@@ -3,7 +3,7 @@ package com.sunshine.sunxin.ui.business.discover;
 // Copyright (c) 2016 ${ORGANIZATION_NAME}. All rights reserved.
 
 import com.sunshine.sunxin.base.RxBasePersenter;
-import com.sunshine.sunxin.beans.discover.Function;
+import com.sunshine.sunxin.beans.Function;
 
 import java.util.ArrayList;
 import java.util.List;

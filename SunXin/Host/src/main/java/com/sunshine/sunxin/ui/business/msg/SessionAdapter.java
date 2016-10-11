@@ -7,8 +7,29 @@ package com.sunshine.sunxin.ui.business.msg;
  * e-mail guangyanzhong@163.com
  */
 
+import android.content.Context;
+import android.view.ViewGroup;
+
+import com.sunshine.sunxin.R;
+import com.sunshine.sunxin.beans.msg.SunXinSession;
+import com.sunshine.sunxin.widget.recyclerview.adapter.BaseViewHolder;
+import com.sunshine.sunxin.widget.recyclerview.adapter.RecyclerArrayAdapter;
+
 /**
  * 会话session
  */
-public class SessionAdapter {
+public class SessionAdapter extends RecyclerArrayAdapter<SunXinSession> {
+    public SessionAdapter(Context context) {
+        super(context);
+    }
+
+    @Override
+    public BaseViewHolder OnCreateViewHolder(ViewGroup parent, int viewType) {
+        return new BaseViewHolder<SunXinSession>(parent, R.layout.adapter_session) {
+            @Override
+            public void setData(SunXinSession item) {
+
+            }
+        };
+    }
 }

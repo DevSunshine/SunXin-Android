@@ -31,7 +31,7 @@
             android:layout_height="32dp"
             android:id="@+id/id_contacts_icon"
             android:layout_centerVertical="true"
-            android:src="@drawable/menu_add_friends"/>
+            android:src="@drawable/icon_function_read"/>
 
         <TextView
             android:maxLines="1"

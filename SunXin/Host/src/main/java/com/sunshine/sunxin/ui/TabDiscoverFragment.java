@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import com.sunshine.sunxin.BaseFragment;
 import com.sunshine.sunxin.R;
-import com.sunshine.sunxin.beans.discover.Function;
+import com.sunshine.sunxin.beans.Function;
 import com.sunshine.sunxin.ui.business.discover.DiscoverAdapter;
 import com.sunshine.sunxin.ui.business.discover.DiscoverMVP;
 import com.sunshine.sunxin.ui.business.discover.DiscoverPresenter;

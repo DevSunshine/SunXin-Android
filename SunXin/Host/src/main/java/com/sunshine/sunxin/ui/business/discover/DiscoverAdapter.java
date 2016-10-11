@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.sunshine.sunxin.R;
-import com.sunshine.sunxin.beans.discover.Function;
+import com.sunshine.sunxin.beans.Function;
 import com.sunshine.sunxin.plugin.PluginConstant;
 import com.sunshine.sunxin.plugin.RootPluginActivity;
 

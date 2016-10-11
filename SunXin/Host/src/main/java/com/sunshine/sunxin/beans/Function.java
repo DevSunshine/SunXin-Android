@@ -1,4 +1,4 @@
-package com.sunshine.sunxin.beans.discover;
+package com.sunshine.sunxin.beans;
 
 // Copyright (c) 2016 ${ORGANIZATION_NAME}. All rights reserved.
 
