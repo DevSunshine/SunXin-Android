@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.util.ArrayMap;
 
+import com.sunshine.sunxin.base.BaseFragmentHelper;
 import com.sunshine.sunxin.ui.TabContactsFragment;
 import com.sunshine.sunxin.ui.TabDiscoverFragment;
 import com.sunshine.sunxin.ui.TabMineFragment;
@@ -34,7 +35,7 @@ public class MainFragmentHelper extends BaseFragmentHelper implements MainTab.On
     }
 
     @Override
-    <T extends Fragment> T getFragment(int position) {
+    public <T extends Fragment> T getFragment(int position) {
         Fragment fragment = mFragments.get(position) ;
         if (fragment == null){
             switch (position){

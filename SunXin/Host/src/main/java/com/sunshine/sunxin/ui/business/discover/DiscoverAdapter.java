@@ -87,6 +87,12 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.Contac
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), RootPluginActivity.class);
                 intent.putExtra(PluginConstant.INTENT_PLUGIN_ID_KEY, "106");
+                if (function.name.equalsIgnoreCase("阅读")){
+                    intent.putExtra(PluginConstant.INTENT_PLUGIN_ID_KEY, "107");
+                    intent.putExtra(PluginConstant.INTENT_TINT_FULL_KEY,true) ;
+                    intent.putExtra(PluginConstant.INTENT_SHOW_TITLE_KEY, false);
+                    intent.putExtra(PluginConstant.INTENT_TINT_COLOR_KEY, 0x00ffffff);
+                }
                 v.getContext().startActivity(intent);
             }
         });

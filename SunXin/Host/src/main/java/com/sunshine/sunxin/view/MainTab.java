@@ -7,7 +7,6 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -16,8 +15,9 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.sunshine.sunxin.BaseFragmentHelper;
+import com.sunshine.sunxin.base.BaseFragmentHelper;
 import com.sunshine.sunxin.R;
+import com.sunshine.sunxin.util.Util;
 
 
 public class MainTab extends LinearLayout {
@@ -77,7 +77,8 @@ public class MainTab extends LinearLayout {
         if (mTextColor == null)
             mTextColor = ColorStateList.valueOf(DEFAULT_TEXT_COLOR);
         sysTypedArray.recycle();
-
+        mPadding = Util.dp2px(7) ;
+        mDrawablePadding = Util.dp2px(-1) ;
         TypedArray styleTypedArray = context.obtainStyledAttributes(attrs, R.styleable.MainTab);
         int N = styleTypedArray.getIndexCount();
         for (int i = 0; i < N; i++) {

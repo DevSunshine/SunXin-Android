@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">TempPlugin</string>
+    <array name="reader_tab_title">
+        <item>书架</item>
+        <item>精选</item>
+        <item>分类</item>
+        <item>排行</item>
+    </array>
+</resources>

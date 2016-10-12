@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.sunshine.sunxin.BaseFragment;
+import com.sunshine.sunxin.base.BaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;

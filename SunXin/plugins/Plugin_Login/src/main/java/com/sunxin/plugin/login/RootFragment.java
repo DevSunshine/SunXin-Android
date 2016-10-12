@@ -14,8 +14,8 @@ import android.widget.Toast;
 import com.sunshine.sun.lib.socket.SSResponse;
 import com.sunshine.sun.lib.socket.request.SSITaskListener;
 import com.sunshine.sun.lib.socket.request.SSTask;
-import com.sunshine.sunxin.BaseFragment;
 import com.sunshine.sunxin.TestJava;
+import com.sunshine.sunxin.base.BaseFragment;
 import com.sunshine.sunxin.plugin.PluginConstant;
 import com.sunshine.sunxin.plugin.RootPluginActivity;
 

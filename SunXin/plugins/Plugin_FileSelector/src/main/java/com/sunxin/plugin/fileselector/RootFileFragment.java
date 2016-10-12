@@ -11,7 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.sunshine.sunxin.BaseFragment;
+import com.sunshine.sunxin.base.BaseFragment;
 import com.sunshine.sunxin.plugin.PluginConstant;
 import com.sunshine.sunxin.plugin.RootPluginActivity;
 import com.sunxin.plugin.fileselecter.R;

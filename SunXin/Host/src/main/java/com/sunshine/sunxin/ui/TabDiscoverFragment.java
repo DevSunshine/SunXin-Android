@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.sunshine.sunxin.BaseFragment;
+import com.sunshine.sunxin.base.BaseFragment;
 import com.sunshine.sunxin.R;
 import com.sunshine.sunxin.beans.Function;
 import com.sunshine.sunxin.ui.business.discover.DiscoverAdapter;
@@ -55,16 +55,12 @@ public class TabDiscoverFragment extends BaseFragment implements DiscoverMVP.Vie
         mPresenter = new DiscoverPresenter() ;
         mPresenter.attachView(this);
         mPresenter.getFunctions();
+
     }
 
     private void initTitle() {
         mTitle.setTitle("探索") ;
     }
-
-    @Override
-    public void fragmentSelect() {
-    }
-
     @Override
     public void showFunctions(List<Function> functions) {
         mDiscoverAdapter.setFunctionsList(functions);

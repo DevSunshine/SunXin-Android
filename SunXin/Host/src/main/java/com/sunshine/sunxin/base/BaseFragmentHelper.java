@@ -1,4 +1,4 @@
-package com.sunshine.sunxin;
+package com.sunshine.sunxin.base;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -14,7 +14,7 @@ public abstract class BaseFragmentHelper {
     private OnFragmentFetchListener mFragmentFetchListener;
     private OnFragmentInitListener mOnFragmentInitListener;
 
-    BaseFragmentHelper(FragmentManager mFragmentManager, int mContainerId) {
+    public BaseFragmentHelper(FragmentManager mFragmentManager, int mContainerId) {
         this.mFragmentManager = mFragmentManager;
         this.mContainerId = mContainerId;
     }
@@ -42,7 +42,7 @@ public abstract class BaseFragmentHelper {
         fragment.fragmentSelect();
     }
 
-    abstract <T extends Fragment> T getFragment(int position);
+    public abstract <T extends Fragment> T getFragment(int position);
 
     public int getCurrentItem() {
         return mCurrentItem;

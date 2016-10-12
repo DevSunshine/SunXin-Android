@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
-import com.sunshine.sunxin.BaseActivity;
+import com.sunshine.sunxin.base.BaseActivity;
 import com.sunshine.sunxin.R;
 import com.sunshine.sunxin.plugin.model.PluginInfo;
 import com.sunshine.sunxin.plugin.model.PluginRuntimeEnv;

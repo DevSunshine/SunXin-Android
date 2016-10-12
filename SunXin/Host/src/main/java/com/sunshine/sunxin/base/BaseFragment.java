@@ -1,4 +1,4 @@
-package com.sunshine.sunxin;
+package com.sunshine.sunxin.base;
 // Copyright (c) 2016 ${ORGANIZATION_NAME}. All rights reserved.
 
 import android.support.v4.app.Fragment;

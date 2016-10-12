@@ -2,10 +2,11 @@ package com.sunshine.sunxin;
 
 import android.os.Bundle;
 
+import com.sunshine.sunxin.base.BaseActivity;
 import com.sunshine.sunxin.view.MainTab;
 
 
-public class MainActivity extends BaseActivity{
+public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -77,4 +77,8 @@ public class Util {
                 PackageManager.MATCH_DEFAULT_ONLY);
         return list.size() > 0;
     }
+
+    public static int dp2px(float dp){
+        return (int) (App.getAppResources().getDisplayMetrics().density * dp + 0.5f);
+    }
 }

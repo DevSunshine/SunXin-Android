@@ -1,0 +1,106 @@
+[
+    {
+        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\icon_next.png",
+        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\drawable-xxhdpi-v4\\icon_next.png"
+    },
+    {
+        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\icon_discover_s.png",
+        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\drawable-xxhdpi\\icon_discover_s.png"
+    },
+    {
+        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\icon_more_n.png",
+        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\drawable-xxhdpi-v4\\icon_more_n.png"
+    },
+    {
+        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\icon_function_read.png",
+        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\drawable-xxhdpi\\icon_function_read.png"
+    },
+    {
+        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\icon_back_n.png",
+        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\drawable-xxhdpi-v4\\icon_back_n.png"
+    },
+    {
+        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_scan_info_p.png",
+        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\drawable-xxhdpi-v4\\ic_scan_info_p.png"
+    },
+    {
+        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\icon_back_p.png",
+        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\drawable-xxhdpi-v4\\icon_back_p.png"
+    },
+    {
+        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\icon_contacts_n.png",
+        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\drawable-xxhdpi\\icon_contacts_n.png"
+    },
+    {
+        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\icon_setup_n.png",
+        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\drawable-xxhdpi-v4\\icon_setup_n.png"
+    },
+    {
+        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\icon_more_s1.png",
+        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\drawable-xxhdpi-v4\\icon_more_s1.png"
+    },
+    {
+        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\icon_msg_n.png",
+        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\drawable-xxhdpi\\icon_msg_n.png"
+    },
+    {
+        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\icon_function_game.png",
+        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\drawable-xxhdpi\\icon_function_game.png"
+    },
+    {
+        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_cut_white.png",
+        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\drawable-xxhdpi\\ic_cut_white.png"
+    },
+    {
+        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\header_icon.jpg",
+        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\drawable-xxhdpi-v4\\header_icon.jpg"
+    },
+    {
+        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_back_white.png",
+        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\drawable-xxhdpi-v4\\ic_back_white.png"
+    },
+    {
+        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\icon_mine_s.png",
+        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\drawable-xxhdpi\\icon_mine_s.png"
+    },
+    {
+        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\icon_mine_n.png",
+        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\drawable-xxhdpi\\icon_mine_n.png"
+    },
+    {
+        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\icon_setup_p.png",
+        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\drawable-xxhdpi-v4\\icon_setup_p.png"
+    },
+    {
+        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_reader_menu_collect.png",
+        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\drawable-xxhdpi\\ic_reader_menu_collect.png"
+    },
+    {
+        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\icon_discover_n.png",
+        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\drawable-xxhdpi\\icon_discover_n.png"
+    },
+    {
+        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\bg_reader_menu.jpg",
+        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\drawable-xxhdpi\\bg_reader_menu.jpg"
+    },
+    {
+        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\icon_contacts_s.png",
+        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\drawable-xxhdpi\\icon_contacts_s.png"
+    },
+    {
+        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_scan_info_n.png",
+        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\drawable-xxhdpi-v4\\ic_scan_info_n.png"
+    },
+    {
+        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\icon_msg_s.png",
+        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\drawable-xxhdpi\\icon_msg_s.png"
+    },
+    {
+        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\icon_more_s.png",
+        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\drawable-xxhdpi-v4\\icon_more_s.png"
+    },
+    {
+        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_copy_white.png",
+        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\drawable-xxhdpi\\ic_copy_white.png"
+    }
+]

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.SlidingPaneLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/id_reader_sliding"
+    android:gravity="center">
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:name="com.sunxin.plugin.reader.main.ReaderMenuFragment"
+        android:layout_gravity="left"
+        android:id="@+id/id_reader_menu"
+        android:layout_marginRight="68dp"/>
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:name="com.sunxin.plugin.reader.main.ReaderMainFragment"
+        android:layout_gravity="right"
+        android:id="@+id/id_reader_context"/>
+
+</android.support.v4.widget.SlidingPaneLayout>

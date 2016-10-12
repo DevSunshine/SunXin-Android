@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.sunshine.sunxin.BaseFragment;
+import com.sunshine.sunxin.base.BaseFragment;
 import com.sunshine.sunxin.R;
 import com.sunshine.sunxin.beans.contacts.Contacts;
 import com.sunshine.sunxin.ui.business.contacs.ContactsAdapter;

@@ -4,6 +4,7 @@ import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.BitmapDrawable;
+import android.support.v4.widget.PopupWindowCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
@@ -53,7 +54,6 @@ public class TabMsgPopView extends PopupWindow {
         if (context instanceof Activity) {
             mWindow = ((Activity) context).getWindow();
         }
-
         setOnDismissListener(new OnDismissListener() {
             @Override
             public void onDismiss() {
@@ -64,27 +64,28 @@ public class TabMsgPopView extends PopupWindow {
     }
 
     public void show(View targetView, onItemClickListener listener) {
-         showAsDropDown(targetView, 0, mConfiguration.yoff, Gravity.RIGHT);
+        PopupWindowCompat.showAsDropDown(this,targetView, 0, mConfiguration.yoff, Gravity.RIGHT);
+//        showAsDropDown(targetView, 0, mConfiguration.yoff, Gravity.RIGHT);
         this.mListener = listener;
         windowAlpha(true);
     }
 
     private void windowAlpha(boolean show) {
         if (mWindow != null) {
-            float start = show ? 0 : 1 ;
-            float end = show ? 1 : 0 ;
+            float start = show ? 0 : 1;
+            float end = show ? 1 : 0;
             ValueAnimator animator = ValueAnimator.ofFloat(start, end);
             animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                 @Override
                 public void onAnimationUpdate(ValueAnimator animation) {
-                    float value = (float) animation.getAnimatedValue()*0.25f;
-                    float alpha = 1.0f - value ;
+                    float value = (float) animation.getAnimatedValue() * 0.25f;
+                    float alpha = 1.0f - value;
                     WindowManager.LayoutParams lp = mWindow.getAttributes();
                     lp.alpha = alpha;
                     mWindow.setAttributes(lp);
                 }
             });
-            animator.setDuration(220) ;
+            animator.setDuration(220);
             animator.start();
         }
     }

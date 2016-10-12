@@ -9,7 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.sunshine.sunxin.BaseFragment;
+import com.sunshine.sunxin.base.BaseFragment;
+
 
 /**
  * Created by gyzhong on 16/8/24.

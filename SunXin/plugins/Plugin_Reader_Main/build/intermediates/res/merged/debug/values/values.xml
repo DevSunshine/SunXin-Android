@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="reader_tab_title">
+        <item>书架</item>
+        <item>精选</item>
+        <item>分类</item>
+        <item>排行</item>
+    </array>
+    <color name="color333">#333333</color>
+    <color name="color666">#666666</color>
+    <color name="color999">#999999</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorBg">#ecedf1</color>
+    <color name="colorBgTint">#e2e3e7</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorHint">#dddddd</color>
+    <color name="colorLine">#e2e2e2</color>
+    <color name="colorMain">#FF4081</color>
+    <color name="colorMainAlpha">#ec3b77</color>
+    <color name="colorMain_p">#d74a6e</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorWhite_p">#e2e2e2</color>
+    <dimen name="reader_tab_height">54dp</dimen>
+    <string name="app_name">TempPlugin</string>
+</resources>

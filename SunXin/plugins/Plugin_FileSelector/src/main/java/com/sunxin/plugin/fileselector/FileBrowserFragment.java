@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.sunshine.sunxin.BaseFragment;
+import com.sunshine.sunxin.base.BaseFragment;
 import com.sunxin.plugin.fileselecter.R;
 import com.sunxin.plugin.fileselector.adapter.FileBrowserAdapter;
 

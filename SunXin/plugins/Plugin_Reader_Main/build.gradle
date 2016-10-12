@@ -1,0 +1,46 @@
+apply from: "../../util.gradle"
+injectTask()
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion "${gradle.ext.compileSdkVersion}" as int
+    buildToolsVersion "${gradle.ext.buildToolsVersion}"
+
+    defaultConfig {
+        applicationId "com.sunxin.plugin.reader_main"
+        minSdkVersion "${gradle.ext.minSdkVersion}" as int
+        targetSdkVersion "${gradle.ext.targetSdkVersion}" as int
+        versionCode 1
+        versionName "1.0"
+    }
+    signingConfigs {
+        releaseConfig {
+            keyAlias 'sunshine'
+            keyPassword 'sunshinesunxin'
+            storeFile file("../../sunshine_sunxin.jks")
+            storePassword 'sunshinesunxin'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.releaseConfig
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+def test(){
+    //变种
+    android.defaultConfig.all{
+
+    }
+}
+
+dependencies {
+    compile project(':CommonRes')
+    provided fileTree(dir: rootProject.rootDir.absolutePath+'/jars/providedJar', include: ['*.jar'])
+    provided fileTree(dir: rootProject.rootDir.absolutePath+'/jars/injectJar', include: ['*.jar'])
+    provided fileTree(dir: rootProject.rootDir.absolutePath+'/jars/libsJar', include: ['*.jar'])
+    provided fileTree(dir: rootProject.rootDir.absolutePath+'/jars/compileJar', include: ['*.jar'])
+}
+
