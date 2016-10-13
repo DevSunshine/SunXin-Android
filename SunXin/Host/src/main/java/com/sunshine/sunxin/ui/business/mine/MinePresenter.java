@@ -1,5 +1,7 @@
 package com.sunshine.sunxin.ui.business.mine;
 
+import android.util.Log;
+
 import com.sunshine.sunxin.base.RxBasePersenter;
 import com.sunshine.sunxin.beans.Function;
 
@@ -10,7 +12,6 @@ import rx.Observable;
 import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
@@ -45,12 +46,27 @@ public class MinePresenter extends RxBasePersenter<MineMVP.View> implements Mine
                     }
                 })
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Action1<List<Function>>() {
+                .subscribe(new Subscriber<List<Function>>() {
                     @Override
-                    public void call(List<Function> functions) {
+                    public void onCompleted() {
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.v("onError","==========e============"+e) ;
+                    }
+
+                    @Override
+                    public void onNext(List<Function> functions) {
                         view.showFunctions(functions);
                     }
                 });
+//                .subscribe(new Action1<List<Function>>() {
+//                    @Override
+//                    public void call(List<Function> functions) {
+//
+//                    }
+//                });
         addSubscribe(subscription);
     }
 }

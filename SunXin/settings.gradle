@@ -1,6 +1,6 @@
-include ':Plugin_Login', ':Plugin_Temp', ':SSNet', 'Plugin_FileSelector', 'Plugin_Shake', 'Plugin_FileTransfer', 'Plugin_Personal',':Plugin_Reader_Main',
+include ':Plugin_Login', ':Plugin_Temp', ':SSNet', ':Skin_Test',  'Plugin_FileSelector', 'Plugin_Shake', 'Plugin_FileTransfer', 'Plugin_Personal', ':Plugin_Reader_Main',
         ':Host',
-        ':SSSocket', ':DexInstall', ':ProtoBuf', ':TaskInterface', ':OKHttp3', ':Picasso',
+        ':SSSocket', ':Skinplugin',':DexInstall', ':ProtoBuf', ':TaskInterface', ':OKHttp3', ':Picasso',
         ':CommonRes'
 apply from: "util.gradle"
 
@@ -13,6 +13,7 @@ project(':TaskInterface').projectDir = new File("libs/TaskInterface")
 project(':OKHttp3').projectDir = new File("libs/OKHttp3")
 project(':Picasso').projectDir = new File("libs/Picasso")
 project(':SSNet').projectDir = new File("libs/SSNet")
+project(':Skinplugin').projectDir = new File("libs/Skinplugin")
 
 //plugins
 project(':Plugin_Login').projectDir = new File("plugins/Plugin_Login")
@@ -22,6 +23,7 @@ project(':Plugin_Shake').projectDir = new File("plugins/Plugin_Shake")
 project(':Plugin_FileTransfer').projectDir = new File("plugins/Plugin_FileTransfer")
 project(':Plugin_Personal').projectDir = new File("plugins/Plugin_Personal")
 project(':Plugin_Reader_Main').projectDir = new File("plugins/Plugin_Reader_Main")
+project(':Skin_Test').projectDir = new File("skin/Skin_Test")
 
 
 def plugin = ['Plugin_Login', 'Plugin_Temp', 'Plugin_FileSelector',

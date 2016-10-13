@@ -55,6 +55,7 @@ dependencies {
     compile project(':SSSocket')
     compile project(':CommonRes')
     compile project(':DexInstall')
+    compile project(':Skinplugin')
     compile fileTree(dir: rootProject.rootDir.absolutePath + File.separator + 'jars' + File.separator + 'compileJar', include: ['*.jar'])
     compile fileTree(dir: rootProject.rootDir.absolutePath + File.separator + 'jars' + File.separator + 'libsJar', include: ['*.jar'])
 }

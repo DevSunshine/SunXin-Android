@@ -4,11 +4,11 @@ package com.sunshine.sunxin.base;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import com.sunshine.lib.skin.SkinActivity;
 import com.sunshine.sunxin.App;
 import com.sunshine.sunxin.R;
 import com.sunshine.sunxin.plugin.PluginConstant;
@@ -20,7 +20,7 @@ import com.sunshine.sunxin.view.loadingview.LoadingIndicatorView;
  * Created by 钟光燕 on 2016/8/4.
  * e-mail guangyanzhong@163.com
  */
-public class BaseActivity extends FragmentActivity {
+public class BaseActivity extends SkinActivity {
     private TitleView mTitleView;
     private LoadingIndicatorView mLoadingView;
     public SystemBarTintManager systemBarTintManager;

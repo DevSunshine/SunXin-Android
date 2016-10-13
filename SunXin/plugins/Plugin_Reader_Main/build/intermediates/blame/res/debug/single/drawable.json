@@ -16,12 +16,12 @@
         "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\drawable\\login_pressed.xml"
     },
     {
-        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable\\white_press_selector.xml",
-        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\drawable\\white_press_selector.xml"
-    },
-    {
         "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable\\main_tab_mine.xml",
         "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\drawable\\main_tab_mine.xml"
+    },
+    {
+        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable\\white_press_selector.xml",
+        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\drawable\\white_press_selector.xml"
     },
     {
         "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable\\btn_more.xml",
@@ -60,12 +60,12 @@
         "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\drawable\\login_normal.xml"
     },
     {
-        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable\\main_tab_discover.xml",
-        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\drawable\\main_tab_discover.xml"
-    },
-    {
         "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable\\main_tab_msg.xml",
         "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\drawable\\main_tab_msg.xml"
+    },
+    {
+        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable\\main_tab_discover.xml",
+        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\drawable\\main_tab_discover.xml"
     },
     {
         "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable\\btn_press_selector.xml",
