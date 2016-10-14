@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.sunshine.lib.skin.bean.SkinInfo;
+import com.sunshine.sunxin.view.MainTab;
 
 /**
  * Created by 钟光燕 on 2016/10/13.
@@ -27,6 +28,13 @@ public class AttrTextColor extends SkinAttr {
                 int color = info.resources.getColor(resId, info.theme);
                 textView.setTextColor(color);
             }
+        }else if (view instanceof MainTab){
+            MainTab tab = (MainTab) view;
+            int resId = info.resources.getIdentifier(attrValueName, attrType, info.pkgName);
+//            ColorStateList colorStateList = ContextCompat.getColorStateList(view.getContext(),resId) ;
+            ColorStateList colorStateList = info.resources.getColorStateList(resId);
+            tab.setColorStateList(colorStateList);
         }
+
     }
 }

@@ -1,6 +1,7 @@
 package com.sunxin.plugin.reader.main;
 
 import android.content.res.AssetManager;
+import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.sunshine.lib.skin.SkinChangeListener;
 import com.sunshine.lib.skin.SkinManager;
@@ -33,6 +35,7 @@ public class ReaderMenuFragment extends BaseFragment implements ReaderMenuMVP.Vi
     private RecyclerView mMenuList;
     private ReaderMenuPresenter mPresenter;
     private ReaderMenuAdapter mMenuAdapter;
+
 
     @Nullable
     @Override
@@ -86,7 +89,11 @@ public class ReaderMenuFragment extends BaseFragment implements ReaderMenuMVP.Vi
             ImageView img = (ImageView) getView().findViewById(R.id.id_reader_menu_bg);
             img.setImageDrawable(drawable);
             Log.v("zgy","========id======~~~====="+id) ;
-
+            TextView textView = (TextView) getView().findViewById(R.id.id_night_mode);
+            int resId = mResources.getIdentifier("tab_reader_text_color", "color", "com.sunshine.skin.test");
+//            ColorStateList colorStateList = ContextCompat.getColorStateList(getContext(),resId) ;
+            ColorStateList colorStateList = mResources.getColorStateList(resId) ;
+            textView.setTextColor(colorStateList);
 
         } catch (Exception e) {
             e.printStackTrace();

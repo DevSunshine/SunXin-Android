@@ -96,6 +96,7 @@ public class SkinManager {
                     public void onCompleted() {
                         if (mSubscription.isUnsubscribed()){
                             mSubscription.unsubscribe();
+                            mSubscription = null ;
                         }
                     }
                     @Override

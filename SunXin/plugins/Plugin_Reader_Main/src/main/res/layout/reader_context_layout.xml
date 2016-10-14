@@ -11,11 +11,11 @@
         android:id="@+id/id_reader_content_fragment"/>
 
     <com.sunshine.sunxin.view.MainTab
+        android:tag="skin"
         android:layout_width="match_parent"
         android:layout_height="@dimen/reader_tab_height"
         android:textColor="@color/tab_reader_text_color"
         android:textSize="11sp"
-
         android:background="@color/colorWhite"
         android:id="@+id/id_reader_tab"
         />

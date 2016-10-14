@@ -133,6 +133,17 @@ public class MainTab extends LinearLayout {
         invalidate();
     }
 
+    public void setColorStateList(ColorStateList mTextColor){
+        this.mTextColor = mTextColor ;
+        for (int i =0 ; i < getChildCount() ; i ++){
+            View child = getChildAt(i) ;
+            if (child instanceof TextView){
+                TextView textView = (TextView) child;
+                textView.setTextColor(mTextColor);
+            }
+        }
+    }
+
     private void populateTabLayout() {
 
         final OnClickListener tabOnClickListener = new TabOnClickListener();
