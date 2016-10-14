@@ -13,6 +13,9 @@ import com.sunshine.lib.skin.bean.SkinInfo;
 
 public abstract class SkinAttr {
 
+    public static String SRC = "src" ;
+    public static String BACKGROUND = "background" ;
+    public static String TEXT_COLOR = "textColor" ;
     public static String DRAWABLE = "drawable" ;
     public static String COLOR = "color" ;
 

@@ -12,6 +12,7 @@ import android.text.TextUtils;
 
 import com.sunshine.lib.skin.bean.SkinInfo;
 import com.sunshine.lib.skin.skip.SkinPage;
+import com.sunshine.lib.skin.skip.SkinView;
 import com.sunshine.lib.skin.util.SkinSP;
 
 import java.lang.reflect.Method;
@@ -35,7 +36,8 @@ public class SkinManager {
     private Subscription mSubscription ;
     private String mSkinPath ;
     private SkinSP mSkinSP ;
-    private Map<SkinActivity,SkinPage> mSkinPages = new ArrayMap<>() ;
+    private Map<String,SkinPage> mSkinPages = new ArrayMap<>() ;
+    private SkinInfo mSkinInfo ;
 
     private SkinManager(){
     }
@@ -49,7 +51,7 @@ public class SkinManager {
     }
 
     public void init(Context context){
-        mContext = context.getApplicationContext() ;
+        mContext = context ;
         mSkinSP = new SkinSP(context) ;
         mSkinPath = mSkinSP.getCurrentSkinPath() ;
     }
@@ -129,13 +131,31 @@ public class SkinManager {
         }
     }
 
-    public void addSkinPage(){
-//        if ()
+
+
+    public void addSkinPage(String name,SkinPage page){
+        if (mSkinPages.containsKey(name)){
+            mSkinPages.remove(name) ;
+        }
+        mSkinPages.put(name,page) ;
+    }
+
+    public void removeSkinPage(String name){
+        if (mSkinPages.containsKey(name)){
+            mSkinPages.remove(name) ;
+        }
     }
 
 
     public void applyItem(SkinPage page){
         page.apply();
+    }
+
+    public void applyView(SkinView view){
+        if (mSkinInfo != null){
+            view.info = mSkinInfo ;
+            view.apply();
+        }
     }
 
 

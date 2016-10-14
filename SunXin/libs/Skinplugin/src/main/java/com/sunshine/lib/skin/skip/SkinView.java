@@ -6,7 +6,6 @@ import android.view.View;
 
 import com.sunshine.lib.skin.attr.SkinAttr;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,7 +17,7 @@ public class SkinView extends Skin implements SkinApply {
 
     public View view ;
 
-    List<SkinAttr> attrs = new ArrayList<>() ;
+    public List<SkinAttr> attrs  ;
     @Override
     public void apply() {
 

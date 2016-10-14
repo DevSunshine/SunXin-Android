@@ -18,7 +18,7 @@ public class SkinActivity extends FragmentActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mFactory = new SkinFactory() ;
+        mFactory = new SkinFactory(getClass().getName()) ;
         getLayoutInflater().setFactory(mFactory);
     }
 

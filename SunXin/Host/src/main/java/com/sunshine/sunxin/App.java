@@ -8,6 +8,7 @@ import android.os.Process;
 
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
+import com.sunshine.lib.skin.SkinManager;
 import com.sunshine.sunxin.logcat.SunXinCrashHandler;
 import com.sunshine.sunxin.plugin.PluginApk;
 
@@ -29,6 +30,7 @@ public class App extends Application {
         super.attachBaseContext(base);
         instance = this ;
         PluginApk.install(this);
+        SkinManager.getInstance().init(this);
     }
 
     @Override

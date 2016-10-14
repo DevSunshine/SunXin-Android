@@ -5,6 +5,7 @@
     android:orientation="vertical">
 
     <ImageView
+        android:tag="skin"
         android:id="@+id/id_reader_menu_bg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -60,6 +61,7 @@
             android:layout_height="42dp"
             android:orientation="horizontal">
             <TextView
+                android:id="@+id/id_night_mode"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="夜间"
@@ -68,6 +70,7 @@
                 android:gravity="center"/>
 
             <TextView
+                android:id="@+id/id_reader_setting"
                 android:layout_marginLeft="60dp"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"

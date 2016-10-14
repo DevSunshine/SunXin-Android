@@ -17,6 +17,7 @@ public class SkinPage extends Skin implements SkinApply {
     @Override
     public void apply() {
         for (SkinView view : skins) {
+            view.info = info ;
             view.apply();
         }
     }
