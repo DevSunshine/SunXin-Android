@@ -8,10 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
-import com.sunshine.lib.skin.SkinActivity;
 import com.sunshine.sunxin.App;
 import com.sunshine.sunxin.R;
 import com.sunshine.sunxin.plugin.PluginConstant;
+import com.sunshine.sunxin.skin.SkinActivity;
 import com.sunshine.sunxin.util.SystemBarTintManager;
 import com.sunshine.sunxin.view.TitleView;
 import com.sunshine.sunxin.view.loadingview.LoadingIndicatorView;

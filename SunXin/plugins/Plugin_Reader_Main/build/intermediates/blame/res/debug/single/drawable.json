@@ -1,78 +1,154 @@
 [
     {
-        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable\\main_tab_contacts.xml",
-        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\drawable\\main_tab_contacts.xml"
+        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable\\main_tab_contacts.xml",
+        "source": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\drawable\\main_tab_contacts.xml"
     },
     {
-        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable\\btn_login.xml",
-        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\drawable\\btn_login.xml"
+        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable\\btn_login.xml",
+        "source": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\drawable\\btn_login.xml"
     },
     {
-        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable\\btn_enable_selector.xml",
-        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\drawable\\btn_enable_selector.xml"
+        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable\\login_pressed.xml",
+        "source": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\drawable\\login_pressed.xml"
     },
     {
-        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable\\login_pressed.xml",
-        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\drawable\\login_pressed.xml"
+        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/res/merged/debug/drawable/login_pressed.xml",
+        "source": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/exploded-aar/SunXin/CommonRes/unspecified/res/drawable/login_pressed.xml"
     },
     {
-        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable\\main_tab_mine.xml",
-        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\drawable\\main_tab_mine.xml"
+        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable\\main_tab_mine.xml",
+        "source": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\drawable\\main_tab_mine.xml"
     },
     {
-        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable\\white_press_selector.xml",
-        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\drawable\\white_press_selector.xml"
+        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable\\white_press_selector.xml",
+        "source": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\drawable\\white_press_selector.xml"
     },
     {
-        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable\\btn_more.xml",
-        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\drawable\\btn_more.xml"
+        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable\\btn_more.xml",
+        "source": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\drawable\\btn_more.xml"
     },
     {
-        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable\\scan_info_btn.xml",
-        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\drawable\\scan_info_btn.xml"
+        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/res/merged/debug/drawable/main_tab_mine.xml",
+        "source": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/src/main/res/drawable/main_tab_mine.xml"
     },
     {
-        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable\\test_btn_selector.xml",
-        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\drawable\\test_btn_selector.xml"
+        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/res/merged/debug/drawable/login_normal.xml",
+        "source": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/exploded-aar/SunXin/CommonRes/unspecified/res/drawable/login_normal.xml"
     },
     {
-        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable\\btn_normal.xml",
-        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\drawable\\btn_normal.xml"
+        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/res/merged/debug/drawable/btn_common.xml",
+        "source": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/exploded-aar/SunXin/CommonRes/unspecified/res/drawable/btn_common.xml"
     },
     {
-        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable\\btn_unable.xml",
-        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\drawable\\btn_unable.xml"
+        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/res/merged/debug/drawable/main_tab_discover.xml",
+        "source": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/src/main/res/drawable/main_tab_discover.xml"
     },
     {
-        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable\\btn_back.xml",
-        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\drawable\\btn_back.xml"
+        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable\\btn_normal.xml",
+        "source": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\drawable\\btn_normal.xml"
     },
     {
-        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable\\btn_pressed.xml",
-        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\drawable\\btn_pressed.xml"
+        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/res/merged/debug/drawable/main_tab_contacts.xml",
+        "source": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/src/main/res/drawable/main_tab_contacts.xml"
     },
     {
-        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable\\btn_common.xml",
-        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\drawable\\btn_common.xml"
+        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/res/merged/debug/drawable/btn_setup.xml",
+        "source": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/exploded-aar/SunXin/CommonRes/unspecified/res/drawable/btn_setup.xml"
     },
     {
-        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable\\login_normal.xml",
-        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\drawable\\login_normal.xml"
+        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable\\btn_common.xml",
+        "source": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\drawable\\btn_common.xml"
     },
     {
-        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable\\main_tab_msg.xml",
-        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\drawable\\main_tab_msg.xml"
+        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/res/merged/debug/drawable/white_press_selector.xml",
+        "source": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/exploded-aar/SunXin/CommonRes/unspecified/res/drawable/white_press_selector.xml"
     },
     {
-        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable\\main_tab_discover.xml",
-        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\drawable\\main_tab_discover.xml"
+        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/res/merged/debug/drawable/btn_back.xml",
+        "source": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/exploded-aar/SunXin/CommonRes/unspecified/res/drawable/btn_back.xml"
     },
     {
-        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable\\btn_press_selector.xml",
-        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\drawable\\btn_press_selector.xml"
+        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable\\btn_press_selector.xml",
+        "source": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\drawable\\btn_press_selector.xml"
     },
     {
-        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable\\btn_setup.xml",
-        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\drawable\\btn_setup.xml"
+        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/res/merged/debug/drawable/test_btn_selector.xml",
+        "source": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/src/main/res/drawable/test_btn_selector.xml"
+    },
+    {
+        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/res/merged/debug/drawable/btn_unable.xml",
+        "source": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/exploded-aar/SunXin/CommonRes/unspecified/res/drawable/btn_unable.xml"
+    },
+    {
+        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/res/merged/debug/drawable/btn_enable_selector.xml",
+        "source": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/exploded-aar/SunXin/CommonRes/unspecified/res/drawable/btn_enable_selector.xml"
+    },
+    {
+        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable\\btn_enable_selector.xml",
+        "source": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\drawable\\btn_enable_selector.xml"
+    },
+    {
+        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/res/merged/debug/drawable/btn_login.xml",
+        "source": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/exploded-aar/SunXin/CommonRes/unspecified/res/drawable/btn_login.xml"
+    },
+    {
+        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/res/merged/debug/drawable/btn_more.xml",
+        "source": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/exploded-aar/SunXin/CommonRes/unspecified/res/drawable/btn_more.xml"
+    },
+    {
+        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable\\scan_info_btn.xml",
+        "source": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\drawable\\scan_info_btn.xml"
+    },
+    {
+        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable\\test_btn_selector.xml",
+        "source": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\drawable\\test_btn_selector.xml"
+    },
+    {
+        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable\\btn_unable.xml",
+        "source": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\drawable\\btn_unable.xml"
+    },
+    {
+        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable\\btn_back.xml",
+        "source": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\drawable\\btn_back.xml"
+    },
+    {
+        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable\\btn_pressed.xml",
+        "source": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\drawable\\btn_pressed.xml"
+    },
+    {
+        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable\\login_normal.xml",
+        "source": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\drawable\\login_normal.xml"
+    },
+    {
+        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable\\main_tab_msg.xml",
+        "source": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\drawable\\main_tab_msg.xml"
+    },
+    {
+        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable\\main_tab_discover.xml",
+        "source": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\drawable\\main_tab_discover.xml"
+    },
+    {
+        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/res/merged/debug/drawable/btn_pressed.xml",
+        "source": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/exploded-aar/SunXin/CommonRes/unspecified/res/drawable/btn_pressed.xml"
+    },
+    {
+        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/res/merged/debug/drawable/btn_normal.xml",
+        "source": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/exploded-aar/SunXin/CommonRes/unspecified/res/drawable/btn_normal.xml"
+    },
+    {
+        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/res/merged/debug/drawable/scan_info_btn.xml",
+        "source": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/exploded-aar/SunXin/CommonRes/unspecified/res/drawable/scan_info_btn.xml"
+    },
+    {
+        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\drawable\\btn_setup.xml",
+        "source": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\drawable\\btn_setup.xml"
+    },
+    {
+        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/res/merged/debug/drawable/btn_press_selector.xml",
+        "source": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/exploded-aar/SunXin/CommonRes/unspecified/res/drawable/btn_press_selector.xml"
+    },
+    {
+        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/res/merged/debug/drawable/main_tab_msg.xml",
+        "source": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/src/main/res/drawable/main_tab_msg.xml"
     }
 ]

@@ -15,10 +15,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.sunshine.lib.skin.SkinChangeListener;
-import com.sunshine.lib.skin.SkinManager;
 import com.sunshine.sunxin.base.BaseFragment;
 import com.sunshine.sunxin.beans.Function;
+import com.sunshine.sunxin.skin.SkinChangeListener;
+import com.sunshine.sunxin.skin.SkinManager;
 
 import java.lang.reflect.Method;
 import java.util.List;
@@ -85,7 +85,7 @@ public class ReaderMenuFragment extends BaseFragment implements ReaderMenuMVP.Vi
             int id = mResources.getIdentifier("bg_reader_menu", "drawable", "com.sunshine.skin.test") ;
             Resources.Theme theme = mResources.newTheme();
             theme.applyStyle(android.R.style.Theme, true);
-            Drawable drawable = mResources.getDrawable(id,theme);
+            Drawable drawable = mResources.getDrawable(id);
             ImageView img = (ImageView) getView().findViewById(R.id.id_reader_menu_bg);
             img.setImageDrawable(drawable);
             Log.v("zgy","========id======~~~====="+id) ;

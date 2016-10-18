@@ -1,18 +1,34 @@
 [
     {
-        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\layout\\item_menu.xml",
-        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\layout\\item_menu.xml"
+        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\layout\\item_menu.xml",
+        "source": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\layout\\item_menu.xml"
     },
     {
-        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\layout\\plugin_reader_main_layout.xml",
-        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\layout\\plugin_reader_main_layout.xml"
+        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\layout\\plugin_reader_main_layout.xml",
+        "source": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\layout\\plugin_reader_main_layout.xml"
     },
     {
-        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\layout\\reader_menu_layout.xml",
-        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\layout\\reader_menu_layout.xml"
+        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/res/merged/debug/layout/reader_menu_layout.xml",
+        "source": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/src/main/res/layout/reader_menu_layout.xml"
     },
     {
-        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\layout\\reader_context_layout.xml",
-        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\layout\\reader_context_layout.xml"
+        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\layout\\reader_menu_layout.xml",
+        "source": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\layout\\reader_menu_layout.xml"
+    },
+    {
+        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/res/merged/debug/layout/plugin_reader_main_layout.xml",
+        "source": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/src/main/res/layout/plugin_reader_main_layout.xml"
+    },
+    {
+        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\layout\\reader_context_layout.xml",
+        "source": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\layout\\reader_context_layout.xml"
+    },
+    {
+        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/res/merged/debug/layout/item_menu.xml",
+        "source": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/src/main/res/layout/item_menu.xml"
+    },
+    {
+        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/res/merged/debug/layout/reader_context_layout.xml",
+        "source": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/src/main/res/layout/reader_context_layout.xml"
     }
 ]

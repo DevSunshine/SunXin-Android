@@ -8,9 +8,9 @@ import android.os.Process;
 
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
-import com.sunshine.lib.skin.SkinManager;
 import com.sunshine.sunxin.logcat.SunXinCrashHandler;
 import com.sunshine.sunxin.plugin.PluginApk;
+import com.sunshine.sunxin.skin.SkinManager;
 
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadFactory;
