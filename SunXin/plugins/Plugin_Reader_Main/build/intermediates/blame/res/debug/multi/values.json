@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\values\\values.xml",
+        "outputFile": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\values\\values.xml",
         "map": [
             {
                 "to": {
@@ -12,15 +12,7 @@
                     "endOffset": 195
                 },
                 "from": {
-                    "file": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\values\\strings.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 66,
-                        "endLine": 7,
-                        "endColumn": 12,
-                        "endOffset": 211
-                    }
+                    "file": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\values\\strings.xml"
                 }
             },
             {
@@ -28,347 +20,395 @@
                     "startLine": 8,
                     "startColumn": 4,
                     "startOffset": 200,
-                    "endColumn": 42,
-                    "endOffset": 238
+                    "endColumn": 60,
+                    "endOffset": 256
                 },
                 "from": {
-                    "file": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 55,
-                        "endColumn": 42,
-                        "endOffset": 93
-                    }
+                    "file": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\com.android.support\\cardview-v7\\24.1.1\\res\\values\\values.xml"
                 }
             },
             {
                 "to": {
                     "startLine": 9,
                     "startColumn": 4,
-                    "startOffset": 243,
-                    "endColumn": 42,
-                    "endOffset": 281
+                    "startOffset": 261,
+                    "endColumn": 61,
+                    "endOffset": 318
                 },
                 "from": {
-                    "file": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml",
-                    "position": {
-                        "startLine": 3,
-                        "startColumn": 4,
-                        "startOffset": 98,
-                        "endColumn": 42,
-                        "endOffset": 136
-                    }
+                    "file": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\com.android.support\\cardview-v7\\24.1.1\\res\\values\\values.xml"
                 }
             },
             {
                 "to": {
                     "startLine": 10,
                     "startColumn": 4,
-                    "startOffset": 286,
-                    "endColumn": 42,
-                    "endOffset": 324
+                    "startOffset": 323,
+                    "endColumn": 61,
+                    "endOffset": 380
                 },
                 "from": {
-                    "file": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 4,
-                        "startOffset": 141,
-                        "endColumn": 42,
-                        "endOffset": 179
-                    }
+                    "file": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\com.android.support\\cardview-v7\\24.1.1\\res\\values\\values.xml"
                 }
             },
             {
                 "to": {
                     "startLine": 11,
                     "startColumn": 4,
-                    "startOffset": 329,
-                    "endColumn": 45,
-                    "endOffset": 370
+                    "startOffset": 385,
+                    "endColumn": 63,
+                    "endOffset": 444
                 },
                 "from": {
-                    "file": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\values\\colors.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 4,
-                        "startOffset": 157,
-                        "endColumn": 45,
-                        "endOffset": 198
-                    }
+                    "file": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\com.android.support\\cardview-v7\\24.1.1\\res\\values\\values.xml"
                 }
             },
             {
                 "to": {
                     "startLine": 12,
                     "startColumn": 4,
-                    "startOffset": 375,
-                    "endColumn": 41,
-                    "endOffset": 412
+                    "startOffset": 449,
+                    "endColumn": 42,
+                    "endOffset": 487
                 },
                 "from": {
-                    "file": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml",
-                    "position": {
-                        "startLine": 6,
-                        "startColumn": 4,
-                        "startOffset": 230,
-                        "endColumn": 41,
-                        "endOffset": 267
-                    }
+                    "file": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml"
                 }
             },
             {
                 "to": {
                     "startLine": 13,
                     "startColumn": 4,
-                    "startOffset": 417,
-                    "endColumn": 45,
-                    "endOffset": 458
+                    "startOffset": 492,
+                    "endColumn": 42,
+                    "endOffset": 530
                 },
                 "from": {
-                    "file": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml",
-                    "position": {
-                        "startLine": 7,
-                        "startColumn": 4,
-                        "startOffset": 272,
-                        "endColumn": 45,
-                        "endOffset": 313
-                    }
+                    "file": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml"
                 }
             },
             {
                 "to": {
                     "startLine": 14,
                     "startColumn": 4,
-                    "startOffset": 463,
-                    "endColumn": 44,
-                    "endOffset": 503
+                    "startOffset": 535,
+                    "endColumn": 42,
+                    "endOffset": 573
                 },
                 "from": {
-                    "file": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml",
-                    "position": {
-                        "startLine": 8,
-                        "startColumn": 4,
-                        "startOffset": 318,
-                        "endColumn": 44,
-                        "endOffset": 358
-                    }
+                    "file": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml"
                 }
             },
             {
                 "to": {
                     "startLine": 15,
                     "startColumn": 4,
-                    "startOffset": 508,
-                    "endColumn": 43,
-                    "endOffset": 547
+                    "startOffset": 578,
+                    "endColumn": 45,
+                    "endOffset": 619
                 },
                 "from": {
-                    "file": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml",
-                    "position": {
-                        "startLine": 9,
-                        "startColumn": 4,
-                        "startOffset": 363,
-                        "endColumn": 43,
-                        "endOffset": 402
-                    }
+                    "file": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\values\\colors.xml"
                 }
             },
             {
                 "to": {
                     "startLine": 16,
                     "startColumn": 4,
-                    "startOffset": 552,
-                    "endColumn": 43,
-                    "endOffset": 591
+                    "startOffset": 624,
+                    "endColumn": 41,
+                    "endOffset": 661
                 },
                 "from": {
-                    "file": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml",
-                    "position": {
-                        "startLine": 10,
-                        "startColumn": 4,
-                        "startOffset": 407,
-                        "endColumn": 43,
-                        "endOffset": 446
-                    }
+                    "file": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml"
                 }
             },
             {
                 "to": {
                     "startLine": 17,
                     "startColumn": 4,
-                    "startOffset": 596,
-                    "endColumn": 43,
-                    "endOffset": 635
+                    "startOffset": 666,
+                    "endColumn": 45,
+                    "endOffset": 707
                 },
                 "from": {
-                    "file": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml",
-                    "position": {
-                        "startLine": 11,
-                        "startColumn": 4,
-                        "startOffset": 451,
-                        "endColumn": 43,
-                        "endOffset": 490
-                    }
+                    "file": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml"
                 }
             },
             {
                 "to": {
                     "startLine": 18,
                     "startColumn": 4,
-                    "startOffset": 640,
-                    "endColumn": 48,
-                    "endOffset": 684
+                    "startOffset": 712,
+                    "endColumn": 44,
+                    "endOffset": 752
                 },
                 "from": {
-                    "file": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml",
-                    "position": {
-                        "startLine": 12,
-                        "startColumn": 4,
-                        "startOffset": 495,
-                        "endColumn": 48,
-                        "endOffset": 539
-                    }
+                    "file": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml"
                 }
             },
             {
                 "to": {
                     "startLine": 19,
                     "startColumn": 4,
-                    "startOffset": 689,
-                    "endColumn": 45,
-                    "endOffset": 730
+                    "startOffset": 757,
+                    "endColumn": 43,
+                    "endOffset": 796
                 },
                 "from": {
-                    "file": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml",
-                    "position": {
-                        "startLine": 13,
-                        "startColumn": 4,
-                        "startOffset": 544,
-                        "endColumn": 45,
-                        "endOffset": 585
-                    }
+                    "file": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml"
                 }
             },
             {
                 "to": {
                     "startLine": 20,
                     "startColumn": 4,
-                    "startOffset": 735,
-                    "endColumn": 46,
-                    "endOffset": 777
+                    "startOffset": 801,
+                    "endColumn": 43,
+                    "endOffset": 840
                 },
                 "from": {
-                    "file": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\values\\colors.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 57,
-                        "endColumn": 46,
-                        "endOffset": 99
-                    }
+                    "file": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml"
                 }
             },
             {
                 "to": {
                     "startLine": 21,
                     "startColumn": 4,
-                    "startOffset": 782,
-                    "endColumn": 50,
-                    "endOffset": 828
+                    "startOffset": 845,
+                    "endColumn": 43,
+                    "endOffset": 884
                 },
                 "from": {
-                    "file": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\values\\colors.xml",
-                    "position": {
-                        "startLine": 3,
-                        "startColumn": 4,
-                        "startOffset": 105,
-                        "endColumn": 50,
-                        "endOffset": 151
-                    }
+                    "file": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml"
                 }
             },
             {
                 "to": {
                     "startLine": 22,
                     "startColumn": 4,
-                    "startOffset": 833,
-                    "endColumn": 44,
-                    "endOffset": 873
+                    "startOffset": 889,
+                    "endColumn": 48,
+                    "endOffset": 933
                 },
                 "from": {
-                    "file": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml",
-                    "position": {
-                        "startLine": 16,
-                        "startColumn": 4,
-                        "startOffset": 688,
-                        "endColumn": 44,
-                        "endOffset": 728
-                    }
+                    "file": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml"
                 }
             },
             {
                 "to": {
                     "startLine": 23,
                     "startColumn": 4,
-                    "startOffset": 878,
-                    "endColumn": 46,
-                    "endOffset": 920
+                    "startOffset": 938,
+                    "endColumn": 45,
+                    "endOffset": 979
                 },
                 "from": {
-                    "file": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml",
-                    "position": {
-                        "startLine": 17,
-                        "startColumn": 4,
-                        "startOffset": 733,
-                        "endColumn": 46,
-                        "endOffset": 775
-                    }
+                    "file": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml"
                 }
             },
             {
                 "to": {
                     "startLine": 24,
                     "startColumn": 4,
-                    "startOffset": 925,
-                    "endColumn": 48,
-                    "endOffset": 969
+                    "startOffset": 984,
+                    "endColumn": 46,
+                    "endOffset": 1026
                 },
                 "from": {
-                    "file": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\values\\dimens.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 90,
-                        "endColumn": 48,
-                        "endOffset": 134
-                    }
+                    "file": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\values\\colors.xml"
                 }
             },
             {
                 "to": {
                     "startLine": 25,
                     "startColumn": 4,
-                    "startOffset": 974,
-                    "endColumn": 47,
-                    "endOffset": 1017
+                    "startOffset": 1031,
+                    "endColumn": 50,
+                    "endOffset": 1077
                 },
                 "from": {
-                    "file": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\values\\strings.xml",
+                    "file": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\values\\colors.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 26,
+                    "startColumn": 4,
+                    "startOffset": 1082,
+                    "endColumn": 44,
+                    "endOffset": 1122
+                },
+                "from": {
+                    "file": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 27,
+                    "startColumn": 4,
+                    "startOffset": 1127,
+                    "endColumn": 46,
+                    "endOffset": 1169
+                },
+                "from": {
+                    "file": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 28,
+                    "startColumn": 4,
+                    "startOffset": 1174,
+                    "endColumn": 45,
+                    "endOffset": 1215
+                },
+                "from": {
+                    "file": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\values\\colors.xml",
                     "position": {
-                        "startLine": 1,
+                        "startLine": 5,
                         "startColumn": 4,
-                        "startOffset": 17,
-                        "endColumn": 47,
-                        "endOffset": 60
+                        "startOffset": 204,
+                        "endColumn": 45,
+                        "endOffset": 245
                     }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 29,
+                    "startColumn": 4,
+                    "startOffset": 1220,
+                    "endColumn": 47,
+                    "endOffset": 1263
+                },
+                "from": {
+                    "file": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 251,
+                        "endColumn": 47,
+                        "endOffset": 294
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 31,
+                    "startColumn": 4,
+                    "startOffset": 1953,
+                    "endColumn": 58,
+                    "endOffset": 2007
+                },
+                "from": {
+                    "file": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\com.android.support\\cardview-v7\\24.1.1\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 32,
+                    "startColumn": 4,
+                    "startOffset": 2012,
+                    "endColumn": 56,
+                    "endOffset": 2064
+                },
+                "from": {
+                    "file": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\com.android.support\\cardview-v7\\24.1.1\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 33,
+                    "startColumn": 4,
+                    "startOffset": 2069,
+                    "endColumn": 53,
+                    "endOffset": 2118
+                },
+                "from": {
+                    "file": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\com.android.support\\cardview-v7\\24.1.1\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 34,
+                    "startColumn": 4,
+                    "startOffset": 2123,
+                    "endColumn": 48,
+                    "endOffset": 2167
+                },
+                "from": {
+                    "file": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\values\\dimens.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 35,
+                    "startColumn": 4,
+                    "startOffset": 2172,
+                    "endColumn": 47,
+                    "endOffset": 2215
+                },
+                "from": {
+                    "file": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\values\\strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 36,
+                    "startColumn": 4,
+                    "startOffset": 2220,
+                    "endLine": 42,
+                    "endColumn": 12,
+                    "endOffset": 2629
+                },
+                "from": {
+                    "file": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\com.android.support\\cardview-v7\\24.1.1\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 43,
+                    "startColumn": 4,
+                    "startOffset": 2634,
+                    "endLine": 44,
+                    "endColumn": 12,
+                    "endOffset": 2693
+                },
+                "from": {
+                    "file": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\com.android.support\\cardview-v7\\24.1.1\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 45,
+                    "startColumn": 4,
+                    "startOffset": 2698,
+                    "endLine": 47,
+                    "endColumn": 12,
+                    "endOffset": 2819
+                },
+                "from": {
+                    "file": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\com.android.support\\cardview-v7\\24.1.1\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 48,
+                    "startColumn": 4,
+                    "startOffset": 2824,
+                    "endLine": 50,
+                    "endColumn": 12,
+                    "endOffset": 2947
+                },
+                "from": {
+                    "file": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\com.android.support\\cardview-v7\\24.1.1\\res\\values\\values.xml"
                 }
             }
         ]
     },
     {
-        "outputFile": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/res/merged/debug/values/values.xml",
+        "outputFile": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\values\\values.xml",
         "map": [
             {
                 "to": {
@@ -380,7 +420,7 @@
                     "endOffset": 195
                 },
                 "from": {
-                    "file": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/src/main/res/values/strings.xml",
+                    "file": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -400,7 +440,7 @@
                     "endOffset": 238
                 },
                 "from": {
-                    "file": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/exploded-aar/SunXin/CommonRes/unspecified/res/values/values.xml",
+                    "file": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -419,7 +459,7 @@
                     "endOffset": 281
                 },
                 "from": {
-                    "file": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/exploded-aar/SunXin/CommonRes/unspecified/res/values/values.xml",
+                    "file": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -438,7 +478,7 @@
                     "endOffset": 324
                 },
                 "from": {
-                    "file": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/exploded-aar/SunXin/CommonRes/unspecified/res/values/values.xml",
+                    "file": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -457,7 +497,7 @@
                     "endOffset": 370
                 },
                 "from": {
-                    "file": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/src/main/res/values/colors.xml",
+                    "file": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\values\\colors.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -476,7 +516,7 @@
                     "endOffset": 412
                 },
                 "from": {
-                    "file": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/exploded-aar/SunXin/CommonRes/unspecified/res/values/values.xml",
+                    "file": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 4,
@@ -495,7 +535,7 @@
                     "endOffset": 458
                 },
                 "from": {
-                    "file": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/exploded-aar/SunXin/CommonRes/unspecified/res/values/values.xml",
+                    "file": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml",
                     "position": {
                         "startLine": 7,
                         "startColumn": 4,
@@ -514,7 +554,7 @@
                     "endOffset": 503
                 },
                 "from": {
-                    "file": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/exploded-aar/SunXin/CommonRes/unspecified/res/values/values.xml",
+                    "file": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml",
                     "position": {
                         "startLine": 8,
                         "startColumn": 4,
@@ -533,7 +573,7 @@
                     "endOffset": 547
                 },
                 "from": {
-                    "file": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/exploded-aar/SunXin/CommonRes/unspecified/res/values/values.xml",
+                    "file": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml",
                     "position": {
                         "startLine": 9,
                         "startColumn": 4,
@@ -552,7 +592,7 @@
                     "endOffset": 591
                 },
                 "from": {
-                    "file": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/exploded-aar/SunXin/CommonRes/unspecified/res/values/values.xml",
+                    "file": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml",
                     "position": {
                         "startLine": 10,
                         "startColumn": 4,
@@ -571,7 +611,7 @@
                     "endOffset": 635
                 },
                 "from": {
-                    "file": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/exploded-aar/SunXin/CommonRes/unspecified/res/values/values.xml",
+                    "file": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml",
                     "position": {
                         "startLine": 11,
                         "startColumn": 4,
@@ -590,7 +630,7 @@
                     "endOffset": 684
                 },
                 "from": {
-                    "file": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/exploded-aar/SunXin/CommonRes/unspecified/res/values/values.xml",
+                    "file": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml",
                     "position": {
                         "startLine": 12,
                         "startColumn": 4,
@@ -609,7 +649,7 @@
                     "endOffset": 730
                 },
                 "from": {
-                    "file": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/exploded-aar/SunXin/CommonRes/unspecified/res/values/values.xml",
+                    "file": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml",
                     "position": {
                         "startLine": 13,
                         "startColumn": 4,
@@ -628,7 +668,7 @@
                     "endOffset": 777
                 },
                 "from": {
-                    "file": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/src/main/res/values/colors.xml",
+                    "file": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\values\\colors.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -647,7 +687,7 @@
                     "endOffset": 828
                 },
                 "from": {
-                    "file": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/src/main/res/values/colors.xml",
+                    "file": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\values\\colors.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -666,7 +706,7 @@
                     "endOffset": 873
                 },
                 "from": {
-                    "file": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/exploded-aar/SunXin/CommonRes/unspecified/res/values/values.xml",
+                    "file": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml",
                     "position": {
                         "startLine": 16,
                         "startColumn": 4,
@@ -685,7 +725,7 @@
                     "endOffset": 920
                 },
                 "from": {
-                    "file": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/exploded-aar/SunXin/CommonRes/unspecified/res/values/values.xml",
+                    "file": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml",
                     "position": {
                         "startLine": 17,
                         "startColumn": 4,
@@ -704,7 +744,7 @@
                     "endOffset": 969
                 },
                 "from": {
-                    "file": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/src/main/res/values/dimens.xml",
+                    "file": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\values\\dimens.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -723,13 +763,381 @@
                     "endOffset": 1017
                 },
                 "from": {
-                    "file": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/src/main/res/values/strings.xml",
+                    "file": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 1,
                         "startColumn": 4,
                         "startOffset": 16,
                         "endColumn": 47,
                         "endOffset": 59
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\values\\values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endLine": 7,
+                    "endColumn": 12,
+                    "endOffset": 195
+                },
+                "from": {
+                    "file": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 66,
+                        "endLine": 7,
+                        "endColumn": 12,
+                        "endOffset": 211
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 200,
+                    "endColumn": 42,
+                    "endOffset": 238
+                },
+                "from": {
+                    "file": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 42,
+                        "endOffset": 93
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 243,
+                    "endColumn": 42,
+                    "endOffset": 281
+                },
+                "from": {
+                    "file": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 98,
+                        "endColumn": 42,
+                        "endOffset": 136
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 286,
+                    "endColumn": 42,
+                    "endOffset": 324
+                },
+                "from": {
+                    "file": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 141,
+                        "endColumn": 42,
+                        "endOffset": 179
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 329,
+                    "endColumn": 45,
+                    "endOffset": 370
+                },
+                "from": {
+                    "file": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 157,
+                        "endColumn": 45,
+                        "endOffset": 198
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 375,
+                    "endColumn": 41,
+                    "endOffset": 412
+                },
+                "from": {
+                    "file": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 230,
+                        "endColumn": 41,
+                        "endOffset": 267
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 417,
+                    "endColumn": 45,
+                    "endOffset": 458
+                },
+                "from": {
+                    "file": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 272,
+                        "endColumn": 45,
+                        "endOffset": 313
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 463,
+                    "endColumn": 44,
+                    "endOffset": 503
+                },
+                "from": {
+                    "file": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 318,
+                        "endColumn": 44,
+                        "endOffset": 358
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 508,
+                    "endColumn": 43,
+                    "endOffset": 547
+                },
+                "from": {
+                    "file": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 363,
+                        "endColumn": 43,
+                        "endOffset": 402
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 552,
+                    "endColumn": 43,
+                    "endOffset": 591
+                },
+                "from": {
+                    "file": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 407,
+                        "endColumn": 43,
+                        "endOffset": 446
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 17,
+                    "startColumn": 4,
+                    "startOffset": 596,
+                    "endColumn": 43,
+                    "endOffset": 635
+                },
+                "from": {
+                    "file": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 451,
+                        "endColumn": 43,
+                        "endOffset": 490
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 18,
+                    "startColumn": 4,
+                    "startOffset": 640,
+                    "endColumn": 48,
+                    "endOffset": 684
+                },
+                "from": {
+                    "file": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 495,
+                        "endColumn": 48,
+                        "endOffset": 539
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 19,
+                    "startColumn": 4,
+                    "startOffset": 689,
+                    "endColumn": 45,
+                    "endOffset": 730
+                },
+                "from": {
+                    "file": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 4,
+                        "startOffset": 544,
+                        "endColumn": 45,
+                        "endOffset": 585
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 20,
+                    "startColumn": 4,
+                    "startOffset": 735,
+                    "endColumn": 46,
+                    "endOffset": 777
+                },
+                "from": {
+                    "file": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 57,
+                        "endColumn": 46,
+                        "endOffset": 99
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 21,
+                    "startColumn": 4,
+                    "startOffset": 782,
+                    "endColumn": 50,
+                    "endOffset": 828
+                },
+                "from": {
+                    "file": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 105,
+                        "endColumn": 50,
+                        "endOffset": 151
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 22,
+                    "startColumn": 4,
+                    "startOffset": 833,
+                    "endColumn": 44,
+                    "endOffset": 873
+                },
+                "from": {
+                    "file": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 688,
+                        "endColumn": 44,
+                        "endOffset": 728
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 23,
+                    "startColumn": 4,
+                    "startOffset": 878,
+                    "endColumn": 46,
+                    "endOffset": 920
+                },
+                "from": {
+                    "file": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 733,
+                        "endColumn": 46,
+                        "endOffset": 775
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 24,
+                    "startColumn": 4,
+                    "startOffset": 925,
+                    "endColumn": 48,
+                    "endOffset": 969
+                },
+                "from": {
+                    "file": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 90,
+                        "endColumn": 48,
+                        "endOffset": 134
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 25,
+                    "startColumn": 4,
+                    "startOffset": 974,
+                    "endColumn": 47,
+                    "endOffset": 1017
+                },
+                "from": {
+                    "file": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 1,
+                        "startColumn": 4,
+                        "startOffset": 17,
+                        "endColumn": 47,
+                        "endOffset": 60
                     }
                 }
             }

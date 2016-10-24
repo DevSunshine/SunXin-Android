@@ -12,8 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
-import com.sunshine.sunxin.base.BaseActivity;
 import com.sunshine.sunxin.R;
+import com.sunshine.sunxin.base.BaseActivity;
 import com.sunshine.sunxin.plugin.model.PluginInfo;
 import com.sunshine.sunxin.plugin.model.PluginRuntimeEnv;
 
@@ -91,11 +91,16 @@ public abstract class BasePluginActivity extends BaseActivity {
                 AssetManager assetManager = AssetManager.class.newInstance();
                 Class assetClass = assetManager.getClass();
                 Method method = assetClass.getMethod("addAssetPath", String.class);
+                method.invoke(assetManager, getPackageResourcePath());
                 method.invoke(assetManager, pluginInfo.localPath);
                 Resources resources = new Resources(assetManager, getResources().getDisplayMetrics(),
                         getResources().getConfiguration());
                 Resources.Theme theme = resources.newTheme();
-                theme.applyStyle(android.R.style.Theme, true);
+//                theme.setTo(super.getTheme());
+                theme.applyStyle(R.style.AppTheme, true);
+//                PluginUtil.setField(getApplicationContext(), "mResources", resources);
+//                PluginUtil.setField(BasePluginActivity.this, "mResources", null);
+//                PluginUtil.setField(this, "mResources", resources);
                 PluginRuntimeEnv pluginRuntimeEnv = new PluginRuntimeEnv(assetManager, dexClassLoader,
                         resources, theme, pluginInfo);
                 pluginCache.addPluginRuntimeEnv(pluginRuntimeEnv);
@@ -122,12 +127,14 @@ public abstract class BasePluginActivity extends BaseActivity {
     public Resources.Theme getTheme() {
         return getPluginRuntimeEnv() == null ? super.getTheme()
                 : getPluginRuntimeEnv().theme;
+//        return TestAppCom.theme ;
     }
 
     @Override
     public Resources getResources() {
         return getPluginRuntimeEnv() == null ? super.getResources()
                 : getPluginRuntimeEnv().resources;
+//        return TestAppCom.resources ;
     }
 
     @Override

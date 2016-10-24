@@ -1,31 +1,33 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/src/main/AndroidManifest.xml:1:1-4:12
+ADDED from D:\Works\SunXinAndroid\SunXin\plugins\Plugin_Reader_Main\src\main\AndroidManifest.xml:1:1-4:12
 	package
-		ADDED from /Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/src/main/AndroidManifest.xml:2:5-44
-		INJECTED from /Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/src/main/AndroidManifest.xml
-		INJECTED from /Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/src/main/AndroidManifest.xml
+		ADDED from D:\Works\SunXinAndroid\SunXin\plugins\Plugin_Reader_Main\src\main\AndroidManifest.xml:2:5-44
+		INJECTED from D:\Works\SunXinAndroid\SunXin\plugins\Plugin_Reader_Main\src\main\AndroidManifest.xml
+		INJECTED from D:\Works\SunXinAndroid\SunXin\plugins\Plugin_Reader_Main\src\main\AndroidManifest.xml
 	android:versionName
-		INJECTED from /Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/src/main/AndroidManifest.xml
-		INJECTED from /Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/src/main/AndroidManifest.xml
+		INJECTED from D:\Works\SunXinAndroid\SunXin\plugins\Plugin_Reader_Main\src\main\AndroidManifest.xml
+		INJECTED from D:\Works\SunXinAndroid\SunXin\plugins\Plugin_Reader_Main\src\main\AndroidManifest.xml
 	android:versionCode
-		ADDED from /Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/src/main/AndroidManifest.xml:3:5-28
-		INJECTED from /Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/src/main/AndroidManifest.xml
-		INJECTED from /Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/src/main/AndroidManifest.xml
+		ADDED from D:\Works\SunXinAndroid\SunXin\plugins\Plugin_Reader_Main\src\main\AndroidManifest.xml:3:5-28
+		INJECTED from D:\Works\SunXinAndroid\SunXin\plugins\Plugin_Reader_Main\src\main\AndroidManifest.xml
+		INJECTED from D:\Works\SunXinAndroid\SunXin\plugins\Plugin_Reader_Main\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from /Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/src/main/AndroidManifest.xml:1:11-69
+		ADDED from D:\Works\SunXinAndroid\SunXin\plugins\Plugin_Reader_Main\src\main\AndroidManifest.xml:1:11-69
 uses-sdk
-INJECTED from /Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/src/main/AndroidManifest.xml reason: use-sdk injection requested
-MERGED from [SunXin:CommonRes:unspecified] /Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/exploded-aar/SunXin/CommonRes/unspecified/AndroidManifest.xml:7:5-9:41
+INJECTED from D:\Works\SunXinAndroid\SunXin\plugins\Plugin_Reader_Main\src\main\AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [SunXin:CommonRes:unspecified] D:\Works\SunXinAndroid\SunXin\plugins\Plugin_Reader_Main\build\intermediates\exploded-aar\SunXin\CommonRes\unspecified\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:cardview-v7:24.1.1] D:\Works\SunXinAndroid\SunXin\plugins\Plugin_Reader_Main\build\intermediates\exploded-aar\com.android.support\cardview-v7\24.1.1\AndroidManifest.xml:20:5-43
 	android:targetSdkVersion
-		INJECTED from /Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/src/main/AndroidManifest.xml
-		INJECTED from /Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/src/main/AndroidManifest.xml
+		INJECTED from D:\Works\SunXinAndroid\SunXin\plugins\Plugin_Reader_Main\src\main\AndroidManifest.xml
+		INJECTED from D:\Works\SunXinAndroid\SunXin\plugins\Plugin_Reader_Main\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from /Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/src/main/AndroidManifest.xml
-		INJECTED from /Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/src/main/AndroidManifest.xml
+		INJECTED from D:\Works\SunXinAndroid\SunXin\plugins\Plugin_Reader_Main\src\main\AndroidManifest.xml
+		INJECTED from D:\Works\SunXinAndroid\SunXin\plugins\Plugin_Reader_Main\src\main\AndroidManifest.xml
 application
-ADDED from [SunXin:CommonRes:unspecified] /Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/exploded-aar/SunXin/CommonRes/unspecified/AndroidManifest.xml:11:5-14:19
+ADDED from [SunXin:CommonRes:unspecified] D:\Works\SunXinAndroid\SunXin\plugins\Plugin_Reader_Main\build\intermediates\exploded-aar\SunXin\CommonRes\unspecified\AndroidManifest.xml:11:5-14:19
+MERGED from [com.android.support:cardview-v7:24.1.1] D:\Works\SunXinAndroid\SunXin\plugins\Plugin_Reader_Main\build\intermediates\exploded-aar\com.android.support\cardview-v7\24.1.1\AndroidManifest.xml:22:5-20
 	android:label
-		ADDED from [SunXin:CommonRes:unspecified] /Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/exploded-aar/SunXin/CommonRes/unspecified/AndroidManifest.xml:13:9-41
+		ADDED from [SunXin:CommonRes:unspecified] D:\Works\SunXinAndroid\SunXin\plugins\Plugin_Reader_Main\build\intermediates\exploded-aar\SunXin\CommonRes\unspecified\AndroidManifest.xml:13:9-41
 	android:allowBackup
-		ADDED from [SunXin:CommonRes:unspecified] /Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/exploded-aar/SunXin/CommonRes/unspecified/AndroidManifest.xml:12:9-35
+		ADDED from [SunXin:CommonRes:unspecified] D:\Works\SunXinAndroid\SunXin\plugins\Plugin_Reader_Main\build\intermediates\exploded-aar\SunXin\CommonRes\unspecified\AndroidManifest.xml:12:9-35

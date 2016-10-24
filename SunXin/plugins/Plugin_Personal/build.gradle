@@ -31,6 +31,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    //start-----插件相关-------------------
+    aaptOptions.additionalParameters '--PLUG-resoure-proguard', '--PLUG-resoure-id', '0x70'
+    //end-------插件相关-------------------
 }
 
 dependencies {

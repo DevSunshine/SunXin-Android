@@ -1,34 +1,50 @@
 [
     {
-        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/res/merged/debug/color/check_color_selector.xml",
-        "source": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/exploded-aar/SunXin/CommonRes/unspecified/res/color/check_color_selector.xml"
+        "merged": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\color\\main_color_selector.xml",
+        "source": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\color\\main_color_selector.xml"
     },
     {
-        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\color\\white_color_selector.xml",
-        "source": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\color\\white_color_selector.xml"
+        "merged": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\color\\white_color_selector.xml",
+        "source": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\color\\white_color_selector.xml"
     },
     {
-        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/res/merged/debug/color/tab_reader_text_color.xml",
-        "source": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/src/main/res/color/tab_reader_text_color.xml"
+        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\color\\white_color_selector.xml",
+        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\color\\white_color_selector.xml"
     },
     {
-        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/res/merged/debug/color/main_color_selector.xml",
-        "source": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/exploded-aar/SunXin/CommonRes/unspecified/res/color/main_color_selector.xml"
+        "merged": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\color\\white_color_selector.xml",
+        "source": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\color\\white_color_selector.xml"
     },
     {
-        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\color\\main_color_selector.xml",
-        "source": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\color\\main_color_selector.xml"
+        "merged": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\color\\main_color_selector.xml",
+        "source": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\color\\main_color_selector.xml"
     },
     {
-        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/res/merged/debug/color/white_color_selector.xml",
-        "source": "/Users/gyzhong/SunXinAndroid/SunXin/plugins/Plugin_Reader_Main/build/intermediates/exploded-aar/SunXin/CommonRes/unspecified/res/color/white_color_selector.xml"
+        "merged": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\color\\tab_reader_text_color.xml",
+        "source": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\color\\tab_reader_text_color.xml"
     },
     {
-        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\color\\check_color_selector.xml",
-        "source": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\color\\check_color_selector.xml"
+        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\color\\main_color_selector.xml",
+        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\color\\main_color_selector.xml"
     },
     {
-        "merged": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\color\\tab_reader_text_color.xml",
-        "source": "/Users/gyzhong/SunXinAndroid/SunXin/D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\color\\tab_reader_text_color.xml"
+        "merged": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\color\\tab_reader_text_color.xml",
+        "source": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\color\\tab_reader_text_color.xml"
+    },
+    {
+        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\color\\check_color_selector.xml",
+        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\color\\check_color_selector.xml"
+    },
+    {
+        "merged": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\color\\check_color_selector.xml",
+        "source": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\color\\check_color_selector.xml"
+    },
+    {
+        "merged": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\color\\check_color_selector.xml",
+        "source": "D:\\Users\\gyzhong\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\exploded-aar\\SunXin\\CommonRes\\unspecified\\res\\color\\check_color_selector.xml"
+    },
+    {
+        "merged": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\build\\intermediates\\res\\merged\\debug\\color\\tab_reader_text_color.xml",
+        "source": "D:\\Works\\SunXinAndroid\\SunXin\\plugins\\Plugin_Reader_Main\\src\\main\\res\\color\\tab_reader_text_color.xml"
     }
 ]

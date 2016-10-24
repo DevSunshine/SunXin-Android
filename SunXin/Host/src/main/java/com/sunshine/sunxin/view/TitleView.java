@@ -108,6 +108,9 @@ public class TitleView extends LinearLayout implements View.OnClickListener {
         Log.v("zgy", "=============mTitleViewHeight=" + mTitleViewHeight);
     }
 
+    public void setBackgroundColor(int color){
+        mContent.setBackgroundColor(color);
+    }
     public void hide() {
         setVisibility(GONE);
     }

@@ -20,7 +20,6 @@ import java.util.Map;
 
 import rx.Observable;
 import rx.Subscriber;
-import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
@@ -33,7 +32,7 @@ import rx.schedulers.Schedulers;
 public class SkinManager {
 
     private Context mContext ;
-    private Subscription mSubscription ;
+
     private String mSkinPath ;
     private SkinSP mSkinSP ;
     private Map<String,SkinPage> mSkinPages = new ArrayMap<>() ;
@@ -60,11 +59,7 @@ public class SkinManager {
      * 更换皮肤
      */
     public void changeSkin(final String skinPath, final SkinChangeListener listener){
-
-        if (mSubscription != null&& mSubscription.isUnsubscribed()){
-            mSubscription.unsubscribe();
-        }
-        mSubscription = Observable.just(skinPath)
+        Observable.just(skinPath)
                 .map(new Func1<String, SkinInfo>() {
                     @Override
                     public SkinInfo call(String s) {
@@ -94,10 +89,10 @@ public class SkinManager {
                 .subscribe(new Subscriber<SkinInfo>() {
                     @Override
                     public void onCompleted() {
-                        if (mSubscription.isUnsubscribed()){
-                            mSubscription.unsubscribe();
-                            mSubscription = null ;
-                        }
+//                        if (mSubscription.isUnsubscribed()){
+//                            mSubscription.unsubscribe();
+//                            mSubscription = null ;
+//                        }
                     }
                     @Override
                     public void onError(Throwable e) {

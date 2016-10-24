@@ -1,6 +1,8 @@
 package com.sunshine.sunxin.ui;
 
 import android.content.Intent;
+import android.content.res.AssetManager;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,7 +17,10 @@ import com.sunshine.sunxin.R;
 import com.sunshine.sunxin.beans.msg.MsgMenuItem;
 import com.sunshine.sunxin.beans.msg.SunXinSession;
 import com.sunshine.sunxin.plugin.PluginConstant;
+import com.sunshine.sunxin.plugin.PluginSyncManager;
 import com.sunshine.sunxin.plugin.RootPluginActivity;
+import com.sunshine.sunxin.plugin.TestAppCom;
+import com.sunshine.sunxin.plugin.model.PluginSyncInfo;
 import com.sunshine.sunxin.ui.business.msg.MsgMVP;
 import com.sunshine.sunxin.ui.business.msg.MsgPresenter;
 import com.sunshine.sunxin.ui.business.msg.SessionAdapter;
@@ -24,6 +29,7 @@ import com.sunshine.sunxin.view.TitleView;
 import com.sunshine.sunxin.widget.recyclerview.adapter.RecyclerArrayAdapter;
 import com.sunshine.sunxin.widget.recyclerview.decoration.DividerDecoration;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -138,6 +144,29 @@ public class TabMsgFragment extends BaseFragment implements TabMsgPopView.onItem
 
                 intent.putExtra(PluginConstant.INTENT_PLUGIN_ID_KEY, "106");
                 startActivity(intent);
+
+                try {
+                    PluginSyncInfo pluginSyncInfo = PluginSyncManager.getInstance(getContext()).getPluginSyncInfo("106");
+                    AssetManager assetManager = null;
+                    assetManager =AssetManager.class.newInstance();
+                    Class assetClass = assetManager.getClass();
+                    Method method = assetClass.getMethod("addAssetPath", String.class);
+                    method.invoke(assetManager, getHostActivity().getPackageResourcePath());
+                    method.invoke(assetManager, pluginSyncInfo.pluginInfo.localPath);
+                    Resources resources = new Resources(assetManager, getResources().getDisplayMetrics(),
+                            getResources().getConfiguration());
+                    TestAppCom.resources = resources ;
+                    Resources.Theme theme = resources.newTheme();
+                    theme.applyStyle(R.style.AppTheme, true);
+                    TestAppCom.theme = theme ;
+                    Log.v("zgy","================pluginSyncInfo========="+pluginSyncInfo.pluginInfo.localPath) ;
+                } catch (java.lang.InstantiationException e) {
+                    e.printStackTrace();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+
                 break;
             case 4:
                 intent.putExtra(PluginConstant.INTENT_PLUGIN_ID_KEY, "105");
